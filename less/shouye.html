@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/shouye.css" />
+		<link rel="stylesheet" type="text/css" href="css/liri.css"/>
+	</head>
+
+	<body>
+		<div class="hard">
+			<div class="hard_middle">
+				<a href="#">hi,13941089621</a>
+				<a href="#">退出</a>
+				<a href="#">我的鼎鼎</a>
+			</div>
+		</div>
+		<div class="middle">
+			<div class="middle_comment">
+				<div class="imga">1</div>
+				<div class="img aa">2</div>
+				<div class="img">3</div>
+			</div>
+		</div>
+		<div class="comment">
+			<div class="comment_left">
+				<div class="touxiang">
+					<div class="touxiang_img">
+						<img src="img/400.png" />
+					</div>
+				</div>
+				<div class="touxiang_comment">
+					<div class="diva">5
+						<div class="ding divb"></div>
+					</div>
+					<div class="diva">6
+						<div class="ding"></div>
+					</div>
+					<div class="diva">7
+						<div class="ding"></div>
+					</div>
+					<div class="diva">8
+						<div class="ding"></div>
+					</div>
+				</div>
+				<div class="touxiang_comment_a">
+
+				</div>
+			</div>
+			<div class="comment_right">
+				<div class="youmian"></div>
+				<div class="dingwei">
+					<div class="kuan xan">1</div>
+					<div class="kuan">2</div>
+					<div class="kuan">3</div>
+					<div class="kuan">
+						<div class='calendar' id='calendar'></div>
+					</div>
+				</div>
+				<div class="foot">
+						
+				</div>
+			</div>
+			
+		
+		</div>
+		<script src="js/rili.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oimg = document.getElementsByClassName("img");
+			for(var j = 0; j < oimg.length; j++) {
+				oimg[j].onclick = (function(j) {
+					return function() {
+						for(var i = 0; i < oimg.length; i++) {
+							if(i !== j) {
+								oimg[i].className = "img"
+							}
+						}
+						oimg[j].className = "img aa"
+					}
+				})(j)
+			}
+			
+			var okuan =document.getElementsByClassName("kuan");
+			var odiva =document.getElementsByClassName("diva");
+			var oding =document.getElementsByClassName("ding");
+			for (var r=0;r<okuan.length;r++) {
+				odiva[r].onclick=(function(r){
+					return	function(){
+						for (var i=0;i<okuan.length;i++) {
+							if(i!==r){
+								okuan[i].style.display="none"
+							}	
+							okuan[r].style.display="block"
+						}
+						for (var ii=0;ii<oding.length;ii++) {
+							if(ii!==r){							
+								oding[ii].style.display="none"
+							}
+							oding[r].style.display="block"
+						}	
+					}
+				})(r)		
+			}
+		</script>
+	</body>
+
+</html>

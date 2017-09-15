@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.aa{
+				width: 100px;
+				height: 50px;
+				float: left;
+				background: saddlebrown;
+				margin-left: 10px;
+			}
+			.bb{
+				width: 200px;
+				height: 200px;
+				border: 1px solid black;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				display: none;
+			}
+			.c{
+				display: block;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div class="a">
+			<div class="aa">1</div>
+			<div class="aa">2</div>
+			<div class="aa">3</div>
+			<div class="aa">4</div>
+		</div>
+		<div class="b">
+			<div class="bb c">5</div>
+			<div class="bb">6</div>
+			<div class="bb">7</div>
+			<div class="bb">8</div>
+		</div>
+		
+		
+		<script>
+			
+			var aa = document.getElementsByClassName("aa");
+			var bb = document.getElementsByClassName("bb");
+			for(var n = 0; n < aa.length; n++){
+				aa[n].onclick = (function(n){
+					return	function(){
+						for(var i = 0; i < bb.length;i++){
+							if(i != n){
+								bb[i].className = "bb";
+							}
+						}
+//						console.log(n)
+						bb[n].className = "bb c";
+					}
+				})(n)
+			}
+//			
+//			aa[1].onclick = function(){
+//				for(var i = 0; i < bb.length;i++){
+//					if(i != 1){
+//						bb[i].className = "bb";
+//					}
+//				}
+//				bb[1].className = "bb c";
+//			}
+//			aa[0].onclick = function(){
+//				for(var i = 0; i < bb.length;i++){
+//					if(i != 0){
+//						bb[i].className = "bb";
+//					}
+//				}
+//				bb[0].className = "bb c";
+//			}
+//			aa[2].onclick = function(){
+//				for(var i = 0; i < bb.length;i++){
+//					if(i != 2){
+//						bb[i].className = "bb";
+//					}
+//				}
+//				bb[2].className = "bb c";
+//			}
+			
+		</script>
+	</body>
+</html>

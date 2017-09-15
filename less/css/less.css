@@ -1,0 +1,44 @@
+body {
+  background: #cdf;
+}
+.aa {
+  width: 700px;
+  height: 300px;
+  margin: 0 auto;
+  background: url(../img/400.png);
+}
+.aa ul {
+  width: 500px;
+  height: 250px;
+  background: darkgoldenrod;
+  margin: 0 auto;
+  list-style-type: none;
+}
+.aa a {
+  font-size: 10px;
+  text-decoration: none;
+}
+.bb {
+  width: 1000px;
+  height: 200px;
+  border: 1px solid #ffffff;
+  margin: 0 auto;
+}
+.bb .cc {
+  width: 1000px;
+  height: 100px;
+  background: #ffffff;
+  overflow: hidden;
+}
+.bb .cc .left {
+  width: 200px;
+  height: 100px;
+  background: #bbbb00;
+  float: left;
+}
+.bb .cc .right {
+  width: 200px;
+  height: 100px;
+  background: #1a1a1a;
+  float: right;
+}

@@ -1,0 +1,58 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/chenliang\/Desktop\/less\/less\/lunbo\.less}line{font-family:\000031}}
+* {
+  padding: 0;
+  margin: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/chenliang\/Desktop\/less\/less\/lunbo\.less}line{font-family:\000035}}
+.tou {
+  width: 100%;
+  height: 40px;
+  background: #333;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/chenliang\/Desktop\/less\/less\/lunbo\.less}line{font-family:\000039}}
+.tou .zhong {
+  width: 1000px;
+  height: 40px;
+  background: #333;
+  margin: 0 auto;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/chenliang\/Desktop\/less\/less\/lunbo\.less}line{font-family:\0000315}}
+.tou a {
+  padding: 0 10px;
+  text-decoration: none;
+  color: white;
+  line-height: 40px;
+  float: right;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/chenliang\/Desktop\/less\/less\/lunbo\.less}line{font-family:\0000322}}
+.tou a:hover {
+  color: red;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/chenliang\/Desktop\/less\/less\/lunbo\.less}line{font-family:\0000326}}
+.hard {
+  width: 500px;
+  height: 300px;
+  margin: 0 auto;
+  border: 1px solid black;
+  overflow: hidden;
+  position: relative;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/chenliang\/Desktop\/less\/less\/lunbo\.less}line{font-family:\0000333}}
+.hard .fa {
+  width: 2000px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/chenliang\/Desktop\/less\/less\/lunbo\.less}line{font-family:\0000339}}
+.hard .fa .diva {
+  width: 500px;
+  height: 300px;
+  float: left;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/chenliang\/Desktop\/less\/less\/lunbo\.less}line{font-family:\0000343}}
+.hard .fa .diva img {
+  width: 100%;
+  height: 100%;
+}

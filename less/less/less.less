@@ -1,0 +1,53 @@
+@import url(less.less);
+body {
+    background: #cdf;
+}
+.aa {
+    width: 700px;
+    height: 300px;
+    margin: 0 auto;
+    background: url(../img/400.png);
+//  background: darkgreen;
+    
+    ul {
+        width: 500px;
+        height: 250px;
+        background: darkgoldenrod;
+        margin: 0 auto;
+        list-style-type: none;
+    }
+    a {
+        @fz: 10px;
+        font-size: @fz;
+        text-decoration: none;
+    }
+}
+.bb {
+    @w: 1000px;
+    @h: 200px;
+    @b: #fff;
+    width: @w;
+    height: @h;
+    border: 1px solid @b;
+    margin: 0 auto;
+    .cc {
+        width: @w;
+        height: 100px;
+        background: @b;
+        overflow: hidden;
+        .left{
+            width: @w/5;
+            height: @h/2;
+            @be: #bb0;
+            background: @be;
+            float: left;
+        }
+        .right{
+            width: @w/5;
+            height: @h/2;
+            background: @b/10;
+            float: right;
+       
+        }
+    }
+}

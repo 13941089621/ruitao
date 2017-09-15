@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/lunbo.css" />
+		<title></title>
+	</head>
+
+	<body>
+		<div class="tou">
+			<div class="zhong">
+				<a href="#">我的</a>
+				<a href="#">我的</a>
+				<a href="#">我的</a>
+				<a href="#">我的</a>
+			</div>
+			
+		</div>
+		<div class="hard">
+			<div class="fa">
+				<div class="diva a a1"><img src="http://gaopin-preview.bj.bcebos.com/133100582069.jpg"/></div>
+				<div class="diva b1"><img src="img/penstion_b1.png"/></div>
+				<div class="diva c1"><img src="http://weitu-650-water.bj.bcebos.com/233108461067.jpg"/></div>
+				<div class="diva d1"><img src="http://gaopin-img.bj.bcebos.com/133105440376.jpg"/></div>
+			</div>
+
+		</div>
+		<script type="text/javascript">
+			var oa = document.getElementsByClassName("fa")[0]
+			var time = setInterval(aaa, 16)
+			function aaa() {
+				console.log(123)
+				if((-oa.offsetLeft) / 500 % 1 === 0 && oa.offsetLeft != 0) {
+					clearInterval(time);
+					console.log(oa.offsetLeft);
+
+					setTimeout(function() {
+						oa.style.left = oa.offsetLeft - 10 + "px"
+
+						time = setInterval(aaa, 16)
+					}, 1000)
+				} else {
+					if(oa.offsetLeft > -2000) {
+						oa.style.left = oa.offsetLeft - 10 + "px"
+					} else {
+						oa.style.left = '0px'
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>
