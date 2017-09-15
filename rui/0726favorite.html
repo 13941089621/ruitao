@@ -1,0 +1,288 @@
+<style>
+  .btn_gray_s{
+
+  }
+
+.msgbox {
+  width:350px;
+  display:none;
+  /*margin:-44px 0 0 -250px;*/
+  /*margin:-10px 0 0 -350px;*/
+  z-index:2;
+  position: absolute;
+  left: 50%;
+  margin-left: -175px;
+  top: 0;
+  border: 1px solid #ff3200;
+}
+.msgbox td{
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+  #favorite{
+    position: relative;
+  }
+
+
+</style>
+
+
+
+
+
+{set:$user_id = $this->user['user_id']}
+{set:$favoriteSum = 0}
+<div class="ucenter-index favorite">
+    <div class="ucenter-title clearfix">
+        <span>{echo:trans('site.TRANS_30')}</span>
+    </div>
+	<div class="box">
+	<div class="title">
+		<span>{echo:trans('site.by_category')}{echo:trans('site.TRANS_31')}：</span>
+		<a href="{url:/ucenter/favorite/}" class='{if:IReq::get('cat_id') == ''}orange{/if}'>{echo:trans('site.TRANS_32')} <label id='favoriteSum'></label></a>
+		{foreach:items=Api::run('getUcenterFavoriteByCatid',array('#user_id#',$user_id))}
+		{set:$favoriteSum+=$item['num']}
+		<a href="{url:/ucenter/favorite/cat_id/$item[id]}" class='{if:IReq::get('cat_id') == $item['id']}orange{/if}'>{$item['name']} {$item['num']}</a>
+		{/foreach}
+	</div>
+
+	<form action='#' method='post' id='favorite' name='favorite'>
+		<table class="list-table-style1" width="100%" cellpadding="0" cellspacing="0">
+			<col width='15px' />
+			<col />
+			<col width='100px' />
+			<col width='60px' />
+			<col width='100px' />
+			<thead>
+				<tr>
+					<td width="60px"></td>
+					<td align="center" width="400px">{echo:trans('site.TRANS_18')}</td>
+					<td align="center">{echo:trans('site.TRANS_33')}</td>
+					<td align="center">{echo:trans('site.TRANS_34')}</td>
+					<td align="center">{echo:trans('site.TRANS_35')}</td>
+				</tr>
+			</thead>
+			{set:$favoriteObj = null;$favoriteList = $this->get_favorite($favoriteObj)}
+			{if:count($favoriteList)==0}
+			<tbody>
+				<tr><td colspan="5"><div class="nothing-log">{echo:trans('site.TRANS_36')}</div></td></tr>
+			</tbody>
+			{else:}
+			<tbody>
+				{foreach:items=$favoriteList key=$i}
+				{set:$type=1}
+
+				<tr>
+					<td align="center"><input name="id[]" type="checkbox" value="{$item['id']}" /></td>
+					<td>
+						<dl class="clearfix">
+							{set:$tmp=$item['data']['id'];$tmpIMG=$item['data']['img'];}
+							<dt><a href="{url:/site/products/id/$tmp}"><img src="{url:/pic/thumb/img/$tmpIMG/w/88/h/88}" width="88px" height="88px" alt="{$item['data']['name']}" /></a></dt>
+							<dd><a class="blue" href="{url:/site/products/id/$tmp}">{$item['data']['name']}</a></dd>
+
+							<input type='hidden' name='goods_id[]' value='{$item['data']['id']}' />
+							<dd class="green">{echo:trans('site.TRANS_37')}：{$item['data']['store_nums']}</dd>
+
+							<dd id='summary_show_{$item['id']}'>{$item['summary']}</dd>
+							<dd class="blue" id='summary_button_box_{$item['id']}'>
+								<a class="blue" href='javascript:void(0)' onclick='$("#summary_box_{$item['id']}").show();$("#summary_button_box_{$item['id']}").hide();'>+{echo:trans('site.TRANS_38')}</a>
+							</dd>
+
+							<dd class="blue" id='summary_box_{$item['id']}' style='display:none'>
+								{echo:trans('site.TRANS_39')}：<input type="text" id="summary_val_{$item['id']}" />
+								<input class="sbtn" type="button" value="{echo:trans('site.TRANS_40')}" onclick="edit_summary({$item['id']});" />
+								<input class="sreset" type="button" value="[{echo:trans('site.TRANS_41')}]" onclick='$("#summary_box_{$item['id']}").hide();$("#summary_button_box_{$item['id']}").show();' />
+							</dd>
+						</dl>
+					</td>
+
+					<td align="center">{$item['time']}</td>
+					<td align="center"><span class='green'>￥{$item['data']['sell_price']}</span></td>
+
+
+					<td align="center">
+						<label class="btn_gray_s">
+              <input type="button" class="add-cart-btn" value="{echo:trans('site.TRANS_42')}" onclick="joinCart_list({$item['data']['id']});" />
+            </span>
+            </label>
+            <br />
+            <!--按钮-->
+						<label class="btn_gray_s">
+              <input class="add-favor-btn" type="button" value="{echo:trans('site.TRANS_43')}" onclick="delModel({link:'{url:/ucenter/favorite_del/id/$item[id]}',msg:'{echo:trans('site.TRANS_44')}？'});" />
+              </span>
+            </label>
+
+      <!--关闭文字 display:none-->
+              <div class="msgbox" aa="{$i}">
+                <div class="msg_t">
+                  <a class="close f_r" onclick="$(this).parents('.msgbox').hide();">{echo:trans('site.TRANS_45')}
+                  </a>请{echo:trans('site.TRANS_46')}
+                </div>
+                <div class="msg_c" id='product_box_{$item['data']['id']}'></div>
+            </div>
+
+
+
+					</td>
+<div style="width:100%;"></div>
+
+				</tr>
+				{/foreach}
+			</tbody>
+
+			<tfoot>
+				<tr>
+					<td colspan="5" style="position:relative;">
+						<div class="pages_bar f_r">{$favoriteObj->getPageBar()}</div>
+						<div class="favor-i">
+							<label><input class="radio" type="checkbox" onclick="selectAll('id[]');" />{echo:trans('site.TRANS_47')}</label>
+							<label class="btn_gray_s"><input class="add-favor-btn" type="button" onclick="$('#favorite').attr('action','{url:/ucenter/favorite_del}');delModel({msg:'{echo:trans('site.TRANS_44')}？',form:'favorite'});" value="{echo:trans('site.TRANS_43')}" /></span></label>
+						</div>
+					</td>
+				</tr>
+			</tfoot>
+			{/if}
+
+		</table>
+	</form>
+	</div>
+</div>
+
+<!--选择货品添加购物车模板 开始-->
+<script type='text/html' id='selectProductTemplate'>
+<table width="100%">
+	<col />
+	<col width="80px" />
+	<col width="60px" />
+	<%for(var item in productData){%>
+	<%item = productData[item]%>
+	<tr>
+		<td align="left">
+			<%for(var spectName in item['specData']){%>
+			<%var spectValue = item['specData'][spectName]%>
+				<%=spectName%>：<%=spectValue%> &nbsp&nbsp
+			<%}%>
+		</td>
+		<td align="center"><span class="bold red2">￥<%=item['sell_price']%></span></td>
+		<td align="right"><label class="btn_gray_s"><input type="button" onclick="joinCart_ajax('<%=item['id']%>','product');" value="{echo:trans('site.TRANS_48')}"></label></td>
+	</tr>
+	<%}%>
+	<tr>
+		<td colspan='3' align="left"><a href="{url:/site/products/id/<%=item['goods_id']%>}">{echo:trans('site.TRANS_49')}</a></td>
+	</tr>
+</table>
+</script>
+<!--选择货品添加购物车模板 结束-->
+
+<script type='text/javascript'>
+//修改备注信息
+function edit_summary(idVal)
+{
+	var summary = $("#summary_val_"+idVal).val();
+	if($.trim(summary))
+	{
+		$.getJSON('{url:/ucenter/edit_summary}',{id:idVal,summary:summary},function(content){
+			if(content.isError == false)
+			{
+				$('#summary_show_'+idVal).html(summary);
+				$("#summary_box_"+idVal).hide();$("#summary_button_box_"+idVal).show();
+				$('#summary_val_'+idVal).val('');
+			}
+			else
+			{
+				alert(content.message);
+			}
+		});
+	}
+	else
+	{
+		alert('{echo:trans('site.TRANS_50')}');
+	}
+}
+
+//统计总数
+$('#favoriteSum').html('{$favoriteSum}');
+
+//加入购物车
+function joinCart_ajax(id,type)
+{
+	$.getJSON('{url:/simple/joinCart}',{goods_id:id,type:type},function(content){
+		if(content.isError == false)
+		{
+			var count = parseInt($('[name="mycart_count"]').html()) + 1;
+			$('[name="mycart_count"]').html(count);
+			$('.msgbox').hide();
+			console.log($(".msgbox"))
+			alert(content.message);
+		}
+		else
+		{
+			alert(content.message);
+		}
+	});
+}
+
+//列表页加入购物车统一接口
+function joinCart_list(id)
+{
+  $.getJSON('{url:/simple/getProducts}',{"id":id},function(content){
+    if(!content)
+    {
+      joinCart_ajax(id,'goods');
+    }
+    else
+    {
+      var selectProductTemplate = template.render('selectProductTemplate',{'productData':content});
+      $('#product_box_'+id).html(selectProductTemplate);
+      $('#product_box_'+id).parent().show();
+      var ttt = $('#product_box_'+id).parent().parent().parent()
+      console.log(ttt.offset().top)
+      console.log(ttt.parent().offset().top)
+      $('#product_box_'+id).parent().css({top:(-ttt.parent().offset().top + ttt.offset().top+"px")})
+      console.log()
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+//列表页加入购物车统一接口
+function joinCart_list(id)
+{
+  $.getJSON('{url:/simple/getProducts}',{"id":id},function(content){
+    if(!content)
+    {
+      joinCart_ajax(id,'goods');
+    }
+    else
+    {
+      var selectProductTemplate = template.render('selectProductTemplate',{'productData':content});
+      $('#product_box_'+id).html(selectProductTemplate);
+      $('#product_box_'+id).parent().show();
+
+    }
+  });
+}
+**/
+</script>

@@ -1,0 +1,45 @@
+
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.wrap {
+				margin-left: 10px;
+				
+			}
+			
+			.second {
+				margin-left: 30px;
+				display: none;
+			}
+			
+			.border_bottom {
+				border-bottom: 1px solid gainsboro;
+			}
+			
+			.third {
+				margin-left: -30px;
+				display: none;
+			}
+			
+			.left {
+				width: 0;
+				height: 0;
+				border: 10px solid white;
+				border-left: 10px solid dodgerblue;
+				display: inline-block;
+			}
+			
+			.down {
+				width: 0;
+				height: 0;
+				border: 10px solid white;
+				border-top: 10px solid dodgerblue;
+				display: inline-block;
+			}
+			img{
+				width: 0.2rem;
+				height: 0.2rem;
+			}
+	

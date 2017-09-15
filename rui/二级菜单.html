@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>平台业务政策规则</title>
+
+<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.son{
+		display: none;
+	}
+	.borderBottom{
+		border-bottom: 1px solid #ccc;
+	}
+	.marginLeft{
+		margin-left: 10px;
+	}
+</style>
+	</head>
+	
+	<body>
+			<div class="wrap marginLeft">
+				<div class="father borderBottom ">
+					<div class="tab" dis="none">
+						<img class="tab_img" src="img/left.png"/>
+						商家
+					</div>
+					<div class="son marginLeft">
+						<div class="borderBottom">2222222222222222</div>
+						<div>22222222</div>
+					</div>
+				</div>
+				<div class="father borderBottom">
+					<div class="tab" dis="none">
+						<img class="tab_img" src="img/left.png"/>
+						商家
+					</div>
+					<div class="son marginLeft">
+						<div class="borderBottom">2222222222222222</div>
+						<div>22222222</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			
+
+		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var father = document.getElementsByClassName("father")
+			var son = document.getElementsByClassName("son")
+			var tab = document.getElementsByClassName("tab")
+			var tab_img = document.getElementsByClassName("tab_img")
+			for(var i = 0; i < father.length; i++){
+				tab[i].onclick = (function(i){
+					return function(){
+						var attr = "";
+						var img_src = ""
+						var this_class = "tab"
+						if(this.getAttribute("dis") == "none"){
+							attr = "block"
+							img_src = "img/right.png"
+							this_class = "tab borderBottom"
+						} else{
+							attr = "none"
+							img_src = "img/left.png"
+						}
+						this.setAttribute("dis",attr)
+						son[i].style.display = attr
+						tab_img[i].src = img_src
+						this.className = this_class
+					}
+				})(i)
+			}
+			
+//			function all(){
+//				for(var i )
+//			}
+		
+		</script>
+	</body>
+

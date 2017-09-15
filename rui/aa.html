@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .all{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap"></div>
+<div class="all">aaaaaaaaaaaaaaaaaa</div>
+<div class="all">bbbbbbbbbbbbbbbbbb</div>
+<div class="all">ccccccccccccccccccccccc</div>
+<div class="all">ddddddddddddddddddd</div>
+
+<script>
+    var params = location.search.substr(1);
+    var data = get_params("data")
+    console.log(data)
+
+    var all = document.getElementsByClassName("all");
+    var num = data - 1;
+//    switch (data){
+//        case '1':
+//            num = 0;
+//            break;
+//        case '2':
+//            num = 1;
+//            break;
+//        case '3':
+//            num = 2;
+//            break;
+//        case '4':
+//            num = 3;
+//            break;
+//    }
+    all[num].style.display = "block"
+    function get_params(key) {
+        var arr = params.split("&&");
+        for(var i = 0; i < arr.length; i++){
+            var arr1 = arr[i].split("=")
+            if(arr1[0] == key){
+                return arr1[1]
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="wrap"></div>-->
+
+
+<!--<script>-->
+    <!--var params = location.search.substr(1);-->
+    <!--var data = get_params("data")-->
+    <!--console.log(data)-->
+
+    <!--var wrap_html;-->
+    <!--switch (data){-->
+        <!--case '1':-->
+            <!--wrap_html = "<div>sssssssssssssssssssssssssss</div>";-->
+            <!--break;-->
+        <!--case '2':-->
+            <!--wrap_html = "22222222222222";-->
+            <!--break;-->
+        <!--case '3':-->
+            <!--wrap_html = "333333333333333";-->
+            <!--break;-->
+        <!--case '4':-->
+            <!--wrap_html = "444444444444444";-->
+            <!--break;-->
+    <!--}-->
+
+    <!--var wrap = document.getElementsByClassName("wrap")[0];-->
+    <!--wrap.innerHTML = wrap_html-->
+    <!--function get_params(key) {-->
+        <!--var arr = params.split("&&");-->
+        <!--for(var i = 0; i < arr.length; i++){-->
+            <!--var arr1 = arr[i].split("=")-->
+            <!--if(arr1[0] == key){-->
+                <!--return arr1[1]-->
+            <!--}-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

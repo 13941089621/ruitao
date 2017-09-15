@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/xiala.css">
+		<title>平台业务政策规则</title>
+	</head>
+	
+	<body>
+			<div class="wrap">
+			<!--1-->
+			<div class="first">
+				<div class="one">
+					<img src="img/right.png" class="sanjiao" />
+					<span>商家平台准入规则</span>
+				</div>
+				<div class="second">
+					<div class="one">
+						<img src="img/right.png" class="sanjiao" />
+						<span>2222222222</span>
+					</div>
+					<div class="third">
+						<div class="div3">
+							
+						</div>
+					</div>
+				</div>
+				<div class="second">
+					<div class="one">
+						<img src="img/right.png" class="sanjiao" />
+						<span>2222222222</span>
+					</div>
+					<div class="third">
+						33333333333
+					</div>
+				</div>
+				<div class="second">
+					<div class="one">
+						<img src="img/right.png" class="sanjiao" />
+						<span>2222222222</span>
+					</div>
+					<div class="third">
+						33333333333
+					</div>
+				</div>
+				<div class="second">
+					<div class="one">
+						<img src="img/right.png" class="sanjiao" />
+						<span>2222222222</span>
+					</div>
+					<div class="third">
+					3333
+					</div>
+				</div>
+				
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			<!--2-->
+			<div class="first">
+				<div class="one">
+					<img src="img/right.png" class="sanjiao" />
+					<span>商家平台业务政策规则</span>
+				</div>
+				<div class="second">
+					<div class="one">
+						<img src="img/right.png" class="sanjiao" />
+						<span>2222222222</span>
+					</div>
+					<div class="third">
+						33333333333
+					</div>
+				</div>
+				<div class="second">
+					<div class="one">
+						<img src="img/right.png" class="sanjiao" />
+						<span>2222222222</span>
+					</div>
+					<div class="third">
+						33333333333
+					</div>
+				</div>
+				
+			</div>
+			<!--3-->
+			<div class="first">
+				<div class="one">
+					<img src="img/right.png" class="sanjiao" />	
+					<span>服务范围</span>
+				</div>
+				<div class="second">
+					<div class="one">
+						<img src="img/right.png" class="sanjiao" />
+						<span>2222222222</span>
+					</div>
+					<div class="third">
+						33333333333
+					</div>
+				</div>
+				<div class="second">
+					<div class="one">
+						<img src="img/right.png" class="sanjiao" />
+						<span>2222222222</span>
+					</div>
+					<div class="third">
+						33333333333
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+
+		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var first = document.getElementsByClassName("first");
+			var first_len = first.length;
+			for(var i = 0; i < first_len; i++) {
+				var first_i = first[i];
+				
+				set_menu_attr(first_i, [".second", ".one>.sanjiao", ".first>.one"])
+				
+				var second = first_i.menu;
+				var second_len = second.length;
+				for(var j = 0; j < second_len; j++) {
+					var second_j = second[j];
+					set_menu_attr(second_j, [".third", ".one>.sanjiao", ".second>.one"]);
+					if(j == second_len - 1) break;
+					second_j.className += " border_bottom"
+				}
+				if(i == first_len - 1) break;
+				first_i.className = "first border_bottom";
+			}
+
+			function set_menu_attr(first_i, arr) {
+				first_i.menu = first_i.querySelectorAll(arr[0]);
+				first_i.sanjiao = first_i.querySelector(arr[1]);
+				first_i.temp = "none";
+				first_i.first_click_dom = first_i.querySelector(arr[2]);
+				first_i.first_click_dom.parent_dom = first_i;
+				first_i.first_click_dom.onclick = function() {
+					return first_click(this.parent_dom)
+				}
+			}
+
+			function first_click(obj) {
+				var menu = obj.menu;
+				var menu_len = menu.length;
+				var display = "";
+				var src = "";
+				var classname;
+				if(obj.temp == "none") {
+					display = "block";
+					obj.temp = "block";
+					src = "img/left.png";
+//					src = "down sanjiao"
+					classname = "one border_bottom"
+				} else {
+					display = "none";
+					obj.temp = "none";
+					src = "img/right.png";
+//					src = "left sanjiao"
+					classname = "one"
+				}
+				for(var i = 0; i < menu_len; i++) {
+					menu[i].style.display = display;
+				}
+				obj.sanjiao.src = src;
+//				obj.sanjiao.className = src
+				obj.first_click_dom.className = classname;
+			}
+		
+		</script>
+	</body>
+

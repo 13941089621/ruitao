@@ -1,0 +1,60 @@
+
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.zhong{
+				width: 10rem;
+				background: #FFFFFF;
+			}
+			body{
+				background: #F7F8F7;
+			}
+			
+			.wrap {
+				margin-left: 10px;
+			}
+			.second {
+				margin-left: 0.26666666666666rem;
+				display: none;
+			}
+			
+			.border_bottom {
+				border-bottom: 1px solid gainsboro;
+			}
+			
+			.third {
+				margin-left: -25px;
+				display: none;
+			}
+			
+			.left {
+				width: 0;
+				height: 0;
+				border: 10px solid white;
+				border-left: 10px solid dodgerblue;
+				display: inline-block;
+			}
+			
+			.down {
+				width: 0;
+				height: 0;
+				border: 10px solid white;
+				border-top: 10px solid dodgerblue;
+				display: inline-block;
+			}
+			
+			img{
+				width: 0.2rem;
+				height: 0.3rem;
+			}
+			
+			.one{
+				height: 1.2rem;
+				line-height: 1.2rem;
+			}
+			.one span{
+				font-size: 0.4266666666666667rem;
+				color: #333333;
+			}
+	

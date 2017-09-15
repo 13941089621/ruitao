@@ -1,0 +1,299 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.shanjia{
+	width: 9.8rem;
+	margin: 0 auto;
+}
+.top{
+	margin-top: 0.266666666rem;
+}
+.button{
+	margin-bottom: 0.266666666rem;
+}
+.shanjia_p{
+	overflow: hidden;
+	font-size: 0.3466666666666667rem;
+	line-height: 0.466666666666rem;
+	color: #666;
+}
+.shanjia_lift{
+	width: 0.4rem;
+	float: left;
+	margin-left: 0.2666666rem;
+}
+.shanjia_right{
+	width: 8.8rem;
+	float: right;
+}
+.baozheng_table{
+	margin: 0.4rem 0 0.2222rem 0.6rem;
+}
+table{
+	border-collapse: collapse;
+	width: 9rem;
+	margin: 0rem auto 0;
+	border: #eeeeee;
+	font-size: 0.3466666666666667rem;
+	color: #666666;
+}
+/*信息服务费*/
+.xinxi{
+	width: 9.8rem;
+	margin: 0 auto;
+}
+.xinxi_span{
+	width: 9.8rem;
+	margin-left: 0.266666rem;
+	margin-top: 0.266666rem;
+}
+.xinxi_span span{
+	font-size: 0.3466666666666667rem;
+	color: #666;
+	line-height: 0.266666rem;
+}
+.xinxi_cent{
+	text-align: center;
+	color: #14C2EF;
+	margin: 0.2666666666666rem 0rem 0.2666666666666rem 0rem;
+}
+.tabal_xinxi{
+	border-collapse: collapse;
+	width: 9rem;
+	margin: 0rem auto 0;
+	border: #eeeeee;
+	font-size: 0.3466666666666667rem;
+	color: #666666;
+	margin-bottom: 0.266666rem;
+}
+.tabal_xinxi th{
+	text-align:center;
+	font-weight:normal;
+}		
+			 .xinxi_width_2{
+			 	width: 2rem;
+			 }
+			 .xinxi_width_25{
+			 	width: 2.5rem;
+			 }
+			 .xinxi_width_45{
+			 	width: 4.5rem;
+			 }
+			 .xinxi th{
+			 	padding-top: 0.2rem;
+			 	padding-bottom: 0.2rem;
+			 }
+/*物料损耗规则*/
+.wuliao{
+	margin-top: 0.266666666666rem;
+	margin-bottom: 0.26666666666rem;
+	margin-left: 0.7rem;
+}
+.wuliao_table{
+	margin-bottom: 0.26666666666rem;
+	margin-left: 0.7rem;
+}
+.shanjia_eft{
+	margin-left: 0.266666666666rem;
+	margin-bottom: 0.26666666666rem;
+	color: #666666;
+	font-size: 0.3466666666666667rem;
+}
+.button_xia{
+	margin-bottom: 0;
+}
+		
+			.wuliao_table{
+				font-size: 0.266666666666666rem;
+			}
+			.wuliao th,.wuliao td{
+			 	padding-top: 0.2rem;
+			 	padding-bottom: 0.2rem;
+			 }
+			 .wuliao_width_18{
+			 	width: 1.8rem;
+			 }
+			 .wuliao_width_24{
+			 	width: 2.4rem;
+			 }
+			 
+			 .wuliao_width_4{
+			 	width: 0.4rem;
+			 }
+			 .wuliao_width_8{
+			 	width: 0.8rem;
+			 }
+			 .wuliao_width_12{
+			 	width: 1.2rem;
+			 }
+			 .wuliao_width_15{
+			 	width: 1.5rem;
+			 }
+
+
+
+/*奖励政策规则*/
+.jiangli{
+	border-collapse: collapse;
+	width: 9rem;
+	margin: 0rem auto 0;
+	border: #eeeeee;
+	font-size: 0.3466666666666667rem;
+	color: #666666;
+	margin-bottom: 0.266666rem;
+}
+.you{
+	margin-left: 0.5rem;
+}
+/*违规处理*/
+.weigui{
+	border-collapse: collapse;
+	width: 9rem;
+	margin: 0rem auto 0;
+	border: #eeeeee;
+	font-size: 0.3466666666666667rem;
+	color: #666666;
+	margin-top: 0.26666666666rem;
+}
+.shanjia_span_a{
+	position: absolute;
+	left: 0;
+	left: 0.26666666rem;
+}
+.shanjia_span_b{
+	margin-left: 0.3rem;
+}
+/*日常保洁服务范围*/
+.richang{
+	border-collapse: collapse;
+	width: 9rem;
+	margin: 0rem auto 0;
+	border: #eeeeee;
+	font-size: 0.3466666666666667rem;
+	color: #666666;
+	margin-bottom: 0.266666rem;
+}
+.richang_th{
+	width: 2rem;
+	color: #14C2EF;
+}
+.rc_th{
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	padding-left: 0.2rem;
+	width:7rem;
+}
+
+
+/*深度保洁服务范围*/
+.shendu{
+	border-collapse: collapse;
+	width: 9.2rem;
+	margin: 0rem auto 0;
+	border: #eeeeee;
+	font-size: 0.3466666666666667rem;
+	color: #666666;
+	margin-bottom: 0.266666rem;
+}
+.foot{
+	height:0.266666rem ;
+}
+
+.sd_td{
+	width: 4.88rem;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	padding-left: 0.1rem;
+}
+.sd_th{
+	width: 1.5rem;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+}
+.sd_d{
+	width: 2.6rem;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	padding-left: 0.1rem;
+}
+
+/*所有table样式*/
+th{
+			 	text-align:center;
+				 font-weight:normal;
+			 }
+			 /*信息*/
+			 .xinxi_width_2{
+			 	width: 2rem;
+			 }
+			 .xinxi_width_25{
+			 	width: 2.5rem;
+			 }
+			 .xinxi_width_45{
+			 	width: 4.5rem;
+			 }
+			 .xinxi th,.xinxi td{
+			 	padding-top: 0.2rem;
+			 	padding-bottom: 0.2rem;
+			 }
+			 /*物料*/
+			
+			
+			.wuliao_table{
+				font-size: 0.266666666666666rem;
+			}
+			.wuliao th,.wuliao td{
+			 	padding-top: 0.2rem;
+			 	padding-bottom: 0.2rem;
+			 }
+			 .wuliao_width_18{
+			 	width: 1.8rem;
+			 }
+			 .wuliao_width_24{
+			 	width: 2.4rem;
+			 }
+			 
+			 .wuliao_width_4{
+			 	width: 0.4rem;
+			 }
+			 .wuliao_width_8{
+			 	width: 0.8rem;
+			 }
+			 .wuliao_width_12{
+			 	width: 1.2rem;
+			 }
+			 .wuliao_width_15{
+			 	width: 1.5rem;
+			 }
+			 /*违规*/
+			.weigui th,.weigui td{
+			 	padding-top: 0.2rem;
+			 	padding-bottom: 0.2rem;
+			 }
+			 .weigui_width_3{
+			 	width: 3rem;
+			 }
+			 .weigui_width_14{
+			 	width: 1.4rem;
+			 }
+			 .weigui_shu{
+			 	padding: 0.3rem;
+    				box-sizing: border-box;
+			 }
+			 .weigui_width_54{
+			 	width: 5.5rem;
+			 }
+			 /*保证金规则*/
+			.baozheng_table th,.baozheng_table td {
+				padding-top: 0.2rem;
+			 	padding-bottom: 0.2rem;
+			 	padding-left: 0.2rem;
+			}
+			/*奖励政策规则*/
+			.jianli_th {
+				padding-top: 0.2rem;
+			 	padding-bottom: 0.2rem;
+			 	/*padding-left: 0.2rem;*/
+			}
+			
