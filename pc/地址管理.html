@@ -1,0 +1,254 @@
+import React from 'react'
+import { ListView, View, Text, TouchableWithoutFeedback } from 'react-native'
+import MeterIcon from 'react-native-vector-icons/MaterialIcons'
+import { connect } from 'react-redux'
+import  ActionConfig from '../Config/ActionConfig'
+import AddressTypes from '../Redux/AddressRedux'
+
+import React from 'react'
+import { ListView, View, Text, TouchableWithoutFeedback } from 'react-native'
+import MeterIcon from 'react-native-vector-icons/MaterialIcons'
+import { connect } from 'react-redux'
+import  ActionConfig from '../Config/ActionConfig'
+import AddressTypes from '../Redux/AddressRedux'
+
+
+
+// Styles
+import styles from './Styles/AddressScreenStyle'
+
+class AddressScreen extends React.Component {
+
+  constructor(){
+    super()
+    let ds = new ListView.DataSource({
+      rowHasChanged: (r1,r2) => {
+        return r1 !== r2
+      }
+    })
+    this.state = {
+      dataSource: ds.cloneWithRows([1,2,3,4,5])
+    }
+  }
+
+  static navigationOptions = ({navigation}) => {
+    return {
+      headerTitle:'地址管理'
+    }
+  }
+
+  componentDidMount(){
+    // 获取地址列表
+    this.props.getAddress(ActionConfig.addressActionName)
+  }
+
+
+  /**
+   *
+   * @param {地址详情} addressObj
+   */
+  _formatAddress(addressObj){
+    return addressObj.province_name+' '+addressObj.city_name+' '+addressObj.area_name+' '+addressObj.address
+  }
+
+  /**
+   * 渲染listview的每一行
+   * @param {地址信息} rowData
+   */
+  _renderRow(rowData){
+    return (
+      <View style={styles.addressWrapper}>
+
+        {/*{rowData.is_default == 1 &&*/}
+         {/*<View style={[styles.alignCenter,styles.justifyCenter,styles.markWrapper]}>*/}
+          {/*<Text style={styles.mark}>默认</Text>*/}
+        {/*</View>*/}
+        {/*}*/}
+
+        {/*<View style={[styles.flexRow]}>*/}
+          {/*<Text>{rowData.accept_name}</Text>*/}
+          {/*<Text>{rowData.mobile}</Text>*/}
+        {/*</View>*/}
+
+        {/*<View style={styles.addressInfo}>*/}
+          {/*<Text>{this._formatAddress(rowData)}</Text>*/}
+        {/*</View>*/}
+
+        <View style={styles.Addressmanagement}>
+          <View style={styles.namewidth}>
+            <Text style={styles.namecolor}>{rowData.accept_name}</Text>
+            {rowData.is_default == 1 &&
+            <View style={styles.default}>
+              <Text style={styles.defaultbox}>默认</Text>
+            </View>
+            }
+          </View>
+
+          <View style={styles.mobilewidth}>
+            <Text style={styles.mobile}>{rowData.mobile}</Text>
+            <Text style={styles.rowData}>{this._formatAddress(rowData)}</Text>
+          </View>
+
+          <View style={styles.modify}>
+            <MeterIcon size={25} name='add' style={styles.modifycontent}/>
+          </View>
+        </View>
+      </View>
+
+
+    )
+  }
+
+  /**
+   * 添加新地址
+   */
+  _addAddress() {
+    const {navigate} = this.props.navigation
+    navigate('AddAddressScreen')
+  }
+
+  render () {
+    return (
+      <View style={styles.container}>
+        <ListView style={[styles.flex1]}
+        enableEmptySections={true}
+        renderRow={(rowData) => this._renderRow(rowData)}
+        dataSource={this.props.addressList}
+        />
+        <View style={[styles.addAddress]}>
+          <TouchableWithoutFeedback onPress={() => this._addAddress()}>
+          <View style={[styles.flexRow,styles.flex1,styles.alignCenter,styles.justifyCenter,styles.Newaddress]}>
+          {/*<MeterIcon size={25} name='add'/>*/}
+          <Text style={{color:'#e34'}}>+ 新建地址</Text>
+          </View>
+          </TouchableWithoutFeedback>
+        </View>
+      </View>
+    )
+  }
+}
+
+const mapStateToProps = (state) => {
+  const {payload} = state.address
+  let data = {
+    addressList:new ListView.DataSource({rowHasChanged:(r1,r2) => r1!==r2}).cloneWithRows([])
+  }
+  if(payload){
+    const addressList = new ListView.DataSource({rowHasChanged:(r1,r2) => r1!==r2})
+    data.addressList = addressList.cloneWithRows(payload.data)
+  }
+  return data
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // 获取收货地址列表
+    getAddress: (data) => dispatch(AddressTypes.addressRequest(data))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddressScreen)
+
+
+
+
+
+
+
+
+
+
+
+样式
+
+import {StyleSheet} from 'react-native'
+import {ApplicationStyles, Metrics} from '../../Themes/'
+
+export default StyleSheet.create({
+  ...ApplicationStyles.screen,
+  addAddress: {
+    height: 40,
+    borderTopWidth: Metrics.minUnit,
+    borderTopColor: '#BBBABB'
+  },
+  Newaddress:{
+    marginLeft:12,
+    marginRight:12,
+    borderWidth:1,
+    borderRadius:5,
+    borderColor:'#e34'
+  },
+  addressWrapper: {
+    marginLeft:12,
+    paddingTop: 15,
+    paddingRight:12,
+    borderBottomWidth:1,
+    borderBottomColor:'#BBBABB',
+    justifyContent:'center'
+  },
+  addressInfo: {
+    marginTop: 10
+  },
+  markWrapper: {
+    backgroundColor: '#802228',
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    width: 60,
+    height: 20
+  },
+  mark: {
+    color: '#fff'
+  },
+  Addressmanagement:{
+    flexDirection:'row',
+    justifyContent:'flex-start',
+    paddingBottom: Metrics.calcWidth(12)
+},
+  name: {
+    fontSize:15,
+    color: '#333'
+  },
+  namewidth: {
+    width:Metrics.calcWidth(76),
+  },
+  namecolor:{
+    fontSize:14,
+    color:'#333'
+  },
+  default:{
+    width:Metrics.calcWidth(33),
+    height:Metrics.calcHeight(16),
+    borderRadius:Metrics.calcWidth(5),
+    borderWidth:1,
+    marginTop:8,
+    borderColor:'#e21'
+  },
+  defaultbox:{
+    fontSize:15,
+    color: '#e21'
+  },
+  mobilewidth: {
+    justifyContent:'flex-start',
+    alignItems:'flex-start',
+    width:Metrics.calcWidth(250)
+  },
+  mobile:{
+    fontSize: 14,
+    color:'#333'
+  },
+  rowData: {
+    marginTop:Metrics.calcHeight(12),
+    fontSize:12,
+    color: '#7f7f7f'
+  },
+  modify: {
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  modifycontent: {
+    width:Metrics.calcWidth(17),
+    height:Metrics.calcHeight(17)
+  },
+
+})

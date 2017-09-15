@@ -1,0 +1,144 @@
+html,
+body {
+    font-family: "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft Yahei", "微软雅黑", Tahoma, Arial, STHeiti, sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.hard {
+    width: 100%;
+    height: 26px;
+    background: #333333;
+}
+.hard .hard_top {
+    width: 800px;
+    height: 26px;
+    margin: 0 auto;
+}
+.hard .hard_top a {
+    color: #ffffff;
+    float: right;
+    margin-left: 10px;
+}
+
+.hard_top_middle {
+    float: left;
+}
+
+
+
+
+
+
+
+
+.width_100{
+    width: 70px;
+}
+.clear{
+    clear:both;
+}
+.down{
+    width: 10px;
+    height: 10px;
+}
+.hard_top_right{
+    float: right;
+    height: 100%;
+}
+.content_display{
+    display: none;
+}
+.content{
+    color:#fff;
+    position: absolute;
+    left: 0;
+    top:0;
+}
+.hard_top_middle{
+    position: relative;
+    color:#fff;
+    float: left;
+    margin-left: 20px;
+    margin-top: 2px;
+    height: 100%;
+}
+.content_block{
+    background-color: #fff;
+    color:#000;
+}
+
+
+/*foot*/
+.hard_top_tow {
+    width: 100%;
+    height: 65px;
+    background: #fad336;
+    text-align: center;
+}
+.hard_top_tab{
+    width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.hard_top_tab div{
+    float: left;
+}
+.hard_top_yellow{
+    width: 166px;
+    height: 65px;
+    background-color: transparent;
+}
+.hard_top_img{
+    width: 166px;
+    height: 65px;
+}
+
+.hard_top_white{
+    background-color: #fff;
+
+}
+.span{
+    font-size: 18px;
+    line-height: 60px;
+}
+.didian{
+    width: 100%;
+    height: 1px;
+    background: #dddddd;
+}
+.foot{
+    width: 100%;
+    height: 92px;
+    background: #333;
+    margin-top: 60px;
+}
+/*foot*/
+
+.foot_p{
+    text-align: center;
+    color: #7d7d7d;
+    margin-top: 20px;
+}
+.foot_span{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.foot_su{
+    width: 10px;
+    text-align: center;
+    margin: 0 auto;
+    color: #ffffff;
+}
+.foot_left_span{
+    margin-right: 20px;
+    color: #ffffff;
+}
+.foot_right_span{
+    margin-left: 20px;
+    color: #ffffff;
+}
