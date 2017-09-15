@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		
+		<script type="text/javascript">
+			//  键盘事件  当用户敲击键盘时触发
+			
+			//  当用户按住键盘时触发，如果按住不放，会重复调用(系统功能键除外)
+			window.onkeydown = function(e){
+				e = e || window.event;
+				//  打印按了哪个键子，返回的是数字，代表键盘码
+//				console.log(e.keyCode);
+				//  代表打印获取字符码，onkeydown 不支持获取字符码  返回的是0；
+//				console.log(e.charCode)
+//				console.log("键盘");
+			}
+			
+			//  当用户按下键盘并抬起时触发(当按下系统功能键时不触发)
+			//  按住不放也会重复调用
+			window.onkeypress = function(e){
+				e = e || window.event;
+				//  keyCode 和 charCode一样，获取的是数字，是字符码(也就是ASCII编码)    字母大小写不一样
+//				console.log(e.charCode)
+			}
+			
+			//  当用户抬起键盘按键时触发
+			//  按住不放时不会重复调用
+			window.onkeyup = function(e){
+				e = e || window.event;
+				//  与onkeydown 用法一样 只能获取keyCode  charCode为0
+				console.log(e.charCode)
+			}
+		</script>
+	</body>
+</html>

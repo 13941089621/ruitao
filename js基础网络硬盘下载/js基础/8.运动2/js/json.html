@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			
+			
+			
+			//  json
+			//  键值对   a = 1
+			
+			//  a : 1   key : value   想要value
+			//  
+			var json1 = {a : 1, b : 2 , c : 3}
+			
+			//  把 a 的 value 拿出来
+			//  取值
+//			json1["a"]
+//			alert(json1.a)
+			
+			//  赋值
+			json1.b = "hello";
+//			alert(json1.b)
+			
+			//  遍历
+			//  i--> key  
+			for (var i in json1 ) {
+				//  像数组，但不是，i不是下标，是key
+				alert(i)
+				//  取出json1的value
+				alert(json1[i])
+			}
+			
+		</script>
+	</body>
+</html>

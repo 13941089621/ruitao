@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/numberlist.js"></script>
+		<script>
+
+	var arr;
+			window.onload = function() {
+				var canvas = document.getElementById("mycanvas");
+				var txt = canvas.getContext("2d");
+
+				txt.save()
+				drawshizhong(txt)
+				txt.restore();
+				var n=0
+
+			setInterval(function() {
+
+	txt.clearRect(0, 0, canvas.width, canvas.height);
+					updatetime(txt)
+
+			},50)
+
+			
+}
+
+			function gettime() {
+				var time = new Date();
+				var h = time.getHours();
+				var m = time.getMinutes();
+				var s = time.getSeconds();
+				var h1 = h >= 10 ? parseInt(h / 10) : 0;
+				var h2 = h % 10;
+				var m1 = m >= 10 ? parseInt(m / 10) : 0;
+				var m2 = m % 10;
+				var s1 = s >= 10 ? parseInt(s / 10) : 0;
+				var s2 = s % 10;
+	
+
+				return [h1, h2, 10, m1, m2, 10, s1, s2]
+			}
+			function drawshizhong(txt) {
+				 arr= gettime();
+          for(var i = 0; i < arr.length; i++) {
+
+					if(i != 0) {
+			txt.translate(numbers[arr[i - 1]][0].length * 2 * R + 20, 0)
+                 }
+	             drawnum(txt, arr[i])
+				}
+
+			}
+			var R = 10;
+
+			function drawnum(txt, index) {
+
+				for(var i = 0; i < numbers[index].length; i++) {
+					for(var p = 0; p < numbers[index][i].length; p++) {
+
+						var k2 = parseInt(Math.random() * 10000) % 256;
+
+						if(numbers[index][i][p] == 1) {
+
+							var x = (2 * p + 1) * R;
+							var y = (2 * i + 1) * R;
+							txt.beginPath()
+							txt.arc(x, y, R, 0, 2 * Math.PI);
+							txt.fillStyle = "black"
+							txt.fill()
+
+						} 
+					}
+				}
+			}
+
+
+			var qiuarr = []
+				
+			function updatetime(txt) {
+						var showtime = gettime();
+                      for(var i = 0; i <showtime.length; i++) {
+					console.log(showtime[i]+"--"+arr[i])
+					if(showtime[i]!= arr[i]) {
+
+						var m = arr[i]
+						var width;
+						if(i <= 2) {
+							width = i * 160;
+						} else if(i > 2 && i <= 5) {
+							width = (i - 1) * 160 + 100;
+
+						} else if(i > 5) {
+							width = (i - 2) * 160 + 200;
+						}
+						xw = width + R
+						addqiu(txt,xw,m)
+						
+				
+					}
+
+					
+				}
+                         txt.save()
+                        drawshizhong(txt)
+                        txt.restore()
+                    	if(qiuarr.length > 0) {
+					drawqiu(txt);
+				}
+
+			}
+			function addqiu(txt,xw,m){
+				for(var k = 0; k < numbers[m].length; k++) {
+							for(var p = 0; p < numbers[m][0].length; p++) {
+								var k1 = parseInt(Math.random() * 10000) % 256;
+								var k2 = parseInt(Math.random() * 10000) % 256;
+								var k3 = parseInt(Math.random() * 10000) % 256;
+								if(numbers[m][k][p]==1){
+								var JSON = {
+									x: xw + (2 * p + 1) * R,
+									y: (2 * k + 1) * R,
+									xs: Math.random()-0.5>0?-10:10,
+									ys: 5,
+									xg:0,
+									yg: Math.random()*10000%5+4,
+									color: "rgb(" + k1 + "," + k2 + "," + k3 + ")"
+								}
+				
+								qiuarr.push(JSON)
+								}
+							
+						}
+		
+			}
+
+				
+}
+			function drawqiu(txt) {
+
+					for(var i = 0; i < qiuarr.length; i++) {
+                               txt.beginPath()
+					          txt.arc(qiuarr[i].x, qiuarr[i].y, R, 0, 2 * Math.PI)
+					       txt.fillStyle = qiuarr[i].color;
+					       txt.fill();
+
+					qiuarr[i].x+=qiuarr[i].xs;
+					qiuarr[i].xs+=qiuarr[i].xg;
+					qiuarr[i].y+=qiuarr[i].ys;
+					qiuarr[i].ys+=qiuarr[i].yg;	
+						if(qiuarr[i].y >= 600 - R) {
+						qiuarr[i].y =600- R;
+						qiuarr[i].ys *= -0.7;
+					}
+												}
+					
+					
+					}
+
+		</script>
+	</head>
+
+	<body>
+		<canvas id="mycanvas" width="1300px" height="600px"></canvas>
+	</body>
+
+</html>

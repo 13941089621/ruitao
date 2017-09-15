@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap{
+				width: 50px;
+				height: 50px;
+				background-color: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			
+		</div>
+		<script src="js/touch.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+		
+		
+			
+			var oWrap = document.getElementById("wrap");
+			var screenx = 0;
+			var screeny = 0;
+			var oWrapLeft = 0;
+			var oWrapTop = 0;
+			
+			
+//			window.addEventListener("touchstart",start,false);
+//			window.addEventListener("touchmove",move,false);
+			function start(e){
+				var finger = e.touches[0];
+				screenx = finger.screenX;
+				screeny = finger.screenY;
+				oWrapLeft = oWrap.offsetLeft;
+				oWrapTop = oWrap.offsetTop;
+				e.preventDefault();
+				window.addEventListener("touchend",function(){
+					window.removeEventListener("touchstart",start,false)
+				},false)
+			}
+
+			function move(e){
+				var finger = e.touches[0];
+				var screenx2 = finger.screenX - screenx;
+				var screeny2 = finger.screenY - screeny;
+				oWrap.style.left = oWrapLeft +  screenx2 + "px";
+				oWrap.style.top = oWrapTop +  screeny2 + "px";
+				e.preventDefault();
+				window.addEventListener("touchend",function(){
+					window.removeEventListener("touchmove",move,false)
+				},false)
+			}
+			
+		</script>
+	</body>
+</html>

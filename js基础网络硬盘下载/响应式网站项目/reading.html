@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;	
+			}
+			
+			.head{
+				width: 100%;
+				height: 67px;
+				background-color: black;
+				position :relative;
+			}
+			.nav{ 
+				max-width: 1127px;
+				margin: 0 auto;
+				height: 67px;
+				line-height: 67px;
+				overflow:hidden;
+			}
+			.ul1>li{
+				float:left;
+				margin-right:30px;
+			}
+			.ul1{
+				float:right;
+				height:67px;
+				line-height:67px;
+				list-style:none;
+			}
+			.nav>div{
+				float:left;
+				cursor:pointer;
+				padding-top:10px;
+			}
+			.ul1 a{
+				text-decoration:none;
+				color: gray;
+				padding: 5px 10px;
+				border:1px solid black;
+			}
+			.head>img{
+				position:absolute;
+				right:30px;
+				top:25px;
+				width:23px;
+			}
+			.ul2{
+				background-color:#CFDB00;
+				width:30%;
+				height:230px;
+				position:absolute;
+				top: 67px;
+				right:0;
+				z-index:20;
+				list-style:none
+			}
+			.ul2 a{
+				text-decoration:none;
+				color: black;
+				padding: 5px 10px;
+				border: 1px solid black;
+				border-radius: 8px;
+			}
+			.ul2 li{
+				float:none;
+				height:38px;
+				text-align:center;
+				line-height:38px;
+			}
+					
+			.ul2{
+				display: none;
+			}
+			.head>img{
+				display: none;
+			}
+			
+			
+			.scroll{
+				position: relative;
+				overflow: hidden;
+			}
+			.scroll img{
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: none;
+			}
+			.scroll>div{
+				position: absolute;
+				left: 50%;
+				bottom: 20px;
+			}
+			.scroll>div>div{
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+    				background-color: rgb(131, 145, 160);
+    				margin: 2px 3px;
+    				float: left;
+    				cursor: pointer;
+			}
+			.ulpu{
+				width: 100%;
+				position: relative;
+				list-style: none;
+			}
+			.ulpu li{
+				width: 24.4%;
+				padding: 0.3%;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.ulpu li img{
+				width: 100%;
+			}
+			.hidden-wrap{
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 100;
+				width: 100%;
+				background-color: rgba(0,0,0,0.5);
+				display: none;
+			
+			}
+			.hidden{
+				width: 960px;
+				background-color: white;
+			    padding: 10px 10px 22px 10px;
+			    position: fixed;
+			    z-index: 50;
+			   	display: none;
+			}
+			.hidden img{
+				width: 100%;
+			}
+			.himg{
+				text-align: center;
+				position: absolute;
+				left: 0;
+				top: 0;
+				cursor: pointer;
+				z-index: 20;
+				background-color: black;
+				opacity: 0;
+			}
+			.ulpu .himg img{
+				width: 12%;
+			}
+			
+			
+			
+			
+			
+			
+			@media only screen and (min-width: 641px) and (max-width: 1024px) {
+				.ul1{
+					display: none;
+				}
+				.head>img{
+					display: block;
+				}
+				.ulpu li{
+					width: 24.4%;
+				}
+			}
+			@media only screen and (min-width: 100px) and (max-width: 640px) {
+				
+				.head>img{
+					width: 29px;
+					height: 26px;
+					margin-top: -10px;
+					margin-right: 2%;
+				}
+				.nav>div{
+					padding: 0;
+				}
+				.head{
+					height: 48px;
+					padding: 0;
+					line-height: 48px;
+				}
+				.ul2{
+					width: 30%;
+					font-size: 0.7em;
+					top: 48px;
+				}
+				.ulpu li{
+					width: 49.4%;
+				}
+				
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="head">
+			<div class="nav">
+				<div><img src="img/shininglogo.png"/></div>
+				<ul class="ul1">
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/home1.html">Home</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/about.html">About</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html">Readering</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html">3D Animation</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html">Bim</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<img src="img/nav.png"/>
+			<ul class="ul2">
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/home1.html">Home</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/about.html">About</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html">Readering</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html">3D Animation</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html">Bim</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/contact.html">Contact</a></li>
+				</ul>
+		</div>
+		<div class="content">
+			<div class="scroll">
+				<img src="img3/Banner (1).jpg"/>
+				<img src="img3/Banner (2).jpg"/>
+				<img src="img3/Banner (3).jpg"/>
+				<div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+			<ul class="ulpu">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="foot">
+			<div class="foot1">
+				<a href="##"><img src="img/mail.jpg" alt="" /></a>
+			</div>
+			<div class="foot2">
+				<a href="##"><img src="img/facebook.jpg"/></a>
+				<a href="##"><img src="img/youtube.jpg"/></a>
+				<a href="##"><img src="img/linkedln.jpg"/></a>
+				<a href="##"><img src="img/twitter.jpg"/></a>
+			</div>
+			<div class="foot3">
+				<span>Copyright © 1998-2015 shining Group</span>
+			</div>
+			
+		</div>
+		
+		<div class="hidden-wrap">
+			<div class="hidden">
+				<img src="img3/SHINING (2).jpg"/>
+			</div>
+		</div>
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				//  nav
+				$(".ul1 li a").hover(
+					function(){$(this).css({"color": "white","border-radius": "8px","border": "1px solid rgb(123, 123, 123)"})},function(){$(this).css({"color": "gray","border-radius": "0px","border": "1px solid black"})})
+				$(".ul1 a").eq(2).css({"color": "white","border-radius": "8px","border": "1px solid rgb(123, 123, 123)"}).off();
+				//  按钮
+				
+				$(".head>img").click(function(){
+					$(".ul2").slideToggle()
+				})
+				
+				
+				//  content
+				//  大图滚动
+				$(".scroll img").eq(0).css("display","block");
+				$(".scroll>div>div").eq(0).css({"backgroundColor": "rgb(207,219,0)"});
+				$(".scroll").css("height",$(".scroll img").height());
+				
+				
+				$(".scroll>div").css("left",($(".scroll").width()-$(".scroll>div").width)/2);
+				var index = 0;
+				var timer = null; 
+				function fn1(){
+					$(".scroll img").fadeOut(800);
+					$(".scroll img").eq(index).fadeIn(800);
+					$(".scroll>div>div").css({"backgroundColor": "rgb(131, 145, 160)"});
+					$(".scroll>div>div").eq(index).css({"backgroundColor": "rgb(207,219,0)"});
+				}
+				function scrolls(){
+					clearInterval(timer);
+					timer = 	setInterval(function(){
+						 index++;
+						 if (index == 3) {
+						 	index = 0;
+						 }
+						 fn1(); 
+					},2400)
+				}
+				scrolls();
+				$(".scroll>div>div").click(function(){
+					index = $(this).index();
+					fn1()
+				})
+				$(".scroll").hover(function(){
+					clearInterval(timer);
+				},function(){
+					scrolls();
+				})
+				//  瀑布流
+				var num1 = 0;
+				var num2 = 0;
+				for (var i = 0; i < 39 ; i++){
+					$(".ulpu li").eq(i).append("<img src='img3/SHINING (" + (i+2) + ").jpg'/>");
+				}
+				$(".ulpu li img").wrap('<a href="##"></a>');
+				
+				//  小图hover
+				$(".ulpu li").append('<div class="himg"><img src="img3/view.png"/></div>');
+				
+				
+				$(window).resize(function(){
+					if ($(window).width() <= 625) {
+						$(".ulpu li").css("width","49.4%")
+					} else{
+						$(".ulpu li").eq(2).css("top","0")
+						$(".ulpu li").eq(3).css("top","0")
+						$(".ulpu li").css("width","24.4%")
+					}
+					$(".scroll").css("height",$(".scroll img").height());
+					
+					wload()
+				
+				})
+				function wload(){
+						num1 = parseInt($(".ulpu").width()/$(".ulpu li").width()); 
+						num2 = 1 / num1 * 100; 
+						for (var i = 0; i < num1; i++) {
+							$(".ulpu li").eq(i).css("left",i * num2 + "%");
+						}
+						var arr1 = [];
+						var index1 = 0;
+						var temp = 0;
+						for (var i = 0; i < num1; i++) {
+							arr1.push($(".ulpu li").eq(i).innerHeight())
+						}	
+						
+						for (var i = num1; i < 39 ; i++) {
+							minh(arr1);
+							$(".ulpu li").eq(i).css({"left":index1 * num2 + "%","top":arr1[index1]});
+							
+							arr1[index1] += $(".ulpu li").eq(i).innerHeight();
+						}
+						
+						function minh(arr1){
+							temp = arr1[0];
+							for (var i = 0; i < arr1.length; i++) {
+								if (temp >= arr1[i]) {
+									temp = arr1[i];
+									index1 = i;
+								}
+							}
+						}  
+						var temp1 = arr1[0];
+						for (var i = 0; i < arr1.length; i++) {
+							if (temp1 < arr1[i]) {
+								temp1 = arr1[i];
+							}
+						}
+						$(".ulpu").css("height",temp1);
+						
+						
+						
+						//  点击小图出现大图
+						$(".himg").click(function(){
+							$(".hidden img").attr("src",$(this).prev().children("img").attr("src"));
+							$(".hidden").css({"display":"block"});
+							$(".hidden-wrap").css({"display":"block"});
+							
+							//$(this).prev().children("img").height() / $(this).prev().children("img").width() * $(".hidden").innerWidth();
+							
+							
+							$(".hidden").css({"left":($(window).width()-$(".hidden").innerWidth())/2});
+							$(".hidden").css({"top":($(window).height()-$(".hidden").innerHeight())/2});
+						})
+						$(".hidden-wrap").click(function(){
+							$(".hidden-wrap").css("display","none");
+							$(".hidden img").attr("src","");
+							$(".hidden").css("display","none");
+						})
+						$(".hidden-wrap").css("height",$("body").height());
+						
+						
+						$(".himg").each(function(i){
+							$(".himg").eq(i).css({"height":$(".ulpu li").eq(i).height(),"width":$(".ulpu li").eq(i).width(),"lineHeight":$(".ulpu li").eq(i).height() + "px","left":"0.6%","top":"0.6%"})
+						})
+						$(".himg").hover(function(){
+							$(this).animate({"opacity":"0.5"},400)
+						},function(){
+							$(this).animate({"opacity":"0"},400)
+						})
+						
+						
+				}
+				$(window).load(function(){
+					wload()
+				})
+				
+				
+				
+				
+				//  footer
+				var arrSrc = ["img/mail_h.jpg","img/facebook_h.jpg","img/youtube_h.jpg","img/linkedln_h.jpg","img/twitter_h.jpg"];
+				var oldSrc = null;
+				$(".foot1").css({"textAlign":"center","marginTop":"45px"});
+				$(".foot2").css({"width":"137px","margin":"12px auto 0","overflow":"hidden"});
+				$(".foot2 a").css({"float":"left","width":"25%","textAlign":"center"});
+				$(".foot3").css({"height":"4em","lineHeight":"4em","textAlign":"center","color":"#808080"});
+				$(".foot a").hover(function(){
+					oldSrc = $(this).find("img").attr("src");
+					$(this).find("img").attr("src",arrSrc[$(this).index(".foot a")]);
+				},function(){
+					$(this).find("img").attr("src",oldSrc);
+				})
+				
+			})
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
+

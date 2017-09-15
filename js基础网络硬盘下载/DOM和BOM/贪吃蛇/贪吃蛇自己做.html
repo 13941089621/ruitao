@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			#wrap{
+				text-align: center;
+			}
+			#snake{
+				margin: 20px auto;
+				border: 5px solid pink;
+				overflow: hidden;
+			}
+			.col{
+				width: 20px;
+				height: 20px;
+				box-sizing: border-box;
+				border: 1px solid palevioletred;
+				background-color: antiquewhite;
+				float: left;
+			}
+			.food{
+				background-color: deepskyblue;
+			}
+			.snake{
+				background-color: lightgray;
+				border-color: white;
+				border-radius: 4px;
+			}
+			.snake1{
+				background-color: yellowgreen; 
+				border-radius: 50%;
+				border-color:greenyellow;
+				position: relative;
+			}
+			.eyeleft,.eyeright{
+				width: 4px;
+				height: 4px;
+				border-radius: 50%;
+				background-color: palegoldenrod;
+				position: absolute;
+				left: 8px;
+				top: 3px;
+			}
+			.eyeright{
+				left: 8px;
+				top: 10px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="wrap">
+			<h1 id="title">贪吃蛇</h1>
+			<h2 id="score">0分</h2>
+			<div id="snake"></div>
+		</div>
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var oScore = document.getElementById("score");
+			var oSnake = document.getElementById("snake");
+			var eyeleft = document.createElement("div");
+			var eyeright = document.createElement("div");
+			eyeleft.className = "eyeleft";
+			eyeright.className = "eyeright";
+			
+			var snakeX = 2;
+			var snakeY = 0;
+			var snakeLen = snakeX + 1;
+			var boxWH = 20;
+			var colNum = parseInt((document.documentElement.clientWidth - 10) / boxWH);
+			if (colNum >= 30) {
+				colNum = 30;
+			}
+			var rowNum = colNum;
+			
+			oSnake.style.width = colNum * boxWH + "px";
+			
+			var arrRows = [];
+			var arrSnake = [];
+			var timer = null;
+			var keystate = true;
+			var foodX = 0;
+			var foodY = 0;
+			var score = 0;
+			var time1 = 200;
+			for (var i = 0; i < rowNum; i++) {
+				var arrCol = [];
+				var cols = document.createElement("div");
+				for (var j = 0; j < colNum; j++) {
+					var rows = document.createElement("div");
+					rows.className = "col";
+					cols.appendChild(rows);
+					arrCol.push(rows);
+				}
+				arrRows.push(arrCol);
+				oSnake.appendChild(cols)
+			}
+			for (var i = 0; i < snakeLen - 1; i++) {
+				arrRows[snakeY][i].className = "col snake";
+				arrSnake.push(arrRows[snakeY][i]);
+			}
+			arrRows[snakeY][snakeLen - 1].className = "col snake1";
+			arrSnake.push(arrRows[snakeY][snakeLen - 1]);
+			var direction = "right";
+			var arr0 = [];
+			function time(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					switch (direction){
+						case "right":
+							snakeX++;
+							eyeleft.style.left = "8px";
+							eyeleft.style.top = "3px";
+							eyeright.style.top = "10px";
+							eyeright.style.left = "8px";	
+							break;
+						case "left":
+							snakeX--;
+							eyeleft.style.left = "8px";
+							eyeleft.style.top = "3px";
+							eyeright.style.top = "10px";
+							eyeright.style.left = "8px";
+							break;
+						case "up":
+							snakeY--;
+							eyeleft.style.left = "3px";
+							eyeleft.style.top = "8px";
+							eyeright.style.top = "8px";
+							eyeright.style.left = "10px";
+							break;
+						case "down":
+							snakeY++;
+							eyeleft.style.left = "3px";
+							eyeleft.style.top = "8px";
+							eyeright.style.top = "8px";
+							eyeright.style.left = "10px";
+							break;
+						default:
+							break;
+							
+					}
+					//  碰壁
+					if (snakeX < 0 || snakeX >= colNum || snakeY < 0 || snakeY >= rowNum) {
+						alert("GAME OVER");
+						clearInterval(timer);
+						return;
+					}
+					//  碰自己
+					for (var i = 0; i < arrSnake.length; i++) {
+						if (arrSnake[i] == arrRows[snakeY][snakeX]) {
+							alert("GAME OVER");
+							clearInterval(timer);
+							return;
+						}
+					}
+					if (snakeX == foodX && snakeY == foodY) {					
+						arrRows[snakeY][snakeX].className = "col snake1";
+						arrRows[snakeY][snakeX].appendChild(eyeleft);
+						arrRows[snakeY][snakeX].appendChild(eyeright);
+						arrSnake.push(arrRows[snakeY][snakeX]);
+						crefood();
+						score++;
+						if (score % 5 == 0) {
+							time1-=50;
+						}
+						if (time1 <= 50) {
+							time1 = 50;
+						}
+						if (score >= 10 && score % 5 == 0) {
+							arr0 = arrSnake.splice(0,5)
+							for (var i = 0; i < arr0.length; i++) {
+								arr0[i].className = "col"
+							}
+						}
+						clearInterval(timer);
+						time();
+						oScore.innerHTML = score + "分";
+					} else {
+						arrSnake[0].className = "col";
+						arrSnake.shift();
+						arrRows[snakeY][snakeX].className = "col snake1";
+						arrRows[snakeY][snakeX].appendChild(eyeleft);
+						arrRows[snakeY][snakeX].appendChild(eyeright);
+						arrSnake.push(arrRows[snakeY][snakeX]);
+					}
+					for (var i = 0; i < arrSnake.length - 1; i++) {
+						arrSnake[i].className = "col snake";
+					}
+					keystate = true;	
+					
+				},time1)
+			}
+			time();
+			function crefood(){
+				var fx = random(0,colNum - 1);
+				var fy = random(0,rowNum - 1)
+				if (arrRows[fy][fx].className == "col snake") {
+					crefood();
+				} else {
+					arrRows[fy][fx].className = "col food";
+					foodX = fx;
+					foodY = fy;
+				}
+			}
+			crefood();
+			
+			function random(n,m){
+				return Math.floor(Math.random() * (m - n + 1) + n)
+			}
+			//  键盘
+			window.onkeydown = function(e){
+				e = e || window.event;
+				var key = e.keyCode;
+				switch (key){
+					case 37:
+						if (direction != "right" && keystate) {
+							direction = "left";
+							keystate = false;
+						}
+						break;
+					case 38:
+						if (direction != "down" && keystate) {
+							direction = "up";
+							keystate = false;
+						}
+						break;
+					case 39:
+						if (direction != "left" && keystate) {
+							direction = "right";
+							keystate = false;
+						}
+						break;
+					case 40:
+						if (direction != "up" && keystate) {
+							direction = "down";
+							keystate = false;
+						}
+						break;
+					default:
+						break;
+				}
+			}
+			//  触屏
+			var startx = 0;
+			var starty = 0;
+			var endx = 0;
+			var endy = 0;
+			oWrap.addEventListener("touchstart",start,false);
+			oWrap.addEventListener("touchend",end,false);
+			function start(e){
+				var finger = e.touches[0];
+				startx = finger.screenX;
+				starty = finger.screenY;
+				e.preventDefault()
+			}
+			function end(e){
+				var finger = e.changedTouches[0];
+				endx = finger.screenX;
+				endy = finger.screenY;
+				var lessx = Math.abs(endx - startx) ;
+				var lessy = Math.abs(endy - starty) ;
+				if (lessy > lessx) {
+					if (endy > starty) {
+//						alert("下")
+						if (direction != "up" && keystate) {
+							direction = "down";
+							keystate = false;
+						}
+					} else {
+//						alert("上")
+						if (direction != "down" && keystate) {
+							direction = "up";
+							keystate = false;
+						}
+					}
+				} else {
+					if (endx > lessx) {
+//						alert("右")
+						if (direction != "left" && keystate) {
+							direction = "right";
+							keystate = false;
+						}
+					} else {
+//						alert("左")
+						if (direction != "right" && keystate) {
+							direction = "left";
+							keystate = false;
+						}
+					}
+				}
+				e.preventDefault();
+			}
+		</script>
+	</body>
+</html>

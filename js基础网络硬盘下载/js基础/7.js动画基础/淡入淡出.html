@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				opacity: 0.3;
+				filter: alpha(opacity ： 30);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		
+		
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			var alpha = 30;
+			
+			
+			var timer = null;
+			function starMove (itarget){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					
+					var speed = 0;
+					if (alpha > itarget) {
+						speed = -5
+					} else {
+						speed = 5;
+					}
+					if (alpha == itarget) {
+						clearInterval(timer)
+					} else {
+						alpha += speed;
+						oDiv1.style.opacity = alpha / 100;
+						oDiv1.style.filter =  "alpha(opacity :" + alpha + ")";
+					}
+				},20)
+			}
+			oDiv1.onmouseover = function(){
+				starMove(100)
+			}
+			oDiv1.onmouseout = function(){
+				starMove(30)
+			}
+		</script>
+	</body>
+</html>

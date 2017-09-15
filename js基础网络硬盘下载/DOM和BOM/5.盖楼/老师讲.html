@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#wrap {
+				width: 1000px;
+				height: 600px;
+				border: 1px solid blue;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.row {
+				position: absolute;
+				height: 20px;
+				bottom: 0;
+				left: 0;
+			}
+			
+			.box {
+				width: 20px;
+				height: 20px;
+				background-color: red;
+				border: 1px solid green;
+				box-sizing: border-box;
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="wrap"></div>
+
+		<script type="text/javascript">
+			//获取容器
+			var oWrap = document.getElementById("wrap");
+			//小方块的数量
+			var boxNum = 20;
+			//小方块的宽高
+			var boxWH = 20;
+
+			//定义动画计时器
+			var timer = null;
+
+			//定义动画延迟时间
+			var times = 500;
+			
+			//运动变化量
+			var speed = boxWH;
+
+			//创建生成行的函数
+			function createRow() {
+				//1.创建一个行
+				var newRow = document.createElement("div");
+				newRow.className = "row";
+				newRow.style.width = boxNum * boxWH + "px";
+
+				//获取之前添加的行
+				var oldRows = oWrap.children.length;
+
+				//设置当前行的bottom值
+				newRow.style.bottom = oldRows * boxWH + "px";
+
+				//设置当前行的left值
+				newRow.style.left = oWrap.lastChild ? oWrap.lastChild.offsetLeft + "px" : "0px";
+
+				//循环添加小块
+				for(var i = 0; i < boxNum; i++) {
+					//创建小块
+					var newBox = document.createElement("div");
+					//设置小块的类名
+					newBox.className = "box";
+					newRow.appendChild(newBox);
+				}
+
+				//添加行到容器中
+				oWrap.appendChild(newRow);
+
+				//设置行的动画
+				rowMove(newRow);
+			}
+
+			//行动画函数
+			function rowMove(obj) {
+
+				//清空动画
+				clearInterval(timer);
+
+				
+
+				//开始动画
+				timer = setInterval(function() {
+
+					//获取row宽度
+					var rowWidth = obj.offsetWidth;
+
+					//计算移动范围
+					//  获取oWrap的可见宽度，包括padding和内容；
+					var moveWidth = oWrap.clientWidth - rowWidth;
+
+					if(obj.offsetLeft >= moveWidth && speed > 0) {
+						speed = -speed;
+					} else if(obj.offsetLeft <= 0 && speed < 0) {
+						speed = -speed;
+					}
+
+					obj.style.left = obj.offsetLeft + speed + "px";
+
+				}, times);
+
+			}
+
+			//点击创建新行
+			oWrap.onclick = function() {
+
+				//停止当前动画
+				clearInterval(timer);
+
+				//增送
+				times -= 50;
+
+				//获取当前停止行
+				var stopRow = oWrap.lastChild;
+
+				//获取当前停止行的left
+				var stopLeft = stopRow.offsetLeft;
+
+				//获取停止行的上一行left
+				var prevLeft = stopRow.previousSibling ? stopRow.previousSibling.offsetLeft : stopRow.offsetLeft;
+
+				//计算相差块数
+				var lessBox = Math.abs(prevLeft - stopLeft) / boxWH;
+
+				//计算新行的块数
+				boxNum = boxNum - lessBox;
+
+				//判断是否游戏结束
+				if(boxNum <= 0) {
+					clearInterval(timer);
+					alert("game over");
+				} else {
+					
+					//删除当前停止行的块
+					for(var i = 0; i < lessBox; i++) {
+						stopRow.removeChild(stopRow.lastChild);
+					}
+					
+					//设置左侧超出时的left值
+					if(stopLeft < prevLeft){
+					stopRow.style.left = prevLeft + "px";
+					}
+					
+					createRow();
+				}
+			}
+			
+			createRow();
+		</script>
+	</body>
+
+</html>

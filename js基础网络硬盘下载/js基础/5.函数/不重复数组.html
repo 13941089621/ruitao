@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<script type="text/javascript">
+			//  产生一个随机数组1--33，数字不可以重复
+			//  suijis
+			function random(n, m, a) {
+				var b = Array(a);
+				for (var i = 0; i < a; i++) {
+					b[i] = Math.floor(Math.random() * (m - n + 1) + n)
+				}
+				return b;
+			}
+			//			console.log(random(1,33,6));
+			//  没重复
+			//			var arr = random(1,33,26);
+			//			for (var i = 0; i < arr.length; i++ ) {
+			//				for (var j = 0; j < arr.length; j++) {
+			//					if (i != j && arr[i] == arr[j]) {
+			//						if (i != j && arr[i] == arr[j]) {
+			//							arr[i] = random(1,33,1)[0];
+			//						}						
+			//					}
+			//				}		
+			//			}
+			var arr = [];
+			while (arr.length < 6) {
+				var temp = random(1,33,1)[0];
+				var mode = 0;
+				for (var i = 0; i < arr.length; i++) {
+					if (temp == arr[i]) {
+						mode = 1;
+						break;
+					}
+				}
+				if (mode == 0) {
+					arr.push(temp);
+				}
+			}
+			alert(arr);
+		</script>
+	</body>
+
+</html>

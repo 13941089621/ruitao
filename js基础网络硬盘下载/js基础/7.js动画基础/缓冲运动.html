@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 0px;
+				top: 50px;
+			}
+			#div2{
+				width: 1px;
+				height: 300px;
+				position: absolute;
+				left: 500px;
+				top: 0;
+				background-color: black;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="btn1" id="btn1" value="开始运动" />
+		<div id="div1"></div>
+		<div id="div2"></div>
+		
+		
+		
+		
+		<script type="text/javascript">
+			var oBtn = document.getElementById("btn1");
+			var oDiv = document.getElementById("div1");
+			
+			//  缓冲运动
+			//  距离越大，速度越快
+			//  距离越小，速度越慢
+			
+			var timer = null;
+			function starMove (itarget){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					//  速度处理
+					var speed = (itarget - oDiv.offsetLeft) / 10 ;
+					//  从左到右向上取整，从右向左向上取整
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					if (oDiv.offsetLeft == itarget) {
+						clearInterval(timer)
+					} else {
+						oDiv.style.left = oDiv.offsetLeft + speed + "px"
+					}
+					document.title = oDiv.offsetLeft + "," + speed;
+				},20)
+			}
+			oBtn.onclick = function(){
+				starMove(500)
+			}
+			
+//			var time = null;
+//			function star (itarget){
+//				clearInterval(time);
+//				time = setInterval(function(){
+//					var speed = (itarget - oDiv.offsetLeft ) / 10;
+//					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+//					if (oDiv.offsetLeft == itarget ) {
+//						clearInterval(time);
+//					} else {
+//						oDiv.style.left = oDiv.offsetLeft + speed + "px"
+//					}
+//				},20)
+//			}
+//			oBtn.onclick = function(){
+//				star(500)
+//			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

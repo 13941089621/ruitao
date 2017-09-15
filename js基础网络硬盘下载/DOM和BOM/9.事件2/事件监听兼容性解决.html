@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="button" id="btn" value="点击" />
+		
+		<script type="text/javascript">
+			//  IE 不兼容 addEventListener()
+			//  IE 下使用 attachEvent添加事件监听  detachEvent 移除事件监听
+			//     使用方法与addEventListener()相同，但是没有第三个参数，不能设置在捕获阶段是否执行
+			
+			var oBtn = document.getElementById("btn");
+			function fn(){
+				alert("68f7qe")
+			}
+			if (document.addEventListener) {
+				oBtn.addEventListener("click",fn);
+				oBtn.addEventListener("click",function(){
+					alert("ersaq")
+				})
+			} else if(document.attachEvent) {
+				attachEvent("click",fn);
+				oBtn.attachEvent("click",function(){
+					alert("sfikge")
+				})
+			}
+			if (document.removeEventListener) {
+				oBtn.removeEventListener("click",fn)
+			} else if(document.attachEvent) {
+				oBtn.detachEvent("click",fn)
+			}
+			
+		</script>
+	</body>
+</html>

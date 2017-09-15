@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
+			
+			body {
+				position: relative;
+			}
+			
+			#wrap {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			
+			.bg {
+				width: 100%;
+				height: 100%;
+			}
+			/*.lang1 {
+				position: absolute;
+				top: 256px;
+				left: 29px;
+				width: 28.8%;
+			}
+			
+			.lang2 {
+				position: absolute;
+				top: 193px;
+				left: 121px;
+				width: 28.8%;
+			}
+			
+			.lang3 {
+				position: absolute;
+				top: 230px;
+				left: 225px;
+				width: 28.8%;
+			}
+			
+			.lang4 {
+				position: absolute;
+				top: 340px;
+				left: 26px;
+				width: 28.8%;
+			}
+			
+			.lang5 {
+				position: absolute;
+				top: 300px;
+				left: 126px;
+				width: 28.8%;
+			}
+			
+			.lang6 {
+				position: absolute;
+				top: 328px;
+				left: 239px;
+				width: 28.8%;
+			}
+			
+			.lang7 {
+				position: absolute;
+				top: 441px;
+				left: 42px;
+				width: 28.8%;
+			}
+			
+			.lang8 {
+				position: absolute;
+				top: 413px;
+				left: 146px;
+				width: 28.8%;
+			}
+			
+			.lang9 {
+				position: absolute;
+				top: 444px;
+				left: 248px;
+				width: 28.8%;
+			}*/
+			
+			.lang1 {
+				position: absolute;
+				top: 38.3808096%;
+				left: 7.733333333%;
+				width: 28.8%;
+			}
+			
+			.lang2 {
+				position: absolute;
+				top: 28.93553223%;
+				left: 32.26666667%;
+				width: 28.8%;
+			}
+			
+			.lang3 {
+				position: absolute;
+				top: 34.48275862%;
+				left: 60%;
+				width: 28.8%;
+			}
+			
+			.lang4 {
+				position: absolute;
+				top: 50.97451274%;
+				left: 6.933333333%;
+				width: 28.8%;
+			}
+			
+			.lang5 {
+				position: absolute;
+				top: 44.97751124%;
+				left: 33.6%;
+				width: 28.8%;
+			}
+			
+			.lang6 {
+				position: absolute;
+				top: 49.17541229%;
+				left: 63.73333333%;
+				width: 28.8%;
+			}
+			
+			.lang7 {
+				position: absolute;
+				top: 66.11694153%;
+				left: 11.2%;
+				width: 28.8%;
+			}
+			
+			.lang8 {
+				position: absolute;
+				top: 61.91904048%;
+				left: 38.93333333%;
+				width: 28.8%;
+			}
+			
+			.lang9 {
+				position: absolute;
+				top: 66.56671664%;
+				left: 66.13333333%;
+				width: 28.8%;
+			}
+			
+			.wolf {
+				position: absolute;
+				width: 28.8%;
+			}
+			
+			#score {
+				position: absolute;
+				font-size: 40px;
+				color: #fff;
+				top: 2.125%;
+				left: 21.28169%;
+			}
+			
+			.progress {
+				/*position: absolute;
+				top: 13.9%;
+				left: 20%;
+				width: 55.5%;
+				height: 3.4%;
+				border-radius: 5px;
+				overflow: hidden;*/
+				position: absolute;
+			    top: 13.7%;
+			    left: 19.85%;
+			    width: 56.2%;
+			    height: 3.4%;
+			    border-radius: 8px;
+			    overflow: hidden;
+			}
+			
+			#proimg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			#gamebody{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			#startpage{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,0.3);
+				text-align: center;
+			}
+			#startpage input{
+				margin-top: 45%;
+				width: 50%;
+				height: 10%;
+				background-color: orange;
+				color: #fff;
+				border: 0;
+				border-radius: 10px;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<img src="img/game_bg.jpg" alt="" class="bg" />
+			<h1 id="score">0</h1>
+			<div class="progress">
+				<img src="img/progress.png" alt="" id="proimg" />
+			</div>
+			<div id="gamebody">
+			</div>
+			<div id="startpage">
+				<input type="button" value="开始游戏" onclick="startGame()"  />
+			</div>
+			<div id="closepage">
+			</div>
+		</div>
+
+		<script>
+			var oWrap = document.getElementById("wrap");
+			var oScore = document.getElementById("score");
+			var oProimg = document.getElementById("proimg");
+			var oGameBody = document.getElementById("gamebody");
+			var oStartpage = document.getElementById("startpage");
+			//分数
+			var init = 0;
+			//位置数据
+			var arrPosition = [{
+				top: "38.3808096%",
+				left: "7.733333333%"
+			}, {
+				top: "28.93553223%",
+				left: "32.26666667%"
+			}, {
+				top: "34.48275862%",
+				left: "60%"
+			}, {
+				top: "50.97451274%",
+				left: "6.933333333%"
+			}, {
+				top: "44.97751124%",
+				left: "33.6%"
+			}, {
+				top: "49.17541229%",
+				left: "63.73333333%"
+			}, {
+				top: "66.11694153%",
+				left: "11.2%"
+			}, {
+				top: "61.91904048%",
+				left: "38.93333333%"
+			}, {
+				top: "66.56671664%",
+				left: "66.13333333%"
+			}];
+
+			//灰太狼图片路径
+			var wolf_1 = ['img/h0.png', 'img/h1.png', 'img/h2.png', 'img/h3.png', 'img/h4.png', 'img/h5.png', 'img/h6.png', 'img/h7.png', 'img/h8.png', 'img/h9.png'];
+			//小灰灰图片路径
+			var wolf_2 = ['img/x0.png', 'img/x1.png', 'img/x2.png', 'img/x3.png', 'img/x4.png', 'img/x5.png', 'img/x6.png', 'img/x7.png', 'img/x8.png', 'img/x9.png'];
+			
+			var wolfs =[wolf_1 , wolf_2];
+
+			var timer = null;
+
+			function createWolf() {
+				clearInterval(timer);
+				
+				//随机生成灰太狼或小灰灰
+				var classIndex = getRandom(0,1);
+				
+				//生成随机位置下标
+				var rpIndex = getRandom(0, 8);
+				
+				//获取位置
+				var randomPosition = arrPosition[rpIndex];
+				
+				var newImage = new Image();
+				newImage.className = "wolf";
+				newImage.style.top = randomPosition["top"];
+				newImage.style.left = randomPosition["left"];
+				oGameBody.appendChild(newImage);
+				//记录点击状态
+				var click = false;
+
+				newImage.onclick = function() {
+					//判断当前狼是否点击过
+					if(!click) {
+						click = true;
+						if(classIndex==0){
+							init += 10;
+						}
+						else{
+							init -= 10;
+							if(init<0){
+								init=0;
+							}
+						}
+						
+						oScore.innerHTML = init;
+						clearInterval(timer);
+						var k = 6;
+						timer = setInterval(function() {
+							if(k <= 9) {
+								newImage.src = wolfs[classIndex][k];
+								k++;
+
+							} else {
+								oGameBody.removeChild(newImage);
+								clearInterval(timer);
+								createWolf();
+							}
+						}, 150);
+					}
+
+				}
+
+				var i = 0;
+				var j = 0;
+				timer = setInterval(function() {
+					if(j < 6) {
+						newImage.src = wolfs[classIndex][i];
+						i++;
+
+					} else if(j < 12) {
+						i--;
+						newImage.src = wolfs[classIndex][i];
+
+					} else {
+						oGameBody.removeChild(newImage);
+						clearInterval(timer);
+						createWolf();
+					}
+					j++;
+				}, 100);
+
+			}
+
+			//进度条
+			function progress() {
+				var i = 0;
+				//游戏限制时间
+				var gameTime = 36000;
+
+				//动画间隔时间
+				var timernum = 20;
+
+				//进度条宽度
+				var proWidht = oProimg.offsetWidth;
+
+				//每次变话量
+				var speed = proWidht / (gameTime / 20);
+
+				//位置
+				var proLeft = 0;
+
+				var proTimer = null;
+				clearInterval(proTimer);
+
+				proTimer = setInterval(function() {
+					if(i < (gameTime / 20)) {
+						proLeft -= speed;
+						oProimg.style.left = proLeft + "px";
+					} else {
+
+						//清除进度条定时器
+						clearInterval(proTimer);
+
+						//清楚游戏定时器
+						clearInterval(timer);
+						oGameBody.innerHTML="";
+						alert("游戏时间结束");
+					}
+					i++;
+
+				}, timernum);
+			}
+
+			//开始游戏
+			function startGame() {
+				
+				oStartpage.style.display = "none";
+				
+				init = 0;
+				oScore.innerHTML = init;
+				
+				//进度条
+				progress();
+				
+				//生成狼
+				createWolf();
+				
+			}
+
+			function getRandom(min, max) {
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+		</script>
+	</body>
+
+</html>

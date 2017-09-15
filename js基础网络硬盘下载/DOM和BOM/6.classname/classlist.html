@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.div1{
+				width: 200px;
+				height: 200px;
+				background-color: #ADD8E6;
+			}
+			.div2{
+				border: 2px solid plum;
+			}
+			.div3{
+				font-size: 50px;
+				color: greenyellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1">啪啪啪啪啪啪</div>
+		
+		
+		<script type="text/javascript">
+			var oDiv1 = document.getElementsByClassName("div1")[0];
+			
+			//  class的数量
+			
+			//  添加
+			oDiv1.classList.add("div2");
+//			alert(oDiv1.classList.length);
+			//  删除
+			oDiv1.classList.remove("div1");
+			//  添加多个
+			oDiv1.classList.add("div2","div3","div1");
+			//  切换  div1存在就删除，不存在就添加进
+			oDiv1.classList.toggle("div1");
+//			alert("切换");
+			oDiv1.classList.toggle("div1");
+			
+			//  获取指定的类名
+//			alert(oDiv1.classList.item(2));
+			
+			//  判断指定的类名是否存在，存在返回true
+			alert(oDiv1.classList.contains("div4"))
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

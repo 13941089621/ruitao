@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<ul id="mygirl">
+			<li id="g1" class="girlA">江疏影</li>
+			<li id="g2" class="girlA">范冰冰</li>
+			<li id="g3" class="girlB" d="test.jpg">赵丽颖</li>
+		</ul>
+		<p></p><p></p><p></p><p></p><p></p>
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			$(function(){
+				//  添加样式
+				$("#g1").css("color","red")  //  添加一个
+				$("#g1").css({"color":"red","background-color":"blue"}) // 用json添加多个
+				
+				//  添加一个CSS类 也就是加一个class名字  addClass()
+				$("#g1").addClass("top")   //  添加一个类名，叫top
+				//  移除一个CSS类 removeClass()
+				$("#g1").removeClass("top")
+				
+				//  切换一个CSS类 toggleClass()
+				//$("#g1").toggleClass("top");
+				$("#g1").click(function(){  //  g1的点击事件 不加on
+					$("#g1").toggleClass("top");
+				})
+				
+				//  hasClass  判断元素中是否有指定的class名
+				$("#g1").hasClass("top");
+				
+				
+				$("p").text(function(n){
+    return "这个 p 元素的 index 是：" + n;
+    });
+			})
+		</script>
+	</body>
+</html>

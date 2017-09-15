@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="input1" id="input1" value="" />
+			<input type="button" name="btn" id="btn" value="" />
+		</form>
+		
+		
+		<script type="text/javascript">
+			var oInput = document.getElementById("input1");
+			var oBtn = document.getElementById("btn");
+			
+			oBtn.onclick = function(){
+				var num = Number(oInput.value);
+				if (num < 1){
+					alert(num);
+				} else if (num < 10 && num >= 1){
+					alert(num * 2 + 1)
+				} else {
+					alert(num * 3 - 11)
+				}
+			}
+		</script>
+	</body>
+</html>

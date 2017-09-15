@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="input1" id="input1" value="" />
+			<input type="button" name="btn" id="btn" value="" />
+		</form>
+		
+		
+		<script type="text/javascript">
+			var oInput = document.getElementById("input1")
+			var oBtn = document.getElementById("btn");
+			
+			oBtn.onclick = function(){
+				var str = oInput.value;
+				switch (str){
+					case "spring":{
+						alert("春天");
+					} break;
+					case "summer":{
+						alert("夏天");
+					} break;
+					case "autumn":{
+						alert("秋天");
+					} break;
+					case "winter":{
+						alert("冬天");
+					} break;
+					default:{
+						alert("输入错误")
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

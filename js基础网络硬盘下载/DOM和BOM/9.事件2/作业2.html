@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#p1{
+				position: absolute;
+				left: 50%;
+				top: 300px;
+			}
+			#btn1{
+				position: absolute;
+				left: 50%;
+				top: 350px;
+			}
+			#btn2{
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p id="p1">赶快放学吧，好不好？</p>
+		<input type="button" id="btn1" value="YES" />
+		<input type="button" name="btn2" id="btn2" value=" NO" />
+
+		<script type="text/javascript">
+			//  获取p yes no
+			var oP = document.getElementById("p1");
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			//  p的宽
+			var pw = oP.offsetWidth;
+			//  yes宽
+			var btnw1 = oBtn1.offsetWidth;
+			//  no宽高
+			var btnw2 = oBtn2.offsetWidth;
+			var btnh2 = oBtn2.offsetHeight;
+			//  让p居中
+			oP.style.marginleft = -pw / 2 + "px";
+			//  yes定位居中
+			oBtn1.style.marginleft = -btnw1 / 2 + "px";
+			//  no 定位值的随机范围
+			var x1 = document.documentElement.clientWidth - btnw2;
+			var y1 = document.documentElement.clientHeight - btnh2;
+			//  获取yes定位值
+			var btnleft = oBtn1.offsetLeft;
+			var btntop = oBtn1.offsetTop;
+			//  no定位值随机函数
+			function ran() {
+				oBtn2.style.left = random(x1) + "px";
+				oBtn2.style.top = random(y1) + "px";
+			}
+			//  定时器，无限随机函数
+			var timer = null;
+			var index = 0;
+			clearInterval(timer);
+			timer = setInterval(function() {
+				index++;
+				if (index % 4 != 0) {
+					ran()
+				} else {
+					oBtn2.style.left = btnleft + "px";
+					oBtn2.style.top = btntop + "px";
+				}
+			}, 100)
+			//  点击yes
+			oBtn1.onclick = function(){
+				clearInterval(timer);
+				alert("放学了")
+			}
+			//  点击no
+			oBtn2.onclick = function(){
+				clearInterval(timer);
+				alert("点错了")
+			}
+			//  随机数函数
+			function random(m) {
+				return Math.floor(Math.random() * (m + 1))
+			}
+		</script>
+	</body>
+
+</html>

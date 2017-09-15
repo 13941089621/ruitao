@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				font-size: 50px;
+				text-align: center;
+				line-height: 100px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+//			var a = 3;
+//			var b = 5;
+//			var c = a;
+//			a = b;
+//			b = c;
+//			alert(b);
+//			alert(a);
+
+
+			//  循环结构
+			//  while  循环     当。。。。。
+			
+//			while (循环条件  布尔值){
+//				循环体，满足条件时执行的代码
+//			}
+			
+			//  循环增量  i-->index  索引下标      n --> 
+			//  控制循环次数
+//			var time = 0;
+//			while (time < 8){
+//				console.log("大师在睡觉，请勿打扰");
+//				time++;
+//			}
+			
+			//  练习  打印 100个1
+//			while (time < 100){
+//				time++;
+//				console.log(1)
+//			}
+			
+			//  练习  打印1-100
+//			var a = 0;
+//			while (a < 100){
+//				a++;
+//				console.log(a);
+//			}
+			
+			//  练习  用while循环打印出1-100数字7的倍数
+//			var b = 1;			
+//			while ( b < 15){
+//				console.log( b * 7 );
+//				b++;
+//			}
+//			while (b <= 100){
+//				if(b % 7 == 0){
+//					console.log(b);
+//				}
+//				b++;
+//			}
+			
+			//  练习  用while循环打印出个位为7的数   十位为7
+			
+//			var c = 1;
+//			while(c <= 100){
+//				if (c % 10 == 7) {
+//					console.log(c);
+//				};
+//				c++;
+//			}
+			
+//			var d = 1;
+//			while (d <= 100){
+//				if (parseInt(d / 10) == 7) {
+//					console.log(d);
+//				};
+//				d++;
+//			}
+			
+			//  1-100 不包含7，不是7的倍数
+			
+//			var e = 1;
+//			while (e <= 100){
+//				if (e % 7 == 0 || e % 10 == 7 || parseInt(e / 10) == 7) {
+//					
+//				} else {
+//					console.log(e);
+//				}
+//				e++;
+//			}
+			
+			//  do...while  循环    不常用
+			//  不管条件满不满足，都至少执行一次循环体
+//			do{
+//				循环体，，
+//			}while(循环条件);
+
+//			var f = 10;
+//			do{
+//				console.log(f)
+//			}while(f < 1)
+			
+			
+			//  for  循环   
+			//  什么时候用for  什么时候用while   知道循环次数时通常用for，不知道时通常用while
+			//   参数1.初始化   循环增量的初始化  最开始只走一次
+			//   参数2.循环条件   控制循环次数
+			//   参数3.循环增量的变化  
+			//   参数4.循环体
+			//   循环顺序  1-->2-->4-->3
+			//             2-->4-->3
+			//             2-->4-->3 
+//			for (初始化；循环条件；循环增量变化) {
+//				循环体
+//			}
+			
+			//  练习  打印1-100的所有数字
+//			for (var i = 1; i <= 100; i++) {
+//				console.log(i);
+//			}
+//			
+			//  练习 如果给你1000万，每天花一半，花几天
+			
+//			for (var i = 10000000; i > 1; i = i / 2) {
+//				var c = 0;
+//				c++;
+//				console.log(1);			
+//			}
+//			var money = 10000000;
+//			var day = 0;
+//			while(money > 0){
+//				money = parseInt(money / 2);
+//				day++;
+//			}
+//			alert(day + "天");
+
+			
+			// 用for循环打印出 1~100 之间7的倍数
+			for (var i = 1;i <=100; i++) {
+				if(i % 7 == 0){
+					console.log(i);
+				}
+			}
+			// 用for循环打印出 1~100 之间个位为7的数
+			for (var i = 1;i <= 100; i++) {
+				if (i % 10 == 7) {
+					console.log(i)
+				}
+			}
+			// 用for循环打印出 1~100 之间十位为7的数
+			for (var i = 1; i <= 100; i++) {
+				if(parseInt(i / 10) == 7){
+					console.log(i)
+				}
+			}
+			// 用for循环打印出 1~100 之间既不是7的倍数，又不包含7的数	
+			for (var i = 1; i <= 100; i++) {
+				if(i % 7 != 0 && i % 10 != 7 && parseInt(i / 10) != 7){
+					console.log(i)
+				}
+			}
+			
+			//   循环控制
+			//   break
+			//   continue
+			for (var i = 0 ; i < 10; i++) {
+				if(i == 5){
+					
+					//  跳出本层循环
+//					break;
+
+					//  继续，
+//					结束本次循环，执行下一次
+					continue;
+				}
+				console.log(i);
+			}
+			
+			//  document.write();
+			//  向文档中写入
+//			document.write("小小鸟");
+//			document.write("<div>1</div>");
+
+			//  循环嵌套
+			for (var a = 0; a < 3 ; a++) {
+				for (var i = 1; i <= 10 ;i++) {
+					document.write("<div>"+i+"</div>");
+				}
+				document.write("<br>");
+			}
+			var b = 0
+			for (var a = 1; a <= 3 ; a++) {
+				for (var b = 1 ; b <= a; b++) {
+					document.write("<div>"+b+"</div>")
+					
+				}
+				document.write("<br />")
+			}
+			 
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.wrap {
+				width: 470px;
+				height: 150px;
+				background-color: yellow;
+				margin: 100px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			ul {
+				list-style: none;
+			}
+			
+			.content {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			.content img {
+				float: left;
+			}
+			
+			.control {
+				position: absolute;
+				right: 10px;
+				bottom: 10px;
+			}
+			
+			.control li {
+				float: left;
+				width: 20px;
+				height: 20px;
+				background-color: #FCF2CF;
+				border: 1px solid #F47500;
+				color: #D94B01;
+				margin-right: 5px;
+				font-size: 12px;
+				line-height: 20px;
+				text-align: center;
+				cursor: pointer;
+			}
+			
+			.control .active {
+				background-color: #F47500;
+				color: white;
+				border: 1px solid #D94B01;
+				line-height: 22px;
+				padding: 1px;
+				position: relative;
+				bottom: 2px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<ul class="content">
+				<li>
+					<a href="###"><img src="img/1.jpg" alt="" arc="图片" /></a>
+				</li>
+				<li>
+					<a href="###"><img src="img/2.jpg" alt="" arc="图片" /></a>
+				</li>
+				<li>
+					<a href="###"><img src="img/3.jpg" alt="" arc="图片" /></a>
+				</li>
+				<li>
+					<a href="###"><img src="img/4.jpg" alt="" arc="图片" /></a>
+				</li>
+				<li>
+					<a href="###"><img src="img/5.jpg" alt="" arc="图片" /></a>
+				</li>
+			</ul>
+			<ul class="control">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+		</div>
+
+		<script src="js/任意值运动框架.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oContent = document.querySelector(".content");
+			var aControls = document.querySelectorAll(".control>li");
+			var oWrap = document.querySelector(".wrap");
+			var index = 0;
+			var timer = null;
+			// 自动滚动
+			function autoScroll() {
+				timer = setInterval(function() {
+					index++;
+					if (index == 5) {
+						index = 0;
+					}
+					// 让content动起来
+					startMove(oContent, {
+						top: index * -150
+					});
+					// 切换按钮颜色
+					changeColor(this.index);
+				}, 1000);
+			}
+			// 切换按钮颜色（给一个参数图片下标）
+			function changeColor(imgIndex) {
+				for (var i = 0; i < aControls.length; i++) {
+					aControls[i].className = "";
+				}
+				aControls[imgIndex].className = "active";
+			}
+			// 切换当前图片（给一个参数，下标）
+			function changeImg(imgIndex) {
+				startMove(oContent, {
+					top: imgIndex * -150
+				});
+			}
+			// 执行自动滚动函数
+			autoScroll();
+			// 当鼠标移入时，关闭定时器（注意只有一个定时器）
+			oWrap.onmouseover = function() {
+					clearInterval(timer);
+				}
+				// 鼠标移除时，重新开启自动滚动函数
+			oWrap.onmouseout = function() {
+				autoScroll();
+			}
+			// 循环获取点击事件
+			for (var i = 0; i < aControls.length; i++) {
+				// 记录当前下标
+				aControls[i].index = i;
+				aControls[i].onclick = function() {
+					// 把当前点击的li的下标给index赋值
+					index = this.index;
+					// 继续更新图片显示位置
+					changeImg(this.index);
+					// 继续更新按钮颜色
+					changeColor(this.index);
+				}
+			}
+		</script>
+	</body>
+
+</html>

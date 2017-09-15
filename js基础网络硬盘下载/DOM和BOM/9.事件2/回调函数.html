@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			/*  回调函数
+			 *  在js中，回调函数就是函数A作为参数传递到另一个函数B中
+			 *  并在函数B中执行函数A，那么函数A就是回调函数
+			*/
+			
+			function aaa(){
+				alert("aaa")
+			}
+			function bbb(fn){
+				fn()
+			}
+			bbb(aaa)
+		</script>
+	</body>
+</html>

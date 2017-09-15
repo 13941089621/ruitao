@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			#wrap {
+				width: 470px;
+				height: 150px;
+				margin: 50px auto;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			#father {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#father>div {
+				width: 470px;
+				height: 150px;
+			}
+			
+			#father>div>img {
+				width: 100%;
+				height: 100%;
+			}
+			#oa{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+			 #oa>a{
+			 	border: 1px solid red;
+			 	padding: 5px 8px;
+			 	color: white;
+			 	text-decoration: none;
+			 }
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="father">
+				<div><img src="img/1.jpg" /></div>
+				<div><img src="img/2.jpg" /></div>
+				<div><img src="img/3.jpg" /></div>
+				<div><img src="img/4.jpg" /></div>
+				<div><img src="img/5.jpg" /></div>
+			</div>
+			<div id="oa">
+				<a href="#">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">5</a>
+			</div>
+		</div>
+
+		<script src="js/任意值运动框架.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oFather = document.getElementById("father");
+			var oA = document.getElementsByTagName("a");
+			var abc = 0;
+			var time = null;
+			
+			function move (){
+				time = setInterval(function() {
+				abc++;
+				if(abc == 5){
+					abc = 0
+				} else {
+					startMove(oFather,{"top": -150 * abc})
+				}
+			}, 1000)
+			}
+			move();
+			for (var i = 0; i < 5; i++) {
+				oA[i].index = i;
+				oA[i].onclick = function(){
+					clearInterval(time)
+					oFather.style.top = -150 * this.index + "px";
+					abc = this.index - 1;
+					move();
+				}
+			}
+		</script>
+	</body>
+
+</html>

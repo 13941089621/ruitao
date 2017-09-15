@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.block {
+				width: 200px;
+				height: 2000px;
+				border: 3px solid red;
+			}
+			
+			#back {
+				width: 50px;
+				height: 50px;
+				background-color: green;
+				color: #fff;
+				text-align: center;
+				position: fixed;
+				right: 0;
+				top: 400px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="block"></div>
+		<div id="back">
+			回到<br>顶端
+		</div>
+
+		<script type="text/javascript">
+			var oBack = document.getElementById("back");
+			var timer = null;
+			oBack.onclick = function() {
+				clearInterval(timer);
+				var speed = 50;
+				timer = setInterval(function() {
+					//获取当前滚动条高度
+					var scrolltop = document.body.scrollTop || document.documentElement.scrollTop;
+					//当滚动条高度小于等于0时停止计时器
+					if(scrolltop <= 0) {
+						clearInterval(timer);
+
+					} else {
+						//判断滚动条高度获取方式 是否是谷歌浏览器
+						if(document.body.scrollTop) {
+							document.body.scrollTop -= speed;
+						} else {
+							document.documentElement.scrollTop -= speed;
+						}
+					}
+
+				}, 20);
+
+			}
+		</script>
+	</body>
+
+</html>

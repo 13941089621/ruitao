@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				position:relative;
+			}
+			.msg{
+				width: 600px;
+				height: 200px;
+				border: 1px solid #cccccc;
+				border-radius: 10px;
+				margin: 0 auto;
+			}
+			.msg_head{
+				width: 600px;
+				height: 40px;
+				overflow: hidden;
+			}
+			.msg_text{
+				width: 600px;
+				height: 100px;
+				text-align: center;
+			}
+			.msg_foot{
+				width: 580px;
+				height: 60px;
+				line-height: 60px;
+				padding-left: 20px;
+				overflow:hidden;
+			}
+			.msg_foot a{
+				padding-right: 20px;
+				text-decoration: none;
+				color: black;
+				
+			}
+			.msg_foot a:hover{
+				padding-right: 20px;
+				color:orange;
+			}
+			.msg_foot input{
+				border: 0px;
+				background-color: #FFA500;
+				width: 80px;
+				height: 40px;
+				color: white;
+				border-radius: 5px;
+				float: right;
+				margin-right: 20px;
+				margin-top: 10px;
+				font-size: 16px;
+				cursor:pointer;
+				opacity: 0.5;
+			}
+			.logo{
+				float: left;
+				color: orange;
+				font-size: 20px;
+				text-indent: 2em;
+				line-height: 40px;
+			}
+			.libao{
+				float:right;
+				color: orange;
+				font-size: 18px;
+				line-height: 40px;
+				padding-right: 20px;
+			}
+			.zishu{
+				float:right;
+				color: #cccccc;
+				font-size: 16px;
+				line-height: 40px;
+				padding-right: 20px;
+			}
+			.msg_text textarea{
+				
+				width: 570px;
+				height: 90px;
+				border:1px solid #cccccc;
+				resize: none;
+				font-size: 18px;
+			}
+			.msg_list{
+				width: 600px;
+				height: 2000px;
+				border: 1px solid #cccccc;
+				border-radius: 10px;
+				margin: 10px auto;
+			}
+			.msg_item{
+				width: 580px;
+				/*height: 100px;*/
+				border: 1px solid #cccccc;
+				border-radius: 10px;
+				margin: 10px auto;
+				position: relative;
+			}
+			.send_name{
+				height:30px;
+				line-height: 30px;
+				font-weight: bold;
+				padding-left: 10px;
+			}
+			.send_text{
+				font-weight: bold;
+				padding-left: 10px;
+				margin-top: 10px;
+			}
+			.send_date{
+				font-weight: bold;
+				padding-left: 10px;
+				margin-top: 10px;
+				color: #CCCCCC;
+				margin-bottom: 10px;
+			}
+			.send_del{
+				position: absolute;
+				top:10px;
+				right: 10px;
+				cursor: pointer;
+				width: 20px;
+				height: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="msg">
+				<div class="msg_head">
+					<div class="logo">LOGO</div>
+					<div class="libao">点击领取礼包</div>
+				</div>
+				<div class="msg_text">
+					<textarea name="" rows="" cols=""></textarea>
+				</div>
+				<div class="msg_foot">
+					<a href="#">表情</a>
+					<a href="#">图片</a>
+					<a href="#">视频</a>
+					<a href="#">话题</a>
+					<a href="#">文章</a>
+					<input type="button" value="发布"/>
+				</div>
+			</div>
+			<div class="msg_list">
+				<!--<div class="msg_item">
+					<div class="send_name"></div>
+					<div class="send_text"></div>
+					<div class="send_date">7月17日 12:20 发布</div>
+					<div class="send_del"></div>
+				</div>-->
+			</div>
+		</div>
+		<script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="tween.js"></script>
+		<script>
+			var nLibao=document.querySelector(".libao");
+			var nTextarea=document.querySelector("textarea");
+			var nFabu=document.querySelector("input");
+			var msgList=document.querySelector(".msg_list");
+			var textLimit=140;
+			nTextarea.onfocus=function(){
+				var isNum=textLimit-nTextarea.value.length;
+				if(isNum>=0){
+					nLibao.className="zishu";
+					nLibao.innerHTML="您还可以输入"+isNum+"个字";
+				}
+				else{
+					this.value=this.value.substr(0,140);
+					nLibao.className="zishu";
+					nLibao.innerHTML="您还可以输入0个字";
+				}
+				btnTran();
+			};
+			nTextarea.onblur=function(){
+				if(nTextarea.value.length==0){
+					nLibao.className="libao";
+					nLibao.innerHTML="点击领取红包";
+				}
+				btnTran();
+			};
+			nTextarea.onkeyup=function(){
+				btnTran();
+				var isNum=textLimit-nTextarea.value.length;
+				if(isNum>=0){
+					nLibao.className="zishu";
+					nLibao.innerHTML="您还可以输入"+isNum+"个字";
+				}
+				else{
+					this.value=this.value.substr(0,140);
+					
+					
+					nLibao.className="zishu";
+					nLibao.innerHTML="您还可以输入0个字";
+				}
+				
+			};
+			
+			//点击发布触发事件
+			nFabu.onclick=function(){
+				var arealen=nTextarea.value.length;
+				if(arealen>0 && arealen<=140){
+					
+					var msgItem=document.createElement("div");
+					var sendName=document.createElement("div");
+					var sendText=document.createElement("div");
+					var sendDate=document.createElement("div");
+					var sendDel=document.createElement("div");
+					
+					msgItem.className="msg_item";
+					sendName.className="send_name";
+					sendText.className="send_text";
+					sendDate.className="send_date";
+					sendDel.className="send_del";
+					
+					sendName.innerHTML="张三";
+					sendText.innerHTML=nTextarea.value;
+					sendDate.innerHTML=getDate()+" 发布";
+					sendDel.innerHTML="X";
+					
+					sendDel.onclick=function(){
+						delAnimation(msgItem);
+						
+					};
+					
+					msgItem.appendChild(sendName);
+					msgItem.appendChild(sendText);
+					msgItem.appendChild(sendDate);
+					msgItem.appendChild(sendDel);
+					msgList.insertBefore(msgItem,msgList.firstChild);
+					
+					sendAnimation(msgItem);
+				}
+			};
+		
+			function btnTran(){
+				if(nTextarea.value.length==0){
+					nFabu.style.opacity=0.5;
+				}
+				else{
+					nFabu.style.opacity=1;
+				}
+			}
+			function getDate(){
+				var setdate=new Date();
+				var year=setdate.getUTCFullYear();
+				var month=setdate.getUTCMonth()+1;
+				var day=setdate.getUTCDate();
+				
+				return year+"年"+month+"月"+day+"日"
+			}
+			function sendAnimation(obj){
+				var start=-170;
+				var end=0;
+				var change=end-start;
+				var t=0;
+				var d=40;
+				var timer;
+				clearInterval(timer);
+				timer=setInterval(function(){
+					t++;
+					if(t>=d){
+						clearInterval(timer);
+					}
+					obj.style.top=Tween.Back.easeOut(t,start,change,d)+"px";
+				},20);
+			}
+			function delAnimation(obj){
+				obj.style.overflow="hidden";
+				
+				var startW=obj.offsetWidth;
+				var startH=obj.offsetHeight;
+				var end=0;
+				var changeW=end-startW;
+				var changeH=end-startH;
+				var t=0;
+				var d=30;
+				var timer;
+				clearInterval(timer);
+				timer=setInterval(function(){
+					t++;
+					if(t>=d){
+						clearInterval(timer);
+						
+						msgList.removeChild(obj);
+					}
+					obj.style.width=Tween.Linear(t,startW,changeW,d)+"px";
+					obj.style.height=Tween.Linear(t,startH,changeH,d)+"px";
+				},20);
+			}
+		</script>
+	</body>
+</html>

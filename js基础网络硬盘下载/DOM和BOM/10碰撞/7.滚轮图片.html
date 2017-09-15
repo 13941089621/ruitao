@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap{
+				width: 400px;
+				margin: 0 auto;
+			}
+			img{
+				width: 400px;
+				height: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<img src="img/1.jpg" id="img1"/>
+		</div>
+		
+		<script src="js/moxie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oImg = document.getElementById("img1");
+			var imgSrc = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg"];
+			var i = 0;
+			function fn(d){
+				var imglen = imgSrc.length;
+				if (d) {
+					i++;
+					if (i == imglen) {
+						i = 0;
+					}
+					oImg.src = imgSrc[i];
+				} else {
+					i--;
+					if (i == -1) {
+						i = imglen - 1;
+					}
+					oImg.src = imgSrc[i];
+				}
+			}
+			wheel(window,fn)
+		</script>
+	</body>
+</html>

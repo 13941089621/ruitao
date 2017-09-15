@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;	
+			}
+			.head{
+				width: 100%;
+				height: 67px;
+				background-color: black;
+				position :fixed;
+				left: 0;
+				top: 0;
+				z-index: 500;
+			}
+			.nav{ 
+				max-width: 1127px;
+				margin: 0 auto;
+				height: 67px;
+				line-height: 67px;
+				overflow:hidden;
+			}
+			.ul1>li{
+				float:left;
+				margin-right:30px;
+			}
+			.ul1{
+				float:right;
+				height:67px;
+				line-height:67px;
+				list-style:none;
+			}
+			.nav>div{
+				float:left;
+				cursor:pointer;
+				padding-top:10px;
+			}
+			.ul1 a{
+				text-decoration:none;
+				color: gray;
+				padding: 5px 10px;
+				border:1px solid black;
+			}
+			.head>img{
+				position:absolute;
+				right:30px;
+				top:25px;
+				width:23px;
+			}
+			.ul2{
+				background-color:#CFDB00;
+				width:30%;
+				height:230px;
+				position:absolute;
+				top: 67px;
+				right:0;
+				z-index:20;
+				list-style:none
+			}
+			.ul2 a{
+				text-decoration:none;
+				color: black;
+				padding: 5px 10px;
+				border: 1px solid black;
+				border-radius: 8px;
+			}
+			.ul2 li{
+				float:none;
+				height:38px;
+				text-align:center;
+				line-height:38px;
+			}
+					
+			.ul2{
+				display: none;
+			}
+			.head>img{
+				display: none;
+			}
+			
+			
+			
+			.content>div{
+				width: 100%;
+				height: 665px;
+				position: relative;
+			}
+			.content>div>div{
+				width: 75%;
+				position: relative;
+				height: 100%;
+				max-width: 980px;
+				margin: 0 auto;
+			}
+			/*.content>div>div>div{
+				padding-left: 12.5%;
+				padding-right: 12.5%;
+			}*/
+			/*  1  */
+			.space1{
+				background-color: #E5E5E5;
+			}
+			.s1-all{
+				padding-bottom: 4em;
+				padding-top: 173px;
+			}
+			.s1-wrap>img{
+				position: absolute;
+			    bottom: 0;
+			    width: 350px;
+			    right: -50px;
+			}
+			.content h2{
+				color: #616161;
+			    display: inline-block;
+			    line-height: 105%;
+			    border: 1px solid #616161;
+			    border-radius: 6px;
+			    font-size: 1.4em;
+			    padding: 0 5px;
+			    margin-right: 5px;
+			}
+			.content h3{
+				display: inline-block;
+			    color: #616161;
+			    font-size: 1.4em;
+			    line-height: 150%;
+			}
+			.content p{
+				width: 40%;
+			    word-break: break-word;
+			    margin: 15px 0px;
+			    line-height: 1.4em;
+			    font-weight: 900;
+			}
+			.s1-img{
+				width: 40%;
+				overflow: hidden;
+			}
+			.s1-img img{
+				width: 33%;
+				float: left;
+			}
+			
+			/*  2  */
+			.s2-all{
+				padding-top: 173px;
+			}
+			.s2-img{
+				width: 50%;
+			}
+			.s2-img img{
+				width: 46%;
+				margin-right: 6px;
+			}
+			.s2-wrap>img{
+				position: absolute;
+			    width: 350px;
+			    right: -5px;
+			    top: 0;
+			}
+			/*  3  */
+			.space3{
+				background-color: #E5E5E5;
+			}
+			.s3-all{
+				/*padding: 190px 0 15em 19.5em;*/
+				padding-top: 190px;
+			    padding-left: 19.5em;
+			    padding-bottom: 15em;
+			}
+			.s3-wrap>img{
+				position: absolute;
+			    bottom: 0;
+			    left: 12.5%;
+			    width: 400px;
+			    left: -95px;
+			}
+			/*  4  */
+			.s4-all{
+				padding-left: 100px;
+				padding-top: 173px;
+				position: relative;
+				z-index: 100;
+			}	
+			.s4-img{
+			    width: 40%;
+    				max-width: 215px;
+			}
+			.s4-img img{
+				width: 100%;
+				margin-bottom: 6px;
+			}
+			.s4-b{
+				position: absolute;
+			    top: 0;
+			    width: 400px;
+			    left: -43px;
+			}
+			.s4-t{
+				position: absolute;
+			    width: 400px;
+			    bottom: 0;
+			    right: -100px;
+			}
+			/*  5  */
+			.space5{
+				background-color: #E5E5E5;
+			}
+			.s5-all{
+				padding-top: 340px;
+			}
+			.s5-wrap>img{
+				position: absolute;
+			    width: 400px;
+			    right: -43px;
+			    top: 0;
+			}
+
+				
+			
+			@media only screen and (min-width: 200px) and (max-width: 640px) {
+				.ul1{
+					display: none;
+				}
+				.head>img{
+					display: block;
+				}
+				.head>img{
+					width: 29px;
+					height: 26px;
+					margin-top: -10px;
+					margin-right: 2%;
+				}
+				.nav>div{
+					padding: 0;
+				}
+				.head{
+					height: 48px;
+					padding: 0;
+					line-height: 48px;
+				}
+				.ul2{
+					width: 30%;
+					font-size: 0.7em;
+					top: 48px;
+				}
+				.s2-all{
+					padding: 4em 0 0 0;
+				}
+				.s3-all {
+				    padding-top: 9.25em;
+				    padding-bottom: 2.5em;
+				    padding-left: 7.5125em;
+				}
+				.s4-all{
+					padding: 196px 0 0 0;
+				}
+				.s5-all{
+					padding: 88px 0 0 0;
+				}
+				.content h3{
+					font-size: 0.9em;
+   					line-height: 1.5em
+				}
+				.content p{
+					font-size: 0.8em;
+   					line-height: 1em;
+   					width: 55%;
+				}
+				.s1-wrap>img{
+				    width: 270px;
+				    right: -80px;
+				}
+				.s2-wrap>img{
+				    width: 270px;
+				    right: -45px;
+				}
+				.s3-wrap>img{
+				    width: 280px;
+				}
+				.s4-b{
+					width: 284px;
+					left: -60px;
+				}
+				.s4-t{
+					width: 290px;
+					right: -100px;
+				}
+				.s5-wrap>img{
+				    width: 290px;
+				    right: -59px;
+				}
+				.s1-wrap,.s2-wrap,.s3-wrap,.s4-wrap,.s5-wrap{
+					width: 98%;
+				}
+				.content>div{
+					height: 500px;
+				}
+			}
+			@media only screen and (min-width: 641px) and (max-width: 960px) {
+				.ul1{
+					display: none;
+				}
+				.head>img{
+					display: block;
+				}
+				.s1-all{
+					padding: 7em 0 0 0;
+				}
+				.s2-all{
+					padding: 10em 0;
+				}
+				.s3-all{
+					padding-top: 8.625em;
+				    padding-bottom: 10.35em;
+				    padding-left: 13.5625em;
+				}
+				.s4-all{
+					padding: 188px 0 0 0;
+				}
+				.s5-all{
+					padding: 7.5em 0 21.375em;
+				}
+				.content h3{
+   					line-height: 1.1em
+				}
+				.content p{
+					font-size: 0.9em;
+   					line-height: 1em;
+				}
+			}
+			@media only screen and (min-width: 961px) and (max-width: 1024px) {
+				.ul1{
+					display: none;
+				}
+				.head>img{
+					display: block;
+				}
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="head">
+			<div class="nav">
+				<div><img src="img/shininglogo.png"/></div>
+				<ul class="ul1">
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/home1.html">Home</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/about.html">About</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html">Readering</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html">3D Animation</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html">Bim</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<img src="img/nav.png"/>
+			<ul class="ul2">
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/home1.html">Home</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/about.html">About</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html">Readering</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html">3D Animation</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html">Bim</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/contact.html">Contact</a></li>
+				</ul>
+		</div>
+		<div class="content">
+			
+			<div class="space1">
+				<div class="s1-wrap">
+					<div class="s1-all">
+						<div class="s1-content">
+							<h2>1</h2>
+							<h3> MODEL COMPLETION</h3>
+							<p>Establishing and creating the visible and multi-dimension Architecture, Structural and MEP</p>
+							<div class="s1-img">
+								<img src="img5/BIM-p1-1.png"/>
+								<img src="img5/BIM-p1-2.png"/>
+								<img src="img5/BIM-p1-3.png"/>
+							</div>
+						</div>
+						
+					</div>
+					<img src="img5/building1-half-t.png"/>
+				</div>
+				
+			</div>
+			<div class="space2">
+				<div class="s2-wrap">
+					<div class="s2-all">
+						<div class="s2-content">
+							<h2>2</h2>
+							<h3> CLASH DETECTION</h3>
+							<p>Completing the clash detection among various design parties,engineers and even different organisations in con struction drawings.</p>
+							<div class="s2-img">
+								<img src="img5/BIM-p2-1.jpg"/>
+								<img src="img5/BIM-p2-2.jpg"/>
+							</div>
+						</div>
+						
+					</div>
+					<img src="img5/building1-half-b.png"/>
+				</div>
+				
+			</div>
+			<div class="space3">
+				<div class="s3-wrap">
+					<div class="s3-all">
+						<div class="s3-content">
+							<h2>3</h2>
+							<h3>MEP INTEGRATION</h3>
+							<p>Profoundly completing the pipeline integration, design coordination and intra-organisational cooperation between Plumbing, HVAC and Electrical engineering.</p>
+							<div class="s3-img">
+								<img src="img5/BIM-p4-1.jpg"/>
+								<img src="img5/BIM-p4-2.jpg"/>
+							</div>
+						</div>
+						
+					</div>
+					<img src="img5/building2-half-t.png"/>
+					
+				</div>
+				
+			</div>
+			<div class="space4">
+				<div class="s4-wrap">
+					<div class="s4-all">
+						<div class="s4-content">
+							<h2>4</h2>
+							<h3> CURTAIN WALL REMEDYING</h3>
+							<p>Creating the abnormity wall based on parametric design tools, and completing detailed curtain wall nodes visibly.</p>
+							<div class="s4-img">
+								<img src="img5/BIM-p3-1.jpg"/>
+								<img src="img5/BIM-p3-2.jpg"/>
+							</div>
+						</div>
+					</div>
+					<img src="img5/building2-half-b.png" class="s4-b"/>
+					<img src="img5/building3-half-t.png" class="s4-t"/>
+				</div>
+			</div>
+			<div class="space5">
+				<div class="s5-wrap">
+					<div class="s5-all">
+						<div class="s5-content">
+							<h2>5</h2>
+							<h3> BIM CONSULTING</h3>
+							<p>To help you to precisely know what is BIM? How BIM use? When and who is suitably to implement BIM?</p>
+						</div>
+					</div>
+					<img src="img5/building3-half-b.png"/>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+		<div class="foot">
+			<div class="foot1">
+				<a href="##"><img src="img/mail.jpg" alt="" /></a>
+			</div>
+			<div class="foot2">
+				<a href="##"><img src="img/facebook.jpg"/></a>
+				<a href="##"><img src="img/youtube.jpg"/></a>
+				<a href="##"><img src="img/linkedln.jpg"/></a>
+				<a href="##"><img src="img/twitter.jpg"/></a>
+			</div>
+			<div class="foot3">
+				<span>Copyright © 1998-2015 shining Group</span>
+			</div>
+			
+		</div>
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				//  nav
+				$(".ul1 li a").hover(
+					function(){$(this).css({"color": "white","border-radius": "8px","border": "1px solid rgb(123, 123, 123)"})},function(){$(this).css({"color": "gray","border-radius": "0px","border": "1px solid black"})})
+				$(".ul1 a").eq(4).css({"color": "white","border-radius": "8px","border": "1px solid rgb(123, 123, 123)"}).off();
+				//  按钮
+				
+				$(".head>img").click(function(){
+					$(".ul2").slideToggle()
+				})
+				
+				
+				//  content
+				var $height = $(".content>div").height();
+				$(document).on("mousewheel DOMMouseScroll",function(e){
+					var dal = (e.originalEvent.wheelDelta && (e.originalEvent.wheelDelta > 0 ? 1 : -1)) || (e.originalEvent.detail && (e.originalEvent.detail > 0 ? -1 : 1));
+					var oldTop = $(document).scrollTop();
+					var newtop;
+//					var timer = null;
+					if (dal > 0) {
+						newtop = oldTop-$height
+					} else if(dal < 0){
+						newtop = oldTop+$height
+					}
+//					clearTimeout(timer);
+					e.preventDefault();
+//					timer = setTimeout(function(){
+						$("body,html").animate({
+							scrollTop:newtop
+						},200)
+//						clearTimeout(timer)
+//					},400)
+					
+				})
+				
+				
+				
+				
+				
+				
+				
+				//  footer
+				var arrSrc = ["img/mail_h.jpg","img/facebook_h.jpg","img/youtube_h.jpg","img/linkedln_h.jpg","img/twitter_h.jpg"];
+				var oldSrc = null;
+				$(".foot1").css({"textAlign":"center","marginTop":"45px"});
+				$(".foot2").css({"width":"137px","margin":"12px auto 0","overflow":"hidden"});
+				$(".foot2 a").css({"float":"left","width":"25%","textAlign":"center"});
+				$(".foot3").css({"height":"4em","lineHeight":"4em","textAlign":"center","color":"#808080"});
+				$(".foot a").hover(function(){
+					oldSrc = $(this).find("img").attr("src");
+					$(this).find("img").attr("src",arrSrc[$(this).index(".foot a")]);
+				},function(){
+					$(this).find("img").attr("src",oldSrc);
+				})
+				
+			})
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
+

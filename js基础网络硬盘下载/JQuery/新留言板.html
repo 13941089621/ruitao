@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				position:relative;
+			}
+			.msg{
+				width: 600px;
+				height: 200px;
+				border: 1px solid #cccccc;
+				border-radius: 10px;
+				margin: 0 auto;
+			}
+			.msg_head{
+				width: 600px;
+				height: 40px;
+				overflow: hidden;
+			}
+			.msg_text{
+				width: 600px;
+				height: 100px;
+				text-align: center;
+			}
+			.msg_foot{
+				width: 580px;
+				height: 60px;
+				line-height: 60px;
+				padding-left: 20px;
+				overflow:hidden;
+			}
+			.msg_foot a{
+				padding-right: 20px;
+				text-decoration: none;
+				color: black;
+				
+			}
+			.msg_foot a:hover{
+				padding-right: 20px;
+				color:orange;
+			}
+			.msg_foot input{
+				border: 0px;
+				background-color: #FFA500;
+				width: 80px;
+				height: 40px;
+				color: white;
+				border-radius: 5px;
+				float: right;
+				margin-right: 20px;
+				margin-top: 10px;
+				font-size: 16px;
+				cursor:pointer;
+				opacity: 0.5;
+			}
+			.logo{
+				float: left;
+				color: orange;
+				font-size: 20px;
+				text-indent: 2em;
+				line-height: 40px;
+			}
+			.libao{
+				float:right;
+				color: orange;
+				font-size: 18px;
+				line-height: 40px;
+				padding-right: 20px;
+			}
+			.zishu{
+				float:right;
+				color: #cccccc;
+				font-size: 16px;
+				line-height: 40px;
+				padding-right: 20px;
+			}
+			.msg_text textarea{
+				
+				width: 570px;
+				height: 90px;
+				border:1px solid #cccccc;
+				resize: none;
+				font-size: 18px;
+			}
+			.msg_list{
+				width: 600px;
+				height: 2000px;
+				border: 1px solid #cccccc;
+				border-radius: 10px;
+				margin: 10px auto;
+			}
+			.msg_item{
+				width: 580px;
+				/*height: 100px;*/
+				border: 1px solid #cccccc;
+				border-radius: 10px;
+				margin: 10px auto;
+				position: relative;
+			}
+			.send_name{
+				height:30px;
+				line-height: 30px;
+				font-weight: bold;
+				padding-left: 10px;
+			}
+			.send_text{
+				font-weight: bold;
+				padding-left: 10px;
+				margin-top: 10px;
+			}
+			.send_date{
+				font-weight: bold;
+				padding-left: 10px;
+				margin-top: 10px;
+				color: #CCCCCC;
+				margin-bottom: 10px;
+			}
+			.send_del{
+				position: absolute;
+				top:10px;
+				right: 10px;
+				cursor: pointer;
+				width: 20px;
+				height: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="msg">
+				<div class="msg_head">
+					<div class="logo">LOGO</div>
+					<div class="libao">点击领取礼包</div>
+				</div>
+				<div class="msg_text">
+					<textarea name="" rows="" cols=""></textarea>
+				</div>
+				<div class="msg_foot">
+					<a href="#">表情</a>
+					<a href="#">图片</a>
+					<a href="#">视频</a>
+					<a href="#">话题</a>
+					<a href="#">文章</a>
+					<input type="button" value="发布"/>
+				</div>
+			</div>
+			<div class="msg_list"></div>
+		</div>
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script>
+			$(function(){
+				var $textarea = $(".msg_text textarea");
+				var $libao = $(".libao");
+				var $fabu= $("input");
+				var $msgList = $(".msg_list");
+				var textLimit=140;
+				
+				$textarea.focus(function(){
+					var isNum = textLimit - $textarea.val().length;
+					$libao.removeClass("libao");
+					$libao.addClass("zishu");
+					if(isNum>=0){
+						$libao.text("您还可以输入" + isNum + "个字");
+						
+					}else{
+						$(this).val($(this).val().substr(0,140));
+						$libao.text("您还可以输入0个字")
+					}
+					btnTran();
+				});
+				$textarea.blur(function(){
+					if($textarea.val().length==0){
+						$libao.removeClass("zishu");
+						$libao.addClass("libao");
+						$libao.text()="点击领取红包";
+					}
+					btnTran();
+				});
+				$textarea.keyup(function(){
+					btnTran();
+					var isNum = textLimit - $textarea.val().length;
+					$libao.removeClass("libao");
+					$libao.addClass("zishu");
+					if(isNum>=0){
+						$libao.className="zishu";
+						$libao.text("您还可以输入"+isNum+"个字");
+					}
+					else{
+						$(this).val($(this).val().substr(0,140));
+						$libao.text("您还可以输入0个字");
+					}
+				});
+				
+				//点击发布触发事件
+				$fabu.click(function(){
+					var arealen=$textarea.val().length;
+					if(arealen>0 && arealen<=140){
+			$msgList.append($('<div class="msg_item"><div class="send_name">张三</div><div class="send_text"></div><div class="send_date"></div><div class="send_del">X</div></div>'));						
+						$(".send_text").text($textarea.val());
+						$(".send_date").text(getDate()+" 发布");
+						$(".send_del").click(function(){
+							$msgList.remove($(this).parent)
+						});
+						
+					}
+				});
+				function btnTran(){
+					if( $textarea.val().length==0){
+						$fabu.css("opacity","0.5")
+					}
+					else{
+						$fabu.css("opacity","1");
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>
+

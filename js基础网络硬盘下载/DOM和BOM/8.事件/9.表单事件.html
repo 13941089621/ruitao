@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<form action="" method="get" id="form1">
+			<input type="text" name="phone" id="phone" value="" />
+			<input type="submit" id="" value="提交" />
+			<select name="" id="select1">
+				<option value="">1</option>
+				<option value="">2</option>
+				<option value="">3</option>
+				<option value="">4</option>
+				<option value="">5</option>
+			</select>
+		</form>
+		
+		<script type="text/javascript">
+			
+			//  表单事件  当表单被提交时触发
+			
+			//  asp 用VB语言开发的网页，运行在Windows服务器上 IIS服务管理器
+			//  aspx.net   用.net开发  运行在Windows服务器上 IIS服务管理器
+			//  php  运行在Windows服务器上 IIS服务管理器
+			//  jsp  用java开发 j2EE
+			
+			var oForm = document.getElementById("form1");
+			//  通过name获取，是集合
+			var oPhone = document.getElementsByName("phone")[0];
+			var oSelect = document.getElementsByTagName("select")[0];
+			//  添加表单提交事件
+			oForm.onsubmit = function(){
+//				alert("提交了");
+			};
+			
+			//  onchange事件
+			//  input和textarea失去焦点并且内容发生变化时触发
+			//  select 当选项发生改变时触发
+			oPhone.onchange = function(){
+//				alert(this.value);
+			};
+			oSelect.onchange = function(){
+				alert(this.value);
+			};
+		</script>
+	</body>
+</html>

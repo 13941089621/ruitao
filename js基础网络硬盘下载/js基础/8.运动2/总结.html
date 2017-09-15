@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		/*
+		一、 script的引入方式
+		1. 头部引入
+		2. 外部引入（可以在头部，可以在body）
+		3. body闭标签前引入（内部引入）一般写法
+
+		js的调试方式：
+		1. alert()
+		2. console.log();
+		3. document.write();
+
+		js的数据：
+		1. 常量
+		2. 变量（容器）
+
+		变量定义：
+		var a = 0;
+		命名规范：
+		1. 由数字，字母，下划线还有$组成，并且数字不能开头
+		2. 不能与系统保留字重名。无二义性
+		3. 变量名不能重复
+		4. 见名知意。驼峰法. 匈牙利命名法(一般用于元素命名)
+
+		数据类型：
+		1. number 
+		2. string
+		3. boolean
+		4. null
+		5. object
+		6. undefined
+		7. NAN (NAN != NAN)
+		8. [element collection]
+		9. [node list]
+		10. [object object] json
+		11. float 浮点数
+		12. int   整数
+
+		类型转换：
+		显示类型转换：
+		Number();
+		String();
+		a.toString();
+		parseInt();
+		parseFloat();
+
+		隐式类型转换：
+		+ 字符串连接符
+
+		运算符：
+		1. 算术运算符
+		+ - * / % 
+		2. 赋值运算符 = (拷贝)
+		3. 复合运算符 
+		// += -= *= /= %=
+		a += 3;
+		a = a + 3;
+		4. 自增运算符
+		a++, ++a, a--, --a
+		5. 条件运算符
+		>, <, >=, <=, ==, !=, ===, !==
+		与布尔值连用
+		==, ===  区别：是否判断类型
+		!=  !== 不全等
+		6. 逻辑运算符(连接多个条件)
+		&& , ||, !
+		&&：一假即假
+		||：一真即真
+		!：真真假假
+		注意短路情况。
+
+		7. 三目运算符
+		条件 ? 表达式1 : 表达式2
+
+		表达式：
+		由常量，变量和运算符组成的式子
+		表达式都有返回值！！！！
+
+
+		二、分支结构
+		满足某一条件，执行某一段代码
+		// var a = "买一斤包子";
+		// if (条件(遇到卖西瓜的)){
+		// 	a = "买一个包子";
+		// }
+		// alert(a);
+		如果。。就。。 否则。。
+		// if (true) {} else{};
+		var a = 1;
+		if (a < 3) { // 级联式
+
+		} else if(a < 5){
+
+		} else if(a < 8) {
+
+		}.........
+		 else {
+
+		 }
+
+		switch...case
+		多分支结构
+		case 后面的值和switch(条件)决定了到底走哪个分支
+		注意：break
+		default 可以不写
+		
+
+		三、循环结构
+		满足某一条件，就重复做某件事
+		帮助我们做重复的任务
+		1. while循环
+		while(循环条件){
+			循环体;
+		}
+		注意：while循环需要控制好循环增量的变化
+		while循环通常用于不知道循环次数的情况下
+
+		2. do...while循环
+		do{
+			循环体;
+		} while(循环条件);
+		不管满不满足条件，都会执行一次循环体中的代码
+
+		3. for循环
+		for(循环增量初始化;循环条件;循环增量的变化){
+			循环体
+		}
+
+		4. 循环控制
+		break: 跳出本层循环
+		continue: 跳出本次循环
+
+		循环嵌套：
+		for(var i = 0; i < 3; i++){
+			for(var j = 0; j < i + 1; j++){
+				打印一个小块
+			}
+		}
+
+		四、数组
+		能够保存多个数据(一组)的变量		
+		var arr = new Array(10, 1);
+		var arr = [10, 1];
+
+		遍历：
+		获取到数组中每一个元素
+		循环遍历（index 下标）
+
+		数组对象的方法
+		push(); 从尾部给数组添加元素
+		unshift(); 从头部给数组添加元素
+		shift(); 从头部删除元素
+		pop(); 从尾部删除元素
+		[1, 2, 3, 4, 5];
+		splice(1, 0, "4");
+		splice(起始位置, 长度, 添加的元素1, 元素2...);
+		arr.concat(arr1, arr2, [1, 2, 3]); 数组拼接
+		sort(fn); 数组排序，默认ASCII排序
+		arr.reverse(); 数组倒序
+
+		键值对 key-value
+		var json1 = {a: 3, b: 5, c:"hello"};
+		json1.a
+		json1["a"]
+
+		遍历：
+		for(var key in json1){
+			key
+			json1[key];
+		}
+
+		五、函数
+		具有一定功能的代码段
+		从结构分类：
+		1. 无参数无返回值
+		2. 有参数无返回值
+		3. 无参数有返回值
+		4. 有参数有返回值
+		function fn1(num1, num2){
+			return num1 + num2;
+		}
+		从命名上分类：
+		1. 命名函数
+		2. 匿名函数
+		应用一：事件绑定
+		应用二：让一个变量保存函数
+
+		定时器：
+		1. 单次定时器
+		var timer = setTimeout(function(){
+
+		}, 1000);
+		clearTimeout(timer);
+
+		2. 循环定时器
+		var timer = setInterval(fn, 1000);
+		clearInterval(timer);
+
+		eval("var x = 10; var y = 20; document.write(x * y);");
+		string 一定是可执行的js代码
+
+		六、系统对象
+		1. string对象
+		var myStr = new String("hello");
+		var str = "hello";
+		str.length; 字符串长度
+		str.charAt(下标); 查询下标处的字符
+		str.search("e"); 查询字符所在的下标，返回第一次出现的位置，如果找不到返回-1
+		str.concat(); 数组拼接，也可以用于字符串
+		str.indexOf(); 类似于search，可用于数组
+		str.lastIndexOf();从后向前检索，返回首次出现的下标
+		str.split(" "); 通过所给的字符分割字符串，分割后生成一个数组
+		join(); 数组方法，把数组中的元素，用所给字符连接起来
+		str.substr(下标位置, 范围); 取子字符串
+		str.substring(开始位置，结束位置);
+		str.slice(开始位置，结束位置); 数组方法
+		str.replace(string1, string2);  字符串替换 把string1 替换成string2
+		a.toString(); 类型转换
+
+		Date对象
+		var now = new Date();
+		var future = new Date(2018, 7, 1);
+		now.getFullYear();年
+		now.getMonth();月 0 ~ 11
+		now.getDate();日
+		now.getDay();星期
+		now.getHours();小时
+		now.getMinutes();分钟
+		now.getSeconds();秒
+		now.getMilliseconds();毫秒
+		now.getTime();1970年到现在所有的毫秒数
+
+		七、DOM:
+		1. 获取元素
+		document.getElementById(); 通过id获取
+		document.getElementsByTagName(); 通过标签名
+		document.querySelector(); 通过css获取一个
+		document.querySelectorAll(); 通过css获取多个
+
+		2. oDiv.style.backgroundColor = red;
+		oDiv.currentStyle[name];
+		getComputedStyle(oDiv, false)[name];
+		注意，给属性赋值时，是字符串
+
+		3. className
+		可以通过js动态的改变元素的class属性
+
+		4. this 这个
+		通常情况下我们用于循环事件绑定，this指代被绑定的对象
+		*/
+
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

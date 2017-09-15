@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				height: 280px;
+				width: 520px;
+				margin: 100px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.content {
+				width: 3640px;
+				height: 280px;
+				position: absolute;
+				left: -520px;
+				top: 0;
+			}
+			
+			.content>img {
+				width: 520px;
+				height: 280px;
+				float: left;
+			}
+			
+			.clear {
+				clear: both;
+			}
+			
+			.c_a {
+				position: absolute;
+				left: 220px;
+				bottom: 10px;
+				background-color: rgba(255, 255, 255, .3);
+			}
+			
+			.c_a a {
+				width: 9px;
+				height: 9px;
+				background-color: #B7B7B7;
+				float: left;
+				margin-right: 7px;
+				border-radius: 50%;
+			}
+			
+			.c_a>.caa {
+				background-color: red;
+			}
+			
+			.wrap>i {
+				width: 25px;
+				height: 50px;
+				position: absolute;
+				top: 115px;
+				font-size: 20px;
+				background-color: rgba(0, 0, 0, 0.3);
+				text-align: center;
+				line-height: 50px;
+				color: white;
+				cursor: pointer;
+			}
+			
+			.sanleft {
+				left: 0;
+			}
+			
+			.sanright {
+				right: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="content">
+				<img src="img/t5.jpg" />
+				<img src="img/t1.jpg" />
+				<img src="img/t2.jpg" />
+				<img src="img/t3.jpg" />
+				<img src="img/t4.jpg" />
+				<img src="img/t5.jpg" />
+				<img src="img/t1.jpg" />
+				<div class="clear"></div>
+			</div>
+			<div class="c_a">
+				<a href="#" class="caa"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<a href="#"></a>
+				<div class="clear"></div>
+			</div>
+			<i class="sanleft"> &gt; </i>
+			<i class="sanright"> &lt; </i>
+
+		</div>
+
+		<script src="js/任意值运动框架.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oWrap = document.querySelector(".wrap");
+			var oContent = document.querySelector(".content");
+			var aContentImg = document.querySelectorAll(".content>img");
+			var aCa = document.querySelectorAll(".c_a>a");
+			var sanLeft = document.querySelector(".sanleft");
+			var sanRight = document.querySelector(".sanright");
+			var index = 0;
+			var time = null;
+			
+			function move(){
+				clearInterval(time);
+				time = setInterval(function(){
+					index++;
+					
+					if (index == 6) {
+						oContent.style.left = 0+ "px";
+						index = 1;
+					}
+					var temp = -520 * index;
+					changeColor(index);
+					startMove(oContent,{left: temp});
+					
+				},1000)
+			}
+			move();
+			
+			function changeColor (imgIndex){
+				for (var i = 0 ; i < 5; i++) {
+					aCa[i].className = "";
+				}
+				if (imgIndex == 0) {
+					aCa[4].className = "caa";
+				}else if(imgIndex == 6){
+					aCa[0].className = "caa";
+				} else {
+					aCa[imgIndex - 1].className = "caa"
+				}	
+			}
+			
+			for (var i = 0; i < 5; i++) {
+				aCa[i].aIndex = i;
+				aCa[i].onclick = function(){
+					index = this.aIndex + 1;
+					changeColor(index);
+					startMove(oContent,{"left": -520 * index})
+				}
+			}
+			
+			
+			sanLeft.onclick = function(){
+				index--;
+				if (index == 0) {
+					oContent.style.left = -520 * 6 + "px";
+					index = 5;
+				} 
+				startMove(oContent,{left: -520 * index});
+				changeColor(index)
+			}
+			sanRight.onclick = function(){
+				index++;
+				if (index == 7) {
+					oContent.style.left = -520 * 1 + "px";
+					index = 2;
+				} 
+				startMove(oContent,{left: -520 * index});
+				changeColor(index)
+				
+			}
+			
+			
+			oWrap.onmouseover = function(){
+				clearInterval(time)
+			}
+			oWrap.onmouseout = function(){
+				move()
+			}
+		</script>
+
+	</body>
+
+</html>

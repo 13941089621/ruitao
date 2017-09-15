@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap{
+				width: 990px;
+				height: 600px;
+				border: 1px solid #ccc;
+				margin: 0 auto;
+				position: relative;
+			}
+			.father{
+				position: absolute;
+			}
+			.son{
+				width: 20px;
+				height: 20px;
+				background-color: #CCCCCC;
+				border: 1px solid red;
+				float: left;
+			}
+			p{
+				font-size: 50px;
+				text-align: center;
+				color: lightblue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<p id="p1">0</p>
+		</div>
+
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var p1 = document.getElementById("p1");
+			var w = 22;
+			var num = 0;
+			var timer = null;
+			var time = null;
+			var faLeft = Array();
+			var judge = 0;
+			var s = 0;
+			function judges(){
+				clearInterval(timer);
+								s = (faLeft[num] - faLeft[num - 1]) / w;
+				if (s < 0) {
+					s = -s
+				}
+				console.log(s);
+				if (num > 0) {
+					if (s >= oWrap.children[0].childNodes.length ) {
+						alert("完蛋了");
+						clearInterval(timer);
+						judge = 1;
+					} else {
+						for (var j = 0; j < s; j++) {
+							oWrap.children[0].removeChild(oWrap.children[0].children[0])
+						}
+						if (faLeft[num] < faLeft[num - 1]) {
+							faLeft[num] = faLeft[num - 1];
+							oWrap.children[0].style.left = faLeft[num] + "px";
+						}
+					}
+				}
+			}
+			
+			function add(){
+				var father = document.createElement("div");
+				father.className = "father";
+				father.style.bottom = w * num + "px";
+				father.style.left = faLeft[num] + "px";
+				oWrap.insertBefore(father,oWrap.firstChild);
+				if (num == 0) {
+					for (var i = 0; i < 20;i++) {
+						var son = document.createElement("div");
+						son.className = "son";
+						father.appendChild(son)
+					}
+				}else {
+					for (var i = 0; i < oWrap.children[1].children.length;i++) {
+						var son1 = document.createElement("div");
+						son1.className = "son";
+						oWrap.children[0].appendChild(son1)
+					}
+					
+				}
+				var speedtime = 400;
+				
+					speedtime = speedtime - 30;
+				
+				
+				function move(){
+					var mode = 0;
+					clearInterval(timer);
+					timer = setInterval(function(){
+						if (mode == 0 && father.offsetLeft < 550 ) {
+							father.style.left = father.offsetLeft + w + "px";
+							
+						} else if ( father.offsetLeft == 550) {
+							mode = 1;
+						} 
+						if (mode == 1 && father.offsetLeft > 0){
+							father.style.left = father.offsetLeft - w + "px";
+						} else if (mode == 1 && father.offsetLeft == 0) {
+							move()
+						} 
+						faLeft[num] = father.offsetLeft;
+					},speedtime)
+				}
+				move();
+				num++;
+			}
+			time = setInterval(add,5);
+			setTimeout(function(){
+				clearInterval(time)
+			},6);
+			var index = 0;
+			oWrap.onclick = function(){
+				judges();
+				if (judge == 0) {
+					index++;
+					p1.innerHTML = index;
+					clearInterval(timer)
+					add();
+				}
+			}
+		</script>
+	</body>
+
+</html>

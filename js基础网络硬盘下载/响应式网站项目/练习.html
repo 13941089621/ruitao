@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			function Person(name, age, job) {
+				this.name = name;
+				this.age = age;
+				this.job = job;
+				this.lessons = ['Math', 'Physics'];
+				if (typeof this.getName != 'function') {//通过判断实例封装
+				Person.prototype = {
+				constructor: Person,//原型字面量方式会将对象的constructor变为Object，此外强制指回Person
+				getName: function () {
+				return this.name;
+						}
+					}
+				}
+			}
+				
+				var person1 = new Person('Jack', 19, 'SoftWare Engneer');
+				person1.lessons.push('Biology');
+				var person2 = new Person('Lily', 39, 'Mechanical Engneer');
+				alert(person1.lessons);//Math,Physics,Biology
+				alert(person2.lessons);//Math,Physics
+				alert(person1.getName === person2.getName);//true,//共享原型中定义方法
+		</script>
+	</body>
+</html>

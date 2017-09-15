@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input{
+				width: 100px;
+				height: 50px;
+				background-color: #CCCCCC;
+				font-size: 30px;
+			}
+		</style>
+		
+		
+	</head>
+	<body>
+		
+		<input type="button" id="btn1" value="加载" />
+		<div></div>
+		<script type="text/javascript">
+			 
+			 var oBtn = document.getElementById("btn1");
+			
+			//  动态加载css文件
+			function cssjs(src){
+				var link = document.createElement("link");
+				link.rel = "stylesheet";
+				link.type = "text/css";
+				link.href = src;
+				document.head.appendChild(link);
+			}
+			
+			//  动态加载css代码
+			function css(sty){
+				var ostyle = document.createElement("style");
+				
+				
+				try{
+					//  非IE下
+					//  在style中创建一个文本节点
+					var ocss = document.createTextNode(sty);
+					ostyle.appendChild(ocss)
+				} catch(e){
+					//  IE下
+					//ex 错误信息
+					alert(ex.message);
+					// 如果浏览器为IE 抛出异常
+					ostyle.stylesheet.cssText = sty;
+				}
+				
+				
+				document.head.appendChild(ostyle);
+			}
+			
+			oBtn.onclick = function(){
+//				cssjs("css/bg.css");
+				//调用加载css代码方法 参数:css代码		
+				css("div{width: 100px;height: 50px; background-color:red;}")
+			}
+
+			 
+		</script>
+		
+	</body>
+</html>

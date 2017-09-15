@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<ul id="mygirl">
+			<li id="g1" class="girlA">江疏影</li>
+			<li id="g2" class="girlA">范冰冰</li>
+			<li id="g3" class="girlB" d="test.jpg">赵丽颖</li>
+		</ul>
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			document.body.getAttribute()
+			$(function(){
+				// 1. 文本操作 操作文本节点 
+				$("#g1").text("杨幂");  //  设置文本内容
+				alert($("#g1").text())  //  获取文本内容
+				
+				//  2. 操作属性节点
+				$("#g1").attr("data-img","ym.jpg")  // 设置属性名，有就改变，没有就添加，值， 相当于getAttribute()  setAttribute()
+				$("#g1").removeAttr("data-img")  //  删除一个属性
+				
+				//  插入一个节点  
+				//  向一个元素的内容尾部追加内容 保留原来的内容
+				$("#g1").append("<strong>你是我的唯一</strong>");
+				//  将一个节点内容插入到指定内容的尾部
+				$("<strong>你们都是女神</strong>").appendTo($("li"));
+				
+				//  向一个元素的内容头部追加内容 保留原来的内容
+				$("#g1").prepend("<strong>唯一</strong>");
+				//  将一个节点内容插入到指定内容的头部
+				$("<strong>女神</strong>").prependTo($("li"));
+				
+				//  插入元素到指定的元素对象前 
+				$("<li>苍井空</li>").insertBefore($("#g3"));
+				//  插入元素到指定的元素对象后
+				$("<li>泷泽萝拉</li>").insertAfter($("#g3"));
+				
+				//  移出节点
+				$("#g2").remove();
+				//  清空节点内容
+				$("#g3").empty();
+				//  复制节点  添加到ul后
+				$("#mygirl").append($("#g3").clone());
+				//  替换节点
+				$("#g3").replaceWith($("<p>你是谁</p>"))
+				//  替换多个  把每个li都替换掉
+				//$("<p>你ss是谁</p>").replaceAll($("li"))
+				//  包裹节点 把每个li外面都包裹一个strong
+				//$("li").wrap("<strong>sdfoijp</strong>")
+				//  把所有li外包裹一个strong
+//				$("li").wrapAll("<strong>sdfoijp</strong>")
+				//  把每个li的内容包裹一个strong
+				$("li").wrapInner("<strong>sdfoijp</strong>")
+			})
+		</script>
+	</body>
+</html>

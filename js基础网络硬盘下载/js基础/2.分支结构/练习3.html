@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="input1" id="input1" value="" />
+			<input type="button" name="btn" id="btn" value="" />
+		</form>
+		
+		
+		<script type="text/javascript">
+			var oInput = document.getElementById("input1");
+			var oBtn = document.getElementById("btn")
+			
+			oBtn.onclick = function(){
+				var num = parseInt(oInput.value);
+				if(num >= 90 && num <= 100){
+					alert("优秀")
+				} else if (num >= 80 && num < 90){
+					alert("良好")
+				} else if (num >= 70 && num < 80){
+					alert("中等")
+				} else if (num >= 60 && num < 70){
+					alert("及格")
+				} else if (num >= 0 && num <60){
+					alert("不及格")
+				} else {
+					alert("输入错误，请重新输入")
+				}
+			}
+			
+		</script>
+	</body>
+</html>

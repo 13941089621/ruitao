@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="text" name="input1" id="input1" value="" />
+		<input type="text" name="input2" id="input2" value="" />
+		<input type="button" name="btn" id="btn" value="最大公约数" />
+		<input type="button" name="btn2" id="btn2" value="最小公倍数" />
+
+		<script type="text/javascript">
+			var oInput1 = document.getElementById("input1");
+			var oInput2 = document.getElementById("input2");
+			var oBtn = document.getElementById("btn");
+			var oBtn2 = document.getElementById("btn2");
+			
+			oBtn.onclick = function(){
+				var num1 = parseInt(oInput1.value);
+				var num2 = parseInt(oInput2.value);
+				//  普通法
+				
+						for (var i = num1 ; i > 0;i--) {
+							if(num1 % i == 0 && num2 % i == 0 ){
+								alert(i);
+								break;
+							}
+								
+					}
+		}	
+		oBtn2.onclick = function(){
+			var num1 = parseInt(oInput1.value);
+			var num2 = parseInt(oInput2.value);
+			for (var i = num1; i > 0 ; i++) {
+				if (i % num1 == 0 && i % num2 == 0) {
+					alert(i);
+					break;
+				}
+			}
+			
+		}
+		
+		//  辗转相除法  求最大公约数
+		oBtn.onclick = function(){
+			var a = parseInt(oInput1.value);
+			var b = parseInt(oInput2.value);
+			
+			//  余数
+			var rem = a % b;
+			//  当余数不为0时继续相除
+			while (rem){
+				//  被除数
+				a = b;
+				//  除数
+				b = rem;
+				//  继续运算
+				rem = a % b;
+			}
+			//  当余数为0 时 最大公约数
+			alert("最大公约数" + b)
+		}
+		</script>
+	</body>
+
+</html>

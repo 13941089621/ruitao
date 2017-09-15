@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		<script type="text/javascript">
+			window.color = 'red';
+			var obj = {color:'blue'};
+			function s(){
+				alert(this.color)
+			}
+			s.call(window);
+			s(obj)
+		</script>
+	</body>
+</html>

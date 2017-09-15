@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.wrap{
+				width: 1210px;
+				height: 466px;
+				background-color: #ccc;
+				margin: 100px auto;
+				overflow: hidden;
+			}
+			.goods_list{
+				width: 210px;
+				height: 466px;
+				background-color: yellow;
+				float: left;
+				position: relative;
+			}
+			ul{
+				list-style: none;
+			}
+			#list>li{
+				height: 31px;
+				line-height: 31px;
+				padding: 0 10px;
+				background-color: #C81623;
+				overflow: hidden;
+			}
+			#list>li>a{
+				text-decoration: none;
+				color: white;
+				float: left;
+				font-size: 14px;
+			}
+			#list>li>span{
+				float: right;
+				font-size: 12px;
+			}
+			#list>.active_a{
+				background-color: white;
+			}
+			#list>.active_a a{
+				color: #C81623;
+			}
+			#details{
+				width: 998px;
+				height: 464px;
+				background-color: #f7f7f7;
+				position: absolute;
+				top: 0;
+				left: 210px;
+				border: 1px solid red;
+				display: none;
+				z-index: 10;
+			}
+			.banner{
+				width: 730px;
+				height: 454px;
+				float: left;
+				margin: 12px 12px 0;
+				position: relative;
+			}
+			#b_content{
+				position: relative;
+			}
+			#b_content>li{
+				position: absolute;
+				left: 0;
+				top: 0;
+				opacity: 0;
+				filter: alpha(opacity: 0);
+			}
+			.banner span{
+				width: 28px;
+				height: 62px;
+				line-height: 62px;
+				text-align: center;
+				background-color: rgba(0,0,0,.3);
+				position: absolute;
+				top: 196px;
+				color: white;
+				cursor: pointer;
+			}
+			#last{
+				left: 0;
+			}
+			#next{
+				right: 0;
+			}
+			.b_scroll{
+				position: absolute;
+				bottom: 10px;
+				left: 245px;
+				overflow: hidden;
+			}
+			.b_scroll>a{
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				border-radius: 50%;
+				background-color: #777;
+				float: left;
+				margin-right: 10px;
+				text-decoration: none;
+				color: white;
+			}
+			.b_scroll .aaa{
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="goods_list">
+				<ul id="list">
+					<li><a href="###">选项1</a><span>&gt;</span></li>
+					<li><a href="###">选项2</a><span>&gt;</span></li>
+					<li><a href="###">选项3</a><span>&gt;</span></li>
+					<li><a href="###">选项4</a><span>&gt;</span></li>
+					<li><a href="###">选项5</a><span>&gt;</span></li>
+					<li><a href="###">选项6</a><span>&gt;</span></li>
+					<li><a href="###">选项7</a><span>&gt;</span></li>
+					<li><a href="###">选项8</a><span>&gt;</span></li>
+					<li><a href="###">选项9</a><span>&gt;</span></li>
+					<li><a href="###">选项10</a><span>&gt;</span></li>
+					<li><a href="###">选项11</a><span>&gt;</span></li>
+					<li><a href="###">选项12</a><span>&gt;</span></li>
+					<li><a href="###">选项13</a><span>&gt;</span></li>
+					<li><a href="###">选项14</a><span>&gt;</span></li>
+					<li><a href="###">选项15</a><span>&gt;</span></li>
+				</ul>
+				<div id="details">
+					
+				</div>
+			</div>
+			<div class="banner">
+				<ul id="b_content">
+					<li style="opacity: 1;alpha(opacity: 100);"><a href="###"><img src="img/j1.jpg"/></a></li>
+					<li><a href="###"><img src="img/j2.jpg"/></a></li>
+					<li><a href="###"><img src="img/j3.jpg"/></a></li>
+					<li><a href="###"><img src="img/j4.jpg"/></a></li>
+					<li><a href="###"><img src="img/j5.jpg"/></a></li>
+					<li><a href="###"><img src="img/j6.jpg"/></a></li>	
+				</ul>
+				<span id="last">
+					&lt;
+				</span>
+				<span id="next">
+					&gt;
+				</span>
+				<div class="b_scroll">
+					<a href="###" class="aaa">1</a>
+					<a href="###">2</a>
+					<a href="###">3</a>
+					<a href="###">4</a>
+					<a href="###">5</a>
+					<a href="###">6</a>
+				</div>
+			</div>
+		</div>
+		
+		<script src="js/任意值运动框架.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var aLis = document.querySelectorAll("#list>li");
+			var oDetail = document.getElementById("details");
+			var oUlList = document.getElementById("list")
+			var content = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"]
+			
+			//  记录移出LI的下标
+			var liIndex = 0
+			for (var i = 0; i < aLis.length; i++) {
+				aLis[i].index = i;
+				aLis[i].onmousemove = function(){					
+					this.className = "active_a";
+					oDetail.innerHTML = content[this.index];
+				}
+				aLis[i].onmouseout = function(){
+					this.className = "";
+					liIndex = this.index
+				}
+			}
+			oUlList.onmouseover = function(){
+				oDetail.style.display = "block"
+			}
+			oUlList.onmouseout = function(){
+				oDetail.style.display = ""
+			}
+			oDetail.onmouseover = function(){
+				this.style.display = "block";
+				aLis[liIndex].className = "active_a"
+			}
+			oDetail.onmouseout = function(){
+				this.style.display = "";
+				aLis[liIndex].className = ""
+			}
+			
+			//  获取元素
+			var aImgList = document.querySelectorAll("#b_content>li");
+			var oLast = document.getElementById("last");
+			var oNext = document.getElementById("next");
+			var oBanner = document.querySelector(".banner")
+			var aBscrool = document.querySelectorAll(".b_scroll>a")
+			
+			//  运动
+			var index = 0;
+			var time = null;
+			function move (){
+				clearInterval(time);
+				time = setInterval(function(){
+					index++;
+					if (index == aImgList.length) {
+						index = 0
+					}
+					changeImg(index);
+					
+				},2000)
+			}
+			//  输入一个下标位置，就能自带特效跳转到当前图片
+			function changeImg(imgIndex){
+				for (var i = 0 ; i < aImgList.length; i++) {
+					startMove(aImgList[i],{"opacity": 0})
+				}
+				startMove(aImgList[imgIndex],{"opacity": 100});
+				changeColor(imgIndex);
+			}
+			move();
+			oLast.onclick = function(){
+				if (index == 0) {
+					index = aImgList.length
+				}
+				index--;
+				changeImg(index);
+			}
+			oNext.onclick = function(){
+				index++;
+				if (index == aImgList.length) {
+					index = 0
+				}
+				changeImg(index);
+			}
+			function changeColor (colorIndex){
+				for (var i = 0; i < aBscrool.length; i++) {
+					aBscrool[i].className = ""
+				}
+				aBscrool[colorIndex].className = "aaa"
+			}
+			for (var i = 0; i < aBscrool.length; i++) {
+				aBscrool[i].asIndex = i;
+				var time1 = null;
+				var num = 0;
+				var mode = true;
+				aBscrool[i].onmouseover = function(){
+					//  将index 更新到当前问题
+					
+					index = this.asIndex;
+					clearInterval(time1)
+					time1 = setInterval(function(){
+						num++;
+						if (num == 10) {
+							changeImg(index);
+							clearInterval(time1)
+							num = 0;
+							mode = false;
+						}
+					},20)	                                        
+				}
+				aBscrool[i].onmouseout = function(){
+					if (mode == true) {
+						clearInterval(time1)
+					}
+				}
+			}
+			
+		
+			
+			//  当鼠标移入banner时不许自动滚动图片
+			oBanner.onmouseover = function(){
+				clearInterval(time)
+			}
+			oBanner.onmouseout = function(){
+				move()
+			}
+		</script>
+		
+	</body>
+</html>

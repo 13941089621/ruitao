@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="mygirl">
+			<li id="g1" class="girlA">江疏影</li>
+			<li id="g2" class="girlA">范冰冰</li>
+			<li id="g3" class="girlB" d="test.jpg">赵丽颖</li>
+		</ul>
+		
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			//  和window.onload差不多，jQuery的所有东西都写入其中
+			//  当页面DOM文档完成之后执行，不需要等待CSS加载完
+			$(document).ready(function(){
+				//  ID选择器
+				$("#g1")  //  获取g1
+				$("#g1").html("<strong>赵本山</strong>");  // 修改内容 相当于innerHTML;
+				$("#g2").text("赵四");   //  修改文本  相当于innerText
+				//  元素选择器
+				$("li").html("不知道"); // 把所有的li的内容修改
+				//  选中所有li中的第一个li  gaibneir
+				$("li:first").html("佟丽娅");
+				
+				//  选中li中class为girlA的元素
+				$("li.girlA").html("四核的");
+				//  所有ul下的第一个li
+				$("ul li:first").html("sfdik");
+				
+				//  属性选择器  []里面加属性名 选择所有相同属性的元素
+				$("[d]").html("feji");
+				//  选中li有class名并且为 girlA 的元素
+				$("li[class=girlA]").html("gwefg");
+				//  选中li有class名并且不为 girlA 的元素
+				$("li[class!=girlA]").html("gwefg");	
+				//  选中属性d后缀为.jpg 的元素
+				$("[d$='.jpg']").html("123")
+			});
+			$(function(){
+				
+			})  //  等价于上方的  ， 简略的写法
+			
+		</script>
+	</body>
+</html>

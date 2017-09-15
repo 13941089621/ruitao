@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap,.wrap1{
+				width: 520px;
+				height: 280px;
+				margin: 100px auto;
+				overflow: hidden;
+				position: relative;
+			}
+			.content{
+				overflow: hidden;
+				width: 4160px;
+				position: relative;
+				left: -520px;
+			}
+			.banner_a{
+				float: left;
+				width: 520px;
+				height: 280px;
+			}
+			.left, .right{
+				width: 30px;
+				height: 60px;
+				background-color: black;
+				opacity: 0.7;
+				position: absolute;
+				color: white;
+				text-align: center;
+				line-height: 60px;
+				text-decoration: none;
+			}
+			.left{
+				top: 110px;
+				left: 0;
+			}
+			.right{
+				top: 110px;
+				right: 0;
+			}
+			.bottom{
+				width: 100px;
+				height: 15px;
+				background-color: white;
+				position: absolute;
+				bottom: 20px;
+				margin: 0 auto;
+				left: 0;
+				right: 0;
+				opacity: 0.7;
+				border-radius: 10px;
+				text-align: center;
+			}
+			.bottom>a{
+				width: 10px;
+				height: 10px;
+				display: inline-block;
+				background-color: gray;
+				margin: 3px 0px;
+				border-radius: 10px;
+			}
+			.bottom>.show{
+				background-color: #FF4400;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			
+			<div class="content">
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t6.png" alt="" /></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t1.jpg" alt="" /></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t2.jpg" alt="" /></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t3.jpg" alt="" /></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t4.jpg" alt="" /></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t5.jpg" alt="" /></a>
+				<a href="javascript:void(0)" class="banner_a"><img src="img/t6.png"/></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t1.jpg" alt="" /></a>
+			</div>
+			<a href="javascript:void(0)" class="right">&gt;</a>
+			<a href="javascript:void(0)" class="left">&lt;</a>
+			<div class="bottom">
+				<a class="show" href="javascript:void(0)"></a>
+				<a href="javascript:void(0)"></a>
+				<a href="javascript:void(0)"></a>
+				<a href="javascript:void(0)"></a>
+				<a href="javascript:void(0)"></a>
+				<a href="javascript:void(0)"></a>
+			</div>
+		</div>
+		
+		<div class="wrap1">
+			
+			<div class="content">
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t6.png" alt="" /></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t1.jpg" alt="" /></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t2.jpg" alt="" /></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t3.jpg" alt="" /></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t4.jpg" alt="" /></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t5.jpg" alt="" /></a>
+				<a href="javascript:void(0)" class="banner_a"><img src="img/t6.png"/></a>
+				<a class="banner_a" href="javascript:void(0)"><img src="img/t1.jpg" alt="" /></a>
+			</div>
+			<a href="javascript:void(0)" class="right">&gt;</a>
+			<a href="javascript:void(0)" class="left">&lt;</a>
+			<div class="bottom">
+				<a class="show" href="javascript:void(0)"></a>
+				<a href="javascript:void(0)"></a>
+				<a href="javascript:void(0)"></a>
+				<a href="javascript:void(0)"></a>
+				<a href="javascript:void(0)"></a>
+				<a href="javascript:void(0)"></a>
+			</div>
+		</div>
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function(){
+				var config = {};
+				$.fn.extend({
+					"glass":function(con){
+						var newconfig = $.extend({},config,con);
+						return this.each(function(){
+							var $this = $(this);
+							var $content = $this.find(".content");
+							var $img = $this.find(".content>a");
+							var $point = $this.find(".bottom>a");
+							var index = 1;
+							var timer = null;
+							var pointIndex = 0;
+							$content.position({"left":"0px"})
+							
+							function autoScroll(){
+								clearInterval(timer);
+								timer = setInterval(function(){
+									index++;
+									if (index == 7) {
+										index = 1;
+										$content.css("left","0")
+									}
+									$content.animate({
+										left: -520 * index
+									},1500)
+									changeColor()
+								},2000)
+							}
+							autoScroll();
+							$this.on({
+								"mouseover":function(){clearInterval(timer)},
+								"mouseout":function(){autoScroll()}
+							})
+							// 改变颜色
+							function changeColor(){
+								$point.filter(".show").attr("class","");
+								$point.eq(index - 1).addClass("show")
+							}
+							// 给一个数跳转图片
+							function changeImg(imgIndex){
+								if(index == $img.length - 1){
+									$content.css("left","-520px")
+									
+								}
+								index = imgIndex;
+								changeColor();
+								$content.animate({
+									left: -520 * index
+								},1000)
+							}
+							// 点击小点跳转
+							$point.click(function(){
+								changeImg($(this).index() + 1)
+							})
+							// 点击左右跳转
+							var $right = $(".right");
+							var $left = $(".left");
+							$right.click(function(){
+								index++;
+								if(index == $img.length - 1){
+									index = 1;
+									$content.css("left","0")
+								}
+								$content.animate({
+									left: -520 * index
+								},1000)
+								changeColor()
+							})
+							$left.click(function(){
+								index--;
+								if(index == 0){
+									index = $img.length - 2;
+									$content.css("left",-520 * (index + 1))
+								}
+								$content.animate({
+									left: -520 * index
+								},1000)
+								changeColor();
+							})
+						})
+					}
+					
+				})
+			})(window.jQuery)
+			
+			$(function(){
+				$(".wrap").glass()
+				$(".wrap1").glass()
+			})
+			
+		</script>
+	</body>
+</html>
+

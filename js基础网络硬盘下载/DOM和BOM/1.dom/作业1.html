@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.div1{
+				width: 200px;
+				height: 500px;
+				border: 1px solid greenyellow;
+				text-align: center;
+			}
+			input{
+				width: 150px;
+				height: 25px;
+				margin-top: 20px;
+				border: 1px solid greenyellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1">
+			<input type="text" name="btn1" id="btn1" value="国家" />
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			var oDiv1 = document.querySelector(".div1");
+			var oBtn1 = document.getElementById("btn1");
+			
+			var oBtn2 = document.createElement("input");
+			oBtn2.type = "text";
+			oBtn2.setAttribute("value","省份")
+			var oBtn3 = document.createElement("input");
+			oBtn3.type = "text";
+			oBtn3.setAttribute("value","城市")
+			var oBtn4 = document.createElement("input");
+			oBtn4.type = "text";
+			oBtn4.setAttribute("value","区域")
+			var arr = [oBtn1,oBtn2,oBtn3,oBtn4]
+			for (var i = 0; i < 3; i++) {
+				arr[i].index = i;
+				arr[i].onclick = function(){
+					if(oDiv1.children.length == this.index + 1){
+						oDiv1.appendChild(arr[this.index + 1])
+   					}
+				}	
+			}
+//			oBtn1.onclick = function(){
+//				if (oDiv1.children.length == 1) {
+//					oDiv1.appendChild(oBtn2)
+//				}
+//			}
+//			oBtn2.onclick = function(){
+//				if (oDiv1.children.length == 2) {
+//					oDiv1.appendChild(oBtn3)
+//				}
+//			}
+//			oBtn3.onclick = function(){
+//				if (oDiv1.children.length == 3) {
+//					oDiv1.appendChild(oBtn4)
+//				}
+//			}
+		</script>
+		
+		
+		
+	</body>
+</html>

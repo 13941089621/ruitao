@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.div1{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+			.div2{
+				border : 3px solid black;
+			}
+			.div3{
+				font-size: 50px;
+			}
+			.div4{
+				background-color: cadetblue;
+			}
+			input{
+				width: 200px;
+				height: 100px;
+				background-color: papayawhip;
+				border: 0;
+				outline: none;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<input type="button" name="" id="" value="添加边框" onclick="oDiv1.classList.add('div2')"/>
+		<input type="button" name="" id="" value="放大字体" onclick="oDiv1.classList.add('div3')"/>
+		<input type="button" name="" id="" value="删除边框" onclick="oDiv1.classList.remove('div2')"/>
+		<input type="button" name="" id="" value="缩小字体" onclick="oDiv1.classList.remove('div3')"/>
+		<input type="button" name="" id="" value="切换背景颜色" onclick="toggle()"/>
+		<div class="div1" aa="bb">ssss</div>
+		
+		
+		
+		<script type="text/javascript">
+			var oDiv1 = document.getElementsByClassName("div1")[0];
+			
+			function toggle(){
+				var time = null;
+				clearInterval(time);
+				time = setInterval(function(){
+					oDiv1.classList.toggle("div4");
+				},500)
+			}
+			
+			
+		</script>
+	</body>
+</html>

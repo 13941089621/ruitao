@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        td{
+            height: 30px;
+        }
+        .jia,.shou{
+            width: 200px;
+            height: 40px;
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+        .shou{
+            display: none;
+        }
+        .fa{
+            height: 98px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div class="fa">
+    <table width="200" border="1px solid black" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>时间</td>
+            <td>服务价格</td>
+        </tr>
+        <tr>
+            <td>2小时</td>
+            <td>￥70.0元</td>
+        </tr>
+        <tr>
+            <td>2.5小时</td>
+            <td>￥85.0元</td>
+        </tr>
+        <tr>
+            <td>2小时</td>
+            <td>￥70.0元</td>
+        </tr>
+        <tr>
+            <td>3小时</td>
+            <td>￥100.0元</td>
+        </tr>
+        <tr>
+            <td>4小时</td>
+            <td>￥15.0元</td>
+        </tr>
+        <tr>
+            <td>5小时</td>
+            <td>￥200.0元</td>
+        </tr>
+        <tr>
+            <td>4.5小时</td>
+            <td>￥180.0元</td>
+        </tr>
+        <tr>
+            <td>3.5小时</td>
+            <td>￥120.0元</td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="jia">加载更多</div>
+<div class="shou">收起</div>
+<script>
+    var jia = document.getElementsByClassName("jia")[0];
+    var fa = document.getElementsByClassName("fa")[0];
+    var shou = document.getElementsByClassName("shou")[0];
+
+    jia.onclick = function () {
+        fa.style.height = "inherit";
+        this.style.display = "none";
+        shou.style.display = "block";
+    }
+
+    shou.onclick = function () {
+        fa.style.height = "98px";
+        this.style.display = "none";
+        jia.style.display = "block";
+    }
+
+</script>
+</body>
+</html>

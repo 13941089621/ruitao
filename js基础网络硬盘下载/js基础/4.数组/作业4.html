@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#div0 {
+				text-align: center;
+				width: 120px;
+			}
+			
+			p {
+				display: none;
+				width: 200px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div0">
+			陈亮的口味是？
+
+		</div>
+
+		<script type="text/javascript">
+			// 获取div0
+			var oDiv0 = document.getElementById("div0");
+			//  给p标签写数组
+			var aP = document.getElementsByTagName("p");
+			//  定义新数组，内容为要添加的字
+			var app = ["日韩", "欧美", "保加利亚", "尼日利亚", "克罗地亚"];
+			//  添加5个p标签
+			for (var i = 0; i < 5; i++) {
+				document.write("<p></p>")
+			}
+			//  把app数组的字 加入p标签
+			for (var i = 0; i < 5; i++) {
+				aP[i].innerHTML = app[i];
+			}
+			//  鼠标滑入div0时p标签出来
+			oDiv0.onmouseover = function() {
+				for (var i = 0; i < 5; i++) {
+					aP[i].style.display = "block";
+				}	
+					//  鼠标滑入div0时 所有p标签背景颜色无
+					for (var j = 0; j < 5; j++) {
+						aP[j].style.backgroundColor = "";
+					}
+			
+			}
+			//  移出p标签 p标签消失
+			for (var i = 0; i < 5; i++) {
+				aP[i].onmouseout = function() {
+					for (var j = 0; j < 5; j++) {
+						aP[j].style.display = "none";
+					}
+				}
+			}
+			//  p标签背景颜色变黄
+			for (var i = 0; i < 5; i++) {
+				aP[i].onmouseover = function() {
+					for (var j = 0; j < 5; j++) {
+						aP[j].style.backgroundColor = "";
+						aP[j].style.display = "block";
+					}
+					this.style.backgroundColor = "yellow";
+				}
+			}
+		</script>
+	</body>
+
+</html>

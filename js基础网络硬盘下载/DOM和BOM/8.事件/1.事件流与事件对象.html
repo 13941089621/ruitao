@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.div1{
+				width: 800px;
+				height: 800px;
+				background-color: indianred;
+			}
+			.div2{
+				width: 500px;
+				height: 500px;
+				background-color:greenyellow;
+			}
+			.div3{
+				width: 200px;
+				height: 200px;
+				background-color: deepskyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1">
+			<div class="div2">
+				<div class="div3"></div>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			
+			//  什么是事件？事件是JavaScript与文档与浏览器之间发生的特定的交互瞬间，
+			//  可使用事件监听或处理程序来预订事件，以便事件发生时执行相应的代码
+			
+			//  事件流
+			//  分为3个阶段：
+			//  1.事件捕获阶段    2. 处于目标阶段   3.事件冒泡阶段
+			
+			//  事件对象  event 代表当前事件的状态
+			//  例如：触发event对象的元素鼠标的位置，以及状态，按下的键等
+			//  只有在事件发生时event才有效
+			
+			
+			
+			
+			
+			
+			
+			
+			var oDiv1 = document.querySelector(".div1");
+			var oDiv2 = document.querySelector(".div2");
+			var oDiv3 = document.querySelector(".div3");
+			
+			oDiv1.onclick = function(e){
+				alert("div1")
+				e.stopPropagation()
+			}
+			oDiv2.onclick = function(e){
+				alert("div2")
+				e.stopPropagation()
+			}
+			oDiv3.onclick = function(e){
+				alert("div3");
+				//  阻止冒泡
+				e.stopPropagation()
+			}
+		</script>
+	</body>
+</html>

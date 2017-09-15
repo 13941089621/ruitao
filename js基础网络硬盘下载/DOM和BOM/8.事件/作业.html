@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			#wrap{
+				width: 800px;
+				height: 500px;
+				border: 1px solid black;
+				position: relative;
+			}
+			#box{
+				width: 50px;
+				height: 50px;
+				background-color: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var oBox = document.getElementById("box");
+			//  box宽高
+			var boxW = oBox.offsetWidth;
+			var boxH = oBox.offsetHeight;
+			//  wrap宽高
+			var wrapW = oWrap.offsetWidth - 2;
+			var wrapH = oWrap.offsetHeight - 2;
+			//  移动范围
+			var leftRange = wrapW - boxW;
+			var topRange = wrapH - boxH;
+			//  随机数函数
+			function random(a){
+				return Math.floor(Math.random() * (a + 1) )
+			}
+			//  最开始时
+			oBox.style.left = random(leftRange) + "px";
+			oBox.style.top = random(topRange) + "px";
+			//  运动 定时器
+			var timer = null;
+			var speed = 1;
+				timer = setInterval(function(){
+					if (oBox.offsetLeft <= leftRange ) {
+						oBox.style.left = oBox.offsetLeft + speed + "px";
+					} else {
+						clearInterval(timer)
+						alert("GAME OVER");
+					}
+				},20);
+			//  键盘按键时
+			window.onkeydown = function(e){
+				e = e || window.event;
+				if (e.keyCode == 37 || e.keyCode == 38 || e.keyCode == 39 ||e.keyCode == 40) {
+					clearInterval(timer);
+					timer = setInterval(function(){
+						if (oBox.offsetLeft >= 0 && oBox.offsetLeft <= leftRange && oBox.offsetTop >= 0 && oBox.offsetTop <= topRange) {
+							if (e.keyCode == 37) {
+								oBox.style.left = oBox.offsetLeft - speed + "px";
+							} else if (e.keyCode == 38) {
+								oBox.style.top = oBox.offsetTop - speed + "px";
+							} else if (e.keyCode == 39) {
+								oBox.style.left = oBox.offsetLeft + speed + "px";
+							} else if (e.keyCode == 40) {
+								oBox.style.top = oBox.offsetTop + speed + "px";
+							}
+						} else {
+							clearInterval(timer)
+							alert("GAME OVER");
+						}
+					},20)
+				}
+			} 
+		</script>
+	</body>
+</html>

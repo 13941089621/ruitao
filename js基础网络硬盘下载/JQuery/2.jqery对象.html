@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="mygirl">
+			<li id="g1" class="girlA">江疏影</li>
+			<li id="g2" class="girlA">范冰冰</li>
+			<li id="g3" class="girlB" d="test.jpg">赵丽颖</li>
+		</ul>
+		
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//  jquery对象
+			//  通过jQuery选择器选择的都是一个jQuery对象，而不是原生js的DOM对象
+			//  jQuery对象是将DOM对象进行包装后产生的对象
+			//  jQuery对象是jQuery独有的
+			//  jQuery对象无法使用原生js DOM对象的任何方法
+			//  原生js DOM对象也无法使用jQuery对象的任何方法
+			
+			var oGirl = document.getElementById("g1");
+			$(function(){
+				//  将原生 DOM对象转化为jQuery对象
+				var $girl = $(oGirl);
+				//  将jQuery对象转化为原生 DOM对象 使用数组下标
+				var oGirl1 = $("#g2")[0];
+				alert(oGirl1.innerHTML);
+			})
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 50px;
+				height: 50px;
+				display: inline-block;
+			}
+			.div1{
+				background-color: cornflowerblue;
+			}
+			.div2{
+				opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<script type="text/javascript">
+			for (var i = 1; i < 12; i++) {
+				if (i <= 6) {
+					for (var j = 1 ; j < 12 ; j++) {
+						if (j == 7 - i || j == 5 + i) {
+							document.write("<div class='div1'></div>")
+						} else {
+							document.write("<div class='div2'></div>")
+						}
+					}
+				} else {
+					for (var j = 1 ; j < 12 ; j++) {
+						if (j == i - 5 || j == 17 - i) {
+							document.write("<div class='div1'></div>")
+						} else {
+							document.write("<div class='div2'></div>")
+						}
+					}
+				}
+				document.write("<br />");
+			}
+		</script>
+	</body>
+</html>

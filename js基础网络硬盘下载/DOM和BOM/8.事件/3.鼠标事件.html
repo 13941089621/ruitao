@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 300px;
+				height: 300px;
+				background-color: dodgerblue;
+			}
+			.ab{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div class="ab">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			//  鼠标事件是web开发中最常用的事件
+			
+			//  1. 鼠标点击事件
+			//  1） onclick 单击鼠标左键时触发
+			var oWrap = document.getElementById("wrap");
+			var oab = document.getElementsByClassName("ab")[0];
+			oWrap.onclick = function(){};
+			//   2）ondblclick  双击鼠标左键
+			oWrap.ondblclick = function(){
+				//alert("双击了")
+			}
+			//  3）当按下鼠标任意键事件  按下鼠标任意触发
+			oWrap.onmousedown = function(e){
+				//  谷歌   IE
+				/*e = e || window.event
+				//  判断返回点击哪个键
+				//  返回1 点击了左键  返回2 点击了中间滚轮  返回3 点击了鼠标右键
+				alert(e.which);			
+					if(e.which==1){
+						alert("左键");				
+					}else if(e.which==2)
+					{
+						alert("滚轮");			
+					}
+					else if(e.which==3){
+						alert("右键");
+					}	
+//				alert("任意键")
+				*/
+			}
+			//  4)当鼠标移入元素范围之内是触发
+			//    触发一次
+			oWrap.onmouseenter = function(){
+//				alert("进来了")
+			}
+			oab.onmouseenter = function(){
+//				alert("晓得进来了")
+			}
+			//  5)当鼠标移出元素范围之内是触发
+			//    触发一次
+			oWrap.onmouseleave = function(){
+//				alert("出来了")
+			}
+			//   6)当鼠标移入当前元素的边界时触发
+			oWrap.onmouseover = function(){
+//				alert("入界了")
+			}
+			oab.onmouseover = function(){
+//				alert("晓得入界了")
+			}
+			//   6)当鼠标移出当前元素的边界时触发
+			oWrap.onmouseout = function(){
+//				alert("出界了")
+			}
+			//  7) 当释放鼠标按键时触发   包括左键 滚轮 右键
+			oWrap.onmouseup = function(){
+//				alert("释放了")
+			}
+			//  8）当鼠标在当前元素上移动时触发
+			//     只要移动，连续触发
+			oWrap.onmousemove = function(){
+				console.log("移动")
+			}
+		</script>
+	</body>
+</html>

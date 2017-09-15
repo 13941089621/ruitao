@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<style type="text/css">
+			p {
+				font-size: 20px;
+				text-indent: 2em;
+				line-height: 30px;
+			}
+			a{
+				text-decoration: none;
+				font-size: 30px;
+				color: cornflowerblue;
+			}
+			#father {
+				width: 220px;
+				height: 165px;
+				position: absolute;
+				left: -220px;
+				top: 20px;
+			}
+			
+			#son {
+				width: 12px;
+				height: 30px;
+				position: absolute;
+				right: -12px;
+				top: 72px;
+				background-color: pink;
+				font-size: 10px;
+				line-height: 15px;
+			}
+			#father1 {
+				width: 290px;
+				height: 220px;
+				position: absolute;
+				left: -290px;
+				top: 250px;
+			}
+			#father1>img{
+				width: 100%;
+				height: 100%;
+			}
+			#son1 {
+				width: 12px;
+				height: 30px;
+				background-color: pink;
+				position: absolute;
+				right: -12px;
+				top: 104px;
+				font-size: 10px;
+				line-height: 15px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="father">
+			<img src="http://img2.imgtn.bdimg.com/it/u=4017469211,2882386675&fm=21&gp=0.jpg"/>
+			<div id="son">
+				图片
+			</div>
+		</div>
+		<div id="father1">
+			<img src="http://img2.imgtn.bdimg.com/it/u=3265501421,2270517481&fm=15&gp=0.jpg"/>
+			<div id="son1">
+				图片
+			</div>
+		</div>
+		<p><a href="http://tech.southcn.com/t/2016-08/10/content_153430016.htm" target="_blank">chrome封杀Flash</a></p>
+		<p>Flash是一种交互式动画设计工具，用它可以将音乐，声效，动画以及富有新意的界面融合在一起，以制作出高品质的网页动态效果.</p>
+	<p><a href="http://baike.baidu.com/link?url=iqrIbihz-q8ncR1dXfz0poybSNxV4iu40O-xwFv_jg0BdWGtHu2LKrILkzlMhJXVUqncUdXNYmqBA9cGxvLyBq#6" target="_blank">Flash百科</a></p>
+		
+		
+
+	
+		
+		<p> canvas标签定义图形，比如图表和其他图像。 canvas标签只是图形容器，您必须使用脚本来绘制图形。 这个 HTML 元素是为了客户端矢量图形而设计的。它自己没有行为，但却把一个绘图 API 展现给客户端 JavaScript 以使脚本能够把想绘制的东西都绘制到一块画布上。</p>
+				<p><a href="http://www.w3school.com.cn/tags/tag_canvas.asp" target="_blank">canvas标签</a></p>
+		<p>我们能用Canvas做些什么？<br />
+			 1. 游戏：毫无疑问，游戏在HTML5领域具有举足轻重的地位。HTML5在基于Web的图像显示方面比Flash更加立体、更加精巧，Ohad认为运用Canvas制作的图像能够令HTML5游戏在流畅度和跨平台方面发挥更大的潜力。<br />
+			  2. 图表制作：图表制作时常被人们忽略，但无论企业内部还是企业间交流合作都离不开图表。现在一些开发者使用HTML/CSS完成图标制作，但Ohad认为大家完全可以用Canvas来实现。当然，使用SVG（可缩放矢量图形）来完成图表制作也是非常好的方法。<br />
+			3. banner广告：Flash曾经辉煌的时代，智能手机还未曾出现。现在以及未来的智能机时代，HTML5技术能够在banner广告上发挥巨大作用，用Canvas实现动态的广告效果再合适不过。 <br />
+			4. 模拟器：Ohad认为，无论从视觉效果还是核心功能方面来说，模拟器产品可以完全由JavaScript来实现。<br />
+			5. 远程计算机控制：Canvas可以让开发者更好地实现基于Web的数据传输，构建一个完美的可视化控制界面。<br />
+			6. 字体设计：对于字体的自定义渲染将完全可以基于Web，使用HTML5技术进行实现。<br />
+			7. 图形编辑器：Ohad预测，图形编辑器将能够100%基于Web实现。<br />
+			 8. 其他可嵌入网站的内容：类似图表、音频、视频，还有许多元素能够更好地与Web融合，并且不需要任何插件。Ohad呼吁大家继续挖掘Canvas的潜力，运用HTML5技术创造更多价值。
+
+		</p>
+		<p><a href="http://news.cnblogs.com/n/164214/" target="_blank">H5动画展示</a></p>
+		<p><a href="http://blog.tianya.cn/post-4756449-52292102-1.shtml" target="_blank">h5与Flash的优缺点</a></p>
+		<p><a href="http://www.ithome.com/html/it/127707.htm" target="_blank">HTML5最终能取代Flash吗？</a></p>
+		
+		
+			<script type="text/javascript">
+			var oFather = document.getElementById("father");
+			var oFather1 = document.getElementById("father1");
+			var oSon = document.getElementById("son");
+			var timer = null;
+			
+			function starMove (itarget){
+				clearInterval(timer);
+				var speed = null;
+				if (oFather.offsetLeft >= itarget) {
+					speed = -10;
+				}else {
+					speed = 10
+				}
+				timer = setInterval(function(){
+					if (oFather.offsetLeft == itarget) {
+						clearInterval(timer)
+					}else {
+						oFather.style.left = oFather.offsetLeft + speed + "px"
+					}
+				},20);
+			}
+			var time = null
+			function starMove1 (itarget){
+				clearInterval(time);
+				var speed = null;
+				if (oFather1.offsetLeft >= itarget) {
+					speed = -10;
+				}else {
+					speed = 10
+				}
+				time = setInterval(function(){
+					if (oFather1.offsetLeft == itarget) {
+						clearInterval(time)
+					}else {
+						oFather1.style.left = oFather1.offsetLeft + speed + "px"
+					}
+				},20);
+			}
+			oFather.onmouseover = function() {
+				starMove(0)
+			}
+			oFather.onmouseout = function() {				
+					starMove(-220)				
+			}
+			oFather1.onmouseover = function() {
+				starMove1(0)
+			}
+			oFather1.onmouseout = function() {				
+					starMove1(-290)				
+			}
+		</script>
+		
+	</body>
+
+</html>

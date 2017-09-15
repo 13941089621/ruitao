@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		
+		<!--  css 引用-->
+		<style type="text/css">
+			
+		</style>
+		
+		<!--		头部引用 js  一般不用		-->
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body>
+		<!--		html -->
+		<nav></nav>
+		<header></header>
+		
+		
+		<!--		内部引用		一般写法 -->
+		<!--		引入方法  -->
+		<script src="one.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//单行注释
+			/*
+			 * 多行注释（块级注释）
+			 * 
+			 */
+			
+			//	调试js的工具
+			//	1.alert  警告
+//			alert("hello world");
+			// 2.控制台
+//			console.log("hello world");
+			// 3.写入DOM			不经常用	
+//			document.write("hello js");
+			
+			// js的作用是  数据处理
+			//	数据分为：常量  在程序执行过程中，永远不会改变的		比如数字，字母，单词+++++++++++++
+			//		  ** 变量 **		必须自己定义
+			// var variable 变量
+			//	定义一个变量
+			//	var 变量定义标识符
+			//  a 是变量的名字
+			var a = 3;
+			//	变量定义的规范
+			//	1.由数字，字母，下划线，以及$组成，并且数字不能开头。
+			//	2.不能重名，计算机的无二义性。
+			//  3.不能与系统保留字重名。
+			//  4.驼峰法命名，见名知意。   var classNameNamber = "1245"
+			
+			//  数据类型
+			//  1.number 数字类型   
+			var b = 5;
+//			alert(typeof b)
+			//	2.字符串类型  string  加引号的是  "a" "2" 都是
+			var c = "hello"
+//			alert(typeof c)
+			//	3.boolean  布尔值
+			//  true 真的  false  假的
+			var d = true
+//			alert(typeof d)
+			//	4.ubdefined  未定义		基本不用
+//			var e;
+//			alert(e)
+			
+			//	5.null  空对象  object 对象
+			var f = null;
+//			alert(typeof f);
+			
+			//  数据类型转换
+			var h = 123;
+			var g = "123";
+			//	显式类型转换
+			//  number--> string
+			//	String();	把其他类型转换为string
+//			alert(typeof String(h))
+			//  string-->number
+			//	Number();	把其他类型转换为数字
+//			alert(typeof Number(g))
+			var num = 3.14;
+//			alert(String(num));
+			var numb = "3.14";
+//			alert(Number(numb));
+			//	parseInt()  将其他类型转换成整数类型	将小数点后全部去掉
+//			alert(parseInt(numb));
+			//	parseFloat()		将其他类型转换为浮点数（小数）
+//			alert(parseFloat(numb));
+//			alert(Number(true));					//1
+//			alert(Number(25));				//25
+//			alert(Number(null));			//0
+//			alert(Number(undefined));		//NAN  not a number
+//			alert(parseInt('100px'));			//100
+//			alert(parseInt('Lee456Lee'));		//	NAN
+//			alert(parseInt('12lee56lee'));		//12
+//			alert(parseInt('56.12'));		//56
+			
+			//	如何使用变量
+			//  运算符
+			//  算数运算符
+			//  + - * /  % (求模 取余)
+			var num1 = 3;
+			var num2 = 5;
+			alert(num1 % num2);
+			//  赋值运算符  =  
+			//  运算优先级非常非常低
+			
+			//  ***表达式***
+			//  由常量 和 变量和 运算符组成	单独存在常量，变量也是表达式
+			//	！！！表达式都有返回值！！！
+			
+			//  隐式类型转换
+			num1 = 3;
+			num2 = "5";
+			//  + 不只是数字的运算符，同时还是字符串的连接符。如果 + 两边有一个类型为字符串，那把另一个隐式转换
+			//		为字符串类型
+			//	- * / % 将字符串转化为数字，然后计算
+			alert(num1 + num2)
+			
+			//	复合运算符
+			var num3 = 7;
+			//	/= += -= *= %=
+			num3 += 1;     //相当于 num3 = num3 + 1
+			
+
+</script>
+	</body>
+	
+	<!--		外部引用-->
+	<script type="text/javascript">
+		
+	</script>
+</html>

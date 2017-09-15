@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="" id="" value="" />
+		<ul id="ul"></ul>
+		
+		
+		
+		<script type="text/javascript">
+			var oUl = document.getElementById("ul");
+			var oInput = document.getElementsByTagName("input")[0];
+			
+			window.onkeydown = function(e){
+				e = e || window.event;
+				if (e.altKey && e.keyCode == 13 && oInput.value != "") {
+					var newLi = document.createElement("li");
+					newLi.innerHTML = oInput.value;
+					oUl.appendChild(newLi);
+					
+				}
+			}
+		</script>
+	</body>
+</html>

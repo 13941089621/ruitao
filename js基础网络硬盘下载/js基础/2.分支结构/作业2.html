@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="input1" id="input1" value="" />
+			<input type="button" name="" id="btn" value="" />
+		</form>
+		
+		
+		
+		<script type="text/javascript">
+			var oInput = document.getElementById("input1")
+			var oBtn = document.getElementById("btn");
+			
+			oBtn.onclick = function(){
+				var num = parseInt(oInput.value);
+				var ji = num % 2 == 1;
+				if (ji) {
+					alert(num + "是奇数");
+				} else {
+					alert(num + "是偶数");
+				}
+			}
+		</script>
+	</body>
+</html>

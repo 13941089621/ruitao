@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<select name="" id="city">
+			<option>请选择城市</option>
+		</select>
+		<select name="" id="area">
+			<option>请选择地区</option>
+		</select>
+		
+		
+		
+		<script type="text/javascript">
+			var oCity = document.getElementById("city");
+			var oArea = document.getElementById("area");
+			
+			
+			var arrCity = ["沈阳市","大连市","鞍山市"];
+			var syCity = ["铁西区","铁东区","皇姑区","沈河区","和平区","大东区"];
+			var dlCity = ["沙河口区","中山区","西岗区","甘井子区","金州区"];
+			var asCity = ["铁西区","铁东区","千山区","立山区"]
+			var str = null;
+			for (var i = 0; i < 3; i++) {
+				oCity.innerHTML = oCity.innerHTML + "<option>" + arrCity[i] + "</option>";
+			}
+			oCity.onchange = function(){
+				oArea.innerHTML = "";
+				if (oCity.value == "沈阳市") {
+					for(var i = 0; i < syCity.length; i++){
+						oArea.innerHTML = oArea.innerHTML + "<option>" + syCity[i] + "</option>"
+					}
+				}
+				if (oCity.value == "大连市") {
+					for (var i = 0; i < dlCity.length ; i++) {
+						oArea.innerHTML = oArea.innerHTML + "<option>" + dlCity[i] + "</option>"
+					}
+				}
+				if (oCity.value == "鞍山市" ) {
+					for (var i = 0; i < asCity.length ; i++) {
+						oArea.innerHTML = oArea.innerHTML + "<option>" + asCity[i] + "</option>"					}
+				}
+			}
+		</script>
+	</body>
+</html>

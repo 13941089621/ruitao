@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.div1{
+				width: 200px;	
+				height: 200px;
+				background-color: red;
+			}
+			.div2{
+				width: 400px;
+				height: 400px;
+				background-color: lightblue;
+			}
+			.div3{
+				width: 300px;
+				height: 300px;
+				background-color: hotpink;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1"></div>
+		<div class="div1"></div>
+		<div class="div1 div2"></div>
+		<div class="div3"></div>
+		
+		
+		<script type="text/javascript">
+			//  通过class名获取元素的集合
+			//	document.getElementsByClassName()获取元素，返回的是元素集合
+			var oDiv1 = document.getElementsByClassName("div1")[0];
+			var oDiv2 = document.getElementsByClassName("div2")[0];
+			var oDiv3 = document.getElementsByClassName("div3")[0];
+			
+			//  通过多个class获取元素
+			var oDiv4 = document.getElementsByClassName("div1 div2")[0];    // 获取class = "div1 div2"  
+			oDiv4.innerHTML = "111";
+			oDiv4.style.border = "1px solid black"
+		</script>
+	</body>
+</html>

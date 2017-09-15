@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		
+		
+		<script type="text/javascript">
+			window.onkeydown = function(e){
+				e = e || window.event;
+				//  按下shift键返回true，其他返回false
+				//alert(e.shiftKey);
+				//  按下alt键返回true，其他返回false
+				//alert(e.altKey)
+				//  按下ctrl键返回true，其他返回false
+				//alert(e.ctrlKey)
+				if (e.altKey && e.shiftKey && e.ctrlKey && e.keyCode == 65) {
+					alert("ctrl + a")
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<label for="input1">请输入美元金额： </label>
+			<input type="text" name="" id="input1" value="" />
+			<input type="button" name="" id="input2" value="付款" />
+		</form>
+		
+		
+		<script type="text/javascript">
+			var input1 = document.getElementById("input1");
+			var input2 = document.getElementById("input2");
+			input2.onclick = function(){
+				var input3 = Number(input1.value);
+				var input4 = input3 % 20;
+				var input41 = parseInt(input3/20);
+				var input5 = input4 % 10;
+				var input51 = parseInt(input4/10);				
+				var input61 = parseInt(input5/5);
+				var input6 = input5 % 5;
+				var input7 = "需要用" + input41 + "张20美元，" + input51 + "张10美元，" +
+				input61 + "张5美元，" + input6 + "张1美元.";
+				alert(input7)
+			}
+		</script>
+	</body>
+</html>

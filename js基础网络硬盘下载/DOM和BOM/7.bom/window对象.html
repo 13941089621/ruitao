@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--
+			
+			window 对象  
+			所有浏览器都支持window对象，所有的JavaScript的全局对象，变量，函数都会自动成为window对象的成员。
+			全局对象成为window对象的一个子对象
+			全局变量成为window对象的一个子属性
+			全局函数成为window对象的一个子方法
+		-->
+		
+		<script type="text/javascript">
+			//  获取窗口相对于屏幕顶端的位置
+			//  支持IE chrome Safari opers
+//			alert(window.screenTop);
+			//  支持 火狐等
+//			alert(window.screenY);
+			
+			//  支持IE chrome Safari opers
+//			alert(window.screenLeft);
+			//  支持 火狐等
+//			alert(window.screenX)
+
+			//  获取浏览器窗口内部高度和宽度
+			//  支持IE9以上，Safari chrome 欧朋 火狐  也就是除了IE低版本
+//			alert(window.innerHeight);
+//			alert(window.innerWidth);                 `
+			
+			//  获取整个浏览器窗口大小
+//			alert(window.outerHeight);
+//			alert(window.outerWidth);
+			
+			//  打开窗口
+			//  弹出小广告新窗口    有时被拦截的
+			//  参数1 地址   参数2 目标位置   参数3 属性（宽 高 窗口大小是否可调节，是否出现滚动条 是否出现状态栏等）
+//			var a = window.open("https://www.baidu.com","newwindow1","menubar=0,width=800,height=600,top=500,left=500");
+//			window.open("https://www.163.com","newwindow2","width:400,height:300");
+			
+			//  窗口关闭
+//			a.close();
+			
+			//  移动窗口
+			//  参数一  向x轴移动多少px  参数2  向y轴移动
+//			a.moveTo("200","500")
+
+			//  改变窗口大小
+			//  参数1  宽  参数2 高
+//			a.resizeTo("200","400")
+			
+			//  系统对话框
+			//  1.警告对话框
+//			alert("aaaa")
+			//  2.确认对话框
+//			window.confirm("你愿意吗?")
+			//confirm("你愿意吗?")  // 等同于上一个
+		/*	if (window.confirm("你愿意吗?")) {
+				alert("愿意")
+			} else {
+				alert("不")
+			}
+		*/
+			//  3.提示对话框
+			//  参数为提示语，点击确定时返回输入的，点击取消时返回null
+			alert(prompt("到时候了，滚吧"));
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

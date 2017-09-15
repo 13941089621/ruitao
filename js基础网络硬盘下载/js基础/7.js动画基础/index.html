@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				position: absolute;
+				top: 50px;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="btn1" id="btn1" value="开始运动" />
+		<div id="div1">
+			
+		</div>
+		
+		
+		<script type="text/javascript">
+			var oBtn1 = document.getElementById("btn1");
+			var oDiv1 = document.getElementById("div1");
+			
+			
+			//  运动框架  匀速运动框架
+			
+			
+			
+			
+			//   让div运动起来
+			var timer = null;
+			
+			
+			function starMove (){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					//   控制速度
+					var spead = 7;
+					if (oDiv1.offsetLeft >= 500) {
+						clearInterval(timer);
+					}else{
+						oDiv1.style.left = oDiv1.offsetLeft + spead + "px";
+					}
+					
+				},20)
+			}
+			oBtn1.onclick = function(){
+				starMove();
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			var str = "a1b2c3s4j5k6e7f8";
+			str = str.replace(/[^abc]/g,"x")
+//			alert(str)
+			var str1 = "a1B2c3D4e5f6G7";
+			str1 = str1.replace(/[a-zA-Z]/g,"0");
+//			alert(str1)
+			var str2 = "2016-08-26";
+			str2 = str2.replace(/[0-9-]/g,"0");
+//			alert(str2);
+			var str3  = "this is a girl";
+			str3 = str3.replace(/\Bi\b/g,"0");
+//			alert(str3);
+			var str4 = "1234567800000";
+			str4 = str4.replace(/\d{3,6}?/g,"x")
+//			alert(str4)   
+			var str5 = "2016-08-31";
+			str5 = str5.replace(/(?:\d{4})-(\d{2})-(\d{2})/g,"$2-$3-$1");
+//			alert(str5)
+			         
+		</script>
+	</body>
+</html>

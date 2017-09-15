@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 50px;
+				background-color: red;
+				position: absolute;
+				left: 30px;
+				top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		
+		
+		
+		
+		<script type="text/javascript">
+			var oDiv = document.getElementById("div1");
+			
+			var timer = null;
+			function starMove (itarget){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					var speed = (itarget - oDiv.offsetWidth) / 10;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					if (oDiv.offsetWidth == itarget) {
+						clearInterval(timer);
+					} else {
+						oDiv.style.width = oDiv.offsetWidth + speed + "px";
+					}
+				},20)
+			}
+			oDiv.onmouseover = function(){
+				starMove(500)
+			}
+			oDiv.onmouseout = function(){
+				starMove(100)
+			}
+		</script>
+	</body>
+</html>

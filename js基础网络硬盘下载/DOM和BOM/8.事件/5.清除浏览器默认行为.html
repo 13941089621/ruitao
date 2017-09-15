@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+			<a href="https://www.baidu.com" id="aaa">百度</a>
+			
+			<script type="text/javascript">
+				var a = document.getElementById("aaa");
+				a.onclick = function(e){
+					e = e || window.event;
+					if (window.event) {
+						//  IE 取消浏览器默认行为
+						e.returnValue = false
+					} else{
+						// 其他浏览器 取消浏览器默认行为
+						e.preventDefault();
+					}
+					alert("去百度？没门！")
+				}
+			</script>
+	</body>
+</html>

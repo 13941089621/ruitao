@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//二分查数组方式
+			var arr=[3,7,10,31,60,100];
+			
+			function zhong(arr , low ,higt ,key){
+				if(low>higt){ 
+					return -1
+				}
+				var mid =parseInt((low+higt) / 2)
+				if(arr[mid] == key){
+					return mid
+				}else if(arr[mid]> key){
+					higt =mid-1
+					return zhong(arr, low, higt, key)
+				}else if(arr[mid]< key){
+					low =mid +1
+					return zhong(arr, low, higt, key)
+				}
+			}
+			var cl =zhong(arr, 0 ,arr.length, 7)
+			console.log(cl)
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

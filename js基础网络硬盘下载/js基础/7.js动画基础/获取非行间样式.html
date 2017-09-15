@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 400px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+//			oDiv1.style.backgroundColor = "yellow";
+			
+			//  所有用.能表示的 用[]加字符串的形式是等价的
+//			oDiv1.style["backgroundColor"] = "yellow";
+			
+			//  获取非行间样式
+			//  webkit 内核使用 getComputedStyle
+			alert(getComputedStyle(oDiv1,false)["height"]);
+			//  IE兼容的写法
+//			alert(oDiv1.currentStyle["height"]);
+			
+			//  获取非行间样式  
+			function getStyle (obj,name){
+				if (obj.currentStyle) {
+					return obj.currentStyle[name];
+				} else {
+					return getComputedStyle(obj,false)[name]
+				}
+			}
+			alert(getStyle(oDiv1,"width"))
+		</script>
+	</body>
+</html>

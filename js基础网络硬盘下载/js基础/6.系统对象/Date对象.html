@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p {
+				text-align: center;
+				font-size: 100px;
+				color: mediumpurple;
+				text-shadow: 5px 5px 5px plum,5px 5px 5px plum,5px 5px 5px plum;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p id="p1"></p>
+
+		<script type="text/javascript">
+			var oP = document.getElementById("p1");
+			//  Data对象
+			//  创建一个
+			var now = new Date();
+			//			alert(now)
+			//  获取时间
+			//  获取年份
+			var year = now.getFullYear();
+			console.log(year);
+			//  月份
+			//  从0开始  范围是 0--11
+			var month = now.getMonth() + 1;
+			console.log(month);
+			//  日
+			var day = now.getDate();
+			console.log(day);
+			//  星期  范围是0--6 星期天是0
+			var week = now.getDay();
+			console.log(week);
+			//  小时
+			var hour = now.getHours();
+			console.log(hour);
+			//  分钟
+			var mins = now.getMinutes();
+			console.log(mins);
+			//  秒
+			var sec = now.getSeconds();
+			console.log(sec);
+			//  获取当前毫秒数
+			var millSeconds = now.getMilliseconds();
+			console.log(millSeconds);
+			//  获取1970年到现在的毫秒数    电子都是从1970年开始计数的
+			var time = now.getTime();
+			console.log(time);
+			//  获取指定时间
+			var future = new Date(2018, 6, 15, 8, 30, 30);
+			//			alert(future)
+			//  练习
+			//			clearInterval(timer)
+			//			var timer = null;
+			//			function showtime(){
+			//				var datea = new Date()		;
+			//				var houra = datea.getHours();
+			//				var minsa = datea.getMinutes();
+			//				var seca = datea.getSeconds();
+			//				if (seca < 10) {
+			//					seca = "0" + seca;					
+			//				}
+			//				if (minsa < 10) {
+			//					minsa = "0" + minsa;
+			//				}
+			//				oP.innerHTML = houra + ":" + minsa + ":" + seca;
+			//			}
+			//			showtime()
+			//			timer = setInterval(showtime(),1000);
+			function futuretime() {
+				var futureshiyi = new Date(2016, 9, 1, 0, 0, 0);
+				var time1 = futureshiyi.getTime();
+				var nowdate = new Date();
+				var time2 = nowdate.getTime();
+				var timee = time1 - time2
+					//				alert(timee);
+//				var fmoon = parseInt(timee / (1000 * 60 * 60 * 24 * 30));
+//				var rmoonyu = timee % (1000 * 60 * 60 * 24 * 30);
+				var fday = parseInt(timee / (1000 * 60 * 60 * 24));
+				var rdayyu = timee % (1000 * 60 * 60 * 24);
+				var fhour = parseInt(rdayyu / (1000 * 60 * 60));
+				var rhouryu = timee % (1000 * 60 * 60);
+				var fmins = parseInt(rhouryu / (1000 * 60));
+				var rminsyu = timee % (1000 * 60);
+				var fsec = parseInt(rminsyu / 1000);
+				if (fsec < 10) {
+					fsec = "0" + fsec
+				}
+				if (fmins < 10) {
+					fmins = "0" + fmins
+				}
+				if (fhour < 10) {
+					fhour = "0" + fhour
+				}
+				if (fday < 10) {
+					fday= "0" + fday
+				}
+				oP.innerHTML = fday + "天 " + fhour + "小时 " + fmins + "分 " + fsec + "秒 "
+			}
+			futuretime()
+			setInterval(futuretime, 1000)
+		</script>
+	</body>
+
+</html>

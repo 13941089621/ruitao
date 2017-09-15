@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				font-size: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/z.jpg" id="c"/>
+		<div id="wrap"></div>
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			/*
+			var c = document.getElementById("c");
+			
+			//  iOS系统的orientationchange事件(苹果手机)
+			//  当改变手机屏幕查看模式时触发，window事件  就是竖屏变横屏时触发
+			//  包含三个属性值
+			//  90为手机向左旋转横屏模式
+			//  0为手机竖屏模式（肖像模式）
+			//  -90为手机向右旋转横屏模式
+			//  180为手机倒立模式（现在没有手机用）
+			window.addEventListener("orientationchange",function(){
+				alert(window.orientation);
+			},false)
+			
+			//  deviceorientation方向传感器数据事件  可以获取手机静止状态下的方向数据
+			//  支持安卓，苹果
+			//  当手机加速针方向发生变化时触发(包括手机所处角度 方位 朝向)
+			//  有三个值  
+            //  alpha  在围绕Z轴旋转时(左右旋转)与Y轴的角度差(0 -- 360 之间的浮点数)
+			//  beta   在围绕X轴旋转时(前后旋转)与Z轴的角度差(-180 -- 180 之间的浮点数)
+			//  gamma  在围绕Y轴旋转时(设备扭转)与Z轴的角度差(-180 -- 180 之间的浮点数)
+			
+			window.addEventListener("deviceorientation",function(e){
+				oWrap.innerHTML = "alpha:" + e.alpha + "beta:" + e.beta + "gamma:" + e.gamma; 
+				//  e.webkitCompassHeading  安卓手机不好用
+				c.style.webkitTransform = "rotate(" + e.webkitCompassHeading + "deg)";
+			})
+			*/
+			
+			//  运动传感器事件，可以获得手机在运动状态下的运动加速度等数据
+			//  acceleration  属性    包括X Y Z 三个属性的对象，在不考虑重力加速度的情况下，告诉你每个方向的加速度
+			//  accelerationIncludingGravity  包括X Y Z 三个属性的对象 在考虑重力加速度的情况下，告诉你每个方向的加速度
+			//  rotationRate: 包含 alpha beta gamma 三个属性
+			window.addEventListener("devicemotion",function(e){
+				oWrap.innerHTML = "a:" + e.rotationRate.alpha * 10000 + "b:" + e.acceleration.x * 10000 + "c:" + e.accelerationIncludingGravity.x * 10000;
+				
+				
+			},false)
+		</script>
+	</body>
+</html>

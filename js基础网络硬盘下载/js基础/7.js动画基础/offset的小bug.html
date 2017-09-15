@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		
+		<script src="js/getStyle.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			//  offsetWidth  把padding border 都包括里了，，，以后不用offset
+			//  用引用非内联样式
+			function starMove (){
+				var speed = -1;
+				setInterval(function(){
+					oDiv1.style["width"] = parseInt(getStyle(oDiv1,"width")) + speed + "px"
+				},20)
+			}
+			starMove();
+		</script>
+	</body>
+</html>

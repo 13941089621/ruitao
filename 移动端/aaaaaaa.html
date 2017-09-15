@@ -1,0 +1,33 @@
+@@ -23,25 +23,25 @@
+    <div class="hard_top">
+
+      <ul class="hard_ul" id="above">
+        {foreach:items=ApiLocal::run('getPositionCategoryListTop') item=$first key=$key}
+        ／／{foreach:items=ApiLocal::run('getCategoryListTop') item=$first key=$key}
+        <li class="item">
+          <a target="_blank" href="{url:/site/pro_list/posi_cat/$first[id]}" index="{$key}">{$first['name']}</a>
+          ／／<a target="_blank" href="{url:/site/pro_list/cat/$first[id]}" index="{$key}">{$first['name']}</a>
+        </li>
+        {/foreach}
+      </ul>
+      <!--上面的三级菜单对应的下面-->
+
+      <div class="subcates leftside" style="display:none;" id="below">
+        {foreach:items=ApiLocal::run('getPositionCategoryListTop') item=$first key=$key}
+        ／／{foreach:items=ApiLocal::run('getCategoryListTop') item=$first key=$key}
+        <div class="subcate subcate-{$key}">
+          {foreach:items=ApiLocal::run('getPositionCategoryByParentid',array('#parent_id#',$first['id']))  item=$second}
+         ／／ {foreach:items=ApiLocal::run('getCategoryByParentid',array('#parent_id#',$first['id']))  item=$second}
+          <div class="cate-name">
+            <a target="_blank" href="{url:/site/pro_list/posi_cat/$second[id]}">{$second['name']}</a>
+            ／／<a target="_blank" href="{url:/site/pro_list/cat/$second[id]}">{$second['name']}</a>
+
+          </div>
+          <div class="cate-content clearfix">
+            {foreach:items=ApiLocal::run('getPositionCategoryByParentid',array('#parent_id#',$second['id']))  item=$third}
+            <a target="_blank" href="{url:/site/pro_list/posi_cat/$third[id]}">{$third['name']}</a>
+            ／／{foreach:items=ApiLocal::run('getCategoryByParentid',array('#parent_id#',$second['id']))  item=$third}
+            ／／<a target="_blank" href="{url:/site/pro_list/cat/$third[id]}">{$third['name']}</a>
+            {/foreach}
+          </div>
+          {/foreach}

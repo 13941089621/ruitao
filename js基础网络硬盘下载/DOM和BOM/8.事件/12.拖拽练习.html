@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			#wrap{
+				width: 500px;
+				height: 500px;
+				border: 1px solid black;
+				position: relative;
+			}
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: greenyellow;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="wrap">
+			<div id="box">
+			
+			</div>
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			var oBox = document.getElementById("box");
+			var oWrap = document.getElementById("wrap");
+			
+			
+				
+			oBox.onmousedown = function(e){
+				e = e || window.event;
+				//  获取鼠标位置
+				var x1 = e.clientX;
+				var y1 = e.clientY;
+				//  获取Box的位置
+				var boxLeft = oBox.offsetLeft;
+				var boxTop = oBox.offsetTop;
+				document.onmousemove = function(e){
+					e = e || window.event;
+					//  获取鼠标位置
+					var x2 = e.clientX;
+					var y2 = e.clientY;
+					//  计算box移动的距离
+					var lessx = x2 - x1;
+					var lessy = y2 - y1;
+					oBox.style.left = boxLeft + lessx + "px";
+					oBox.style.top = boxTop + lessy + "px";
+				}
+			}
+			oBox.onmouseup = function(e){
+				e = e || window.event;
+				document.onmousemove = null;
+			}
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

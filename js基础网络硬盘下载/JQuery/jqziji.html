@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1">
+			<p>123</p>
+			0000
+		</div>
+		<div class="div1"></div>
+		<div class="div1"></div>
+		<div class="div1"></div>
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			
+			$(function(){
+				
+				$(".div1").eq(1).css({"height":"400px",width:500,backgroundColor:"red",fontSize:"100px"}).html("<p>ads</p>00").attr("class","div2")
+				
+				$(".div1").each(function(i){
+					$(".div1").eq(i).html(i)
+				})
+				
+//				alert($(".div1").eq(2).index())
+				
+			})
+		</script>
+	</body>
+</html>

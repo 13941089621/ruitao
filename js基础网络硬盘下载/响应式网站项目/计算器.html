@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			td{
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				vertical-align: middle;
+			}
+			tr td:nth-child(4n)
+		</style>
+	</head>
+	<body>
+		<input type="text" name="input1" id="input1" value="0" />
+		<table border="1" cellspacing="0" cellpadding="0">
+			<tr><td>AC</td><td>+/-</td><td>%</td><td>➗</td></tr>
+			<tr><td>7</td><td>8</td><td>9</td><td>X</td></tr>
+			<tr><td>4</td><td>5</td><td>6</td><td>-</td></tr>
+			<tr><td>1</td><td>2</td><td>3</td><td>+</td></tr>
+			<tr><td colspan="2">0</td><td>.</td><td>=</td></tr>
+		</table>
+		
+		
+		<!--<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="../../lianxi/js/jquery-2.2.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var reg = /^(((0.)0*)?[1-9][0-9]*\.?[0-9]*)|0*$/;
+				
+				$("td").each(function(i){
+					
+					if (i % 4 == 3 || i == $("td").length - 1) {
+						$("td").eq(i).css("backgroundColor","#FF8E43")
+					} else if (i > 3 && i % 4 != 3) {
+						$("td").eq(i).click(function(){	
+							
+								
+								
+								if (reg.test($("input").val())) {
+									var $oldval = $("input").val();
+									if ($("input").val()!=0 || i == $("td").length - 2) {
+										$("input").val($oldval + $(this).text())
+									} else if (i != $("td").length - 2) {
+										$("input").val($(this).text())
+									}
+								}
+						})
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

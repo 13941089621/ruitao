@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body>
+		<form action="" method="post" name="myform">
+			<input type="button" class="button" value="获取手机验证码" name="phone" onclick="showtime(5)">
+		</form>
+		<script>
+			function showtime(t) {
+				document.myform.phone.disabled = true;
+				for(i = 1; i <= t; i++) {
+					window.setTimeout("update_p(" + i + "," + t + ")", i * 1000);
+				}
+
+			}
+
+			function update_p(num, t) {
+				if(num == t) {
+					document.myform.phone.value = " 重新发送 ";
+					document.myform.phone.disabled = false;
+				} else {
+					printnr = t - num;
+					document.myform.phone.value = " (" + printnr + ")秒后重新发送";
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="button" id="btn" value="点击" />
+		
+		<script type="text/javascript">
+			
+			//  addEventListener  事件监听
+			//  同一个元素使用此方法，多次使用同一事件时不会覆盖，会按照添加顺序依次执行
+			//  使用方法
+			//  参数1：事件名  例如 点击事件 click  不在前面加on，不写成onclick
+			//  参数2：处理程序  事件后加的函数，可以是匿名，可以是有名字的
+			//  参数3：是否在捕获阶段执行 默认为false，冒泡阶段执行  用的时候较少
+			//  addEventListener(参数1,参数2,参数3)
+			
+			
+			var oBtn = document.getElementById("btn");
+			
+			//  绑定事件
+			oBtn.addEventListener("click",function(){
+				alert("点击了，连点哦，第一次")
+			})
+			
+			oBtn.addEventListener("click",function(){
+				alert("点击了，连点哦，第二次")
+			})
+			
+			function fn(){
+				alert("点击了，连点哦，第三次")
+			}
+			oBtn.addEventListener("click",fn);
+			
+			//  移除事件监听  removeEventListener
+			//  需要三个参数，和addEventListener的参数一样
+			//  但是，如果添加监听时使用的是匿名函数，无法移除
+			
+			
+			oBtn.removeEventListener("click",function(){
+				alert("点击了，连点哦，第一次")
+			})
+			
+			oBtn.removeEventListener("click",fn);
+		</script>
+	</body>
+</html>

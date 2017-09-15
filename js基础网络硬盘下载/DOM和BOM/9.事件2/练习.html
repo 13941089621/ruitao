@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				position: absolute;
+				bottom: 0;
+				list-style: none;
+			}
+			#wrap li{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				margin-right: 20px;
+				position: absolute;
+				transition: .8s;
+				vertical-align: bottom;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<ul id="wrap"></ul>
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			
+			for (var i = 0; i < 5; i++) {
+				var newli = document.createElement("li"); 
+				newli.style.width = "100px";
+				newli.style.height = "100px";
+				newli.onmouseover = function(){
+					this.style.width = "200px";
+					this.style.height = "200px";
+					
+				}
+				newli.onmouseout = function(){
+					this.style.width = "100px";
+					this.style.height = "100px";
+				}
+				if (i > 0) {
+					var liw = oWrap.children[i - 1].offsetWidth;  
+				} else {
+					var liw = oWrap.children[i].offsetWidth
+				} 
+			
+				newli.innerHTML = i;
+				newli.style.left =0* i + "px";
+				newli.style.bottom = "0px";
+				oWrap.appendChild(newli);
+			}
+		</script>
+	</body>
+</html>

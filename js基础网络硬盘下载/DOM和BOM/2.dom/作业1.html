@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.div0 {
+				width: 600px;
+				margin: 0 auto;
+			}
+			
+			.div1 {
+				text-align: center;
+				background-color: #ccc;
+				margin: 20px 0;
+				padding: 10px;
+			}
+			
+			.div1 input {
+				width: 100px;
+				height: 50px;
+				margin-right: 15px;
+				font-size: 24px;
+				text-align: center;
+				line-height: 50px;
+				background-color: white;
+				border-radius: 8px;
+			}
+			
+			#btn5 {
+				margin-right: 0;
+			}
+			
+			#div2>div {
+				height: 50px;
+				background-color: #CCCCCC;
+				margin-bottom: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="div0">
+			<div class="div1">
+				<input type="button" id="btn1" value="添加" />
+				<input type="button" id="btn2" value="删除" />
+				<input type="button" id="btn3" value="小于0" />
+				<input type="button" id="btn4" value="大于0" />
+				<input type="button" id="btn5" value="刷新" />
+			</div>
+			<div id="div2">
+
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var oDiv = document.getElementById("div2");
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			var oBtn3 = document.getElementById("btn3");
+			var oBtn4 = document.getElementById("btn4");
+			var oBtn5 = document.getElementById("btn5");
+			var index = 0;
+			
+			var num = null;
+			function random(n, m) {
+				num = Math.floor(Math.random() * (m - n + 1) + n);
+				if(num != 0){
+					return num;
+				}else {
+					random(n,m);
+					return num
+				}
+			}
+			oBtn1.onclick = function() {
+				var oDiv1 = document.createElement("div");
+				oDiv1.innerHTML = random(-5, 5);
+				oDiv.insertBefore(oDiv1, oDiv.children[0]);
+			}
+			oBtn2.onclick = function() {
+				if (oDiv.children.length != 0) {
+					oDiv.removeChild(oDiv.children[0]);
+				}
+			}
+			oBtn3.onclick = function() {
+				for (var i = 0; i < oDiv.children.length; i++) {
+					oDiv.children[i].style.display = "block";
+					if (oDiv.children[i].innerHTML > 0) {
+						oDiv.children[i].style.display = "none";
+					}
+				}
+			}
+			oBtn4.onclick = function() {
+				for (var i = 0; i < oDiv.children.length; i++) {
+					oDiv.children[i].style.display = "block";
+					if (oDiv.children[i].innerHTML < 0) {
+						oDiv.children[i].style.display = "none";
+					}
+				}
+			}
+			oBtn5.onclick = function() {
+				for (var i = 0; i < oDiv.children.length; i++) {
+					oDiv.children[i].style.display = "block";
+				}
+			}
+		</script>
+	</body>
+
+</html>

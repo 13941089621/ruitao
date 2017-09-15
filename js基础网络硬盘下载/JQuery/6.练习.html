@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="all1">
+			<div class="wrap">ds</div>
+			<div class="wrap">geow</div>
+			<div class="wrap">e4rr5</div>
+		</div>
+		<div id="all2">
+			<div class="wrap">dsbrew</div>
+			<div class="wrap">geoherw</div>
+			<div class="wrap">e4rewrr5</div>
+		</div>
+		
+		
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function($){
+				var config = {
+					backgroundColor:"yellow",
+					fontSize:"40px"
+				}
+				$.fn.extend({
+					
+					"glass":function(gconfig){
+						var newconfig = $.extend({},config,gconfig)
+						
+						return this.each(function(){
+							var $this = $(this);
+							var $wrap = $this.find(".wrap")
+							$wrap.css(newconfig)
+						}) 
+					}
+				})
+			})(window.jQuery)
+			
+			$(function(){
+				$("#all1").glass({"backgroundColor":"blue"})
+				$("#all2").glass({"backgroundColor":"red"})
+			})
+			
+		</script>
+	</body>
+</html>

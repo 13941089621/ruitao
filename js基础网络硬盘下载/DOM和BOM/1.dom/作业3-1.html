@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.div0 {
+				width: 800px;
+				margin: 10px auto;
+			}
+			
+			#div1 {
+				height: 300px;
+				border: 1px solid #CCCCCC;
+				border-radius: 8px;
+				text-align: center;
+			}
+			
+			#div2 {
+				height: 500px;
+				border: 1px solid #CCCCCC;
+				border-radius: 8px;
+				margin-top: 20px;
+				/*overflow: scroll;*/
+			}
+			
+			.nav {
+				height: 50px;
+				overflow: hidden;
+				color: orange;
+			}
+			
+			.nav p {
+				margin-left: 50px;
+				float: left;
+				font-size: 30px;
+				height: 50px;
+				line-height: 50px;
+			}
+			
+			.nav span {
+				margin-right: 20px;
+				float: right;
+				font-size: 26px;
+				/*color: #CCCCCC;*/
+				height: 50px;
+				line-height: 50px;
+			}
+			
+			.nav span a {
+				color: orange;
+				text-decoration: none;
+			}
+			
+			textarea {
+				resize: none;
+				font-size: 22px;
+			}
+			
+			.ab {
+				height: 96px;
+				line-height: 96px;
+				padding: 0 20px;
+				overflow: hidden;
+			}
+			
+			.ab a {
+				float: left;
+				font-size: 20px;
+				color: black;
+				text-decoration: none;
+				padding-right: 30px;
+			}
+			
+			.ab input {
+				float: right;
+				width: 80px;
+				height: 40px;
+				border-radius: 8px;
+				border: 0;
+				background-color: darkorange;
+				font-size: 20px;
+				margin-top: 30px;
+				color: white;
+			}
+			
+			.writer {
+				position: relative;
+				
+				width: 710px;
+				/*height: 100px;*/
+				border: 1px solid #CCCCCC;
+				border-radius: 8px;
+				margin: 10px auto 0;
+				padding: 0 20px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div class="div0">
+			<div id="div1">
+				<div class="nav">
+					<p>LOGO</p> <span id="span1"><a href="###">点击领取红包</a></span></div>
+				<div>
+					<textarea name="aa" rows="6" cols="68" id="textarea"></textarea>
+				</div>
+				<div class="ab">
+					<a href="###">表情</a>
+					<a href="###">图片</a>
+					<a href="###">视频</a>
+					<a href="###">话题</a>
+					<a href="###">文章</a>
+					<input type="button" id="btn1" value="发布" />
+				</div>
+			</div>
+			<div id="div2">
+
+			</div>
+
+		</div>
+		
+		<script src="js/tween.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oSpan = document.getElementById("span1");
+			var oTextarea = document.getElementById("textarea");
+			var oBtn = document.getElementById("btn1");
+			var oDiv = document.getElementById("div2");
+			var timer = null;
+			var time = null;
+			
+			
+			oTextarea.maxLength = 140;
+				
+		
+			//  获取焦点时
+			oTextarea.onfocus = function() {
+				//  键盘抬起事件，监测value
+					oTextarea.onkeyup = function(){
+						var num = oTextarea.value.length;
+						oSpan.innerHTML = "您还可以输入" + (140 - num) + "个字";
+					}
+					oSpan.innerHTML = "您还可以输入" + 140  + "个字";
+					oSpan.setAttribute("style", "color: #CCCCCC;")
+			}
+			oTextarea.onblur = function(){
+				if (this.value == "") {
+					oSpan.innerHTML = "点击领取红包";
+					oSpan.setAttribute("style", "color: orange;")
+				}
+				
+			}
+			oBtn.onclick = function() {
+				var text = oTextarea.value;
+				if (text.length != 0 && text.length <= 140) {
+					//  最大
+					var oDiv2 = document.createElement("div");
+					//  张三父级
+					var oDiv3 = document.createElement("div");
+					//  日期
+					var oDiv4 = document.createElement("div");
+					//  张三
+					var oDiv5 = document.createElement("div");
+					//  x
+					var oDiv6 = document.createElement("div");
+					//  获取日期
+					var date = new Date;
+					var year = date.getFullYear();
+					var month = date.getMonth() + 1;
+					var day = date.getDate();
+					//  发布的内容
+					var oDiv7 = document.createElement("div");
+					//  起class名
+					oDiv2.className = "writer";
+					//  张三父级加里面
+					oDiv2.appendChild(oDiv3);
+					oDiv3.setAttribute("style", "overflow: hidden;margin-top: 10px;")
+					oDiv5.innerHTML = "张三";
+					oDiv5.setAttribute("style", "float: left;font-size: 20px;")
+					oDiv3.appendChild(oDiv5);
+					oDiv6.innerHTML = "x";
+					oDiv6.setAttribute("style", "float: right;font-size: 30px;cursor: pointer;")
+					oDiv3.appendChild(oDiv6);
+					oDiv4.innerHTML = year + "年" + month + "月" + day + "天" + "发布";
+					//  日期加里面
+					oDiv2.appendChild(oDiv4);
+					oDiv4.setAttribute("style", "color: #CCCCCC;margin: 6px 0;")
+					oDiv7.innerHTML = text;
+					oDiv7.setAttribute("style","word-wrap: break-word;")
+					oDiv2.insertBefore(oDiv7, oDiv4);
+					
+					
+					
+					
+					oDiv.insertBefore(oDiv2,oDiv.children[0]);					
+					var t = 0;
+					var s = -170;
+					var end = 0;
+					var c = 30;
+					clearInterval(timer);
+					
+					timer = setInterval(function(){
+						t++;
+						if (t >= c) {
+							clearInterval(timer);
+							oDiv2.style.top = 0;
+						} 
+							oDiv2.style.top = Tween.Back.easeOut(t,s,end - s,c) + "px";
+						
+					},20)
+					
+					
+					
+				
+					
+//					oDiv6.onclick = function(){
+//						 t = 0;
+//						 s = 100;
+//						 end = 0;
+//						 c = 50;
+//						 var o = 0;
+//						 var x = 710;
+//						 var y = 0;
+//						 var z = 50;
+//						
+//						time1 = setInterval(function(){
+//							t++;
+//							if (t >= c) {
+//								clearInterval(time1)
+//								
+//							}
+//							oDiv2.style.width = Tween.Back.easeOut(t,s,end - s,c) + "px";
+//							
+//						},20)
+//						
+//						time2 = setInterval(function(){
+//							o++;
+//							if (o >= z) {
+//								clearInterval(time2)
+//								
+//							}
+//							oDiv2.style.height= Tween.Back.easeOut(o,x,y - x,z) + "px";
+//							
+//						},20)
+//						oDiv.removeChild(oDiv2)
+//					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

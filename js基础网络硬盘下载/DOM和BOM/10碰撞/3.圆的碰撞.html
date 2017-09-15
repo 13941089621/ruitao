@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 800px;
+				height: 600px;
+				border: 1px solid black;
+				position: relative;
+			}
+			#wrap div{
+				
+				background-color: #CCCCCC;
+				position: absolute;
+				
+			}
+			#a{
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+			}
+			#b{
+				width: 100px;
+				height: 100px;
+				left: 300px;
+				top: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="a"></div>
+			<div id="b"></div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var oA = document.getElementById("a");
+			var oB = document.getElementById("b");
+			
+			oA.onmousedown = function(e){
+				//  计算获取鼠标与a的距离
+				var e = e || window.event;
+				var lessx = e.clientX - oA.offsetLeft;
+				var lessy = e.clientY - oA.offsetTop;
+				oWrap.onmousemove = function(e){
+					//  计算a的定位值
+					var e = e || window.event;
+					var oAleft = e.clientX - lessx;
+					var oAtop = e.clientY - lessy;
+					//  获取a的宽高
+					var oAW = oA.offsetWidth;
+					var oAH = oA.offsetHeight;
+					//  获取b的宽高
+					var oBW = oB.offsetWidth;
+					var oBH = oB.offsetHeight;
+					//  获取移动范围
+					var lessW = oWrap.clientWidth - oAW;
+					var lessH = oWrap.clientHeight - oAH;
+					//  a的最终定位值
+					var nowleft = 0;
+					var nowtop = 0;
+					
+					/*
+					if (oA.offsetLeft > lessW) {
+						nowleft = lessW;
+					} else if (oA.offsetLeft >= 0 && oA.offsetLeft <= lessW) {
+						nowleft = oAleft;
+					}
+					if (oA.offsetTop > lessH) {
+						nowtop = lessH;
+					} else if (oA.offsetTop >= 0 && oA.offsetTop <= lessH) {
+						nowtop = oAtop;
+					}					
+					oA.style.left = nowleft + "px";
+					oA.style.top = nowtop + "px";
+					*/
+					if (oA.offsetTop >= 0 && oA.offsetTop <= lessH && oA.offsetLeft >= 0 && oA.offsetLeft <= lessW) {
+						oA.style.left = oAleft + "px";
+						oA.style.top = oAtop + "px";
+					} else if (oA.offsetLeft > lessW) {
+						oA.style.left = lessW + "px";
+					} else if (oA.offsetLeft < 0) {
+						oA.style.left = 0 + "px";
+					}else if (oA.offsetTop > lessH) {
+						oA.style.top = lessH + "px";
+					} else if (oA.offsetTop < 0) {
+						oA.style.top = 0 + "px";
+					}
+					//  获取a定位值
+					var oAL = oA.offsetLeft;
+					var oAT = oA.offsetTop;
+					//  获取b定位值
+					var oBL = oB.offsetLeft;
+					var oBT = oB.offsetTop;
+					//  a的圆心定位值
+					var yuanaleft =oAW / 2 + oAL;
+					var yuanatop = oAH / 2 + oAT;
+					//  b的圆心定位值
+					var yuanbleft =  oBW / 2 + oBL;
+					var yuanbtop = oBH / 2 + oBT;
+					//  圆心差
+					var chaleft = Math.abs(yuanaleft - yuanbleft);
+					var chatop = Math.abs(yuanatop - yuanbtop);
+					//  2圆心距离平方
+					var yuan1 = (oAW  + oBW) / 2;
+					var yuan = chaleft * chaleft + chatop * chatop;
+					if (yuan <= (yuan1 * yuan1)) {
+						oB.style.backgroundColor = "red";
+					} else {
+						oB.style.backgroundColor = "";
+					}
+				}
+			}
+			oA.onmouseup = function(){
+				oWrap.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

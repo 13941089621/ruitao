@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrap {
+				width: 500px;
+				margin: 0 auto;
+			}
+			
+			.head {
+				width: 300px;
+				height: 35px;
+				border-radius: 8px;
+				border: 1px solid black;
+				overflow: hidden;
+				margin: 40px 0 30px;
+			}
+			
+			#zimu {
+				width: 149px;
+				height: 35px;
+				background-color: blue;
+				color: white;
+				line-height: 35px;
+				text-align: center;
+				border-right: 1px solid black;
+				float: left;
+			}
+			
+			#phone {
+				width: 150px;
+				height: 35px;
+				float: left;
+				line-height: 35px;
+				text-align: center;
+			}
+			
+			.div1{
+				margin: 10px 0 20px;
+			}
+			
+			.div1{
+				font-size: 12px;
+				color: #aaa;
+				margin-left: 6rem;
+			}
+			#btn1{
+				margin-left: 6rem;
+			}
+			input {
+				height: 25px;
+			}
+			
+			#btn1,#action7 {
+				margin-bottom: 10px;
+			}
+			
+			#action1,#action3,#action4 {
+				padding-left: 1em;
+			}
+			
+			#action2 {
+				padding-left: 3em;
+			}
+			
+			#action5 {
+				padding-left: 2em;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="head">
+				<div id="zimu">
+					注册字母邮箱
+				</div>
+				<div id="phone">
+					注册手机号码邮箱
+				</div>
+			</div>
+			<form action="#" id="form">
+				<div id="action1">
+					<span>*邮件地址</span>
+					<input type="text" name="input1" id="input1" value="" placeholder="建议用手机号注册" /> @
+					<select name="">
+						<option value="">163.com</option>
+						<option value="">126.com</option>
+						<option value="">yeah.net</option>
+					</select>
+				</div>
+				<div class="div1">
+					6~18个字符，可使用字母、数字、下划线，需以字母开头
+				</div>
+
+				<div id="action2">
+					<span>*密码</span>
+					<input type="password" name="input2" id="input2" value="" />
+				</div>
+				<div class="div1">
+					6~16个字符，区分大小写
+				</div>
+
+				<div id="action3">
+					<span>*确认密码</span>
+					<input type="password" name="input3" id="input3" value="" />
+				</div>
+				<div class="div1">
+					请再次填写密码
+				</div>
+
+				<div id="action4">
+					<span>*手机号码</span>
+					<input type="text" name="input4" id="input4" value="+86-" />
+				</div>
+				<div class="div1">
+					忘记密码时，可以通过该手机号码快速找回密码
+				</div>
+
+				<div id="action5">
+					<span>*验证码</span>
+					<input type="text" name="input5" id="input5" value="" />
+				</div>
+				<div class="div1">
+					请填写图片中的字符，不区分大小写
+				</div>
+
+				<div>
+					<input type="button" id="btn1" value="免费获取短信验证码" />
+				</div>
+				<div id="action6">
+					<span>*短信验证码</span>
+					<input type="text" name="input6" id="input6" value="" />
+				</div>
+				<div class="div1">
+					请查收手机短信，并填写短信中的验证码
+				</div>
+
+				<div id="action7">
+					<input type="checkbox" name="checkbox1" id="checkbox1" value="" checked="checked" /> 同意"服务条款"和"隐私权相关政策"
+				</div>
+				<input type="submit" id="submit" name="submit" />
+			</form>
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			var oForm = document.getElementById("form");
+			var aInput = document.getElementsByTagName("input");
+			var aDiv = document.getElementsByClassName("div1");
+			var reg1 = /^[a-zA-Z](\w{5,17})$/;
+			var reg2 = /^(\w|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\=|\+|\{|\}|\[|\]|\:|\;|\"|\'|\||\?|\/|\>|\<|\.|\,|\`|\\){6,16}$/;
+			var reg3 = /^\+86\-1[34578]\d{9}$/;
+			var reg4 = /^[a-zA-Z]{6}/i;
+			var reg5 = /^\d{6}/;
+			
+			var reg6 = /^[a-zA-Z]{6,16}|[0-9]{6-16}$/;
+			
+			var arr1 = Array(6);
+			var arr2 = [];
+			var arr3 = ["❗️长度应为6~18个字符","❗️密码长度应为6~16个字符","❗️密码错误","❗️请填写正确的手机号","❗️验证码错误","❗️验证码错误"];
+			var arr4 = ["✅邮箱有效","✅密码过于简单，请尝试“字母+数字”的组合","✅密码正确","✅手机号码可用","✅验证码正确","✅验证码正确"]
+			for (var i = 0; i < aDiv.length; i++) {
+				arr2[i] = aDiv[i].innerHTML;
+			}
+			var temp1 = true;
+			function aa(n,m,reg){
+				function changecolor(color){
+					aDiv[m].style.color = color;
+				}
+				
+				aInput[n].onfocus = function(){
+					
+					aDiv[m].innerHTML = arr2[m]
+					temp1 = false;
+					this.onmouseout = function(){
+						changecolor("black")
+					}
+				}
+				 aInput[n].onblur = function(){
+					temp1 = false;
+					if (n == 2) {
+						arr1[m] = aInput[n].value == aInput[n - 1].value;
+					} else {
+						arr1[m] = reg.test( aInput[n].value);
+					}
+					
+					changecolor("");
+					if (aInput[n].value.trim()) {
+						if (arr1[m] == false) {
+							aDiv[m].innerHTML = arr3[m];
+							changecolor("red")
+						} else {
+							aDiv[m].innerHTML = arr4[m];
+							changecolor("greenyellow")
+						}
+					} else {
+						this.onmouseover = function(){
+							changecolor("black")
+						}
+						this.onmouseout = function(){
+							changecolor("")
+						}
+					}
+				}
+				
+				if (!aInput[n].value.trim()) {
+					aInput[n].onmouseover = function(){
+						changecolor("black")
+					}
+					 aInput[n].onmouseout = function(){
+						changecolor("")
+					}
+				}
+			}
+			aa(0,0,reg1);
+			aa(1,1,reg2);
+			aa(2,2);
+			aa(3,3,reg3);
+			aa(4,4,reg4);
+			aa(6,5,reg5);
+			aInput[8].onclick = function(){
+				var temp = 0;
+				for (var i = 0; i < arr1.length; i++) {
+					if (!arr1[i]) {
+						temp = 1;
+					}
+				}
+				if (!aInput[7].checked || temp == 1) {
+					alert("提交错误")
+				} 
+			}
+			
+		</script>
+	</body>
+
+</html>

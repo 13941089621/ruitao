@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			.wrap{
+				width: 300px;
+				height: 300px;
+				position: relative;
+				overflow: hidden;
+			}
+			.midddle{
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				/* 过渡效果 */
+				transition: all 0.5s;
+			}
+			.midddle>div{
+				width: 300px;
+				height: 300px;
+				/*margin-top: 20px;*/
+				background-color: #333;
+				color: wheat;
+				text-align: center;
+				line-height: 300px;
+				font-size: 100px;
+				float: left;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<input id="last" type="button" value="上一页" />
+		<input id="next" type="button" value="下一页" />
+		<br />
+		<input class="page" type="button" value="第一页" />
+		<input class="page" type="button" value="第二页" />
+		<input class="page" type="button" value="第三页" />
+		<input class="page" type="button" value="第四页" />
+		<div class="wrap">
+			<div class="midddle">
+				<div>A</div>
+				<div>B</div>
+				<div>C</div>
+				<div>D</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//	按钮翻页			参数
+		function rollPage ( page ) {
+			middleDiv.style.left = -w * page + "px";
+		}
+		// 滚动			 方向
+		function scroll (direction) {
+			
+			if (direction == "0") {
+				page++;
+				if (page > divs.length - 1) {
+					page = 0;
+				}
+			}else{
+				page--;
+				if (page < 0) {
+					page = divs.length - 1;
+				}
+			}
+			// middleDiv.style.left = -w * page + "px";
+			rollPage(page);// 与上面的操作等价
+		}
+		// 自动滚
+		function autoSroll () {
+			// 先清除
+			clearInterval(timer);
+			// 再交互
+			timer = setInterval(function  () {
+				scroll("next");
+			}, 1500);
+		}
+		
+		var wrapDiv = document.querySelector(".wrap");
+		var middleDiv = document.querySelector(".midddle");
+		var divs = document.querySelectorAll(".midddle>div");
+		// 按钮
+		var lastBtn = document.getElementById("last");
+		var nextBtn = document.getElementById("next");
+		var pageBtns = document.querySelectorAll(".page");
+		// 页宽
+		var w = wrapDiv.offsetWidth;
+		middleDiv.style.width = w * divs.length + "px";
+		// 页码
+		var page = 0;
+		// 定时器
+		var timer = null;
+		
+		// 下一页
+		nextBtn.onclick = function  () {
+			clearInterval(timer);
+			scroll("0");
+		}
+		nextBtn.onmouseout = function  () {
+			autoSroll();
+		}
+		// 上一页
+		lastBtn.onclick = function  () {
+			clearInterval(timer);
+			scroll("last");
+		}
+		lastBtn.onmouseout = function  () {
+			autoSroll();
+		}
+		// 页码变化
+		for (var i=0; i < pageBtns.length; i++) {
+			pageBtns[i].index = i;
+			pageBtns[i].onmouseover = function  () {
+				// 必须要写, 否则 page 无法更新
+				page = this.index;
+				// 移动
+				// middleDiv.style.left = -w * page + "px";
+				rollPage(this.index);
+			}
+			pageBtns[i].onmouseout = function  () {
+				autoSroll();
+			}
+		}
+		
+		// 代码优化: 函数
+		timer = setInterval(function  () {
+			page++;
+			if (page > divs.length - 1) {
+				page = 0;
+			}
+			// middleDiv.style.left = -w * page + "px";
+			rollPage(page);
+		}, 1500);
+		
+		// 自动滚
+		window.onload = function  () {
+			autoSroll();
+		}
+		
+		wrapDiv.onmouseover = function () {
+			clearInterval(timer);
+		}
+		wrapDiv.onmouseout = function () {
+			autoSroll();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</script>
+</html>

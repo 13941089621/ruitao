@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			var screenX = 0;
+			var screenY = 0;
+			var screenXend = 0;
+			var screenYend = 0;
+			
+			//  绑定手指触摸屏幕事件
+			window.addEventListener("touchstart",function(e){
+				e = e || window.event;
+				var finger = e.touches[0];
+				screenX = finger.screenX;
+				screenY = finger.screenY;
+			},false);
+			//  清除默认行为
+			window.addEventListener("touchmove",function(e){
+				e.preventDefault();
+				e.returnValue = false;
+			})
+			//  绑定手指离开屏幕事件
+			window.addEventListener("touchmove",function(e){
+				e = e || window.event;
+				var finger = e.changedTouches[0];
+				screenXend = finger.screenX;
+				screenYend = finger.screenY;
+				
+				if (Math.abs(screenXend - screenX) > Math.abs(screenYend - screenY)) {
+					if(screenXend - screenX > 0){
+						alert("YOU")
+					} else {
+						alert("ZUO")
+					}
+				} else {
+					if(screenYend - screenY > 0){
+						alert("XIA")
+					} else {
+						alert("SHANG")
+					}
+				}
+			},false);
+		</script>
+	</body>
+</html>

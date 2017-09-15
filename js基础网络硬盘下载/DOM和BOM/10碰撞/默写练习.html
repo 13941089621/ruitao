@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			function wheel(obj,fn){
+				var firefox = window.navigator.userAgent.indexOf("Firefox") > 0;
+				if (firefox) {
+					obj.addEventListener("DOMMouseScroll",pre)
+				} else {
+					obj.onmousewheel = pre;
+				} 
+				var down = true;
+				function pre(e){
+					e = e || window.event;
+					if (e.detail) {
+						if (e.detail > 0) {
+							down = false
+						}
+					} else {
+						if (e.wheelDelta < 0) {
+							down = false;
+						}
+					}
+				}
+				fn(down)
+			}
+		</script>
+	</body>
+</html>

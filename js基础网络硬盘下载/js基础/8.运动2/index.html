@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				opacity: 0.5;
+				filter: alpha(opacity：50);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			啊啊啊啊发评论
+		</div>
+		
+		
+		<script src="js/任意值运动框架.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oDiv1 = document.getElementById("div1");
+			oDiv1.onmouseover = function(){
+				startMove(this,{width: 101,height: 400},function(){
+					startMove(oDiv1,{opacity: 100},function(){
+						startMove(oDiv1,{fontSize: 50})
+					})
+				})
+			}
+			oDiv1.onmouseout = function(){
+				startMove(oDiv1,{fontSize: 16},function(){
+					startMove(oDiv1,{opacity: 50},function(){
+						startMove(oDiv1,{width: 100,height: 100})
+					})
+				})
+				
+			}
+		</script>
+	</body>
+</html>

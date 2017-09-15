@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			//  history 对象  表示当前网页历史的URL历史
+			
+			//  获取history 的条数（长度）
+//			alert(history.length);
+
+			//  显示知道的history 的URL位置
+			//  -1 代表当前位置的上一个的URL
+			history.go(-1);
+			
+			//  显示当前地址的上一个
+			//  等同于history.go(-1);
+			history.back();
+			
+			//  显示当前地址的下一个
+			//  等同于history.go(1);
+			history.forward()
+		</script>
+	</body>
+</html>

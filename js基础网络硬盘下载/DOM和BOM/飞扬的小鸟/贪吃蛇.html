@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 800px;
+				height: 500px;
+				border: 1px solid black;
+				position: relative;
+			}
+			.all{
+				position: absolute;
+			}
+			.div1{
+				width: 10px;
+				height: 10px;
+				background-color: #CCCCCC;
+				border: 1px solid red;
+				box-sizing: border-box;
+				position: absolute;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="wrap"></div>
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var timer = null;
+			var times = 100;
+			var speed = 10;
+			
+			for (var i = 0; i < 4; i++) {
+				var newDiv = document.createElement("div");
+				newDiv.className = "div1";
+				oWrap.appendChild(newDiv);
+				if (newDiv.previousSibling) {
+					newDiv.style.left = newDiv.previousSibling.offsetLeft + speed + "px"
+				}
+			}
+			
+			
+			window.onkeydown = function(e){
+				
+				e = e || window.event;
+				if (e.keyCode == 37) {
+					clearInterval(timer)
+					timer = setInterval(function(){
+						oWrap.children[0].style.left = oWrap.children[0].offsetLeft - speed + "px";
+						for (var i = 1; i < oWrap.children.length; i++) {
+							oWrap.children[i].style.left = oWrap.children[i].previousSibling.offsetLeft + speed +"px";
+							oWrap.children[i].style.top = oWrap.children[i].previousSibling.offsetTop +"px";
+						}
+					},times)
+				} else if (e.keyCode == 39) {
+					clearInterval(timer)
+					timer = setInterval(function(){
+						oWrap.children[0].style.left = oWrap.children[0].offsetLeft + speed + "px";
+						for (var i = 1; i < oWrap.children.length; i++) {
+							oWrap.children[i].style.left = oWrap.children[i].previousSibling.offsetLeft - speed +"px";
+							oWrap.children[i].style.top = oWrap.children[i].previousSibling.offsetTop +"px";
+						}
+					},times)
+				} else if (e.keyCode == 38) {
+					clearInterval(timer)
+					timer = setInterval(function(){
+						oWrap.children[0].style.top = oWrap.children[0].offsetTop - speed + "px";
+						for (var i = 1; i < oWrap.children.length; i++) {
+							oWrap.children[i].style.top = oWrap.children[i].previousSibling.offsetTop + speed +"px";
+							oWrap.children[i].style.left = oWrap.children[i].previousSibling.offsetLeft +"px";
+						}
+					},times)
+				} else if (e.keyCode == 40) {
+					clearInterval(timer)
+					timer = setInterval(function(){
+						oWrap.children[0].style.top = oWrap.children[0].offsetTop + speed + "px";
+						for (var i = 1; i < oWrap.children.length; i++) {
+							oWrap.children[i].style.top = oWrap.children[i].previousSibling.offsetTop - speed +"px";
+							oWrap.children[i].style.left = oWrap.children[i].previousSibling.offsetLeft +"px";
+						}
+					},times)
+					
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			body{
+				height: 2000px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<input type="text" name="" id="" value="" />
+		<div></div>
+
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// jquery 兼容的滚轮事件
+		$(document).on("mousewheel DOMMouseScroll", function (e) {
+	    
+	   		 var delta = (e.originalEvent.wheelDelta && (e.originalEvent.wheelDelta > 0 ? 1 : -1)) ||  // chrome & ie
+	                (e.originalEvent.detail && (e.originalEvent.detail > 0 ? -1 : 1));              // firefox 
+	   		 if (delta > 0) {
+	       		 // 向上滚
+	      		  console.log("wheelup");
+		    	} else if (delta < 0) {
+		        // 向下滚
+		        console.log("wheeldown");
+		    }
+		});
+		</script>
+	</body>
+
+</html>

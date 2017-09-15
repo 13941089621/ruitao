@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			#wrap{
+				text-align: center;
+			}
+			#snakeMap{
+				margin: 20px auto;
+				border: 5px solid black;
+			}
+			.col{
+				background-color: white;
+				width: 20px;
+				height: 20px;
+				border: 1px solid pink;
+				box-sizing: border-box;
+				float: left;
+			}
+			.snake{
+				background-color: black;
+			}
+			.food{
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<h1>贪吃蛇</h1>
+			<h2 id="score">0分</h2>
+			<div id="snakeMap"></div>
+			
+			<script type="text/javascript">
+				var oWrap = document.getElementById("wrap");
+				var oScore = document.getElementById("score");
+				var oSnakeMap = document.getElementById("snakeMap");
+				
+				//  定义小块宽高
+				var colWH = 20;
+				//  获取屏幕宽高
+				var clientWidth = document.documentElement.clientWidth;
+				//  计算多少列小块
+				
+				var colNum = parseInt((clientWidth - 10) / colWH);
+				//  定义蛇运动定时器
+				var snaketimer = null;
+				if (colNum >= 30) {
+					colNum = 30
+				}
+				//  设置行数
+				var rowNum = colNum;	
+				//  设置地图宽高
+				oSnakeMap.style.width = colNum * colWH + "px";
+				oSnakeMap.style.height = rowNum * colWH + "px";
+				//  定义一个行数组
+				var aryRows = [];
+				//  定义一个蛇身数组
+				var arySnake = [];
+				//  定义蛇身的初始长度
+				var snakeLen = 3;
+				//  定义蛇头初始位置坐标；
+				var snakeX = 2;
+				var snakeY = 0;
+				//  定义食物坐标
+				var foodX = 0;
+				var foodY = 0;
+				
+				//  按键状态
+				var keystate = true;
+				
+				//  分数
+				var score = 0;
+				//  生成地图
+				for (var i = 0; i < rowNum; i++) {
+					//  创建一个行元素
+					var newRow = document.createElement("div");
+					//  定义一个列数组
+					var aryCols = [];
+					//  循环创建小块
+					for (var j = 0; j < colNum; j++) {
+						var newCol = document.createElement("div");
+						newCol.className = "col";
+						//  添加小块到数组，及行元素中
+						aryCols.push(newCol);
+						newRow.appendChild(newCol)
+					}
+					//  讲整行小块添加到小块中
+					aryRows.push(aryCols);
+					oSnakeMap.appendChild(newRow);
+				}
+				
+				//  生成初始蛇身
+				for (var i = 0; i < snakeLen;i++) {
+					aryRows[snakeY][i].className = "col snake";
+					arySnake.push(aryRows[snakeY][i]);
+				}
+				
+				//  蛇运动
+				//  蛇运动方向
+				var direction = "right";
+				clearInterval(snaketimer);
+				snaketimer = setInterval(function(){
+					switch (direction){
+						case "right":
+							snakeX++
+							break;
+						case "left":
+							snakeX--
+							break;
+						case "up":
+							snakeY--
+							break;
+						case "down":
+							snakeY++
+							break;
+						default:
+							break;
+					}
+					keystate = true;
+					//  碰壁
+					if (snakeX >= colNum || snakeX < 0 || snakeY < 0 || snakeY >= rowNum) {
+						clearInterval(snaketimer);
+						alert("game over");
+						return;
+					}
+					//  蛇头碰自己
+					for (var i = 0; i < arySnake.length; i++) {
+						if (arySnake[i] == aryRows[snakeY][snakeX]) {
+							clearInterval(snaketimer);
+							alert("game over");
+							return
+						}
+					}
+					
+					//  遇到食物，加蛇头 否则删除蛇尾，加蛇头
+					if (snakeX == foodX && snakeY == foodY) {
+						aryRows[snakeY][snakeX].className = "col snake";
+						arySnake.push(aryRows[snakeY][snakeX]);
+						createfood();
+						score++;
+						oScore.innerHTML = score;
+					} else{
+						//  删除蛇尾
+						arySnake[0].className = "col";
+						arySnake.shift();
+						//  添加蛇头
+						aryRows[snakeY][snakeX].className = "col snake"
+						arySnake.push(aryRows[snakeY][snakeX]);
+					}
+					
+					
+				},300)
+				createfood();
+				//  生成食物
+				function createfood(){
+					var fX = random(0,colNum - 1);
+					var fY = random(0,rowNum - 1);
+					if (aryRows[fY][fX].className == "col snake") {
+						createfood();
+					}else {
+						aryRows[fY][fX].className = "col food";
+						foodX = fX;
+						foodY = fY;
+					}
+				}
+				//  随机函数
+				function random(min,max){
+					return Math.floor(Math.random() * (max - min + 1) + min)
+				}
+				
+				
+				//  添加键盘事件
+				window.onkeydown = function(e){
+					var e = e || window.event;
+					var keycode = e.keyCode;
+					switch (keycode){
+						case 37:
+							if (direction != "right"  && keystate) {
+								direction = "left";
+								keystate = false;
+							}
+							break;
+						case 38:
+							if (direction != "down"  && keystate) {
+								direction = "up";
+								keystate = false;
+							}
+							break;
+						case 39:
+							if (direction != "left"  && keystate) {
+								direction = "right";
+								keystate = false;
+							}
+							break;
+						case 40:
+							if (direction != "up"  && keystate) {
+								direction = "down";
+								keystate = false;
+							}
+							break;
+						default:
+							break;
+					}
+				}
+				
+			</script>
+		</div>
+	</body>
+</html>

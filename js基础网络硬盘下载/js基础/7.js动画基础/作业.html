@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">	
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}		
+			.footer {
+				width: 400px;
+				height: 400px;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.content {
+				width: 1600px;
+				height: 400px;
+				overflow: hidden;
+				position: absolute;
+				left: 0;
+				top: 0;
+				/*transition: all 0.5s;*/
+			}
+			
+			.content>div {
+				width: 400px;
+				height: 400px;
+				background-color: #ccc;
+				font-size: 50px;
+				text-align: center;
+				line-height: 400px;
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="top">
+				<input type="button" name="last" id="last" value="last" />
+				<input type="button" name="next" id="next" value="next" />
+			</div>
+			<div class="middle">
+				<input type="button" name="btn1" id="btn1" value="1" />
+				<input type="button" name="btn2" id="btn2" value="2" />
+				<input type="button" name="btn3" id="btn3" value="3" />
+				<input type="button" name="btn4" id="btn4" value="4" />
+			</div>
+			<div class="footer">
+				<div class="content">
+					<div>div1</div>
+					<div>div2</div>
+					<div>div3</div>
+					<div>div4</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/getStyle.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oMiddle = document.querySelector(".content");
+			var timer = null;
+			var speed = 0;
+			function starMove (){
+				clearInterval(timer);
+				timer = setInterval(function(){					
+					if (parseInt(getStyle(oMiddle,"left")) <= 0 && parseInt(getStyle(oMiddle,"left")) > -400) {
+						speed = (-parseInt(getStyle(oMiddle,"left")) - 400) / 40
+					} else if (parseInt(getStyle(oMiddle,"left")) <= -400 && parseInt(getStyle(oMiddle,"left")) > -800) {
+						speed = (-parseInt(getStyle(oMiddle,"left")) - 800) / 40
+					} else if (parseInt(getStyle(oMiddle,"left")) <= -800 && parseInt(getStyle(oMiddle,"left")) >= -1200) {
+						speed = (-parseInt(getStyle(oMiddle,"left"))  - 1200) / 40
+					} 
+					speed = Math.floor(speed);
+					if (parseInt(getStyle(oMiddle,"left")) <= -1200) {
+						oMiddle["style"]["left"]  = 0;
+						clearInterval(timer);
+						setTimeout(starMove,1000)
+					}
+					else {
+						oMiddle["style"]["left"] = parseInt(getStyle(oMiddle,"left")) + speed + "px";
+					}
+					document.title = parseInt(getStyle(oMiddle,'left'))
+				},20);
+				
+			}
+			
+			starMove ();
+
+		</script>
+	</body>
+
+</html>

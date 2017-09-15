@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#wrap {
+				width: 1000px;
+				overflow: hidden;
+			}
+			
+			ul {
+				list-style: none;
+				float: left;
+				width: 220px;
+				margin: 15px;
+			}
+			
+			ul>li {
+				background-color: #ccc;
+				color: white;
+				font-size: 30px;
+				text-align: center;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="wrap">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var aUl = document.getElementsByTagName("ul");
+			function random(n, m) {
+				return Math.floor(Math.random() * (m - n + 1) + n)
+			}
+			for (var n = 0; n < 20; n++) {
+				var newli = document.createElement("li");
+				var newimg = new Image();
+				newimg.src = "img/" + (n + 1) + ".jpg";
+				newimg.style.width = 220 + "px";
+				newimg.style.height = random(100, 200) + "px";
+				newli.appendChild(newimg);
+				var ulHeight = [];
+				for (var j = 0; j < 4; j++) {
+					ulHeight.push(aUl[j].offsetHeight);
+				}
+				var num = ulHeight[0];
+				var index = 0;
+				for (var a= 0 ; a < 4; a++) {
+					if (ulHeight[a] < num) {
+						num = ulHeight[a];
+						index = a;
+					} 
+				}	
+				aUl[index].appendChild(newli);
+			}
+		</script>
+
+	</body>
+
+</html>

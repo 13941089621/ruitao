@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>demo</title>
+		<style type="text/css">
+
+		</style>
+		<script type="text/javascript">
+			var arra = [77,3, 7, 10, 31, 60, 100];
+			
+			function zhong(arr, low, high, key) {
+				if(low > high) {
+					return -1;
+				}
+				var mid = parseInt((high + low) / 2);
+				if(arra[mid] == key) {
+					return mid;
+				} else if(arra[mid] > key) {
+					high = mid - 1;
+					return zhong(arr, low, high, key);
+				} else if(arra[mid] < key) {
+					low = mid + 1;
+					return zhong(arr, low, high, key);
+				}
+			};
+			
+			var rr = zhong(arra, 0, arra.length, 31);
+			console.log(rr)
+			
+			
+			
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

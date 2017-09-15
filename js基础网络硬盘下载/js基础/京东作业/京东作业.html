@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.header {
+				border-bottom: 2px solid red;
+				height: 42px;
+			}
+			
+			.head {
+				width: 1210px;
+				margin: 0 auto;
+				height: 44px;
+			}
+			
+			.clear {
+				clear: both;
+			}
+			
+			.head>a {
+				float: left;
+				text-decoration: none;
+				padding: 0 20px;
+				font-size: 16px;
+				height: 44px;
+				line-height: 44px;
+				color: #333;
+			}
+			
+			.head>.h1 {
+				width: 190px;
+				background-color: #B1191A;
+				color: #fff;
+				font-weight: 100;
+				padding: 0 10px;
+			}
+			.head .red{
+				color: red;
+			}
+			.head>.h1:hover {
+				color: #fff;
+			}
+			
+			.content {
+				position: relative;
+				width: 1210px;
+				height: 466px;
+				margin: 0 auto;
+			}
+			
+			.left {
+				width: 210px;
+				background-color: #c81623;
+				height: 466px;
+				position: relative;
+			}
+			
+			.left>div {
+				height: 31px;
+				border-left: 1px solid #b61d1d;
+				overflow: hidden;
+				padding: 0 10px;
+			}
+			
+			.left>div:hover a {
+				color: red;
+			}
+			
+			.left>div>span {
+				float: left;
+				height: 31px;
+				line-height: 31px;
+			}
+			
+			.left>div>span>a {
+				font-size: 14px;
+				text-decoration: none;
+				color: #fff;
+			}
+			
+			.left>div>i {
+				float: right;
+				color: #FFFFFF;
+				font-size: 12px;
+				height: 31px;
+				line-height: 31px;
+			}
+			
+			.middle,.middle1{
+				
+				position: absolute;
+				left: 210px;
+				top: 0;
+				
+			}
+			
+			.middle>div {
+				display: none;
+				width: 999px;
+				height: 465px;
+				border-right: 1px solid red;
+				border-bottom: 1px solid red;
+				font-size: 100px;
+			}
+			
+			.middle .content_img {	
+				display: block;
+				border: none;
+				width: 730px;
+				height: 454px;
+				position: relative;
+				margin: 12px 12px 0 12px;
+			}
+			.content_img>a{
+				height: 454px;
+				width: 730px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				opacity: 0;
+			}
+			.content_img>a>img {
+				width: 730px;
+				height: 454px;
+				
+			}
+			.ci_a{
+				position: absolute;
+				bottom: 10px;
+				left: 299px;	
+				font-size: 0;		
+			}
+			.ci_a>a{
+				font-size: 12px;
+				color: #fff;
+				text-decoration: none;
+				float: left;
+				width: 18px;
+				height: 18px;
+				margin: 0 2px;
+				text-align: center;
+				line-height: 18px;
+				background-color: #3e3e3e;
+				border-radius: 50%;
+				
+			}
+			.ci_a .ci_a_a{
+				background-color: #b61b1f;
+			}
+			.content_img>i{
+				width: 25px;
+				height: 50px;
+				position: absolute;
+				top: 208px;
+				font-size: 20px;
+				background-color: rgba(0,0,0,0.3);
+				text-align: center;
+				line-height: 50px;
+				color: white;
+				cursor: pointer;
+			}
+			.sanleft{
+				left: 0;
+			}
+			.sanright{
+				right: 0;
+			}
+			.fixed{
+				position: fixed;
+				top: 200px;
+				right: 0;
+				z-index: 20;
+				
+			}
+			.fixed>div{
+				overflow: hidden;
+			}
+			.fixed>div>a{
+				text-decoration: none;
+				background-color: #7a6e6e;
+				width: 35px;
+				height: 35px;
+				margin-bottom: 3px;
+				color: white;
+				display: block;
+				line-height: 35px;
+				overflow: hidden;
+				float: right;
+				position: relative;
+			}
+			.span1{
+				text-align: center;
+				width: 35px;
+				height: 35px;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+			.span2{
+				width: 85px;
+				text-align: center;
+				position: absolute;
+				right: 35px;
+				top: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="header">
+				<div class="head">
+					<div class="clear"></div>
+					<a href="#" class="h1">全部商品分类</a>
+					<a href="#">服装城</a>
+					<a href="#">美妆馆</a>
+					<a href="#">京东超市</a>
+					<a href="#">生鲜</a>
+					<a href="#">全球购</a>
+					<a href="#">闪购</a>
+					<a href="#">团购</a>
+					<a href="#">拍卖</a>
+					<a href="#">金融</a>
+				</div>
+			</div>
+
+			<div class="content">
+				<div class="left">
+					<div><span><a href="#">家用电器</a></span><i>></i></div>
+					<div><span><a href="#">手机、</a><a href="#">数码、</a><a href="#">京东通讯</a></span><i>></i></div>
+					<div><span><a href="#">电脑、</a><a href="#">办公</a></span><i>></i></div>
+					<div><span><a href="#">家居、</a><a href="#">家具、</a><a href="#">家装、</a><a href="#">厨具</a></span><i>></i></div>
+					<div><span><a href="#">男装、</a><a href="#">女装、</a><a href="#">童装、</a><a href="#">内衣</a></span><i>></i></div>
+					<div><span><a href="#">个性化妆、</a><a href="#">清洁用品、</a><a href="#">宠物</a></span><i>></i></div>
+					<div><span><a href="#">鞋靴、</a><a href="#">箱包、</a><a href="#">珠宝、</a><a href="#">奢侈品</a></span><i>></i></div>
+					<div><span><a href="#">运动户外、</a><a href="#">钟表</a></span><i>></i></div>
+					<div><span><a href="#">汽车、</a><a href="#">汽车用品</a></span><i>></i></div>
+					<div><span><a href="#">母婴、</a><a href="#">玩具乐器</a></span><i>></i></div>
+					<div><span><a href="#">食品、</a><a href="#">酒类、</a><a href="#">生鲜、</a><a href="#">特产</a></span><i>></i></div>
+					<div><span><a href="#">医疗保健</a></span><i>></i></div>
+					<div><span><a href="#">图书、</a><a href="#">音像、</a><a href="#">电子书</a></span><i>></i></div>
+					<div><span><a href="#">彩票、</a><a href="#">旅行、</a><a href="#">充值、</a><a href="#">票务</a></span><i>></i></div>
+					<div><span><a href="#">理财、</a><a href="#">众筹、</a><a href="#">白条、</a><a href="#">保险</a></span><i>></i></div>
+				</div>
+				<div class="middle">
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+					<div>4</div>
+					<div>5</div>
+					<div>6</div>
+					<div>7</div>
+					<div>8</div>
+					<div>9</div>
+					<div>10</div>
+					<div>11</div>
+					<div>12</div>
+					<div>13</div>
+					<div>14</div>
+					<div>15</div>
+					<div class="content_img">
+							<a href="#" ><img src="img/j1.jpg" /></a>
+							<a href="#"><img src="img/j2.jpg" /></a>
+							<a href="#"><img src="img/j3.jpg" /></a>
+							<a href="#"><img src="img/j4.jpg" /></a>							
+							<a href="#"><img src="img/j5.jpg" /></a>
+							<a href="#"><img src="img/j6.jpg" /></a>
+							<div class="ci_a">
+								<a href="#" class="ci_a_a">1</a>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#">5</a>
+								<a href="#">6</a>
+							</div>
+							<i class="sanleft"> &gt; </i>
+							<i class="sanright"> &lt; </i>						
+						</div>						
+				</div>
+				
+			</div>
+		
+			<div class="fixed">
+				<div><a href="#"><span class = "span2">我的关注</span><span class = "span1">aaa</span></a></div>
+				<div><a href="#"><span class = "span2">购物车</span><span class = "span1">bbb</span ></a></div>
+				<div><a href="#"><span class = "span2">京东会员</span><span class = "span1">ccc</span></a></div>
+			</div>
+		</div>
+		
+
+		<script src="js/任意值运动框架.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var aLeftDiv = document.querySelectorAll(".left>div");
+			var aMiddleDiv = document.querySelectorAll(".middle>div");
+			var oContent = document.querySelector(".content");
+			var oContentImg = document.querySelector(".content_img");
+			var headA = document.querySelectorAll(".head>a");
+			var aContentImgA = document.querySelectorAll(".content_img>a");
+			var aCiA = document.querySelectorAll(".ci_a>a")
+			var sanLeft = document.querySelector(".sanleft");
+			var sanRight = document.querySelector(".sanright");
+			var aFixed = document.querySelectorAll(".fixed>div>a")
+			var time = null;
+			aContentImgA[0].style.opacity = "1"
+			
+				for (var i = 1; i < headA.length; i++) {
+				headA[i].onmouseover = function(){
+					this.className = "red"
+				}
+				headA[i].onmouseout = function(){
+					this.className = ""
+				}
+			}
+			
+			
+			
+			
+			
+			
+			
+			function over (){
+			for (var i = 0; i < aLeftDiv.length; i++) {
+				//  定义属性，记录aleftdiv的下标
+				aLeftDiv[i].index = i;
+				
+					aLeftDiv[i].onmouseover = function() {
+					//  让6图的div不显示
+					oContentImg.style.display = "none";
+					//  把左边div变色
+					
+					//  把所有的中间的1--15的div全部不显示
+					for (var j = 0; j < aLeftDiv.length; j++) {
+						aMiddleDiv[j].style.display = "";
+						aLeftDiv[j].style.backgroundColor = "";
+					}
+					this.style.backgroundColor = "white";
+					//  让和左边div下标相同的中间div显示
+					aMiddleDiv[this.index].style.display = "block"
+				}
+				}
+			}
+			over()
+			//  最最父级的，移出事件
+			oContent.onmouseout = function() {
+				//  移出时，让6图的div显示
+				oContentImg.style.display = "block"
+				for (var j = 0; j < aLeftDiv.length; j++) {
+					aMiddleDiv[j].index2 = j;
+					aMiddleDiv[j].style.display = ""
+					aMiddleDiv[j].ind = j;
+					aLeftDiv[j].style.backgroundColor = "";
+					aMiddleDiv[j].onmouseover = function() {
+						this.style.display = "block";
+						oContentImg.style.display = "none";
+						aLeftDiv[j].style.backgroundColor = "";
+						aLeftDiv[this.index2].style.backgroundColor = "white";
+					}
+				}
+			}
+			
+			
+			
+			
+			function changeImg (aindex) {
+				for (var i = 0; i < aCiA.length; i++) {
+					aCiA[i].className = ""
+				}
+				aCiA[aindex].className = "ci_a_a"
+			}
+			
+			var j = 0;
+			function move (){
+				time = setInterval(function(){
+					aContentImgA[j].style.opacity = "0"
+					j++;
+					if (j == 6) {
+						j = 0;
+					}
+					startMove(aContentImgA[j],{'opacity': 100});
+					changeImg(j)
+				},3000)
+			}
+			move();
+			for (var i = 0; i < aCiA.length; i++) {
+				aCiA[i].index1 = i;
+				aCiA[i].onmouseover = function aaa(){
+					changeImg(this.index1)
+					
+					for (var a = 0; a < aCiA.length ; a++) {
+						aContentImgA[a].style.opacity = "0"
+					}
+					startMove(aContentImgA[this.index1],{"opacity" : 100});
+					j = this.index1;
+				}
+			}
+			
+			
+			
+			function san (a,b,c){
+				for (var i = 0; i < aContentImgA.length; i++) {
+					if (aContentImgA[b].style.opacity == "1") {
+						aContentImgA[b].style.opacity = "0"
+						startMove(aContentImgA[c],{"opacity" : 100});
+						changeImg(c)
+					} else if (aContentImgA[i].style.opacity == "1") {
+						aContentImgA[i].style.opacity = "0"
+						startMove(aContentImgA[i - a],{"opacity" : 100});
+						changeImg(i - a)
+					}				
+				}
+			}
+			sanLeft.onclick = function(){
+				san(1,0,5);
+			}
+			sanRight.onclick = function(){
+				san(-1,5,0)
+			}
+			
+			for (var i = 0; i < aContentImgA.length ; i++) {
+				if (aContentImgA[i].style.opacity == 1) {
+					j = i
+				}
+			}
+				
+			
+			oContentImg.onmouseover = function(){
+				clearInterval(time)
+			}
+			oContentImg.onmouseout = function(){
+				move();
+			}
+			
+			
+			
+			for (var i = 0; i < aFixed.length; i++) {
+				aFixed[i].index1 = i;
+				aFixed[i].onmouseover = function(){
+					this.style.backgroundColor = "red"
+					startMove(this,{"width" :120})	
+				}
+				aFixed[i].onmouseout = function(){
+					this.style.backgroundColor = ""
+					startMove(this,{"width" :35})
+				
+				}
+			}
+		</script>
+	</body>
+
+</html>

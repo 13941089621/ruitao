@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap{
+				width: 200px;
+			}
+			.title{
+				font-size: 30px;
+			}
+			.list{
+				list-style: none;
+				width: 100px;
+				display: none;
+			}
+			.list>li{
+				text-align: center;
+				font-size: 20px;
+				margin-top: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<p class="title">陈亮的最爱</p>
+			<ul class="list">
+				<li>日韩</li>
+				<li>欧美</li>
+				<li>柬埔寨</li>
+				<li>泰国</li>
+				<li>金紫荆</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			// 元素获取
+			var oWrap = document.querySelector(".wrap");
+			var oList = document.querySelector(".list");
+			var aLis = document.querySelectorAll(".list>li");
+			
+			oWrap.onmouseover = function (){
+				oList.style.display = "block";
+			}
+			oWrap.onmouseout = function (){
+				oList.style.display = "none";
+			}
+			
+			for (var i = 0; i < aLis.length; i++) {
+				aLis[i].onmouseover = function (){
+					this.style.backgroundColor = "yellow";
+				}
+				aLis[i].onmouseout = function (){
+					this.style.backgroundColor = "";
+				}
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#wrap1 {
+				position: absolute;
+				top: 800px;
+				left: 0;
+			}
+			#wrap2{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap1">
+			<div class="glass-wrap">
+				<div class="glass-wrap-small">
+					<img src="img/min.jpg" alt="" class="glass-img-small" />
+					<div class="glass-box"></div>
+				</div>
+				<div class="glass-wrap-big">
+					<img src="img/max.jpg" class="glass-img-big" />
+				</div>
+			</div>
+		</div>
+
+		<div id="wrap2">
+			<div class="glass-wrap">
+				<div class="glass-wrap-small">
+					<img src="img/min.jpg" alt="" class="glass-img-small" />
+					<div class="glass-box"></div>
+				</div>
+				<div class="glass-wrap-big">
+					<img src="img/max.jpg" class="glass-img-big" />
+				</div>
+			</div>
+
+		</div>
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jqueryclass.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			$(function(){
+				$("#wrap1").glass();
+				$("#wrap2").glass();
+			})
+		</script>
+	</body>
+
+</html>

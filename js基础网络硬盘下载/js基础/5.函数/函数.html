@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		
+		<input type="button" name="btn1" id="btn1" value="点我点我" />
+		
+		
+		<script type="text/javascript">
+			//   函数
+			//   具有一定功能的代码段
+			//   函数调用一定要加()
+			
+			//   定义
+			//   function  函数声明标识符
+			//   函数名：代表了整个函数，用来调用函数
+			// 	 参数列表：函数内部需要用到的值   参数1，参数2，参数3，。。。。
+			//   函数体： 完成函数功能的代码
+			//   return ： 函数整体的返回值
+//			function 函数名 (参数列表){
+//				函数体
+//				return   返回值  ;  
+//			}
+			
+			//   函数定义
+			function fn1 (){
+				alert("函数定义成功");
+			}
+			//   函数调用
+//			fn1();
+			
+			//	形式结构上分类:  1.无参数无返回值
+			function openRoom1 (){
+//				console.log("陈亮最喜欢的日韩")
+			}
+			openRoom1();
+			//    			2.无参数，有返回值
+			function openRoom2(){
+				var str1 = "柬埔寨";
+				var str2 = "克罗地亚";
+				//  return  后面只能接一个东西，一个函数只能有一个return，函数执行到return就结束了，return之后的代码不读
+				return str1 + str2;
+			}
+			var str = openRoom2();
+//			console.log(str);
+			var a = 0;
+			//    			3.有参数没有返回值
+			function openRoom3 (favor, place){
+				var str = "陈亮最喜欢的";
+//				console.log(str + favor + "zai" +  place);
+			}
+			openRoom3("李秘",a);
+			
+			//   			4.有参数有返回值
+			
+			function openRoom4 (place){
+				var str = "陈亮去了最喜欢的地方";
+				if (place == "泰国") {
+					return "李秘"
+				} else if (place == "日本") {
+					return "来俊鹏"
+				} else {
+					return "闫爱文"
+				}				
+			}
+			var name = openRoom4("日本");
+//			console.log(name);
+			
+			//  练习；写一个求两个数的差的函数
+			function cha (yi,er){
+
+				if (yi >= er) {
+					var cha = yi - er;
+				} else{
+					var cha = er - yi;
+				}
+				return cha;
+			}
+			var aa = cha(15,200);
+//			console.log(aa);
+			function he (num1,num2){
+				return num1 + num2
+			}
+//			console.log(he(30,87));
+			/**
+			 * 注释函数用的   商  shang
+			 * @param {Object} num1   参数1
+			 * @param {Object} num2   参数2
+			 */
+			function shang (num1,num2){
+				return num1 / num2
+			}
+//			console.log(shang(8,15));
+			
+			//  用函数求出数组的元素的总和
+			var arr = [4,5,8];
+			function ahe (arr1){
+				var sum = 0;
+				for (var i = 0; i < arr1.length; i++) {
+					sum = sum + arr[i];					
+				}
+				return sum
+			}
+//			console.log(ahe(arr));
+			
+			//  创建一个5个元素的随机整形数组，范围5--20
+			
+			function random1 (){
+				var arr1 = Array(5);
+				for (var i = 0; i < 5; i++) {
+					arr1[i] = Math.floor(Math.random() * (20 - 5 + 1) + 5);
+				};
+				return arr1;
+			}
+//			console.log(random1());
+			
+			//  写一个函数，给我n--m区间内的整形随机数
+			
+			function nmr (n,m,a){
+				var arr2 = Array(a);
+				for (var i = 0; i < a; i++) {
+					
+				    arr2[i] = Math.floor(Math.random() * (m - n + 1) + n);
+				}
+				return arr2
+			}
+//			console.log(nmr(20,30,10));
+			
+			var arr3 = Array(10);
+			arr3 =  nmr(40,50,10);
+//			console.log(arr3);
+			//  写一个函数，求最大值
+			function arrmax (arr){	
+				var a = 0;
+				/*for (var i = 0; i < arr.length - 1; i++) {
+					if (arr[i] > arr[i + 1]) {
+						var temp = arr[i];
+						arr[i] = arr[i + 1];
+						arr[i + 1] = temp
+					}
+				}
+				return arr[arr.length - 1]*/
+				for (var i = 0; i < arr.length; i++) {
+					if (a < arr[i]) {
+						a = arr[i]
+					}
+				}
+				return a
+			}
+//			console.log(arrmax(arr3));
+			
+			//  求a--b的和
+			function she (a,b){
+				var ca = 0;
+				for (var i = a; i <= b; i++) {
+					ca = ca + i;
+				}
+				return ca
+			}
+//			console.log(she(1,10));
+			//  	1--10的和			
+			var c = 0;
+			for (var i = 1; i <= 10; i++) {
+				c = c + i;
+			}
+//			console.log(c);
+			//  1--n的和
+			function nsum (n){
+				var sum = 0
+				for (var i = 1; i <= n; i++) {
+					sum += i;
+				}
+				return sum
+			}
+//			console.log(nsum(100));
+			
+			
+			//  变量的作用域问题
+			//  函数内部所定义的变量为局部变量，只在函数内部起作用
+			//  在外部定义的变量为全局变量，在任意地方都可以使用
+			
+			
+			//  函数按照命名方式来分  
+			//  1.命名函数   起了名字的函数  想用函数必须调用
+			//  2.匿名函数   没有名字
+			var oBtn1 = document.getElementById("btn1");
+			//  事件绑定，通过事件触发函数
+			oBtn1.onclick = function(){
+				console.log("点了点")
+			}
+			//  用变量保存函数   和命名函数调用一样
+			var func = function(favor){
+//				alert("我保存在变量中" + favor)
+			}
+			func("lalala");
+			
+			//  3.直接书写函数
+			
+			//  练习；求两个数的最大值
+			function max(a,b){
+				if (a < b) {
+					a = b;
+				}
+				return a;
+			}
+//			console.log(max(5,8));
+			function maxs(a,b,c){
+				var max = a > b ? a : b;
+				max = max > c ? max : c;
+				return max;
+			}
+			console.log(maxs(3,1,10));
+			
+			//  函数之间可以嵌套使用，在一个函数中可以使用其他函数
+			
+			
+			//  定时器
+			//  1.单次定时器
+//			function test1 (){
+//				alert("陈亮已经饥渴难耐了");
+//			}
+//			setTimeout(test1,1000);
+			//  通常这么写
+			//  参数1.；定时器执行的函数
+			//  参数2.； 定时器延迟几毫秒
+			var timer = null;
+			timer = setTimeout(function(){
+//				alert("陈亮已经饥渴难耐了");
+			},1000);
+			
+			//  清除定时器
+//			clearTimeout(timer);
+			oBtn1.onclick = function(){
+				clearTimeout(timer);
+			}
+			
+			//  循环定时器
+			var timer1 = setInterval(function(){
+				alert("李秘飘飘欲仙了")
+			},1000)
+			oBtn1.onclick = function(){
+				clearInterval(timer1);
+			}
+		</script>
+	</body>
+
+</html>

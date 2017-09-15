@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>飞扬的小鸟</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.wrap {
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			
+			.bg {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.banner {
+				position: absolute;
+				width: 100%;
+				top: 88.38%;
+				left: 0;
+			}
+			
+			.banner img {
+				position: absolute;
+				left: 0;
+				width: 100%;
+			}
+			
+			.startpage {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			
+			.head {
+				position: absolute;
+				width: 280px;
+				top: 150px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+			}
+			
+			.score {
+				position: absolute;
+				width: 280px;
+				top: 50px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				text-align: center;
+				font-size: 30px;
+				font-weight: bold;
+				color: white;
+			}
+			
+			.start {
+				position: absolute;
+				width: 280px;
+				top: 400px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				text-align: center;
+			}
+			
+			.gamepage {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			
+			.guanziUp {
+				position: absolute;
+				width: 62px;
+				background-image: url(img/up_mod.png);
+				top: 0;
+				/*border: 1px solid red;*/
+			}
+			
+			.guanziUp img {
+				position: absolute;
+				bottom: 0;
+			}
+			
+			.guanziDown {
+				position: absolute;
+				width: 62px;
+				background-image: url(img/down_mod.png);
+				bottom: 0;
+				/*border: 1px solid red;*/
+			}
+			
+			.guanziDown img {
+				position: absolute;
+				top: 0;
+			}
+			
+			#bird {
+				position: absolute;
+				top: 200px;
+				left: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<img src="img/bg.jpg" alt="" class="bg" />
+			<div class="banner">
+				<img src="img/banner.jpg" alt="" />
+				<img src="img/banner.jpg" alt="" />
+			</div>
+			<div class="score" id="score">
+			</div>
+			<div class="startpage">
+				<div class="head">
+					<img src="img/head.jpg" alt="" />
+					<img src="img/bird0.png" alt="" />
+				</div>
+				<div class="start">
+					<img src="img/start.jpg" alt="" />
+				</div>
+			</div>
+
+			<ul class="gamepage">
+				<img src="img/bird0.png" alt="" id="bird" />
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			var score = 0;
+			var oWrap = document.querySelector(".wrap");
+			var oStart = document.querySelector(".start");
+			var oStartPage = document.querySelector(".startpage");
+			var oGamePage = document.querySelector(".gamepage");
+			var lis = oGamePage.getElementsByTagName("li");
+			var oBird = document.getElementById("bird");
+			var oScore = document.getElementById("score");
+
+			//初始速度
+			var birdSpeed = 1;
+			//记录扇动状态
+			var srcoBird = 0;
+			//小鸟动画
+			function birdMove() {
+				oBird.timer = setInterval(function() {
+					//每次循环增加0.5
+					birdSpeed += 0.5;
+
+					//如果小于零为向上飞行状态
+					if(birdSpeed < 0) {
+						if(srcoBird == 0) {
+							oBird.src = "img/up_bird1.png";
+						} else {
+							oBird.src = "img/up_bird0.png";
+						}
+
+					} else {
+						if(srcoBird == 0) {
+							oBird.src = "img/down_bird1.png";
+							srcoBird = 1;
+						} else {
+							oBird.src = "img/down_bird0.png";
+							srcoBird = 0;
+						}
+					}
+					if(birdSpeed >= 10) {
+						birdSpeed = 10;
+					}
+					oBird.style.top = oBird.offsetTop + birdSpeed + "px";
+
+					//判断是否碰壁 
+
+					//获取管道组的数量
+					var lisNum = lis.length;
+
+					//获取当前小鸟的位置和宽高
+					var nowBirdLeft = oBird.offsetLeft;
+					var nowBirdTop = oBird.offsetTop;
+					var nowBirdWidth = oBird.offsetWidth;
+					var nowBirdHeight = oBird.offsetHeight;
+
+					//遍历管道组
+					for(var i = 0; i < lisNum; i++) {
+						var ductDivs = lis[i].getElementsByTagName("div");
+
+						for(var j = 0; j < 2; j++) {
+
+							//获取管道位置和宽高
+							var ductLeft = ductDivs[j].offsetLeft;
+							var ductTop = ductDivs[j].offsetTop;
+							var ductWidth = ductDivs[j].offsetWidth;
+							var ductHeight = ductDivs[j].offsetHeight;
+
+							var left = ductLeft <= nowBirdLeft + nowBirdWidth ? true : false;
+							var right = nowBirdLeft <= ductLeft + ductWidth ? true : false;
+							var top = ductTop <= nowBirdTop + nowBirdHeight ? true : false;
+							var bottom = nowBirdTop <= ductTop + ductHeight ? true : false;
+
+							if(left && right && top && bottom) {
+								clearInterval(oBird.timer);
+								clearInterval(lis.timer);
+								alert("Game Over");
+							}
+						}
+					}
+				}, 30);
+			}
+			window.addEventListener("touchstart", function(e) {
+				e.preventDefault();
+				if(srcoBird == 0) {
+					srcoBird = 1;
+				} else {
+					srcoBird = 0;
+				}
+				birdSpeed = -7;
+			}, false);
+
+			//跑道动画效果
+			oBanner = document.querySelector(".banner");
+			oBannerImgs = oBanner.getElementsByTagName("img");
+			oBannerImgs[0].style.left = "0px";
+			oBannerImgs[1].style.left = oBannerImgs[0].offsetWidth + "px";
+			oBanner.timer = setInterval(function() {
+				var speed = -2;
+				if(Math.abs(oBanner.offsetLeft) > oBannerImgs[0].offsetWidth) {
+					oBanner.style.left = "0px";
+				} else {
+					oBanner.style.left = oBanner.offsetLeft + speed + "px";
+				}
+			}, 20);
+
+			// 随机函数
+			function random(min, max) {
+				return parseInt(Math.random() * (max - min + 1)) + min;
+			}
+
+			function createGuanzi(createnum) {
+				//设置管道上下高度
+				var upDownH = 30;
+
+				for(var i = 0; i < createnum; i++) {
+
+					//随机每组管道之间的距离
+					var leftW = random(150, 200);
+					var li = document.createElement("li");
+					var lileft = 300;
+					if(lis[lis.length - 1]) {
+						lileft = lis[lis.length - 1].lastChild.offsetLeft + leftW;
+					}
+
+					//随机高度
+					var upH = random(20, 55);
+					var downH = 100 - upH - upDownH;
+
+					//创建上面的管子
+					var guanziUp = document.createElement("div");
+					var imgUp = new Image();
+					guanziUp.appendChild(imgUp);
+					imgUp.src = "img/up_pipe.png";
+					guanziUp.style.height = upH + "%";
+					guanziUp.style.left = lileft + "px";
+					guanziUp.className = "guanziUp";
+					//设置
+
+					//创建下面的管子
+					var guanziDown = document.createElement("div");
+					var imgDown = new Image();
+					guanziDown.appendChild(imgDown);
+					imgDown.src = "img/down_pipe.png";
+					guanziDown.style.height = downH + "%";
+					guanziDown.style.left = lileft + "px";
+					guanziDown.className = "guanziDown";
+					li.appendChild(guanziUp);
+					li.appendChild(guanziDown);
+
+					oGamePage.appendChild(li);
+				}
+
+			}
+			window.onload = function() {
+				oStartPage.style.display = "";
+				oGamePage.style.display = "none";
+				
+				
+				
+				oStart.addEventListener("touchstart", function() {
+					oStartPage.style.display = "none";
+					oGamePage.style.display = "";
+					createGuanzi(5);
+					lis.addScore = true;
+					//管子运动 循环所有管子设置其left值
+					lis.timer = setInterval(function() {
+						for(var i = 0; i < lis.length; i++) {
+
+							lis[i].firstChild.style.left = lis[i].firstChild.offsetLeft - 1 + "px";
+							lis[i].lastChild.style.left = lis[i].lastChild.offsetLeft - 1 + "px";
+							if(lis[i].firstChild.offsetLeft < -30) {
+								if(lis.addScore) {
+									score++;
+									oScore.innerHTML = score;
+									lis.addScore = false;
+								}
+
+							}
+							if(lis[i].firstChild.offsetLeft < -60) {
+								oGamePage.removeChild(lis[i]);
+								lis.addScore = true;
+								createGuanzi(1);
+							}
+						}
+					}, 20);
+ 
+					birdMove();
+				}, false);
+
+			}
+		</script>
+	</body>
+
+</html>

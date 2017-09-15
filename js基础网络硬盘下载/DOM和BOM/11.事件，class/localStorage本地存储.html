@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*  localStorage  本地存储，是一种类似cookie的保存手段，大小5mb，是window的子对象
+				支持大部分浏览器，包括IE8
+				与cookie不同的是，cookie只保存字符串，而localStorage是以对象方式存储
+				不清除浏览器，始终存在浏览器中
+			*/
+			//  添加localStorage
+			//  username 自己定义的，属性  zzz为属性值
+			//  三种添加方法
+			window.localStorage.username = "zzz";
+			window.localStorage["realname"] = "aaa";
+			window.localStorage.setItem("name1","ccc");
+			
+			//  获取localStorage数据   三种方法
+			console.log(window.localStorage.username);
+			console.log(window.localStorage["username"]);
+			console.log(window.localStorage.getItem("username"));
+			
+			//  移出localStorage
+			window.localStorage.removeItem("username");
+			console.log(window.localStorage);
+			console.log(window.localStorage.username);
+			console.log(window.localStorage["username"]);
+			console.log(window.localStorage.getItem("username"));
+			
+			//  遍历localStorage
+			for (var keyname in window.localStorage) {
+				console.log(window.localStorage[keyname])
+			}
+			//  遍历方法2
+			for (var i = 0; i < window.localStorage.length; i++) {
+				var keyname = window.localStorage.key(i);
+				console.log(keyname)
+				console.log(window.localStorage[keyname])
+			}
+			
+			//  全部清除
+			window.localStorage.clear();
+		</script>
+	</body>
+</html>

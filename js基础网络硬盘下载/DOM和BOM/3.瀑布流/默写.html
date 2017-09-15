@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				margin: 0 auto;
+				list-style: none;
+				position: relative;
+			}
+			ul>li{
+				width: 190px;
+				padding: 10px;
+				position: absolute;
+			}
+			li img {
+				width: 100%;
+				border: 0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<ul id="all"></ul>
+		
+		<script type="text/javascript">
+			var oUl = document.getElementById("all");
+			var alis = document.getElementsByTagName("li");
+			
+			function add(){
+				for (var i = 0; i < 20; i++) {
+					var newli = document.createElement("li");
+					var newimg = new Image();
+					newimg.src = "img/" + (i + 1) + ".jpg";
+					newli.appendChild(newimg);
+					oUl.appendChild(newli)
+				}
+			}
+			add();
+			var liw = 0;
+			var martop = 10; 
+			var marrig = 10;
+			function aaa(){
+				var cols = getcols();
+				var liheight = [];
+				
+				for (var i = 0 ; i < alis.length; i++) {
+					liheight[i] = alis[i].offsetHeight;
+				}
+				var newheight = [];
+				for (var i = 0; i < cols; i++) {
+					alis[i].style.left = i * liw + "px";
+					alis[i].style.top = 0;
+					newheight[i] = liheight[i];
+				}
+				for (var i = cols; i < alis.length; i++) {
+					var min = minindex();
+					alis[i].style.left = liw * min + "px";
+					alis[i].style.top = newheight[min] + martop + "px";
+					newheight[min] = newheight[min] + martop + alis[i];
+				}
+				function minindex(){
+					var min = 0;
+					var minh = newheight[0];
+					for (var i = 0; i < newheight.length; i++) {
+						if (minh > newheight[i]) {
+							minh = newheight[i];
+							min = i;
+						}
+					}
+					return min;
+				}
+			}
+		
+			function getcols(){
+				var pagew = document.documentElement.clientWidth;
+				liw = alis[0].offsetWidth + marrig;
+				cols = parseInt(pagew / liw);
+				oUl.style.width = cols * liw - marrig + "px";
+				return cols;
+			}
+			window.onload = function(){
+				aaa()
+			}
+			
+		</script>
+		
+
+	</body>
+</html>

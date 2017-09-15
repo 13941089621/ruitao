@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				height: 2000px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var images = ["http://img0.imgtn.bdimg.com/it/u=221588889,2270874237&fm=21&gp=0.jpg","http://img2.imgtn.bdimg.com/it/u=270042319,1788116443&fm=206&gp=0.jpg","http://img4.imgtn.bdimg.com/it/u=3687919961,1850409543&fm=206&gp=0.jpg","http://img0.imgtn.bdimg.com/it/u=377979207,2544192375&fm=21&gp=0.jpg","http://img3.imgtn.bdimg.com/it/u=42251460,3337576233&fm=21&gp=0.jpg","http://img0.imgtn.bdimg.com/it/u=1844129712,1966774308&fm=21&gp=0.jpg"];
+			
+			
+			//   窗体滚动事件
+			window.onscroll = function(){
+				var scrolltop = document.body.scrollTop || document.documentElement.scrollTop;
+				var winheight = document.documentElement.clientHeight;
+				var pageheight = document.documentElement.scrollHeight;
+				
+				if (scrolltop + winheight == pageheight) {
+					var imglen = images.length
+					for (var i = 0; i < imglen ; i++) {
+						var newimg = new Image();
+						newimg.src = images[i];
+						oWrap.appendChild(newimg)
+					}
+				}
+			}
+		</script>
+		
+		
+		
+	</body>
+</html>

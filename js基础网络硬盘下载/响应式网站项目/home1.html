@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;	
+			}
+			.head{
+				width: 100%;
+				height: 67px;
+				background-color: black;
+				position :relative;
+			}
+			.nav{ 
+				max-width: 1127px;
+				margin: 0 auto;
+				height: 67px;
+				line-height: 67px;
+				overflow:hidden;
+			}
+			.ul1>li{
+				float:left;
+				margin-right:30px;
+			}
+			.ul1{
+				float:right;
+				height:67px;
+				line-height:67px;
+				list-style:none;
+			}
+			.nav>div{
+				float:left;
+				cursor:pointer;
+				padding-top:10px;
+			}
+			.ul1 a{
+				text-decoration:none;
+				color: gray;
+				padding: 5px 10px;
+				border:1px solid black;
+			}
+			.head>img{
+				position:absolute;
+				right:30px;
+				top:25px;
+				width:23px;
+			}
+			.ul2{
+				background-color:#CFDB00;
+				width:30%;
+				height:230px;
+				position:absolute;
+				top: 67px;
+				right:0;
+				z-index:20;
+				list-style:none
+			}
+			.ul2 a{
+				text-decoration:none;
+				color: black;
+				padding: 5px 10px;
+				border: 1px solid black;
+				border-radius: 8px;
+			}
+			.ul2 li{
+				float:none;
+				height:38px;
+				text-align:center;
+				line-height:38px;
+			}
+			.content{
+				width: 980px;
+				margin: 0 auto;
+				border-bottom: 1px solid #e1e1e1;
+			}
+			.row1 a{
+				text-decoration:none;
+				color:black;
+				position:relative;
+				display:inline-block;
+				width:588px;
+				vertical-align: top;
+			}	
+			.row1 li{
+				float:left;
+			}
+			.rowtext{
+				width:34%;
+				padding-left:2%;
+			}
+			.rowtext a{
+				width: 100%;
+			}	
+			.rowtext h6{
+				font-size:1.875em;
+				padding-top:0.5em;
+				font-weight:bold;
+				width: 100%;
+			}
+			.rowtext p{
+				font-size: 0.9375em;
+				line-height: 1.8em;
+				padding-top: 0.5em;
+				width: 100%;
+			}
+			.row1 img{
+				width:100%;
+				position:absolute;
+				left:0;
+				top:0;
+			}
+			.blank{
+				width:21px;
+				background-color: gray;
+				height: 100%;
+			}
+			.row1{	
+				overflow:hidden;
+				list-style:none;
+			}
+			.right1{
+				text-align: right;
+			}	
+			.ul2{
+				display: none;
+			}
+			.head>img{
+				display: none;
+			}
+			@media only screen and (min-width: 200px) and (max-width: 1024px) {
+				.ul1{
+					display: none;
+				}
+				.head>img{
+					display: block;
+				}
+			}
+			@media only screen and (min-width: 100px) and (max-width: 640px) {
+				.content{
+					width: 90%;
+				}
+				.head>img{
+					width: 29px;
+					height: 26px;
+					margin-top: -10px;
+					margin-right: 2%;
+				}
+				.nav>div{
+					padding: 0;
+				}
+				.head{
+					height: 48px;
+					padding: 0;
+					line-height: 48px;
+				}
+				.ul2{
+					width: 30%;
+					font-size: 0.7em;
+					top: 48px;
+				}
+				.row1,.row1 img,.row1 li.row1 a,.rowtext{
+					width: 100%;
+				}
+				.row1 li{
+					float: none;
+				}
+				.blank{
+					width: 0;
+				}
+				.rowtext{
+					text-align: center;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="head">
+			<div class="nav">
+				<div><img src="img/shininglogo.png"/></div>
+				<ul class="ul1">
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/home1.html">Home</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/about.html">About</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html">Readering</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html">3D Animation</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html">Bim</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<img src="img/nav.png"/>
+			<ul class="ul2">
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/home1.html">Home</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/about.html">About</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html">Readering</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html">3D Animation</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html">Bim</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/contact.html">Contact</a></li>
+				</ul>
+		</div>
+		<div class="content">
+			<ul class="row1">
+				<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html"><img src="img/home_pic_one.png"/><img src="img/home_pic_one_h.png"/></a></li>
+				<li class="blank"></li>
+				<li class="rowtext"><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html"><h6>RENDERINGS</h6><p>Masterplan、Public Building、commercial Building、Residential Building、Landscape Design</p></a></li>
+			</ul>
+			<ul class="row1">
+				<li class="rowtext right1"><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html"><h6>BIM</h6><p>Model Completion、Clash Detection、MEP Integration、Curtain Wall Remedying、BIM Consulting</p></a></li>
+				<li class="blank"></li>
+				<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html"><img src="img/home_pic_two.jpg"/><img src="img/home_pic_two_h.png"/></a></li>
+			</ul>
+			<ul class="row1">
+				<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html"><img src="img/homes_pic_three.jpg"/><img src="img/homes_pic_three_h.jpg"/></a></li>
+				<li class="rowtext"><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html"><h6>3D ANIMATION</h6><p>Real estate advertising animation Design scheme Animation Corporate promotional Animation</p></a></li>
+			</ul>
+		</div>
+		
+		<div class="foot">
+			<div class="foot1">
+				<a href="##"><img src="img/mail.jpg" alt="" /></a>
+			</div>
+			<div class="foot2">
+				<a href="##"><img src="img/facebook.jpg"/></a>
+				<a href="##"><img src="img/youtube.jpg"/></a>
+				<a href="##"><img src="img/linkedln.jpg"/></a>
+				<a href="##"><img src="img/twitter.jpg"/></a>
+			</div>
+			<div class="foot3">
+				<span>Copyright © 1998-2015 shining Group</span>
+			</div>
+			
+		</div>
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				//  nav
+				$(".ul1 li a").hover(
+					function(){$(this).css({"color": "white","border-radius": "8px","border": "1px solid rgb(123, 123, 123)"})},function(){$(this).css({"color": "gray","border-radius": "0px","border": "1px solid black"})})
+				$(".ul1 a").eq(0).css({"color": "white","border-radius": "8px","border": "1px solid rgb(123, 123, 123)"}).off();
+				//  按钮
+				
+				$(".head>img").click(function(){
+					$(".ul2").slideToggle()
+				})
+				
+				
+				
+				
+				
+				//  CONTENT
+				
+				$(".row1 img:even").css("zIndex","10")
+//				$(".row1").css({"height":$(".row1 img").height()})
+				$(".row1 img").parent().css("height",$(".row1 img").height())
+				$(".row1 img").parent().hover(function(){
+					$(this).stop();
+					$(this).find("img").eq(0).fadeOut(1000);
+					$(this).parent().siblings(".blank").css("backgroundColor","rgb(207,219,0)")
+					$(this).find("img").eq(1).fadeIn(1000)}
+					,function(){
+					$(this).stop();
+					$(this).find("img").eq(1).fadeOut(1000);
+					$(this).parent().siblings(".blank").css("backgroundColor","")
+					$(this).find("img").eq(0).fadeIn(1000)}
+				)
+				
+				
+				
+				//  footer
+				var arrSrc = ["img/mail_h.jpg","img/facebook_h.jpg","img/youtube_h.jpg","img/linkedln_h.jpg","img/twitter_h.jpg"];
+				var oldSrc = null;
+				$(".foot1").css({"textAlign":"center","marginTop":"45px"});
+				$(".foot2").css({"width":"137px","margin":"12px auto 0","overflow":"hidden"});
+				$(".foot2 a").css({"float":"left","width":"25%","textAlign":"center"});
+				$(".foot3").css({"height":"4em","lineHeight":"4em","textAlign":"center","color":"#808080"});
+				$(".foot a").hover(function(){
+					oldSrc = $(this).find("img").attr("src");
+					$(this).find("img").attr("src",arrSrc[$(this).index(".foot a")]);
+				},function(){
+					$(this).find("img").attr("src",oldSrc);
+				})
+				
+			})
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

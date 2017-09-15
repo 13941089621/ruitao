@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				top: 50px;
+				left: 0;
+			}
+			#div2{
+				width: 1px;
+				height: 300px;
+				position: absolute;
+				left: 500px;
+				top: 0;
+				background-color: black;
+				
+			}
+			#div3{
+				width: 1px;
+				height: 300px;
+				position: absolute;
+				left: 800px;
+				top: 0;
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="btn1" id="btn1" value="开始运动到500" />
+		<input type="button" name="btn2" id="btn2" value="开始运动到800" />
+		<div id="div1">
+			
+		</div>
+		<div id="div2"></div>
+		<div id="div3"></div>
+		
+		<script type="text/javascript">
+			var oDiv = document.getElementById("div1");
+			var oBtn = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			
+			var timer = null;
+			function starMove (itarget){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					var speed = 0;
+					if (oDiv.offsetLeft >= itarget) {
+						speed = -7
+					}else {
+						speed = 7
+					}
+					//  Math.abs()   绝对值
+					if (Math.abs(oDiv.offsetLeft - itarget) < Math.abs(speed)) {
+						oDiv.style.left = itarget + "px";
+						clearInterval(timer);
+					} else {
+						oDiv.style.left = oDiv.offsetLeft + speed + "px";
+					}
+				},20)
+			}
+			oBtn.onclick = function(){
+				starMove(500)
+			}
+			oBtn2.onclick = function(){
+				starMove(800)
+			}
+		</script>
+	</body>
+</html>

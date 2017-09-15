@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+			.wrap{
+				width: 1210px;
+				height: 466px;
+				background-color: #ccc;
+				margin: 100px auto;
+				overflow: hidden;
+			}
+			.goods_list{
+				width: 210px;
+				height: 100%;
+				background-color: yellow;
+				float: left;
+				position: relative;
+			}
+			#list>li{
+				height: 31px;
+				background-color: #C81623;
+				line-height: 31px;
+				padding: 0 10px;
+				overflow: hidden;
+			}
+			#list>li>a{
+				text-decoration: none;
+				color: white;
+				float: left;
+			}
+			#list>li>span{
+				float: right;
+				color: white;
+				font-size: 12px;
+			}
+			#list>.active_li{
+				background-color: white;
+			}
+			#list>.active_li a{
+				color: #C81623;
+			}
+			#details{
+				width: 998px;
+				height: 464px;
+				background-color: #f7f7f7;
+				position: absolute;
+				top: 0px;
+				left: 210px;
+				border: 1px solid red;
+				display: none;
+				z-index: 10;
+			}
+			.banner{
+				width: 730px;
+				height: 454px;
+				background-color: white;
+				float: left;
+				margin: 12px;
+				position: relative;
+			}
+			#b_content{
+				position: relative;
+			}
+			#b_content>li{
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				filter: alpha(opacity: 0);
+			}
+			.banner>span{
+				width: 28px;
+				height: 62px;
+				background-color: rgba(0, 0, 0, 0.3);
+				position: absolute;
+				z-index: 1;
+				color: white;
+				line-height: 62px;
+				text-align: center;
+				cursor: pointer;
+			}
+			#last{
+				top: 196px;
+				left: 0;
+			}
+			#next{
+				top: 196px;
+				right: 0;
+			}
+			#contorls{
+				width: 150px;
+				height: 20px;
+				/*background-color: yellow;*/
+				position:absolute;
+				bottom: 10px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+			}
+			#contorls>li{
+				width: 20px;
+				height: 20px;
+				border-radius: 10px;
+				background-color: #3E3E3E;
+				color: white;
+				text-align: center;
+				line-height: 20px;
+				margin: 0px 2px;
+				float: left;
+				cursor: pointer;
+				font-size: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="goods_list">
+				<ul id="list">
+					<li><a href="###">选项1</a><span>&gt;</span></li>
+					<li><a href="###">选项2</a><span>&gt;</span></li>
+					<li><a href="###">选项3</a><span>&gt;</span></li>
+					<li><a href="###">选项4</a><span>&gt;</span></li>
+					<li><a href="###">选项5</a><span>&gt;</span></li>
+					<li><a href="###">选项6</a><span>&gt;</span></li>
+					<li><a href="###">选项7</a><span>&gt;</span></li>
+					<li><a href="###">选项8</a><span>&gt;</span></li>
+					<li><a href="###">选项9</a><span>&gt;</span></li>
+					<li><a href="###">选项10</a><span>&gt;</span></li>
+					<li><a href="###">选项11</a><span>&gt;</span></li>
+					<li><a href="###">选项12</a><span>&gt;</span></li>
+					<li><a href="###">选项13</a><span>&gt;</span></li>
+					<li><a href="###">选项14</a><span>&gt;</span></li>
+					<li><a href="###">选项15</a><span>&gt;</span></li>
+				</ul>
+				<div id="details">1</div>
+			</div>
+			<div class="banner">
+				<ul id="b_content">
+					<li style="opacity:1; filter:alpha(opacity:100)"><a href="###"><img src="img/1.jpg" alt="" /></a></li>
+					<li><a href="###"><img src="img/2.jpg" alt="" /></a></li>
+					<li><a href="###"><img src="img/3.jpg" alt="" /></a></li>
+					<li><a href="###"><img src="img/4.jpg" alt="" /></a></li>
+					<li><a href="###"><img src="img/5.jpg" alt="" /></a></li>
+					<li><a href="###"><img src="img/6.jpg" alt="" /></a></li>
+				</ul>
+				<span id="last">
+					&lt;
+				</span>
+				<span id="next">
+					&gt;
+				</span>
+				<ul id="contorls">
+					<li style="background-color: #B61B1F">1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>	
+				</ul>
+			</div>
+		</div>
+		
+		<script src="js/任意值运动框架.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 元素获取
+			var aLis = document.querySelectorAll("#list>li");
+			var oDetails = document.getElementById("details");
+			var oUlist = document.getElementById("list");
+			var content = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 'M', 'N', "O"];
+			
+			// 记录移出li时的下标
+			var liIndex = 0;
+			
+			for (var i = 0; i < aLis.length; i++) {
+				// 记录下标
+				aLis[i].index = i;
+				aLis[i].onmouseover = function (){
+					this.className = "active_li";
+					// 用对应下标从数组中取值
+					oDetails.innerHTML = content[this.index];
+				}
+				aLis[i].onmouseout = function (){
+					this.className = "";
+					liIndex = this.index;
+				}
+			}
+
+			oUlist.onmouseover = function (){
+				oDetails.style.display = "block";
+			}
+			oUlist.onmouseout = function (){
+				oDetails.style.display = "none";
+			}
+			oDetails.onmouseover = function (){
+				this.style.display = "block";
+				aLis[liIndex].className = "active_li";
+			}
+			oDetails.onmouseout = function (){
+				this.style.display = "none";
+				aLis[liIndex].className = "";
+			}
+			
+			
+			// 第二部分
+			// 获取元素
+			var aImglist = document.querySelectorAll("#b_content>li");
+			var oLast = document.getElementById("last");
+			var oNext = document.getElementById("next");
+			var oBanner = document.querySelector(".banner");
+			var aControls = document.querySelectorAll("#contorls>li");
+			
+			var index = 0;
+			var timer = null;
+			
+			function autoScroll(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					index++;
+					if (index == aImglist.length) {
+						index = 0;
+					}
+					changeImg(index);
+				}, 2000);
+			}
+			autoScroll();
+			
+			// 输入一个下标位置，就能自带特效的跳转到当前图片
+			function changeImg(imgIndex){
+				// 把其他图片都设置为透明
+				for (var i = 0; i < aImglist.length; i++) {
+					startMove(aImglist[i], {opacity: 0});
+				}
+				// 把当前下标的图片显示出来
+				startMove(aImglist[imgIndex], {opacity: 100});
+				changeColor(imgIndex);
+			}
+			
+			// 点击下一个按钮
+			oNext.onclick = function (){
+				index++;
+				if (index == aImglist.length) {
+					index = 0;
+				}
+				changeImg(index);
+			}
+			oLast.onclick = function (){
+				index--;
+				if (index == -1) {
+					index = aImglist.length - 1;
+				}
+				changeImg(index);
+			}
+			
+			// 当鼠标移入banner时，不许自动滚动图片
+			oBanner.onmouseover = function (){
+				clearInterval(timer);
+			}
+			oBanner.onmouseout = function (){
+				autoScroll();
+			}
+			
+			// 给一个下标位置，更改按钮的背景颜色
+			function changeColor(controlIndex){
+				for (var i = 0; i < aControls.length; i++) {
+					aControls[i].style.backgroundColor = "#3E3E3E";
+				}
+				aControls[controlIndex].style.backgroundColor = "#B61B1F";
+			}
+			
+			for (var i = 0; i < aControls.length; i++) {
+				// 记录当前下标位置
+				aControls[i].index = i;
+				var timer1 = null;
+				var time = 0;
+				var mode = true;
+				aControls[i].onmouseover = function (){
+					index = this.index;
+					
+					clearInterval(timer1);
+					timer1 = setInterval(function(){
+						time++;
+						if (time == 10) {
+							mode = false;
+							changeImg(index);
+							clearInterval(timer1);
+							time = 0;
+						} 
+					}, 30);
+					
+//					setTimeout(function (){
+//						// 将index更新到当前位置
+//						changeImg(index);
+//					}, 200);
+				}
+				aControls[i].onmouseout = function (){
+					if(mode == true){
+						clearInterval(timer1);
+					}
+				}
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

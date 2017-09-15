@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="button" name="btn1" id="btn1" value="反选" />
+			<input type="button" name="btn2" id="btn2" value="全选" /><br />
+			<input type="checkbox" name="input1" id="input1" value="" /><br />
+			<input type="checkbox" name="input2" id="input2" value="" /><br />
+			<input type="checkbox" name="input3" id="input3" value="" />
+		</form>
+		
+		<script type="text/javascript">
+			var oInput1 = document.getElementById("input1");
+			var oInput2 = document.getElementById("input2");
+			var oInput3 = document.getElementById("input3");
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			
+			
+			oBtn1.onclick = function (){
+//				if (oInput1.checked == true){
+//					oInput1.checked = false;
+//				} else {
+//					oInput1.checked = true;
+//				}
+//				if (oInput2.checked == true){
+//					oInput2.checked = false;
+//				} else {
+//					oInput2.checked = true;
+//				}
+//				if (oInput3.checked == true){
+//					oInput3.checked = false;
+//				} else {
+//					oInput3.checked = true;
+//				}
+				oInput1.checked = !oInput1.checked;
+				oInput2.checked = !oInput2.checked;
+				oInput3.checked = !oInput3.checked;
+			}
+			oBtn2.onclick = function (){
+//				oInput1.checked = true;
+//				oInput2.checked = true;
+//				oInput3.checked = true;
+				oInput1.checked = "1";
+				oInput2.checked = "1";
+				oInput3.checked = "1";
+			}
+		</script>
+	</body>
+</html>

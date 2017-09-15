@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="can" width="1000" height="800"></canvas>
+		
+		<script type="text/javascript">
+			var can = document.getElementById("can");
+			var yuan = can.getContext("2d");
+			yuan.beginPath();
+			yuan.arc(100,100,50,0,360/180*Math.PI,true)
+			yuan.fill();
+			yuan.fillStyle = "rgb(50,20,20)";
+		</script>
+	</body>
+</html>

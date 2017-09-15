@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap {
+				text-align: center;
+				padding-top: 150px;
+			}			
+			input {
+				width: 100px;
+				height: 50px;
+				background-color: greenyellow;
+				margin: 30px;
+				font-size: 20px;
+				color: orchid;
+				border: none;
+				border-radius: 50px/25px;
+				outline: none;
+			}
+			
+			p {
+				font-size: 100px;
+				margin: 50px 0 100px 0;
+				color: hotpink;
+			}
+			#span1 {
+				font-size: 50px;
+				color: deepskyblue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<span id = "span1">哈撒给，面对疾风吧!</span>
+			<p id="p1"></p>
+			<input type="submit" name="btn1" id="btn1" value="开始" />
+			<input type="submit" name="btn2" id="btn2" value="结束" />
+		</div>
+
+		<script type="text/javascript">
+			var oP = document.getElementById("p1");
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			var arr = ["安凯星", "赵玉柱", "叶宝峰", "王信哲", "王毕强", "贾瞢", "史勇强", "吴春杰", "杨思蕊", "李鹏遥", "孙健为", "吴慧林", "张帅", "董宏", "牛雯", "张灵波", "李秘", "陈亮", "曹阳", "闫爱文", "刘佳", "李峰", "余喆敏", "叶红", "来俊鹏", "任浩"];
+			oP.innerHTML =  arr[0] ;
+			var i = 0;
+			var running = null;
+					// 产生随机数的函数
+			function random(min, max){
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+			oBtn1.onclick = function() {
+//				this.style.borderStyle = "none";
+				clearInterval(running)
+//				running = setInterval(function() {
+//					if (i < arr.length - 1) {
+//						i++;
+//						oP.innerHTML = arr[i];
+//					} else if (i == arr.length - 1) {
+//						i = 0;
+//						oP.innerHTML = arr[i]; 
+//					}
+//				}, 100)
+				running = setInterval(function(){
+					var index = random(0,arr.length - 1);
+					oP.innerHTML = arr[index]
+				},100)
+			}
+			oBtn2.onclick = function() {
+				clearInterval(running)
+			}
+		</script>
+	</body>
+
+</html>

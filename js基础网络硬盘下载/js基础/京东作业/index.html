@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		A B A D C
+		
+		
+		<script type="text/javascript">
+			 
+			 //  1
+			 var num = 0;
+			 for (var i = 0; i < 11; i++) {
+			 	num += i
+			 }
+			 alert(num);
+			 //  2
+			 var str = new String("abcdefgsdds");
+			 if (str.search("f") == -1) {
+			 	alert("没有")
+			 } else{
+			 	alert("有")
+			 }
+			 
+			 //  3 
+			 arr = [1,5,9,8,7,3]
+			 
+			 function fan (arr){
+			 	var arr3 = Array(arr.length);
+			 	for (var i = 0 ; i < arr.length; i++) {
+			 		arr3[i] = arr[i]
+			 	}
+			 	for (var i = 0 ; i < arr.length; i++) {
+			 		arr[i] = arr3[arr.length - 1 - i]
+			 	}
+			 	return arr
+			 }
+			 
+			 //  4
+			 function pai (arr){
+			 	for (var i = 0; i < arr.length - 1; i++) {
+			 		for (var j = 0; j < arr.length - i - 1; j++) {
+			 			if (arr[j] > arr[j + 1]) {
+			 				var temp = arr[j];
+			 				arr[j] = arr[j + 1];
+			 				arr[j + 1] = temp;
+			 			}
+			 		}
+			 	}
+			 	return arr
+			 }
+//			 alert(pai(arr));
+			 
+			 //  5
+			 function random(){
+			 	var num = Math.floor(Math.random() * arr.length) ;
+			 	return num ;
+			 }
+			 var arr1 = [];
+			 function luan(arr){
+			 	var numb = null;
+			 	var arr2 = Array(arr.length);
+			 	while (arr1.length < arr.length){
+			 		var temp = random();
+			 		var mode = true;
+			 		for (var i = 0; i < arr1.length; i++) {
+			 			if (temp == arr1[i]) {
+			 				mode = false;
+			 				break;
+			 			}
+			 		}
+			 		if (mode == true) {
+			 			arr1.push(temp)
+			 		}
+			 	}
+			 	for (var i = 0; i < arr.length; i++) {
+			 		arr2[i] = arr[i];
+			 	}
+			 	for (var j = 0; j < arr.length; j++) {
+			 		numb = arr1[j];
+			 		arr[j] = arr2[numb];
+			 		
+			 	}
+			 	
+			 	return arr
+			 }
+			 console.log(luan(arr))  
+		</script>
+	</body>
+</html>

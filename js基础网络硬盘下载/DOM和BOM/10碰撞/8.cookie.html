@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			/*  什么是cookie
+			    cookie是存储在访问中的计算机（本地）的变量，每个用户在同一个浏览器中
+			    请求页面时就会发送一个cookie
+			    cookie的作用是用来存储数据的（存储在浏览器中）
+			    cookie的容量是4kb 存储的数据有次数的，不同浏览器不同
+			    cookie存储的是键值对，，通过字符串切割取出 splice  =  ；
+			*/
+			
+			//  获取cookie
+			//  document.cookie;
+			
+			//  设置cookie
+			//  默认情况下，如果不设置cookie的过期时间，当浏览器退出时cookie自动清除
+			document.cookie = "username=zzz";	
+			//  设置cookie的过期时间
+		    var  expiresDate = new Date();
+			expiresDate.setDate(expiresDate.getDate()+30);
+			document.cookie = "username=zzz;expires="+expiresDate.toGMTString();
+			console.log(document.cookie);
+
+			//清空cookie
+//			var expiresDate2 = new Date();
+//			expiresDate2.setDate(expiresDate2.getDate() - 1);
+//			document.cookie = "expires=" + expiresDate2.toGMTString();
+			console.log(document.cookie);
+		</script>
+	</body>
+</html>

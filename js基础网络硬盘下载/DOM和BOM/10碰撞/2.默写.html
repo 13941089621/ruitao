@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 800px;
+				height: 600px;
+				border: 1px solid black;
+				position: relative;
+			}
+			#wrap div{
+				width: 50px;
+				height: 50px;
+				background-color: #CCCCCC;
+				position: absolute;
+			}
+			#b{
+				left: 300px;
+				top: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="a"></div>
+			<div id="b"></div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var oA = document.getElementById("a");
+			var oB = document.getElementById("b");
+			
+			oA.onmousedown = function(e){
+				//  计算获取鼠标与a的距离
+				var e = e || window.event;
+				var lessx = e.clientX - oA.offsetLeft;
+				var lessy = e.clientY - oA.offsetTop;
+				oWrap.onmousemove = function(e){
+					//  计算a的定位值
+					var e = e || window.event;
+					var oAleft = e.clientX - lessx;
+					var oAtop = e.clientY - lessy;
+					//  获取a的宽高
+					var oAW = oA.offsetWidth;
+					var oAH = oA.offsetHeight;
+					//  获取b的宽高
+					var oBW = oB.offsetWidth;
+					var oBH = oB.offsetHeight;
+					//  获取a定位值
+					var oAL = oA.offsetLeft;
+					var oAT = oA.offsetTop;
+					//  获取b定位值
+					var oBL = oB.offsetLeft;
+					var oBT = oB.offsetTop;
+					//  获取移动范围
+					var lessW = oWrap.clientWidth - oAW;
+					var lessH = oWrap.clientHeight - oAH;
+					//  a的最终定位值
+					var nowleft = 0;
+					var nowtop = 0;
+					if (oA.offsetLeft > lessW) {
+						nowleft = lessW;
+					} else if (oA.offsetLeft >= 0 && oA.offsetLeft <= lessW) {
+						nowleft = oAleft;
+					}
+					if (oA.offsetTop > lessH) {
+						nowtop = lessH;
+					} else if (oA.offsetTop >= 0 && oA.offsetTop <= lessH) {
+						nowtop = oAtop;
+					}
+					oA.style.left = nowleft + "px";
+					oA.style.top = nowtop + "px";
+					
+					
+					//  a在左侧时
+					var leftType = oBL + oBW >= oAL;
+					//  右侧时
+					var rightTye = oAL + oAW >= oBL;
+					//  上侧时
+					var topType = oBT + oBH >= oAT;
+					//  下侧时            ≈
+					var bottomType = oAT + oAH >= oBT;
+					if (leftType && rightTye && topType && bottomType) {
+						oB.style.backgroundColor = "red";
+					} else {
+						oB.style.backgroundColor = "";
+					}
+				}
+			}
+			oA.onmouseup = function(){
+				oWrap.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

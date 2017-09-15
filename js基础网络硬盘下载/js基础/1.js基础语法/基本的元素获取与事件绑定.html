@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+			#div3{
+				width: 200px;
+				height: 200px;
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		<div class="div2"></div>
+		<div></div>
+		<div id="div3">
+			
+		</div>
+		
+		
+		<script type="text/javascript">
+			
+			//	1.获取标签元素    element 元素
+			//		通过id值 获取元素
+			var div1 = document.getElementById("div1");
+			//	所有的属性都是通过.的属性获取。所有的属性值都是字符串  blue必须加引号
+//			div1.style.backgroundColor = "blue";
+			//  通过标签名获取标签元素  获取多个
+			var divs = document.getElementsByTagName("div")	;		//TagName 标签名	
+			
+			//  css 获取 (与CSS选择器写法一致)
+			var div2 = document.querySelector("#div1");
+			var divs2 = document.querySelectorAll("div");
+//			alert(divs2)
+			
+			// 获取div3
+				var div3 = document.getElementById("div3")
+			
+			//  事件绑定
+			//	onclick 鼠标点击 事件
+			div1.onclick = function(){
+				div1.style.backgroundColor = "blue";
+			}
+			div3.onclick = function(){
+				div1.style.backgroundColor = "red";
+			}
+			
+			//		onmouseover  鼠标移入 事件
+			div1.onmouseover = function(){
+				
+				div1.style.backgroundColor = "#ccc";
+			}
+			//      onmouseout   鼠标移出  事件
+			div1.onmouseout = function(){
+				div1.style.backgroundColor = "red";
+			}
+		</script>
+	</body>
+</html>

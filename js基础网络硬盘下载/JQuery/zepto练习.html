@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title></title>
+		<style type="text/css">
+			.wrap{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		
+		
+		<script src="zeptotouch.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//  触摸屏幕时触发
+//				$(".wrap").tap(function(){
+//					console.log("dd")
+//				})
+//				//  单击屏幕时触发
+//				$(".wrap").singleTap(function(){
+//					console.log("dd")
+//				})
+				//  双击屏幕时触发
+//				$(".wrap").doubleTap(function(){
+//					console.log("dd")
+//				});
+				//  滑动屏幕时触发 不分方向
+//				$(".wrap").swipe(function(){
+//					console.log("dd")
+//				});
+				//  滑动上下左右  swipeUp   swipeDown   swipeLeft   swipeRight
+				$(".wrap").swipeRight(function(){
+					console.log("dd")
+				});
+			})
+		</script>
+	</body>
+</html>

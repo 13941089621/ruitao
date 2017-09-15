@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="" id="input1" value="" />
+			<input type="button" name="" id="input2" value="时间" />
+		</form>
+		
+		
+		<script type="text/javascript">
+			var input1 = document.getElementById("input1");
+			var input2 = document.getElementById("input2");
+			input2.onclick = function(){
+				var input3 = Number(input1.value);
+				var input4 = parseInt(input3/60);
+				var input5 = input3 % 60;
+				var input6 = String(input4) + "分" + String(input5) + "秒" ; 
+				alert(input6);
+			}
+
+		</script>
+	</body>
+</html>

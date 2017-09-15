@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;	
+			}
+			.head{
+				width: 100%;
+				height: 67px;
+				background-color: black;
+				position :relative;
+			}
+			.nav{ 
+				max-width: 1127px;
+				margin: 0 auto;
+				height: 67px;
+				line-height: 67px;
+				overflow:hidden;
+			}
+			.ul1>li{
+				float:left;
+				margin-right:30px;
+			}
+			.ul1{
+				float:right;
+				height:67px;
+				line-height:67px;
+				list-style:none;
+			}
+			.nav>div{
+				float:left;
+				cursor:pointer;
+				padding-top:10px;
+			}
+			.ul1 a{
+				text-decoration:none;
+				color: gray;
+				padding: 5px 10px;
+				border:1px solid black;
+			}
+			.head>img{
+				position:absolute;
+				right:30px;
+				top:25px;
+				width:23px;
+			}
+			.ul2{
+				background-color:#CFDB00;
+				width:30%;
+				height:230px;
+				position:absolute;
+				top: 67px;
+				right:0;
+				z-index:20;
+				list-style:none
+			}
+			.ul2 a{
+				text-decoration:none;
+				color: black;
+				padding: 5px 10px;
+				border: 1px solid black;
+				border-radius: 8px;
+			}
+			.ul2 li{
+				float:none;
+				height:38px;
+				text-align:center;
+				line-height:38px;
+			}
+					
+			.ul2{
+				display: none;
+			}
+			.head>img{
+				display: none;
+			}
+			
+			
+			.big{
+				overflow: hidden;
+				width: 100%;
+				background-color: #1b1b1b;
+   				margin-bottom: 1em;
+    				border-top: 1px solid white;
+				position: relative;
+			}
+			.big a{
+				float: left;
+				width: 100%;
+				text-align: center;
+				background-color: black;
+				position: relative;
+			}
+			.bigimg{
+				max-width: 1127px;
+    				width: 100%;
+			}
+			.pasue1{
+				position: absolute;
+				width: 4%;
+			    left: 48%;
+			    top: 41%;
+			}
+			.text1{
+				width: 100%;
+			    background-color: #000000;
+			    opacity: 0.6;
+			    position: absolute;
+			    bottom: 0;
+			    text-align: center;
+			    font-size: 1.4em;
+			    line-height: 2em;
+			    color: #b4b4b4;
+			}
+			.small{
+				overflow: hidden;
+			}
+			.small li {
+				float: left;
+			    width: 31%;
+			    margin: 0 1.1%;
+			}
+			.small-img{
+				position: relative;
+				cursor: pointer;
+			}
+			.s-img{
+				width: 100%;
+			}
+			.pause2{
+				position: absolute;
+				width: 7%;
+			    left: 46%;
+			    top: 44%;
+			}
+			.small-text{
+				text-align: center;
+			    color: #909090;
+			    font-size: 1em;
+			    padding: 7% 0;
+			}
+			ul{
+				list-style: none;
+			}
+			
+			
+			@media only screen and (min-width: 200px) and (max-width: 1024px) {
+				.ul1{
+					display: none;
+				}
+				.head>img{
+					display: block;
+				}
+			}
+			@media only screen and (min-width: 100px) and (max-width: 640px) {
+				
+				.head>img{
+					width: 29px;
+					height: 26px;
+					margin-top: -10px;
+					margin-right: 2%;
+				}
+				.nav>div{
+					padding: 0;
+				}
+				.head{
+					height: 48px;
+					padding: 0;
+					line-height: 48px;
+				}
+				.ul2{
+					width: 30%;
+					font-size: 0.7em;
+					top: 48px;
+				}
+				
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="head">
+			<div class="nav">
+				<div><img src="img/shininglogo.png"/></div>
+				<ul class="ul1">
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/home1.html">Home</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/about.html">About</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html">Readering</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html">3D Animation</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html">Bim</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<img src="img/nav.png"/>
+			<ul class="ul2">
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/home1.html">Home</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/about.html">About</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html">Readering</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html">3D Animation</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html">Bim</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/contact.html">Contact</a></li>
+				</ul>
+		</div>
+		<div class="content">
+			<div class="big">
+				<a href="##">
+					<img src="img4/pause.png" class="pasue1"/>
+					<img src="img4/d.jpg" class="bigimg"/>
+				</a>
+				<div class="text1">
+					Sichuan Province-Commercial Rea
+				</div>
+			</div>
+			<ul class="small"></ul>
+		</div>
+		
+		<div class="foot">
+			<div class="foot1">
+				<a href="##"><img src="img/mail.jpg" alt="" /></a>
+			</div>
+			<div class="foot2">
+				<a href="##"><img src="img/facebook.jpg"/></a>
+				<a href="##"><img src="img/youtube.jpg"/></a>
+				<a href="##"><img src="img/linkedln.jpg"/></a>
+				<a href="##"><img src="img/twitter.jpg"/></a>
+			</div>
+			<div class="foot3">
+				<span>Copyright © 1998-2015 shining Group</span>
+			</div>
+			
+		</div>
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				//  nav
+				$(".ul1 li a").hover(
+					function(){$(this).css({"color": "white","border-radius": "8px","border": "1px solid rgb(123, 123, 123)"})},function(){$(this).css({"color": "gray","border-radius": "0px","border": "1px solid black"})})
+				$(".ul1 a").eq(3).css({"color": "white","border-radius": "8px","border": "1px solid rgb(123, 123, 123)"}).off();
+				//  按钮
+				
+				$(".head>img").click(function(){
+					$(".ul2").slideToggle()
+				})
+				
+				
+				
+				
+				
+				//  content
+				var arr1 = ["img4/x1.jpg","img4/x2.jpg","img4/x3.jpg","img4/x4.jpg","img4/x5.jpg","img4/x6.jpg","img4/x7.jpg","img4/x8.jpg","img4/x9.jpg"]
+				for (var i = 0; i < 9; i++) {
+					$(".small").append('<li><div class="small-img"><img src="" class="s-img"/><img src="img4/gray.png" class="pause2"/></div><div class="small-text">Commercial Real Estate-2014-10</div></li>')
+				}
+				$(".s-img").each(function(i){
+					$(".s-img").eq(i).attr("src",arr1[i])
+				})
+//				$(".small-img").wrapInner("<a href='##'></a>")
+				$(".small-img").hover(function(){
+					$(this).find(".pause2").attr("src","img4/green.png")
+				},function(){
+					$(this).find(".pause2").attr("src","img4/gray.png")
+				}).click(function(){
+					$(".bigimg").attr("src",$(this).find(".s-img").attr("src"))
+				})
+				var sh = null;
+				
+				$(window).load(function(){
+					var bl = $(".s-img").eq(0).height() / $(".s-img").eq(0).width();
+					$(".s-img").css("height",$(".s-img").eq(0).width() * bl)
+					$(window).resize(function(){
+						$(".s-img").css("height",$(".s-img").eq(0).width() * bl)
+					})
+				})
+				
+				
+				
+				
+				
+				
+				
+				//  footer
+				var arrSrc = ["img/mail_h.jpg","img/facebook_h.jpg","img/youtube_h.jpg","img/linkedln_h.jpg","img/twitter_h.jpg"];
+				var oldSrc = null;
+				$(".foot1").css({"textAlign":"center","marginTop":"45px"});
+				$(".foot2").css({"width":"137px","margin":"12px auto 0","overflow":"hidden"});
+				$(".foot2 a").css({"float":"left","width":"25%","textAlign":"center"});
+				$(".foot3").css({"height":"4em","lineHeight":"4em","textAlign":"center","color":"#808080"});
+				$(".foot a").hover(function(){
+					oldSrc = $(this).find("img").attr("src");
+					$(this).find("img").attr("src",arrSrc[$(this).index(".foot a")]);
+				},function(){
+					$(this).find("img").attr("src",oldSrc);
+				})
+				
+			})
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			//  触摸事件
+			//  原生的touch事件只有3个
+			//  1.touchstart  手指放到某个DOM元素上触发
+			//  2.touchmove   手指在某个DOM元素上滑动触发
+			//  3.touchend   手指从某个DOM元素上移开触发
+			
+			//  touchstart
+			/*window.addEventListener("touchstart",function(e){
+				e = e || window.event;
+				//  获取屏幕上的手指集合
+				var finger = e.touches[0];
+				//  获取手指在屏幕上的位置  即相对于显示器
+				var screenX = finger.screenX;
+				var screenY = finger.screenY;
+				//  获取手指在DOM元素上的位置；  即相对于页面
+				var pagex = finger.pageX;
+				var pagey = finger.pageY;
+				//  获取手指在浏览器窗口的位置  即相对于浏览器
+				var clientx = finger.clientX;
+				var clienty = finger.clientY;
+				console.log("screenx" + screenX);
+				console.log("screeny" + screenY);
+				console.log("pagex" + pagex);
+				console.log("pagey" + pagey);
+//				alert("触摸屏了")
+			},false)
+			
+			//  touchmove
+			window.addEventListener("touchmove",function(e){
+				e = e || window.event;
+				var finger = e.touches[0];
+				//  只要手指滑动，连续触发
+				var clientx = finger.clientX;
+				var clienty = finger.clientY;
+				console.log("clientx",clientx);
+				console.log("clienty",clienty);
+			},false);
+			*/
+			
+			//  touchend
+			window.addEventListener("touchend",function(e){
+				e = e || window.event;
+				//  在屏幕上发生变化的手指集合
+				var finger = e.changedTouches[0];
+				var clientx = finger.clientX;
+				var clienty = finger.clientY;
+				console.log("clientx",clientx);
+				console.log("clienty",clienty);
+			},false)
+		</script>
+	</body>
+</html>

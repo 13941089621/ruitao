@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="input1" id="input1" value="" /><br />
+			<input type="text" name="input2" id="input2" value="" /><br />
+			<input type="text" name="input3" id="input3" value="" /><br />
+			<input type="button" name="btn" id="btn" value="" />
+		</form>
+		
+		
+		<script type="text/javascript">
+			var oInput1 = document.getElementById("input1");
+			var oInput2 = document.getElementById("input2");
+			var oInput3 = document.getElementById("input3");
+			var oBtn = document.getElementById("btn");
+			
+			oBtn.onclick = function(){
+				var num1 = Number(oInput1.value);
+				var num2 = Number(oInput2.value);
+				var num3 = Number(oInput3.value);
+				
+//				if (num1 >= num2 && num1 > num3){
+//					alert(num1);
+//				} else if(num2 > num1 && num2 >= num3){
+//					alert(num2);
+//				} else if (num3 >= num1 && num3 > num2){
+//					alert(num3);
+//				} 
+				
+				var max = num1 > num2 ? num1 : num2;
+				max = max > num3 ? max : num3 ;
+				alert(max);
+			}
+			
+		</script>
+	</body>
+</html>

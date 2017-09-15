@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="input1" value="" placeholder="请输入用户名"/><br />
+		<input type="password" id="input2" value="" placeholder="请输入密码"/><br />
+		<input type="checkbox" name="input3" id="input3" value=""/><label for="input3">是否记住</label><br />
+		<input type="submit" id="input4" name="" value="登录"/>
+		
+		<script type="text/javascript">
+			var oInput1 = document.getElementById("input1");
+			var oInput3 = document.getElementById("input3");
+			var oInput4 = document.getElementById("input4");
+			oInput3.onclick = function(){
+				window.localStorage.clear();
+				if (this.checked) {
+					window.localStorage.username = oInput1.value;
+					console.log(window.localStorage.username)
+				} 
+			}
+			oInput1.value = window.localStorage.getItem("username")
+		</script>
+		<!--
+			<script>
+			var oUsername = document.getElementById("input1");
+			var oUserpass = document.getElementById("input2");
+			var oForget = document.getElementById("input3");
+			var oBtn = document.getElementById("input4");
+			var ls = window.localStorage;
+			oBtn.onclick = function() {
+				ls["username"] = oUsername.value;
+				ls["userpass"] = oUserpass.value;
+				alert("登录成功");
+				location.href = "usercenter.html";
+				if(oForget.checked) {	
+					ls["isforget"] = "true";		
+				} else {
+					ls["isforget"] = "false";
+				}
+			}
+			//判断之前是否存在记录用户
+			if(ls["isforget"] == "true") {
+				oUsername.value = ls["username"];
+				oUserpass.value = ls["userpass"];
+				oForget.checked = true;
+			}
+		</script>
+		-->
+		
+	</body>
+</html>

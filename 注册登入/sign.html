@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="phone">
+<span id="huo">获取验证码</span><br>
+<input type="text" id="yzm"><br>
+<input type="button" value="注册" id="btn">
+
+
+<div id="kuang" style="display: none;position: absolute;left: 200px;top: 200px;">
+    <input type="text" id="syzm">
+    <span id="tyzm"></span><br>
+    <input type="button" value="取消" id="qu">
+    <input type="button" value="确定" id="que">
+</div>
+
+
+<div id="s"></div>
+<script src="../jquery.js"></script>
+<script>
+
+    $(function () {
+        var id;
+        var did;
+        $("#huo").click(function () {
+            $("#kuang").css({display:"block"})
+            $.ajax({
+                url: "yzm.php",
+                data:{r:"h"},
+                success: function (d) {
+                    d=JSON.parse(d)
+                    console.log(d);
+                    id=d.id;
+                    $("#tyzm").html(d.yzm)
+                }
+            })
+        })
+        $("#tyzm").click(function () {
+            $.ajax({
+                url: "yzm.php",
+                data:{r:"h"},
+                success: function (d) {
+                    d=JSON.parse(d)
+                    console.log(d)
+                    id=d.id;
+                    $("#tyzm").html(d.yzm)
+                }
+            })
+        })
+        $("#que").click(function () {
+            $.ajax({
+                url: "yanzhengyzm.php",
+                data:{r:$("#syzm").val(),id:id},
+                success: function (d) {
+                    if(d == "错误"){
+                        $("#s").html(d)
+                    } else if(d == "发送短信失败"){
+                        $("#s").html(d)
+                    } else {
+                        var dd = JSON.parse(d);
+                        console.log(dd)
+                        did = dd.id;
+                        $("#kuang").css({display:"none"})
+                    }
+
+                }
+            })
+        })
+        $("#btn").click(function () {
+            console.log(did);
+            $.ajax({
+                url: "dx.php",
+                data:{r:$("#yzm").val(),id:did},
+                success: function (d) {
+//                    if(d == "错误"){
+//                        $("#s").html(d)
+//                    } else if(d == "发送短信失败"){
+                        $("#s").html(d)
+//                    } else {
+                        console.log(d);
+//                        did = d.id;
+//                        $("#kuang").css({display:"none"})
+//                    }
+
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

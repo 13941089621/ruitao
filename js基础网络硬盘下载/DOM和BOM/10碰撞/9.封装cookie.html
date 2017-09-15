@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+//			document.cookie = "username=zzz;";
+//			document.cookie = "password=123;";
+//			document.cookie = "sex=boy;";
+			
+			//  获取cookie
+			function getCookie(keyname){
+				var keyvalue = "";
+				var sCookie = document.cookie;
+				var arrCookie = sCookie.split(";");  // 有时会自动添加空格
+				for (var i = 0; i < arrCookie.length; i++) {
+					var name = "";
+					var value = "";
+					//  如果拆分出的字符串的长度大于1 才进一步拆分
+					if (arrCookie[i].split("=").length > 1) {
+						//  trim()去掉空格
+						 name = arrCookie[i].split("=")[0].trim();
+						 value = arrCookie[i].split("=")[1].trim();
+					}
+					//  如果当前的键名等于想要获取的键名，就把值返回
+					if (keyname == name) {
+						keyvalue = value;
+					}
+				}
+				return keyvalue;
+			}
+			//  设置cookie
+			function setCookie(keyname,keyvalue,expriesdays){
+				var todate = new Date();
+				todate.setDate(todate.getDate() + expriesdays);
+				var s = keyname + "=" + keyvalue + ";";
+				var days = expriesdays == null ? "" : ("expries=" + todate.toGMTString());
+				document.cookie =  s + days;
+			}
+			//设置一个cookie
+			setCookie("sex","boy");
+			//清除一个cookie
+			setCookie("sex","");
+			setCookie("aaa","ccc")
+		</script>
+	</body>
+</html>

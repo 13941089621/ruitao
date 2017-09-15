@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
+			
+			body {
+				position: relative;
+			}
+			
+			#wrap {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			
+			.bg {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.wolf {
+				position: absolute;
+				width: 28.8%;
+			}
+			
+			#score {
+				position: absolute;
+				font-size: 40px;
+				color: #fff;
+				top: 2.125%;
+				left: 21.28169%;
+			}
+			
+			.progress {
+				position: absolute;
+				top: 13.7%;
+				left: 19.85%;
+				width: 56.2%;
+				height: 3.4%;
+				border-radius: 8px;
+				overflow: hidden;
+			}
+			
+			#proimg {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			
+			#gamebody {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			
+			#startpage,#closepage {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.3);
+				text-align: center;
+			}
+			
+			#startpage input,#closepage input {
+				margin-top: 45%;
+				width: 50%;
+				height: 10%;
+				background-color: orange;
+				color: #fff;
+				border: 0;
+				border-radius: 10px;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<img src="img/game_bg.jpg" alt="" class="bg" />
+			<h1 id="score">0</h1>
+			<div class="progress">
+				<img src="img/progress.png" alt="" id="proimg" />
+			</div>
+			<div id="gamebody">
+			</div>
+			<div id="startpage">
+				<input type="button" value="开始游戏" onclick="startGame()" />
+			</div>
+			<div id="closepage">
+				<input type="button" value="重新开始" onclick="startGame()" />
+			</div>
+		</div>
+
+		<script>
+			var oWrap = document.getElementById("wrap");
+			var oScore = document.getElementById("score");
+			var oProimg = document.getElementById("proimg");
+			var oGameBody = document.getElementById("gamebody");
+			var oStartpage = document.getElementById("startpage");
+			var oClosepage = document.getElementById("closepage");
+			//分数
+			var score = 0;
+			//位置数据
+			var arrPosition = [{
+				top: "38.3808096%",
+				left: "7.733333333%"
+			}, {
+				top: "28.93553223%",
+				left: "32.26666667%"
+			}, {
+				top: "34.48275862%",
+				left: "60%"
+			}, {
+				top: "50.97451274%",
+				left: "6.933333333%"
+			}, {
+				top: "44.97751124%",
+				left: "33.6%"
+			}, {
+				top: "49.17541229%",
+				left: "63.73333333%"
+			}, {
+				top: "66.11694153%",
+				left: "11.2%"
+			}, {
+				top: "61.91904048%",
+				left: "38.93333333%"
+			}, {
+				top: "66.56671664%",
+				left: "66.13333333%"
+			}];
+			//灰太狼图片路径
+			var wolf_1 = ['img/h0.png', 'img/h1.png', 'img/h2.png', 'img/h3.png', 'img/h4.png', 'img/h5.png', 'img/h6.png', 'img/h7.png', 'img/h8.png', 'img/h9.png'];
+			//小灰灰图片路径
+			var wolf_2 = ['img/x0.png', 'img/x1.png', 'img/x2.png', 'img/x3.png', 'img/x4.png', 'img/x5.png', 'img/x6.png', 'img/x7.png', 'img/x8.png', 'img/x9.png'];
+			var wolfs = [wolf_1, wolf_2];
+			var timer = null;
+			//创建狼
+			var wolfimage = new Image();
+
+			function createWolf() {
+				clearInterval(timer);
+				//随机出小灰灰或者灰太狼
+				var wolfClass = getRandom(0, 1);
+				//随机出位置
+				var wolfPostion = getRandom(0, 8);
+				oGameBody.appendChild(wolfimage);
+				oGameBody.style.top = arrPosition[wolfPostion]["top"];
+				oGameBody.style.left = arrPosition[wolfPostion]["left"];
+				var i = 0;
+				var j = 0;
+				timer = setInterval(function() {
+					if (j < 6) {
+						wolfimage.src = wolfs[wolfClass][i];
+						i++;
+					} else if (j < 11) {
+						i--;
+						wolfimage.src = wolfs[wolfClass][i];
+					} else {
+						clearInterval(timer);
+						oGameBody.removeChild(wolfimage);
+						createWolf();
+					}
+					j++;
+				}, 150);
+				//防止多次点击
+				var isclick = true;
+				//点击狼的时候
+				wolfimage.onclick = function() {
+					//当为true时是第一次点击
+					if (isclick == true) {
+						isclick = false;
+						//计分
+						if (wolfClass == 0) {
+							score += 10;
+						} else {
+							score -= 10;
+						}
+						oScore.innerHTML = score;
+						clearInterval(timer);
+						var i = 6;
+						timer = setInterval(function() {
+							if (i < 10) {
+								wolfimage.src = wolfs[wolfClass][i];
+							} else {
+								clearInterval(timer);
+								oGameBody.removeChild(wolfimage);
+								//继续出现狼
+								createWolf();
+							}
+							i++;
+						}, 150);
+					}
+				}
+			}
+			//进度条
+			function progress() {
+				//获取进度条的宽度
+				var proWidth = oProimg.offsetWidth;
+				//设置时间
+				var game = 6000;
+				//动画延迟
+				var yanci = 20;
+				//计算循环次数
+				var count = game / yanci;
+				//变化量
+				var speed = proWidth / count;
+				//位置
+				var proImg = 0;
+				var proTimer = null;
+				clearInterval(proTimer);
+				var i = 0;
+				proTimer = setInterval(function() {
+					if (i < count) {
+						proImg -= speed;
+						oProimg.style.left = proImg + "px";
+					} else {
+						clearInterval(proTimer);
+						clearInterval(timer);
+						oGameBody.removeChild(wolfimage);
+						oClosepage.style.display = "block";
+					}
+					i++;
+				}, yanci);
+			}
+			//开始游戏
+			function startGame() {
+				//清分
+				score = 0;
+				oStartpage.style.display = "none";
+				oClosepage.style.display = "none";
+				progress();
+				createWolf();
+			}
+			//随机数
+			function getRandom(min, max) {
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+		</script>
+	</body>
+
+</html>

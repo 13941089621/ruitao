@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="input1" value="" />
+		
+		
+		
+		
+		
+		<script type="text/javascript">
+			var oInput1 = document.getElementById("input1")	;
+			
+			//  获得焦点
+			oInput1.onfocus = function(){
+//				alert("我获得了焦点")
+			}
+			//  失去焦点
+			oInput1.onblur = function(){
+//				alert("失去了焦点")
+			}
+			
+			//  键盘点击并抬起的时候，触发
+			oInput1.onkeyup = function(){
+				console.log(this.value)
+			}
+			//  敲击键盘时触发
+			oInput1.onkeydown = function(){
+//				console.log(this.value)
+			}
+ 			
+		</script>
+	</body>
+</html>

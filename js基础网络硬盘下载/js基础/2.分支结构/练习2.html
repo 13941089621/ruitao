@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="input1" id="input1" value="" />
+			<input type="button" name="btn" id="btn" value="" />
+		</form>
+		
+		
+		<script type="text/javascript">
+			var oInput1 = document.getElementById("input1");
+			var oBtn = document.getElementById("btn")
+			oBtn.onclick = function(){
+				var year = Number(oInput1.value);
+				var con1 = year % 400 ==0;
+				var con2 = year % 4 == 0 && year % 100 != 0;			
+				var con5 = con1 || con2;
+				if (con5){
+					alert("闰年")
+				} else {
+					alert("不是闰年")
+				}
+
+			}
+		</script>
+	</body>
+</html>

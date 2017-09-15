@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<img id="img1" data-src="滚" src="http://img4.imgtn.bdimg.com/it/u=3424623061,179258481&fm=11&gp=0.jpg"/>
+		<div id="wrap" style="color: red;">
+			
+		</div>
+		
+		<script type="text/javascript">
+			var oImg = document.getElementById("img1");
+			var div1 = document.getElementById("wrap");
+			
+			//  获取元素属性值
+			div1.getAttribute("style")
+			var a =  oImg.getAttribute("src");
+			var b = "http://pic42.nipic.com/20140616/11284670_145335292000_2.jpg";
+			//  设置元素的属性
+			
+			
+			oImg.onmouseover = function(){
+				oImg.setAttribute("src",b)
+			}
+			oImg.onmouseout = function(){
+				oImg.setAttribute("src",a)
+			}
+			//  删除元素属性
+			oImg.removeAttribute("date-src")
+		</script>
+		
+		
+	</body>
+</html>

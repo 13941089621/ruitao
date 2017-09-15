@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="input1" id="input1" value="" />
+			<input type="button" name="btn" id="btn" value="" />
+		</form>
+		
+		
+		<script type="text/javascript">
+			
+			//  自增运算符  a++
+			//  自减运算符  a--
+			var a = 3;
+			//  a++  把当前语句执行完之后，在自增    ++a  先把a自增，再执行其他运算
+			a++;
+//			alert(a);
+			
+			
+			//  布尔类型 
+			//  true  false  表示真或假 两种状态
+			//  非0即为真，空对象与未定义为假。
+			var con1 = true ;
+//			alert(con1)
+			var con2 = 100;     //  true
+//			alert(Boolean(con2));
+			var con3 = 0;		//  false   "0"是true
+//			alert(Boolean(con3));
+			var con4 = null;		//  false
+//			alert(Boolean(con4));
+
+//			alert(Boolean(con5));
+			
+			
+			//  关系运算符
+			//  表示两者之间的关系
+			//  >  <  >=  <=
+//			alert(1 >= 2);
+			//  ==  等于 判断两边是否相等  存在隐式类型转换
+			//  ！=  不等  判断两边是否不相等  存在隐式类型转换
+			//  ===  全等  除了判断值之外也判断类型。
+			//  ！==  不全等  
+			
+			
+			//  逻辑运算符
+//				逻辑与  &&   运算符两边必须同时为真才为真  一假即假
+//				逻辑或  ||	运算符两边必须同时为假结果才为假  一真即真
+//				逻辑非  ！  把真假颠倒
+			//  短路情况
+			a = 5;
+			var result = a < 3 && a++;
+//			alert(a);   //  输出的a 是5 不是6 因为a < 3 是假 后面不用看了
+			
+			
+			//  条件运算符 （三目运算符）
+			//    条件 ? 表达式1 : 表达式2
+			 //   条件为真，输出表达式1  条件为假，输出表达式2
+//			var c = 3;
+//			var d = 2;
+//			var con = c > d ? c : d;
+//			alert(con)
+
+			
+			//  分支结构
+			//  当满足某一条件时，执行某一段代码
+			//  if   如果。。。就。。。   如果（）就{}
+//			if(某一条件){
+//				某一段代码
+//			}
+//			a = 3;
+//			var b = 5;
+//			if (a < b){
+//			alert("分支结构");
+//			}
+			
+			//  如果。。。就。。。否则。。。
+//			if(条件){
+//				就执行的代码
+//			} eles {
+//				如果不满足条件，那么执行这里的代码
+//			}
+
+//			if (3 > 5){
+//				alert("满足条件")
+//			} else {
+//				alert("否则怎样")
+//			}
+			
+			//  级联式
+			//  如果。。。就。。。否则如果。。。就。。。
+			//  else if 可以无限增加  else  可有可无
+//			if (条件1){
+//				
+//			} else if (条件2){
+//				
+//			} else if (条件3){
+//				
+//			} ...{
+//				
+//			} else {
+//				
+//			}
+			
+			var oInput = document.getElementById("input1")
+			var oBtn = document.getElementById("btn")
+
+			//  多分支结构
+		    oBtn.onclick = function(){
+		    		var num = Number(oInput.value);
+		    		switch(num){
+		    			case 110:{
+		    				alert("教学部");
+		    			} break;
+		    			case  120:{
+		    				alert("财务部");
+		    			} break;
+		    			case 119:{
+		    				alert("行政部");
+		    			} break;
+		    			case 114:{
+		    				alert("保安部");
+		    			} break;
+		    			default: {
+		    				alert("输入错误，请重新输入");
+		    			} break;
+		    		}
+		    }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<form action="">
+			<input type="text" name="text1" id="text1" value="" />
+			<input type="button" name="btn" id="btn" value="" />
+		</form>
+		
+
+		<script type="text/javascript">
+			var oTxt1 = document.getElementById("text1");
+			var oBtn = document.getElementById("btn");
+//			oBtn.onclick = function(){
+//				var str = oTxt1.value;
+//				if (str == "m"){
+//					alert("男性")
+//				}
+//				else{
+//					alert("女性")
+//				}
+//			}
+//			
+			oBtn.onclick = function(){
+				var num = oTxt1.value
+				if(num > 0){
+					alert("正数");
+				} else{
+					alert("负数");
+				}
+			}
+		</script>
+	</body>
+
+</html>

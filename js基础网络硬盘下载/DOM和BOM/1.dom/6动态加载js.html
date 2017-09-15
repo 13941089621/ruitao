@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input{
+				width: 100px;
+				height: 50px;
+				background-color: #CCCCCC;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="btn1" value="点击" />
+		
+		
+		
+		<script type="text/javascript">
+			//  动态加载js代码	
+			
+			//  创建一个script元素节点
+			
+			
+			
+			//  封装函数中
+			//  创建加载js代码函数，code为js代码
+			function loadjs (code){
+				var script = document.createElement("script");
+				script.type = "text/javascript";
+				script.text = code;
+				document.body.appendChild(script)
+			}
+			function waijs (src){
+				var script = document.createElement("script");
+				script.src = src;
+				document.body.appendChild(script);
+			}
+			var oBtn = document.getElementById("btn1")
+			oBtn.onclick = function(){
+				//点击按钮是调用
+				//  动态加载的函数，外部无法调用，不加载到DOM里
+//				loadjs()
+				waijs("js/text1.js")
+			}
+		</script>
+		
+	</body>
+</html>

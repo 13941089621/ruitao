@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 500px;
+				height: 500px;
+				background-color: palevioletred;
+				position: absolute;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="wrap">
+			
+		</div>
+		
+		<script type="text/javascript">
+			//  创建一个div，宽高一样，带背景颜色
+			//  按下键盘上下左右时，移动相应方向
+			//  每按一次移动20px
+			
+			var oWrap = document.getElementById("wrap");
+			window.onkeydown = function(e){
+				e = e || window.event;
+				console.log(e.keyCode)
+				if (e.keyCode == 37 || e.keyCode == 65) {
+					oWrap.style.left = oWrap.offsetLeft - 20 + "px";
+				} else if(e.keyCode == 38 || e.keyCode == 87){
+					oWrap.style.top = oWrap.offsetTop - 20 + "px";
+				}else if (e.keyCode == 39 || e.keyCode == 68) {
+					oWrap.style.left = oWrap.offsetLeft + 20 + "px";
+				} else if(e.keyCode == 40 || e.keyCode == 83){
+					oWrap.style.top = oWrap.offsetTop + 20 + "px";
+				}
+			}
+			
+		</script>
+	</body>
+</html>

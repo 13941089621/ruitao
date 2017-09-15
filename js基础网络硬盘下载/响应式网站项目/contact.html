@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;	
+			}
+			.head{
+				width: 100%;
+				height: 67px;
+				background-color: black;
+				position :relative;
+			}
+			.nav{ 
+				max-width: 1127px;
+				margin: 0 auto;
+				height: 67px;
+				line-height: 67px;
+				overflow:hidden;
+			}
+			.ul1>li{
+				float:left;
+				margin-right:30px;
+			}
+			.ul1{
+				float:right;
+				height:67px;
+				line-height:67px;
+				list-style:none;
+			}
+			.nav>div{
+				float:left;
+				cursor:pointer;
+				padding-top:10px;
+			}
+			.ul1 a{
+				text-decoration:none;
+				color: gray;
+				padding: 5px 10px;
+				border:1px solid black;
+			}
+			.head>img{
+				position:absolute;
+				right:30px;
+				top:25px;
+				width:23px;
+			}
+			.ul2{
+				background-color:#CFDB00;
+				width:30%;
+				height:230px;
+				position:absolute;
+				top: 67px;
+				right:0;
+				z-index:20;
+				list-style:none
+			}
+			.ul2 a{
+				text-decoration:none;
+				color: black;
+				padding: 5px 10px;
+				border: 1px solid black;
+				border-radius: 8px;
+			}
+			.ul2 li{
+				float:none;
+				height:38px;
+				text-align:center;
+				line-height:38px;
+			}
+					
+			.ul2{
+				display: none;
+			}
+			.head>img{
+				display: none;
+			}
+			.content{
+				text-align: center;
+				background: url(img6/contact_point_bg.png) no-repeat center 69px;
+				background-color: #f5f5f5;
+				padding: 7em 0 17em 0;
+				position: relative;
+			}
+			.content span{
+			    font-size: 1.4em;
+			    font-weight: bold;
+			}
+			em{
+				color: #595757;
+			    font-weight: bold;
+			    font-size: 1.1em;
+			    text-indent: 1em;
+			    padding-left: 5px;
+			    font-style: normal;
+			}
+			.c-contact{
+				margin-bottom: 30px;
+			}
+			.c-email{
+				margin-bottom: 5em;
+			}
+			.c-email img{
+				width: 32px;
+			    margin-right: 7px;
+			    vertical-align: middle;
+			}
+			.c-list{
+				display: inline-block;
+				overflow: hidden;
+				font-size: 0.8em;
+			    margin: 0 auto;
+			    min-width: 640px;
+			    text-align: left;
+			}
+			.c-list div,.c-list img{
+				float: left;
+			}
+			.c-list>div>div{
+				line-height: 15px;
+				padding-left: 10px;
+			}
+			.list2{
+				margin: 0 10em;
+			}
+			.list2 p{
+				line-height: 40px;
+				height: 40px;
+			}
+			.content>img{
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+			}
+			
+			@media only screen and (max-width: 900px) {
+				.list2{
+					margin: 0 5em;
+				}
+			}
+			@media only screen and (max-width: 762px) {
+				.list2{
+					margin: 0 1em;
+				}
+			}
+			@media only screen and (max-width: 670px) {
+				.c-list>div{
+					padding-left: 15%;
+				}
+			}
+			@media only screen and (min-width: 200px) and (max-width: 1024px) {
+				.ul1{
+					display: none;
+				}
+				.head>img{
+					display: block;
+				}
+			}
+			@media only screen and (min-width: 100px) and (max-width: 640px) {
+				
+				.head>img{
+					width: 29px;
+					height: 26px;
+					margin-top: -10px;
+					margin-right: 2%;
+				}
+				.nav>div{
+					padding: 0;
+				}
+				.head{
+					height: 48px;
+					padding: 0;
+					line-height: 48px;
+				}
+				.ul2{
+					width: 30%;
+					font-size: 0.7em;
+					top: 48px;
+				}
+				.head{
+					position: fixed;
+					left: 0;
+					top: 0;
+					z-index: 500;
+				}
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="head">
+			<div class="nav">
+				<div><img src="img/shininglogo.png"/></div>
+				<ul class="ul1">
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/home1.html">Home</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/about.html">About</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html">Readering</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html">3D Animation</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html">Bim</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/contact.html">Contact</a></li>
+				</ul>
+			</div>
+			<img src="img/nav.png"/>
+			
+				<ul class="ul2">
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/home1.html">Home</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/about.html">About</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/reading.html">Readering</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/3d.html">3D Animation</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/bim.html">Bim</a></li>
+					<li><a href="http://172.16.2.254:8020/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E7%AB%99%E9%A1%B9%E7%9B%AE/contact.html">Contact</a></li>
+				</ul>
+			
+		</div>
+		<div class="content">
+			<div class="c-contact">
+				<span>Contacts:</span>
+				<em>Yuuya Rin</em>
+			</div>
+			<div class="c-email">
+				<img src="img6/contact_mail.jpg"/>
+				<span>Email: </span>
+				<em>feng93115@126.com</em>
+			</div>
+			<div class="c-list">
+				<div class="list1">
+					<img src="img6/contact_phone.png"/>
+					<div>
+						<p>+86 21 6598 6866-304</p>
+						<p>+86 21 6598 3188-304</p>
+					</div>
+				</div>
+				<div class="list2">
+					<img src="img6/iphone.png"/>
+					<div>
+						<p>+86 138 1690 3400</p>
+					</div>
+				</div>
+				<div class="list3">
+					<img src="img6/contact_add.png"/>
+					<div>
+						<p>1-5F.creative center building,No.2,1147 Lane,</p>
+						<p>Siping Road,Yangpu District,Shanghai</p>
+					</div>
+				</div>
+			</div>
+			<img src="img6/contact_place.png"/>
+		</div>
+		
+		<div class="foot">
+			<div class="foot1">
+				<a href="##"><img src="img/mail.jpg" alt="" /></a>
+			</div>
+			<div class="foot2">
+				<a href="##"><img src="img/facebook.jpg"/></a>
+				<a href="##"><img src="img/youtube.jpg"/></a>
+				<a href="##"><img src="img/linkedln.jpg"/></a>
+				<a href="##"><img src="img/twitter.jpg"/></a>
+			</div>
+			<div class="foot3">
+				<span>Copyright © 1998-2015 shining Group</span>
+			</div>
+			
+		</div>
+		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				//  nav
+				$(".ul1 li a").hover(
+					function(){$(this).css({"color": "white","border-radius": "8px","border": "1px solid rgb(123, 123, 123)"})},function(){$(this).css({"color": "gray","border-radius": "0px","border": "1px solid black"})})
+				$(".ul1 a").eq(5).css({"color": "white","border-radius": "8px","border": "1px solid rgb(123, 123, 123)"}).off();
+				//  按钮
+				
+				$(".head>img").click(function(){
+					$(".ul2").slideToggle()
+				})
+				
+	
+				
+				
+				//  footer
+				var arrSrc = ["img/mail_h.jpg","img/facebook_h.jpg","img/youtube_h.jpg","img/linkedln_h.jpg","img/twitter_h.jpg"];
+				var oldSrc = null;
+				$(".foot1").css({"textAlign":"center","marginTop":"45px"});
+				$(".foot2").css({"width":"137px","margin":"12px auto 0","overflow":"hidden"});
+				$(".foot2 a").css({"float":"left","width":"25%","textAlign":"center"});
+				$(".foot3").css({"height":"4em","lineHeight":"4em","textAlign":"center","color":"#808080"});
+				$(".foot a").hover(function(){
+					oldSrc = $(this).find("img").attr("src");
+					$(this).find("img").attr("src",arrSrc[$(this).index(".foot a")]);
+				},function(){
+					$(this).find("img").attr("src",oldSrc);
+				})
+				
+			})
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
+

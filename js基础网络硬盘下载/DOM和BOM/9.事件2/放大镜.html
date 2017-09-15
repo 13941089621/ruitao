@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#min{
+				border: 1px solid black;
+				width: 350px;
+				height: 350px;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#bigclass{
+				width: 100px;
+				height: 100px;
+				background-color: lightblue;
+				opacity: .3;
+				position: absolute;
+				display: none;
+			}
+			#max{
+				position: absolute;
+				width: 350px;
+				height: 350px;
+				overflow: hidden;
+				border: 1px solid black;
+				left: 352px;
+				top: 0;
+				display: none;
+			}
+			#maximg{
+				position: absolute;
+				width: 800px;
+				height: 800px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="min">
+			<img src="img/min.jpg"/>
+			<div id="bigclass"></div>
+		</div>
+		<div id="max">
+			<img src="img/min.jpg" id="maximg"/>
+		</div>
+		
+		
+		<script type="text/javascript">
+			var oMin = document.getElementById("min");
+			var oMax = document.getElementById("max");
+			var bigclass = document.getElementById("bigclass");
+			var bigImg = document.getElementById("maximg");
+			
+			oMin.onmouseover = function(){
+				bigclass.style.display = "block";
+				oMax.style.display = "block";
+			}
+			oMin.onmouseout = function(){
+				bigclass.style.display = "none";
+				oMax.style.display = "none";
+			}
+			document.onmousemove = function(e){
+				e = e || window.event;
+				var x = e.clientX;
+				var y = e.clientY;
+				var nowx = 0;
+				var nowy = 0;
+				var tempx = x - 50;
+				var tempy = y - 50;
+				var movex = oMin.clientWidth - bigclass.offsetWidth;
+				var movey = oMin.clientHeight - bigclass.offsetHeight;
+				
+				if (tempx >= movex) {
+					nowx = movex;
+				} else if (tempx < movex && tempx > 0) {
+					nowx = tempx;
+				}
+				if (tempy >= movey) {
+					nowy = movey;
+				} else if (tempy < movey && tempy > 0) {
+					nowy = tempy;
+				}
+				bigclass.style.left = nowx + "px";
+				bigclass.style.top = nowy + "px";
+				var bilix = nowx / 350;
+				var biliy = nowy / 350;
+				bigImg.style.left = -bilix * 800 + "px";
+				bigImg.style.top = -biliy * 800 + "px";
+			}
+		</script>
+	</body>
+</html>

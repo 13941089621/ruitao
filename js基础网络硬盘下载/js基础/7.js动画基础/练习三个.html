@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 50px;
+				background-color: red;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+		<div id="div2">
+			
+		</div>
+		<div id="div3">
+			
+		</div>
+		
+		<script src="js/getStyle.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oDiv = document.getElementsByTagName("div");
+
+//			oDiv[i].index = i
+//			var timer = null;
+			function starMove (attr,itarget,oDiv){
+				
+					clearInterval(oDiv.timer);							
+				oDiv.timer = setInterval(function(){
+					var speed = (itarget - parseInt(getStyle(oDiv,attr))) / 10;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					if ( parseInt(getStyle(oDiv,attr)) == itarget) {
+						clearInterval(oDiv.timer);
+					} else {
+						oDiv.style[attr]=  parseInt(getStyle(oDiv,attr)) + speed + "px"
+					}		
+				},20)
+			}
+			
+			for (var i = 0; i < 3 ; i++) {
+//				oDiv[i].timer = null;
+				oDiv[i].onmouseover = function(){
+					starMove("height",500,this)
+				};
+				oDiv[i].onmouseout = function(){
+					starMove("height",100,this)
+				}
+			}
+		
+		</script>
+		
+		
+	</body>
+</html>
+
+
+
+
+
+
+

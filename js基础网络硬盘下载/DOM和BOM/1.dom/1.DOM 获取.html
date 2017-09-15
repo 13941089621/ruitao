@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">
+			<p>我是一个p</p>1<p>我也是一个p</p>
+			<span>我是一个span</span>
+		</div>
+		
+		<script type="text/javascript">
+			
+			//  获取元素节点
+			var oDiv = document.getElementById("div1");
+//			document.getElementsByTagName("div")
+			
+			//  获取节点集合
+			//  获取div所有子节点
+			var oDivs = oDiv.childNodes;
+			//  childNodes 节点的集合 包含换行符
+			//  换行符也算一个文本节点
+//			alert(oDivs.length)
+			
+			//  获取一个子节点
+//			var firstNode = oDivs[0];
+//			var firstNode = oDivs.item[1];
+//			alert(firstNode.nodeType);
+			
+			//  获取第一个子节点
+			var firstNode = oDiv.firstChild;
+			
+			//  获取最后一个节点
+			var lastNode = oDiv.lastChild;
+			
+			//  获取同级元素的下一个节点
+			var nextNode = oDivs[1].nextSibling;
+			//  获取同级元素的上一个节点
+			var lastNode = nextNode.previousSibling;
+			
+			//  如果一个节点获取不到，返回null
+			
+			//  验证一个元素节点是否存在
+			//  存在返回true，不存在返回false
+//			alert(nextNode.hasChildNodes())
+			
+			//  只获取元素子节点
+			//  与childNodes 用法一样
+			 var oDivs2 = oDiv.children;
+			 alert(oDivs2.length);
+			 oDivs2[0];
+			 oDivs2.item[0]
+		</script>
+	</body>
+</html>

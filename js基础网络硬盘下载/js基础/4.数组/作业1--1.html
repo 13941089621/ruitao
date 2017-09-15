@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div0{
+				position: relative;
+				width: 500px;
+				height: 500px;
+				background-color: #6495ED;
+			}
+			#img1{
+				width: 500px;
+				height: 500px;
+			}
+			#div1,#div2{
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				margin-top: -25px;
+				background-color: pink;
+				top: 50%;
+			}
+			#div1{
+				left: 10px;
+			}
+			#div2{
+				right: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div0">
+			<img src="" alt="他妈的，又碎了" id="img1"/>
+			<div id="div1"></div>
+			<div id="div2"></div>
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			var oImg = document.getElementById("img1") ;
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			var arr = ["img/p1.jpg","img/p2.jpg","img/p3.jpg","img/p4.jpg"];
+			oImg.src = arr[0];
+			var num = 0;
+			oDiv2.onclick = function(){
+				if (num < 3) {
+					oImg.src = arr[++num]
+				} else if (num == 3) {
+					alert("最后一页")
+				}
+				
+			}
+			oDiv1.onclick = function(){
+				if (num > 0) {
+					oImg.src = arr[--num]
+				} else if (num == 0) {
+					alert("第一页")
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

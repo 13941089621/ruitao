@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" name="btn" id="btn" value="" />
+		<script type="text/javascript">
+			var oBtn = document.getElementById("btn");
+		
+		
+			//  正则表达式的对象属性
+			//  1.global  是否全文检索  默认为false /g修改为true
+			//  2.ignoreCase  是否大小写敏感  默认为false  /i修改为true
+			//  3.multiline  是否多行搜索  默认为false  /m修改为true
+			//  4.lastIndex  是当前表达式匹配内容的最后一个字符的下一个位置  abcdef  匹配abc 则d就是
+			//  5.source  正则表达式的文本字符串
+			
+			var reg1 = /\w{5}/gim;
+			console.log(reg1.source)
+			
+			//  test方法
+			//  用于检测指定参数字符串中是否存在符合正则表达式规则的字符串，存在返回true，不存在返回false
+			/*console.log(reg1.test(oBtn.value));
+			console.log(reg1.lastIndex)
+			console.log(reg1.test("abcddhghr"));
+			console.log(reg1.lastIndex)
+			console.log(reg1.test("abcddhghr"));
+			console.log(reg1.lastIndex);
+			*/
+			
+			//  exec方法
+			//  用于搜索指定参数字符串中是否有匹配的字符串，有返回一个数组(匹配出来的字符串)，没有返回null
+			console.log(reg1.exec("abcdefghijklmnop"));  //  结果为abcde
+			console.log(reg1.exec("abcdefghijklmnop"));  //  结果fghij
+			console.log(reg1.exec("abcdefghijklmnop"));  //  结果为klmno
+			console.log(reg1.exec("abcdefghijklmnop"));  //  结果为null
+			var str = "abcdefghijklmnopqrstuvwxyz";
+			var ret = null;
+			while (ret = reg1.exec(str)){
+				console.log(ret)
+			}
+			
+			//  search方法
+			//  如果有匹配，返回匹配到的字符串的第一个3字符的位置，没有返回-1；
+			console.log(str.search(reg1));
+			
+			//  match方法
+			//  如果有匹配返回匹配到的字符串数组，没有返回null
+			console.log(str.match(reg1));
+		</script>
+	</body>
+</html>

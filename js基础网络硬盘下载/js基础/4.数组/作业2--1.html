@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 50px;
+				height: 50px;
+				background-color: pink;
+				display: inline-block;
+				margin-right: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			
+			for (var i = 0; i < 11; i++) {
+				for (var j = 0; j < 11 ; j++) {
+					document.write("<div></div>");					
+				}
+				document.write("<br />");
+			}
+			var arr = document.getElementsByTagName("div");
+			for (var i = 1; i < 12; i++) {				
+					if(i <= 6){
+						arr[(i + 4) + (i - 1) * 11].style.backgroundColor = "deepskyblue";
+						arr[(6 - i) + (i - 1) * 11].style.backgroundColor = "deepskyblue";
+					}	else {
+						arr[(16 - i) + (i - 1) * 11].style.backgroundColor = "deepskyblue";
+						arr[(i - 6) + (i - 1) * 11].style.backgroundColor = "deepskyblue";
+					}
+					
+			}
+			
+		</script>
+	</body>
+</html>

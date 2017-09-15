@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>game</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#score{
+				color: red;
+				font-size: 50px;
+				text-align: center;
+			}
+			.wrap{
+				width: 800px;
+				height: 500px;
+				margin: 0 auto;
+				border: 1px solid black;
+				background-color: wheat;
+				position: relative;
+				overflow: hidden;
+			}
+			.row{
+				position: absolute;
+				left: 0;
+				bottom: 0;
+			}
+			.row>div{
+				width: 20px;
+				height: 20px;
+				background-color: azure;
+				box-sizing: border-box;
+				border: 1px solid darkmagenta;
+				float: left;
+				transition: all 3s;
+				/*
+				 * 1. 向下移动 -> translate平移动化
+				 * 2. 旋转 -> rotate 旋转动画
+				 * 3. 渐变 -> opacity
+				 */
+				transform: translate(0, 0) rotate(0deg);
+				opacity: 1;
+			}
+			.row div.remove{
+				transform: translate(0, 100px) rotate(360deg);
+				opacity: 0;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id="score">
+			0 分
+		</div>
+		<div class="wrap">
+	
+		</div>
+	</body>
+	<script type="text/javascript">
+	    var wrap = document.querySelector(".wrap");
+		// row 的 bottom 值
+		var b = 0;
+		// 设置时间属性: 当每次点击后时间变短,速度加快
+		var time = 500;
+		// 速度
+		var speed = 20;
+		// 方格的个数
+		var boxNum = 20;
+		// 创建 row
+		function createRow () {
+			
+			// 使用 js 创建 row 和小方格
+			// 新建 row
+			var row = document.createElement("div");
+			row.className = "row";
+			// 设置 row 的长度(碰撞检测)
+			row.style.width = 20 * boxNum + "px";
+			// 设置 row 的 bottom
+			row.style.bottom = b + "px";
+			// 设置 row 的 left 
+			// (新产生的 row 起始点为上一个 row 的 offsetLeft)
+			// 获取上一行
+			 var preRow = wrap.lastElementChild;
+			 if (preRow) {
+			 	// 第二行以后的显示
+			 	row.style.left = preRow.offsetLeft + "px";
+			 }else{
+			 	// 第一行
+			 	row.style.left = "0px";
+			 }
+			 
+			// 在 row 中添加小方格
+			for (var i = 0; i < boxNum; i++) {
+				var box = document.createElement("div");
+				row.appendChild(box);
+			}
+			// row 添加到 wrap 上
+			wrap.appendChild(row);
+			// 移动
+			row.timer = null;
+			row.timer = setInterval(function  () {
+				
+				// 最大移动距离
+				var maxWidth = wrap.clientWidth - row.offsetWidth;
+				var l = row.offsetLeft;
+				row.style.left = row.offsetLeft + speed + "px";
+				// 碰壁判断
+				// 右边界判断
+				if (row.offsetLeft >= maxWidth) {
+					speed *= -1;
+				}
+				// 左边界判断
+				else if (row.offsetLeft <= 0) {
+					speed *= -1;
+				}
+			}, time);
+			// 返回当前创建好的 row
+			return row;
+		}
+		
+		// 第一行移动
+		createRow();
+		var score = document.getElementById("score");
+		// wrap 点击时, 产生新的行
+		wrap.onclick = function  () {
+			b += 20;
+			// 时间
+			time -= 50;
+			if (time <= 50) {
+				time = 50;
+			}
+			
+			// 更新方块个数
+			// 获取当前移动行和上一行, 计算 left 差值
+			// 当前行
+			var moveRow = wrap.lastElementChild;
+			// 上一行
+			var preRow = moveRow.previousElementSibling;
+			
+			// 判断 preRow 是否为空
+			var leftSub = 0;
+			// 当之前行 preRow 为空, 无法取到 preRow 的 offsetLeft
+			// 将其设为 0 
+			if (preRow != null) {
+				// left 差值
+				leftSub = preRow.offsetLeft - moveRow.offsetLeft;
+			}
+			
+			// 需要移除的方个数
+			var removeNum = Math.abs(leftSub) / 20;
+			// 更新方格个数
+			boxNum -= removeNum;
+			// 游戏结束
+			if (boxNum <= 0) {
+				alert("Game Over!"); 
+				// 停止定时器
+				clearInterval(moveRow.timer);
+				// 终止当前函数调用
+				// 1.停止函数
+				// 2.返回一个值
+				return;
+			}
+			
+			// 调整高度
+			if (b >= 140) {
+				b -= 20;
+				// 获取每一行, top + 20
+				for (var i = 0; i < wrap.children.length; i++) {
+					wrap.children[i].style.top = wrap.children[i].offsetTop + 20 + "px";
+				}
+			}
+			
+			// 分数增加
+			score.innerHTML = parseInt(score.innerHTML) + 1 + " 分";
+			
+			// 差值为负, 移除末尾方格
+			if (leftSub < 0) {
+				// 从后向前获取数组内容
+				// 1. i 从 0 开始
+				// 数组长度 - i - 1;
+				for (var i = 0; i < removeNum; i++) {
+					var removeObj = moveRow.children[moveRow.children.length-i-1];
+					removeObj.className="remove";
+				}
+				// 2. i 从数组最后一位开始
+//				for (var i = moveRow.children.length - 1, j = 0; ) {
+//					
+//				}
+				setTimeout(function () {
+					for (var i = 0; i < removeNum; i++) {
+						// 移除节点
+						moveRow.removeChild(moveRow.lastElementChild);
+					}
+				}, 1000);
+			}
+			// 差值为正, 移除开头方格
+			else if (leftSub > 0) {
+				for (var i = 0; i < removeNum; i++) {
+					moveRow.removeChild(moveRow.firstElementChild);
+				}
+				
+			}
+			
+			
+			// 保存新产生的 row
+			var newRow = createRow();
+			//if (leftSub <= 0) {
+				//newRow.style.left = newRow.offsetLeft + "px";
+			//}
+			// 通过新row获取上一个兄弟节点
+			// 停止该节点中的timer
+			clearInterval(newRow.previousSibling.timer);
+			
+		}
+   		
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

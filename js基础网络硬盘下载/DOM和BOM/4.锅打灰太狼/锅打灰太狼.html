@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			.wrap{
+				width: 100%;
+				height: 100%;
+				background: url(img/game_bg.jpg);
+				background-size: 100% 100%;
+				position: relative;
+			}
+			.score{
+				color: white;
+				font-size: 50px;
+				position: absolute;
+				left: 20%;
+				top: 2.35%;
+			}
+			.time{
+				width: 56.665625%;
+				height: 3.79453125%;
+				position: absolute;
+				left: 19.53958333%;
+				top: 13.48046875%;
+				border-radius: 4%/50%;
+				overflow: hidden;
+			}
+			.wrap>div>img{
+				width: 100%;
+				height: 100%;
+				border: 0;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#btn,#btn1{
+				position: absolute;
+				left: 40%;
+				top: 25%;
+				width: 20%;
+				height: 8%;
+				background-color: red;
+				color: white;
+				font-size: 50px;
+				border: 0;
+				border-radius: 10%;
+				outline: none;
+			}
+			#btn1{
+				display: none;
+				left: 40%;
+				top: 45%;
+			}
+			.div0{
+				position: absolute;
+				width: 16.66666667%;
+				height: 9.86328125%;
+			}
+			.div1{
+				left: 37%;
+				top: 34%;
+			}
+			.div2{
+				left: 65%;
+				top: 39.5%;
+			}
+			.div3{
+				left: 12%;
+				top: 43.5%;
+			}
+			.div4{
+				left: 38.5%;
+				top: 50%;
+			}
+			.div5{
+				left: 69%;
+				top: 54%;
+			}
+			.div6{
+				left: 11.5%;
+				top: 56%;
+			}
+			.div7{
+				left: 16%;
+				top: 71%;
+			}
+			.div8{
+				left: 44%;
+				top: 66.5%;
+			}
+			.div9{
+				left: 71%;
+				top: 70.5%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="score">0</div>
+			<div class="time">
+				<img src="img/progress.png" id="controltime" />
+			</div>
+			<input type="button" id="btn" value="开始游戏" />
+			<div class="div1 div0"></div>
+			<div class="div2 div0"></div>
+			<div class="div3 div0"></div>
+			<div class="div4 div0"></div>
+			<div class="div5 div0"></div>
+			<div class="div6 div0"></div>
+			<div class="div7 div0"></div>
+			<div class="div8 div0"></div>
+			<div class="div9 div0"></div>
+			<input type="button" id="btn1" value="重新开始" />
+		</div>
+
+		<script type="text/javascript">
+			var oWrap = document.querySelector(".wrap");
+			var score = document.querySelector(".score");
+			var oBtn = document.getElementById("btn");
+			var oBtn1 = document.getElementById("btn1");
+			var controlTime = document.getElementById("controltime");
+			var timeWidth = document.querySelector(".time").offsetWidth;
+			var huiImg = ["img/h0.png","img/h1.png","img/h2.png","img/h3.png","img/h4.png","img/h5.png","img/h6.png","img/h7.png","img/h8.png","img/h9.png","img/logo.png"];
+			var xiaoImg = ["img/x0.png","img/x1.png","img/x2.png","img/x3.png","img/x4.png","img/x5.png","img/x6.png","img/x7.png","img/x8.png","img/x9.png"];;
+			var randomImg = [huiImg,huiImg,huiImg,huiImg,huiImg,xiaoImg];
+			//  新建img
+			var newImg = new Image();
+			//  获取9个div
+			var arrDiv = [];
+			for (var i = 0; i < 9; i++) {
+				arrDiv[i] = oWrap.children[i + 3];
+			}
+			
+			var num1 = 0;
+			var time = null;
+			var time2 = null;
+			var time1 = null;
+			function timer(){
+				var speed = timeWidth / (60 * 1000 / 20) ;
+				time = setInterval(function(){
+					if (controlTime.offsetLeft <= -timeWidth ) {
+						clearInterval(time);
+//						newImg.style.display = "none";
+//						clearInterval(time1);
+//						clearInterval(time2);
+//						alert("游戏结束");
+//						oBtn1.style.display = "block";
+					}
+					controlTime.style.left = controlTime.offsetLeft - 1 + "px";
+				},20 * (1 / speed))
+			}
+			function appear(){
+				//  随机div下标
+				function randow(a){
+					return Math.floor(Math.random() * a)
+				}
+				//  图片动起来
+				function contin(){
+					var num = randow(9);
+					var arrImg = randomImg[randow(randomImg.length)];
+					function imgMove(arr,star,end){
+						clearInterval(time1);
+						var i = star;
+						time1 = setInterval(function(){
+								if (i == end) {
+									clearInterval(time1);
+								}
+								newImg.src = arr[i];
+								newImg.style.display = "block";
+								arrDiv[num].appendChild(newImg);
+								i++;
+						},50)
+					}
+					//  判断点击几次
+					var mode = 0;
+					//  图片添加到div
+					if (arrImg == huiImg) {
+						imgMove(arrImg,0,5); 
+						
+						newImg.onclick = function(){
+							clearInterval(time1)
+							mode++;
+							if (mode == 1) {
+								num1++;
+								score.innerHTML = num1 * 10;
+							}
+							imgMove(arrImg,6,9);
+						}
+					} else {
+						imgMove(arrImg,0,5); 
+						
+						newImg.onclick = function(){
+							clearInterval(time1)
+							mode++;
+							if (mode == 1) {
+								num1--;
+								score.innerHTML = num1 * 10;
+							}
+							imgMove(arrImg,6,9);
+						}
+					}
+				}
+				clearInterval(time2)
+				time2 = setInterval(function(){
+					contin();
+					newImg.style.display = "none";
+				},1000)
+			}
+			oBtn.onclick = function(){
+				num1 = 0;
+				score.innerHTML = num1;
+				timer();
+				appear();
+				oBtn.style.display = "none";
+			}
+			oBtn1.onclick = function(){
+				num1 = 0;
+				score.innerHTML = num1;
+				controlTime.style.left = 0;
+				timer();
+				appear();
+				oBtn1.style.display = "none"
+			}
+		</script>
+	</body>
+
+</html>

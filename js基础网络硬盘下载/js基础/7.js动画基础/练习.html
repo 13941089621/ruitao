@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#father {
+				width: 100px;
+				height: 200px;
+				background-color: red;
+				position: absolute;
+				left: -100px;
+				top: 50px;
+			}
+			
+			#son {
+				width: 12px;
+				height: 50px;
+				background-color: pink;
+				position: absolute;
+				right: -12px;
+				top: 75px;
+				font-size: 10px;
+				line-height: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="father">
+			<div id="son">
+				分享到
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var oFather = document.getElementById("father");
+			var oSon = document.getElementById("son");
+			var timer = null;
+			
+			function starMove (itarget){
+				clearInterval(timer);
+				var speed = null;
+				if (oFather.offsetLeft >= itarget) {
+					speed = -10;
+				}else {
+					speed = 10
+				}
+				timer = setInterval(function(){
+					if (oFather.offsetLeft == itarget) {
+						clearInterval(timer)
+					}else {
+						oFather.style.left = oFather.offsetLeft + speed + "px"
+					}
+				},20);
+			}
+//			function move() {
+//				clearInterval(timer)
+//				timer = setInterval(function() {
+//					var speat = 10;
+//					if (oFather.offsetLeft == 0) {
+//						clearInterval(timer)
+//					} else {
+//						oFather.style.left = oFather.offsetLeft + speat + "px";
+//					}
+//				}, 20)
+//			}
+			oFather.onmouseover = function() {
+				starMove(0)
+			}
+			oFather.onmouseout = function() {
+				
+					starMove(-100)
+				
+			}
+		</script>
+
+	</body>
+
+</html>

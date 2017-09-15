@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html,body {
+				height: 100%;
+				width: 100%;
+				position: relative;
+			}
+			
+			#wrap {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap"></div>
+		<script src="js/touch.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			//获取元素
+			var oWrap = document.getElementById("wrap");
+			//绑定拖拽事件
+			touch.on("#wrap", "dragstart", function(e) {
+				//获取当前手指的位置
+				//	var x1 = e.position.x;
+				//	var y1 = e.position.y;
+				var finger = e.originEvent.touches[0];
+				var x1 = finger.clientX;
+				var y1 = finger.clientY;
+				//获取小块的位置
+				var wrapleft = oWrap.offsetLeft;
+				var wraptop = oWrap.offsetTop;
+				//计算差值
+				var lessx = x1 - wrapleft;
+				var lessy = y1 - wraptop;
+				touch.on("body", "drag", function(e) {
+					//获取当前手指的位置
+					//	var x2 = e.position.x;
+					//	var y2 = e.position.y;
+					var finger = e.originEvent.touches[0];
+					var x2 = finger.clientX;
+					var y2 = finger.clientY;
+					//设置小块的位置
+					oWrap.style.left = x2 - lessx + "px";
+					oWrap.style.top = y2 - lessy + "px";
+				})
+			})
+		</script>
+	</body>
+
+</html>

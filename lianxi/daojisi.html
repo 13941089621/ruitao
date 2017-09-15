@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.a{
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="a"></div>
+		<button class="b">a</button>
+		<script type="text/javascript">
+			
+	
+		function a(){
+			time =setInterval(function(){
+				var oa =document.getElementsByClassName("a")[0];
+				oa.style.opacity=1
+				clearInterval(time)
+				bb()
+			},160)	
+			
+		}
+			function bb(){
+				times=setInterval(function(){
+					var oa =document.getElementsByClassName("a")[0];
+					oa.style.opacity=0
+					clearInterval(times)
+				},500)
+			}
+			
+			
+			
+			var ob =document.getElementsByClassName("b")[0];
+			ob.onclick=function(){
+				a()
+			}
+		</script>
+	</body>
+</html>

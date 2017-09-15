@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="" value="1" />
+		<input type="button" id="" value="2" />
+		<input type="button" id="" value="3" />
+		<input type="button" id="" value="4" />
+		<input type="button" id="" value="5" /><br />
+		<img src="img/1.jpg" id="img1"/>
+		<script type="text/javascript">
+			var oImg = document.getElementById("img1");
+			var aInput = document.getElementsByTagName("input");
+			var time = null;
+			function aimg(arr){
+				var arr = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"];
+				var h = [0,1,2,3,4]
+				var m = arr[h]
+				var index = 0;
+				btn(m);
+				clearInterval(time)
+				time = setInterval(function(){
+					oImg.src = arr[index];
+					index++;
+					if (index == 5) {
+						clearInterval(time);
+						aimg()
+					}
+				},500)
+			}
+			aimg();
+			function btn1(btnindex){
+				
+				
+			}
+			function btn(arr){
+				
+				for (var i = 0; i < 5; i++) {
+					aInput[btnindex].onclick = function(){
+					oImg.src = arr[btnindex];
+				}
+				}
+			}
+			
+		</script>
+	</body>
+</html>

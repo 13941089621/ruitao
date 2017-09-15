@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table{
+				width: 800px;
+			}
+			th{
+				width: 100px;
+				background-color: lightblue;
+			}
+			td{
+				text-align: center;
+			}
+			td img{
+				width: 100px;
+				height: 50px;
+			}
+			.div1{
+				width: 92px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			.div1 span{
+				float: left;
+			}
+			.span1,.span2{
+				width: 20px;
+				height: 30px;
+				line-height: 30px;
+				background-color: #CCCCCC;
+			}
+			.range{
+				width: 50px;
+				height: 28px;
+				line-height: 28px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="1" cellspacing="0" cellpadding="0" id="table1">
+			<tbody id="tbody1">
+				<tr>
+					<th></th>
+					<th >商品</th>
+					<th >单价</th>
+					<th >数量</th>
+					<th >小计</th>
+					<th >操作</th>
+				</tr>
+				<tr>
+					<td><input type="checkbox"/></td>
+					<td><img src="../3.瀑布流/img/1.jpg"/>银魂</td>
+					<td>998</td>
+					<td><div class="div1"><span class="span1">-</span><span class="range">1</span><span class="span2">+</span></div></td>
+					<td class="sum">998</td>
+					<td class="del1">删除</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td><img src="../3.瀑布流/img/1.jpg"/>银魂</td>
+					<td>698</td>
+					<td><div class="div1"><span class="span1">-</span><span class="range">1</span><span class="span2">+</span></div></td>
+					<td class="sum">698</td>
+					<td class="del1">删除</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td><img src="../3.瀑布流/img/1.jpg"/>土方</td>
+					<td>298</td>
+					<td><div class="div1"><span class="span1">-</span><span class="range">1</span><span class="span2">+</span></div></td>
+					<td class="sum">298</td>
+					<td class="del1">删除</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td><img src="../3.瀑布流/img/1.jpg"/>定春</td>
+					<td>498</td>
+					<td><div class="div1"><span class="span1">-</span><span class="range">1</span><span class="span2">+</span></div></td>
+					<td class="sum">498</td>
+					<td class="del1">删除</td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="footer">
+			<input type="checkbox" name="" id="checkboxall" value="" />
+			<label for="checkboxall">全选</label>
+			<span id="delall">删除</span>
+			<span id="elses">已选商品0>></span>
+			<span id="addsum">合计0.00</span>
+			<a href="###">结算</a>
+		</div>
+		
+		<script type="text/javascript">
+			var checkboxall = document.getElementById("checkboxall");
+			var tbody1 = document.getElementById("tbody1");
+			var addsum = document.getElementById("addsum");
+			
+			var aTr = document.querySelectorAll("#tbody1>tr");
+			var delall = document.getElementById("delall");
+			var oDiv1 = document.getElementsByClassName("div1");
+			var oSum = document.getElementsByClassName("sum");
+			var del1 = document.getElementsByClassName("del1");
+			var elses = document.getElementById("elses");
+			var acheck = [];
+			var index1 = 0;
+			function trsum(){
+				for (var i = 0; i < tbody1.children.length - 1; i++) {
+					acheck[i] = tbody1.children[i + 1].children[0].children[0];
+				}
+				
+			}
+			trsum();
+			//  全选与全删除
+			checkboxall.onclick = function(){
+				trsum();
+				console.log(tbody1.children.length)
+				if (this.checked) {
+					for (var i = 0; i < tbody1.children.length - 1; i++) {
+						if (acheck[i].checked == false){
+							acheck[i].checked = "checked";
+						}
+					}
+				} else {
+					for (var i = 0; i < tbody1.children.length - 1; i++) {
+						if (acheck[i].checked){
+							acheck[i].checked = "";
+						}
+					}
+				}
+				else1();
+			}
+			delall.onclick = function(){
+				trsum();
+				if (tbody1.children.length - 1 > 0) {
+					for (var i = 0; i < tbody1.children.length - 1; i++) {
+						if (acheck[i].checked) {
+							tbody1.removeChild(acheck[i].parentNode.parentNode)							
+						}
+					}
+					index1 = 0;
+					else1();
+				}
+				
+			}
+			
+			
+			//  数量加减
+			//  获得小计单价
+			var arr1 = [];
+			for (var i = 0; i < oSum.length; i++) {
+				arr1[i] = oSum[i].innerHTML;	
+			}
+			function jiajian(i){
+				var index = 0;
+				var jian = oDiv1[i].children[0];
+				var oNum = oDiv1[i].children[1];
+				var jia = oDiv1[i].children[2];
+				jian.onclick = function(){
+					index--;
+					if (this.nextSibling.innerHTML < 2) {
+						this.nextSibling.innerHTML == 1
+					} else{
+						this.nextSibling.innerHTML = index;
+					}
+					sum();
+				}
+				jia.onclick = function(){
+					if (index < 1) {
+						index = 1;
+					}
+					index++;
+					this.previousSibling.innerHTML = index;
+					sum();
+				}
+				
+			}
+			function sum(){
+				//  小计
+				var sum2 = 0;
+				for (var i = 0; i < oSum.length; i++) {
+					var num1 = oDiv1[i].children[1].innerHTML * arr1[i];
+					oSum[i].innerHTML = num1;
+					if (acheck[i].checked) {
+						sum2 = sum2 + num1;
+					}	
+				}
+				//  总计
+				addsum.innerHTML = "合计" + sum2;
+			}
+			for (var i = 0; i < oDiv1.length; i++) {
+				jiajian(i)
+			}
+			//  删除单个
+			for (var i = 0; i < del1.length; i++) {
+				del1[i].onclick = function(){
+					tbody1.removeChild(this.parentNode);
+				}
+				trsum();
+			}
+			//  已选商品
+			function else1(){
+				function else2(){
+					index1 = 0;
+					for (var i = 0; i < tbody1.children.length - 1; i++) {
+						if (acheck[i].checked) {
+							index1++
+						}
+					}
+					elses.innerHTML = "已选商品" + index1 + "<<";
+				}
+				else2();
+				//  点击复选框时
+				for (var i = 0; i < tbody1.children.length - 1; i++) {
+					acheck[i].onclick = function(){
+						else2();
+					}
+				}
+				
+			}
+			else1();
+		</script>
+	</body>
+</html>

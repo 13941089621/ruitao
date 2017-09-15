@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				color: white;
+				font-size: 50px;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="button" name="" id="" value="按钮1" />
+		<input type="button" name="" id="" value="按钮2" />
+		<input type="button" name="" id="" value="按钮3" />
+		<div>A</div>
+		<div>B</div>
+		<div>C</div>
+
+		<script type="text/javascript">
+			var aBtn = document.getElementsByTagName("input");
+			var aDiv = document.getElementsByTagName("div");
+			aDiv[0].style.display = "block";
+			for (var i = 0; i < 3; i++) {
+				aBtn[i].index = i;
+				aBtn[i].onclick = function() {
+					for (var j = 0; j < 3; j++) {
+						aBtn[j].style.backgroundColor = "";
+						if (j == this.index) {
+							aDiv[j].style.display = "block"
+						} else {
+							aDiv[j].style.display = "none"
+						}
+					}
+					this.style.backgroundColor = "yellow";
+				}
+			}
+		</script>
+	</body>
+
+</html>

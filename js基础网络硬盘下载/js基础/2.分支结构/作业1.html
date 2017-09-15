@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				transition: all 1s
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="" />
+		<div id="div1">
+			
+		</div>
+		
+		
+		
+		
+		
+		<script type="text/javascript">
+			var oBtn = document.getElementById("btn");
+			var div1 = document.getElementById("div1");
+			oBtn.onclick = function(){
+
+				if (	div1.style.backgroundColor == "white"){
+					div1.style.backgroundColor = "red";
+				} else {
+					div1.style.backgroundColor = "white";
+				}
+			}
+		</script>
+	</body>
+</html>

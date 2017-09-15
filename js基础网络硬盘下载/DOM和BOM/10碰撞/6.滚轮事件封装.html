@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 210px;
+				height: 210px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			
+		</div>
+		<script src="js/moxie.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			function fn(down){
+				if (down) {
+					oWrap.style.width = oWrap.offsetWidth + 20 + "px";
+					oWrap.style.height = oWrap.offsetHeight + 20 + "px";
+				} else {
+					oWrap.style.width = oWrap.offsetWidth - 20 + "px";
+					oWrap.style.height = oWrap.offsetHeight - 20 + "px";
+				}
+			}
+			wheel(window,fn)
+			
+		</script>
+	</body>
+</html>

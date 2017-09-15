@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap{
+				width: 2000px;
+				height: 2000px;
+				background-color: #CCCCCC;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="wrap">
+			
+		</div>
+		
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			oWrap.onmousemove = function(e){
+				e = e || window.event;
+				//  获取鼠标指针在当前窗口中的坐标位置  从窗口的边缘开始计算
+//				console.log("X轴:" + e.clientX);
+//				console.log("Y轴:" + e.clientY);
+				
+				//  获取鼠标指针在当前页面上的坐标位置，从页面的本身开始计算，而不是窗口的边缘
+//				console.log(e.pageX);
+//				console.log(e.pageY)
+				
+				//  获取鼠标指针相对于整个屏幕的坐标位置
+				console.log(e.screenX);
+				console.log(e.screenY)
+			}
+			
+			
+		</script>
+	</body>
+</html>

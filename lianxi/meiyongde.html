@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="html">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>用户登录</title>
+		<style>
+			/*登陆*/
+			
+			.login_main {
+				width: 99%;
+				height: 100%;
+				overflow: hidden;
+				padding-bottom: 0.35rem;
+			}
+			
+			.login_wihte {
+				width: 100%;
+				height: auto;
+				overflow: hidden;
+				border-bottom: 1px solid #dfdfdf;
+				background: #fff;
+				border-top: 1px solid #dfdfdf;
+			}
+			
+			.prin_phone {
+				width: 93%;
+				height: 0.095rem;
+				line-height: 0.1rem;
+				overflow: hidden;
+				margin: 2.3% 0 0 5.4%;
+				border-bottom: 1px solid #dfdfdf;
+				padding-bottom: 2.3%;
+				font-size: 0.046rem;
+			}
+			
+			.login_num {
+				width: 20%;
+				height: 0.095rem;
+				line-height: 0.095rem;
+				font-size: 0.043rem;
+				float: left;
+				text-align: left;
+			}
+			
+			.login_pnum {
+				width: 43%;
+				height: 0.06rem;
+				line-height: 0.06rem;
+				margin-top: 2%;
+				font-size: 0.043rem;
+				float: left;
+			}
+			
+			.login_yan {
+				width: 33%;
+				height: 0.095rem;
+				line-height: 0.095rem;
+				font-size: 0.025rem;
+				float: right;
+				color: #fff;
+				text-align: center;
+				font-size: 0.038rem;
+				font-weight: bold;
+				margin-right: 2%;
+				/* background:url(__ROOT__/statics/weixin1/images/yzm.png) no-repeat;filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";  -moz-background-size:100% 100%;
+ background-size:100% 100%; */
+				margin-left: 2%;
+				background: #16c3ef;
+			}
+			
+			.login_nav {
+				width: 100%;
+				height: 0.17rem;
+				overflow: hidden;
+				margin-top: 8%;
+				position: fixed;
+				left: 0;
+				bottom: 0;
+			}
+			
+			.login {
+				width: 90%;
+				height: 0.1375rem;
+				margin-left: 5%;
+				margin-right: 5%;
+				text-align: center;
+				color: #fff;
+				font-size: 0.056rem;
+				/* background:url(__ROOT__/statics/weixin1/images/bgcolor.png) no-repeat;filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";  -moz-background-size:100% 100%; background-size:100% 100%; */
+			}
+			
+			#tishi {
+				width: 90%;
+				margin: 0 auto;
+				text-align: left;
+				font-size: 0.05rem;
+				line-height: 0.06rem;
+				margin-top: 0.05rem;
+				color: red;
+			}
+			
+			.pTxt {
+				width: 0.97rem;
+				height: 0.08rem;
+				line-height: 0.08rem;
+				font-size: 0.03rem;
+				color: #a0a0a0;
+				padding-left: 0.03rem;
+			}
+			
+			.pTxt a:link,
+			.pTxt a:active,
+			.pTxt a:visited {
+				color: #16c3ef;
+			}
+		</style>
+		<link type="text/css" rel="stylesheet" href="__ROOT__/statics/weixin1/css/index.css" />
+		<script type="text/javascript" src="__ROOT__/statics/weixin1/js/jquery-1.7.min.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				var width = document.body.clientWidth;
+
+				var a = document.getElementById("html").style.fontSize = width + "px";
+
+			})
+		</script>
+		<script type="text/javascript">
+		</script>
+	</head>
+
+	<body style="font-family:Hiragino Sans G8;background-color:#efeff4;">
+
+		<!--login start-->
+		<form method="post" class="form-horizontal J_ajaxForm" action="{:U('Myorder/yzm')}" onsubmit="return tijiao()">
+			<div class="login_main">
+				<div class="pTxt">为确保服务质量，请先验证您的手机。</div>
+				<div class="login_wihte">
+					<div class="prin_phone">
+						<!-- <span class="login_num">手机号</span> -->
+						<input class="login_pnum" style="border:none;" name="mobile" type="text" id="mobile" placeholder="请输入手机号码" value='<if condition=" ($mobile neq ' ') ">{$mobile}</if>' />
+
+						<input class="login_yan" type="button" value="获取验证码" onclick="yan()" id="btn" />
+					</div>
+
+					<div class="prin_phone" style="border:none;">
+						<!-- <span class="login_num">验证码</span> -->
+						<input class="login_pnum" name="code" style="border:none;" type="text" id="code" placeholder="请输入验证码" />
+					</div>
+				</div>
+				<div class="pTxt">点击“绑定手机”，即表示同意
+					<a href="javascript:;" onclick="xy()">《金城管家用户协议》</a>
+				</div>
+				<div class="login_nav">
+					<input type="submit" value="绑定手机" class="login" style=" background:#a0a0a0;" />
+					<!--#1b95d4!-->
+					<div id="tishi"></div>
+				</div>
+			</div>
+		</form>
+		<!--login end-->
+	</body>
+	<script>
+		function xy() {
+			location.href = "index.php?m=weixin1&c=myorder&a=services";
+		}
+
+		function tijiao() {
+			var mobile = $('#mobile').val();
+			var code = $('#code').val();
+			var mo = mobile.length;
+			var co = code.length;
+			if(mo == 11 && co == 6) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		$('#mobile').keyup(function() {
+			var mobile = $('#mobile').val();
+			var code = $('#code').val();
+			var mo = mobile.length;
+			var co = code.length;
+			if(mo == 11 && co == 6) {
+				$(".login").css({
+					"backgroundColor": "#16c3ef"
+				});
+			} else {
+				$(".login").css({
+					"backgroundColor": "#a0a0a0"
+				});
+			}
+		});
+		$('#code').keyup(function() {
+			var mobile = $('#mobile').val();
+			var code = $('#code').val();
+			var mo = mobile.length;
+			var co = code.length;
+			if(mo == 11 && co == 6) {
+				$(".login").css({
+					"backgroundColor": "#16c3ef"
+				});
+			} else {
+				$(".login").css({
+					"backgroundColor": "#a0a0a0"
+				});
+			}
+		});
+
+		function yan() {
+			mobile = $("#mobile").val();
+			if(mobile != "") {
+				$.ajax({
+					type: "post",
+					url: "{:U('Myorder/login')}",
+					data: "mobile=" + mobile,
+					success: function(msg) {
+						if(msg == 0) {
+							$("#tishi").html("发送失败,请稍后再试");
+						} else {
+							//alert(msg);
+							$("#btn").removeAttr("onclick");
+							$("#btn").attr("onclick", "time(this);");
+							$('#btn').trigger("click");
+							//$("#btn").click=function(){time(this);} 
+							$("#btn").attr("disabled", "disabled");
+
+						}
+					}
+				});
+			} else {
+				$("#tishi").val("手机号不能为空");
+			}
+		}
+		var wait = 60;
+
+		function time(o) {
+			if(wait == 0) {
+				o.removeAttribute("disabled");
+				o.value = "获取验证码";
+				wait = 60;
+				$("#btn").attr("onclick", "yan()");
+			} else {
+				o.value = "正在发送(" + wait + ")";
+				wait--;
+				setTimeout(function() {
+						time(o)
+					},
+					1000)
+			}
+		}
+		//document.getElementById("btn").onclick=function(){time(this);}
+	</script>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="" id="input1" value="" />
+			<input type="button" name="" id="input2" value="本息" />
+		</form>
+		
+		
+		<script type="text/javascript">
+			var input1 = document.getElementById("input1");
+			var input2 = document.getElementById("input2");
+			input2.onclick = function(){
+				var input3 = Number(input1.value);
+				alert(input3 * 1.05);
+			}
+		</script>
+	</body>
+</html>

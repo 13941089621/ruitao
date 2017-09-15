@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html{
+				height: 15000px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//  滚轮事件
+			//  当上下滚动鼠标滚轮时触发
+			
+			//  适用于除了火狐之外的所有浏览器
+			window.onmousewheel = function(e){
+				e = e || window.event;
+				//  每次滚动的数值
+				//  每次滚动120px 连续滚动为120的倍数，页面向上滚动是正数，向下滚动是负数
+				console.log(e.wheelDelta);
+			}
+			
+			//  火狐下的适用方法
+			window.addEventListener("DOMMouseScroll",function(e){
+				var e = e || window.event;
+				console.log(e.detail)
+			})
+		</script>
+	</body>
+</html>

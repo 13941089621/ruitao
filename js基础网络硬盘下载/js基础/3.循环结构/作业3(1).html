@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#father{
+				width: 100px;
+				height: 100px;
+				position: relative;
+				background-color: red;
+			}
+			#father div{
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				color: white;
+				font-size: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="btn1" id="btn1" value="按钮1" />
+		<input type="button" name="btn2" id="btn2" value="按钮2" />
+		<input type="button" name="btn3" id="btn3" value="按钮3" />
+		<div id="father">
+			<div id="div1">A</div>
+			<div id="div2">B</div>
+			<div id="div3">C</div>
+		</div>
+		
+		<script type="text/javascript">
+			var oBtn1 = document.getElementById("btn1");
+			var oBtn2 = document.getElementById("btn2");
+			var oBtn3 = document.getElementById("btn3");
+			var oDiv1 = document.getElementById("div1");
+			var oDiv2 = document.getElementById("div2");
+			var oDiv3 = document.getElementById("div3");
+			oDiv2.style.display = "none";
+			oDiv3.style.display = "none"
+			oBtn1.onclick = function(){
+				oDiv1.style.display = "block";
+				oDiv2.style.display = "none";
+				oDiv3.style.display = "none";
+				this.style.backgroundColor = "yellow";
+				oBtn2.style.backgroundColor = "";
+				oBtn3.style.backgroundColor = "";
+			}
+			oBtn2.onclick = function(){
+				oDiv2.style.display = "block";
+				oDiv1.style.display = "none";
+				oDiv3.style.display = "none";
+				this.style.backgroundColor = "yellow";
+				oBtn1.style.backgroundColor = "";
+				oBtn3.style.backgroundColor = "";
+			}
+			oBtn3.onclick = function(){
+				oDiv3.style.display = "block";
+				oDiv2.style.display = "none";
+				oDiv1.style.display = "none";
+				this.style.backgroundColor = "yellow";
+				oBtn1.style.backgroundColor = "";
+				oBtn2.style.backgroundColor = "";
+			}
+		</script>
+	</body>
+</html>

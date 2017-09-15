@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{
+				width: 800px;
+				height: 600px;
+				border: 1px solid black;
+				position: relative;
+			}
+			#wrap>div{
+				width: 50px;
+				height: 50px;
+				background-color: #CCCCCC;
+				position: absolute;
+			}
+			#boxb{
+				left: 200px;
+				top: 200px;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="boxa"></div>
+			<div id="boxb"></div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			var oWrap = document.getElementById("wrap");
+			var oBoxa = document.getElementById("boxa");
+			var oBoxb = document.getElementById("boxb");
+			oBoxa.onmousedown = function(e){
+				var e = e || window.event;
+				//  获取点击是鼠标的位置
+				var x = e.clientX;
+				var y = e.clientY;
+				//  获取点击时boxa的位置
+				var oBoxaleft = oBoxa.offsetLeft;
+				var oBoxatop = oBoxa.offsetTop;
+				//  计算鼠标位置与boxa的位置
+				var lessx = x - oBoxaleft;
+				var lessy = y - oBoxatop;
+				//  鼠标移动
+				oWrap.onmousemove = function(e){
+					var e = e || window.event;
+					//  移动后鼠标当前位置
+					var x1 = e.clientX;
+					var y1 = e.clientY;
+					//  计算boxa位置
+					var nowLeft = x1 - lessx;
+					var nowTop = y1 - lessy;
+					//  定位值
+					oBoxa.style.left = nowLeft + "px";
+					oBoxa.style.top = nowTop + "px";
+					
+					//  碰撞
+					//  获取boxa的宽高
+					var oBoxaW = oBoxa.offsetWidth;
+					var oBoxaH = oBoxa.offsetHeight;
+					//  获取boxa的定位值
+					var oBoxaL = oBoxa.offsetLeft;
+					var oBoxaT = oBoxa.offsetTop;
+					//  获取boxb的宽高
+					var oBoxbW = oBoxb.offsetWidth;
+					var oBoxbH = oBoxb.offsetHeight;
+					//  获取boxb的定位值
+					var oBoxbL = oBoxb.offsetLeft;
+					var oBoxbT = oBoxb.offsetTop;
+					
+					//  boxa在左侧时
+					var leftType = oBoxaL + oBoxaW >= oBoxbL;
+					//  右侧时
+					var rightTye = oBoxbL + oBoxbW >= oBoxaL;
+					//  上侧时
+					var topType = oBoxaT + oBoxaH >= oBoxbT;
+					//  下侧时
+					var bottomType = oBoxbT + oBoxbH >= oBoxaT;
+					if (leftType && rightTye && topType && bottomType) {
+						oBoxb.style.backgroundColor = "red";
+					} else {
+						oBoxb.style.backgroundColor = "";
+					}
+				}
+			}
+			//  鼠标抬起时，清除移动事件
+			oBoxa.onmouseup = function(){
+				oWrap.onmousemove = null;
+			}
+		</script>
+	</body>
+</html>

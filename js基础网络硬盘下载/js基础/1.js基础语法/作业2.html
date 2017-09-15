@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="" id="input1" value="" />
+			<input type="text" name="" id="input2" value="" /><br />
+			<input type="button" name="" id="input3" value="加" />
+			<input type="button" name="" id="input4" value="减" />
+			<input type="button" name="" id="input5" value="乘" />
+			<input type="button" name="" id="input6" value="除" />
+			<input type="button" name="" id="input7" value="余" />
+		</form>
+		
+		
+		<script type="text/javascript">
+			var input1 = document.getElementById("input1");
+			var input2 = document.getElementById("input2");
+			var input3 = document.getElementById("input3");	
+			
+			input3.onclick = function(){			
+				var text1 = Number(input1.value);
+				var text2 = Number(input2.value);
+				alert(Number(text1 + text2));
+			}
+			input4.onclick = function(){			
+				var text1 = Number(input1.value);
+				var text2 = Number(input2.value);
+				alert(Number(text1 - text2));
+			}
+			input5.onclick = function(){			
+				var text1 = Number(input1.value);
+				var text2 = Number(input2.value);
+				alert(Number(text1 * text2));
+			}
+			input6.onclick = function(){			
+				var text1 = Number(input1.value);
+				var text2 = Number(input2.value);
+				alert(Number(text1 / text2));
+			}
+			input7.onclick = function(){			
+				var text1 = Number(input1.value);
+				var text2 = Number(input2.value);
+				alert(Number(text1 % text2));
+			}
+		</script>
+	</body>
+</html>

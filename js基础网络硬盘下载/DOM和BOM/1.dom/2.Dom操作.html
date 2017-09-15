@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="mygirl">
+			<li>马蓉</li>
+			<li>王湃</li>
+			<li>红红</li>
+		</ul>
+		
+		
+		
+		<script type="text/javascript">
+			var oMygril = document.getElementById("mygirl")
+			
+			
+			
+		
+			//  创建一个元素节点
+			var newGril = document.createElement("li");
+			newGril.innerHTML = "江疏影";
+		
+		
+		
+			//  添加一个子节点
+			oMygril.appendChild(newGril);
+			
+			
+			//  移出一个子节点
+//			oMygril.removeChild(oMygril.children[0])
+			
+			//  插入一个子节点
+			//  插入的节点   在哪个节点插入
+//			oMygril.insertBefore(newGril,oMygril.children[0]);
+			
+			//  替换一个子节点
+			//  把1换成3
+//			var oldNode = oMygril.replaceChild(newGril,oMygril.children[0]);
+			
+			//  两个节点对调
+//			oMygril.appendChild(oldNode)
+			
+			//  获取父节点
+			 newGril.parentNode;
+			
+			
+			
+			
+			var newli = document.createElement("li")
+			newli.innerHTML = "516";
+			oMygril.insertBefore(newli,oMygril.children[2])
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

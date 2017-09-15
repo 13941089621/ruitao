@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input{
+				width: 100px;
+				height: 50px;
+				background-color: #ccc;
+				font-size: 30px;
+			}
+			li{
+				font-size: 30px;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="btn1" value="添加" />
+		<ul id="list">
+			
+		</ul>
+		<script type="text/javascript">
+			var oBtn = document.getElementById("btn1");
+			var oList = document.getElementById("list");
+			
+			var i = 0;
+			
+			oBtn.onclick = function(){
+				i++;
+				var oLi = document.createElement("li");
+				oLi.innerHTML = '列表项&nbsp&nbsp' + i +' &nbsp&nbsp&nbsp&nbsp&nbsp'  + '<input type="button" id="" value="删除" />';
+				oList.appendChild(oLi);	
+				oLi.lastChild.onclick = function(){
+					oList.removeChild(this.parentNode)
+				}
+//				i++;
+//				var oLi = document.createElement("li");
+//				var oInput = document.createElement("input");
+//				oInput.value = "删除";
+//				oInput.type = "button";
+//				oLi.innerHTML = '列&nbsp表&nbsp项&nbsp&nbsp' + i;
+//				oList.appendChild(oLi);	
+//				oLi.appendChild(oInput);
+//				oInput.onclick = function(){
+//					oList.removeChild(this.parentNode)
+//				}
+			}
+			
+		</script>
+	</body>
+</html>
