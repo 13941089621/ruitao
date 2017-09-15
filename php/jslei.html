@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var Animal = {
+        createNew: function(){
+            var animal = {};
+            animal.sleep = function(){
+                alert("睡懒觉");
+            };
+            return animal;
+        }
+    };
+
+
+var ffaaa = {
+    createNew: function(){
+        var cat = Animal.createNew();
+        cat.name = "大毛";
+        cat.makeSound = function(){
+            alert("喵喵喵");
+        };
+        return cat;
+    }
+};
+
+
+function aa() {
+    a:1
+}
+
+function Aouss() {
+    this.a = 22;
+}
+var b = new Aouss();
+
+
+</script>
+</body>
+</html>

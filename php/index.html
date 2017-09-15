@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    输入1<input type="text" value="" name="" id="btna"><br>
+    输入2<input type="text" value="" name="" id="btnb">
+    <input type="button" value="点击" id="btnc">
+
+    <script src="jquery-1.7.1.js"></script>
+    <script>
+        $(function () {
+            $("#btnc").click(function () {
+                $.ajax({
+                    url:"php.php",
+                    type:"GET",
+                    data:{a:$("#btna").val(),b:$("#btnb").val()},
+                    success:function (d) {
+                        console.log(d)
+                    },
+                    error:function (d) {
+                        console.log(d)
+                    }
+                })
+            })
+        })
+
+
+
+
+
+
+
+
+//        $.ajax({
+//            url: "/new/api/sendsms",
+//            type: "post",
+//            dataType: "json",
+//            data: {
+//                captcha_id: yzm.id,
+//                captcha_value: opbtn_a.value,
+//                mobile: phone_num
+//            },
+//            success: function(res) {
+//                if(res.data) {
+//                    oprompt.style.display = "none";
+//                    obei.style.display = "none";
+//                } else {
+//                    bx("验证码输入不正确")
+//                }
+//            },
+//            error: function(res) {
+//                console.log(res);
+//                var errMsg = JSON.parse(res.responseText);
+//                bx(errMsg.message);
+//            }
+//        });
+//
+//        } else {
+//            console.log("验证码错误 ");
+//            bx("验证码错误 ")
+//        }
+//        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    oc.onclick=function () {
+//        ajax("get","php.php",{a:oa,b:ob},function (z) {
+//            console.log(z)
+//        })
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
+

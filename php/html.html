@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" id="a">
+<input type="password" id="b">
+<input type="button" value="d" id="c">
+<script src="jquery-1.7.1.js"></script>
+<script type="text/javascript">
+   $(function () {
+       $("#c").click(function () {
+           $.ajax({
+               url:"p.php",
+               type:"post",
+               data:{
+                   a:$("#a").val(),
+                   b:$("#b").val()
+               },
+               success:function (d) {
+                   console.log(d);
+               },
+               error:function (dd) {
+                   console.log(dd);
+               }
+
+           })
+       })
+   })
+    
+</script>
+</body>
+</html>
