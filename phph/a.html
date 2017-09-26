@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" class="name" placeholder="name"><br>
+<input type="password" class="word" placeholder="word"><br>
+<input type="text" class="oid" placeholder="id"><br>
+
+<input type="button" class="bzhengjia" value="zhengjia">
+<input type="button" class="bshangchu" value="shangchu">
+<input type="button" class="bxiugai" value="xiugai">
+<input type="button" class="bcharu" value="charu">
+<div class="data">
+
+</div>
+
+<script type="text/javascript" src="jquery-1.7.1.js"></script>
+<script>
+
+    var oname=document.getElementsByClassName("name")[0];
+    var word=document.getElementsByClassName("word")[0];
+
+    var bzhengjia=document.getElementsByClassName("bzhengjia")[0];
+    var shangchu=document.getElementsByClassName("bshangchu")[0];
+    var xiugai=document.getElementsByClassName("bxiugai")[0];
+    var charu=document.getElementsByClassName("bcharu")[0];
+    var iid=document.getElementsByClassName("oid")[0];
+    var d =document.getElementsByClassName('data')[0]
+    $(function () {
+        bzhengjia.onclick=function () {
+            var a=oname.value;
+            var b=word.value;
+            $.ajax({
+                url:'zhengjia.php',
+                data:{
+                    name:a,
+                    word:b
+                },
+                success:function (da) {
+                   alert(da)
+
+                },
+                error:function (d) {
+                    console.log(d)
+                }
+            })
+        }
+
+
+        xiugai.onclick=function () {
+            var a=oname.value;
+            var b=word.value;
+            var id=iid.value;
+
+            $.ajax({
+                url:'xiugai.php',
+                data:{
+                    name:a,
+                    word:b,
+                    id:id
+                },
+                success:function (d) {
+                    console.log(d)
+                },
+                error:function (d) {
+                    console.log(d)
+                }
+            })
+        };
+        shangchu.onclick=function () {
+            var id=iid.value;
+
+            $.ajax({
+                url:'shangchu.php',
+                data:{
+                    id:id
+                },
+                success:function (d) {
+                    console.log(d)
+                },
+                error:function (d) {
+                    console.log(d)
+                }
+            })
+        }
+
+    })
+
+</script>
+</body>
+</html>
